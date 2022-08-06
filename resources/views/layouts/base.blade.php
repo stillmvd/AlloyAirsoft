@@ -8,9 +8,15 @@
     @vite('resources/css/app.css')
     <title>Alloy Airsoft</title>
 </head>
-<body>
-    <x-pages.container>
-        @yield('content')
-    </x-pages.container>
+<body class="h-[100vh] flex flex-col justify-between">
+    @include('includes.header')
+
+    <main class="h-full">
+        <x-pages.container>
+            @yield('content')
+        </x-pages.container>
+    </main>
+    
+    @include('includes.footer')
 </body>
 </html>
