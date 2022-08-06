@@ -1,0 +1,4 @@
+html::-webkit-scrollbar{
+    width: 0;
+    visibility: hidden;
+}
