@@ -1,5 +1,5 @@
 <a {{ $attributes->class(
-    'text-white'
+    ''
 )->merge([
     'href' => '',
 ]) }}>
