@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     <title>Alloy Airsoft</title>
 </head>
-<body class="h-[100vh] flex flex-col justify-between">
+<body class="h-[100vh] flex flex-col justify-between bg-[#111111]">
     @include('includes.header')
 
     <main class="h-full">

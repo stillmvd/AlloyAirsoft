@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-    <div class="">
-        Alloy Airsoft
+    <div class="flex flex-row">
+        
     </div>
 @endsection
