@@ -31,9 +31,7 @@
                         {{ __($game->name) }}
                     </x-text.title>
                 </div>
-                <div id="map{{ $loop->index }}" class="h-[400px] w-full z-[-20] scale-110">
-
-                </div>
+                <x-map id="map{{ $loop->index }}"/>
             </a>
         </div>
     @endforeach

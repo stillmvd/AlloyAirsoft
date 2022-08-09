@@ -1,4 +1,6 @@
-<div class="flex flex-row items-end">
+<div {{ $attributes->class(
+    'flex flex-row'
+) }}>
     <p class="text-white text-[3rem] font-light mr-3">
         {{ date('d', strtotime($game->playtime)) }}
     </p>

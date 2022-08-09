@@ -8,39 +8,42 @@
     <p class="hidden" id="first_cord">{{ $first_cord }}</p>
     <p class="hidden" id="second_cord">{{ $second_cord }}</p>
 
-    <div class="flex w-full justify-between items-center py-6">
-        <x-text.title class="text-white">
+    <div class="grid grid-cols-3 auto-cols-max my-10">
+        <x-text.title class="w-full text-white font-light flex items-end pb-4">
             {{ __($game->name) }}
         </x-text.title>
-        <x-text.gamedate :game='$game'/>
-        <x-text.gametime :game='$game'/>
+        <x-text.gamedate class="w-full items-end justify-center text-center font-light" :game='$game'/>
+        <x-text.gametime class="w-full items-end justify-end text-end font-light" :game='$game'/>
     </div>
 
-    <div class="relative group w-full h-400px overflow-hidden rounded-3xl">
-        <div id="map" class="h-[400px] w-full bg-[#303030]/25 scale-110"></div>
+    <div class="relative group w-full h-400px overflow-hidden rounded-3xl ring-2 ring-amber-500/75">
+        <x-map/>
     </div>
 
-    <div class="flex flex-col mt-[64px] mb-96">
-        <div class="flex flex-row pb-[38px] border-b-[2px] border-[#242424]">
-            <x-text.title class="pr-[28.13px]">
+    <div class="flex flex-col mt-20">
+
+        <div class="flex flex-row justify-between w-full">
+            <x-text.title>
                 {{ __('Info') }}
             </x-text.title>
-            <div class="flex flex-row justify-end">
-                <div class="w-[60%] text-left flex flex-row">
-                    <x-text.paragraph class="text-[#CACACA] leading-8">
+            <div class="flex flex-row justify-end w-[60%]">
+                <div class="text-left flex flex-row items-start justify-between">
+                    <x-text.paragraph class="text-[#CACACA] leading-8 w-[90%]">
                         {{ __($game->description) }}
                     </x-text.paragraph>
-                    <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="pl-5 pt-4">
+                    <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="cursor-pointer">
                 </div>
             </div>
         </div>
-        <div class="flex flex-row pt-[38px]">
-            <x-text.title class="w-[100px]">
+        <div class="h-[2px] mt-10 mb-10 w-full bg-[#242424]"></div>
+
+        <div class="flex flex-row justify-between w-full">
+            <x-text.title>
                 {{ __('Rules') }}
             </x-text.title>
-            <div class="flex flex-row justify-end">
-                <div class="w-[60%] text-left flex flex-row">
-                    <x-text.paragraph class="text-[#CACACA] leading-8">
+            <div class="flex flex-row justify-end w-[60%]">
+                <div class="text-left flex flex-row items-start justify-between">
+                    <x-text.paragraph class="text-[#CACACA] leading-8 w-[90%]">
                         Groups
                         - There will be no team in the usual environment, only your group and an unknown number of other similar groups
                         - The group can be any size from 2 to 11 people
@@ -62,9 +65,13 @@
                         - The player is considered dead after a second hit in the status of wounded or with a bandage
                         - The player is considered dead after being attacked with a melee weapon in any case.
                     </x-text.paragraph>
-                    <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="pl-5 pt-4">
+                    <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="cursor-pointer">
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('footer')
+    @include('includes.footer')
 @endsection
