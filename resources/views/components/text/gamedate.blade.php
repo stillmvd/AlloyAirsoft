@@ -1,8 +1,8 @@
 <div class="flex flex-row items-end">
     <p class="text-white text-[3rem] font-light mr-3">
-        {{ date('m', strtotime($game->date)) }}
+        {{ date('d', strtotime($game->date)) }}
     </p>
     <p class="text-white text-[1.2rem] font-light pb-3">
-        {{ date('D', strtotime($game->date)) }}
+        {{ date('M', strtotime($game->date)) }}
     </p>
 </div>

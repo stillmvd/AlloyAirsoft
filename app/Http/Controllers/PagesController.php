@@ -16,11 +16,15 @@ class PagesController extends Controller
     }
 
     public function archive() {
-        return view('archive');
+        $games = DB::table('games')->where('finished', '=', 1)->get();
+        return view('archive', compact('games'));
     }
 
     public function game($id) {
-        return view('game');
+        $first_cord = Game::find($id)->first_cord;
+        $second_cord = Game::find($id)->second_cord;
+        $game = Game::find($id);
+        return view('game', compact('first_cord', 'second_cord', 'game'));
     }
 
     public function store($id) {
