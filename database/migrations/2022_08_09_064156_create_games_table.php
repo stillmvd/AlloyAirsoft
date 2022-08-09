@@ -16,6 +16,7 @@ return new class extends Migration
             $table->double('first_cord');
             $table->double('second_cord');
             $table->text('description');
+            $table->text('rule')->nullable();
             $table->dateTime('playtime');
             $table->string('map_path')->nullable();
 

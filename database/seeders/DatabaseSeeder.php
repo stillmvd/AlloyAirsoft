@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 58.5854678,
             'second_cord' => 49.4319945,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'playtime' => '2022-03-14 12:15:12',
+            'playtime' => '2022.08.19 12:15:12',
         ]);
 
         DB::table('games')->insert([
@@ -39,15 +39,29 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 56.3926128,
             'second_cord' => 38.1018651,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.11.2022',
+            'playtime' => '2022.08.19 12:15:12',
         ]);
 
         DB::table('games')->insert([
-            'name' => 'Temich',
+            'name' => 'Woodpecker',
             'first_cord' => 56.2384338,
             'second_cord' => 43.4570157,
-            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.11.2022',
+            'description' => 'Hello mercenaries!
+            Our company is extremely interested in renting your services for identification
+            signals on territory hostile to us with a large group of unidentified
+            armed individuals involved in activities and for information about which we
+            Of course we will pay you. According to our records, you may also be interfered with by our
+            “Colleagues”, do with them at your own discretion, no fines or rewards for
+            You dont have to remove them.
+
+            To clarify one point, we cannot transfer a group of more than 11 people, so
+            Choose your best fighters and equip as you see fit.  Take with you
+            everything you need, because due to high risks we are not ready to transfer supplies
+            to this territory.
+
+            You have 24 hours for everything about everything, you will receive your payment at a personal meeting after
+            evacuation from the area.',
+            'playtime' => '2022.08.19 12:15:12',
         ]);
 
         $user_id = User::find(1001)->id;
