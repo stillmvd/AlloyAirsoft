@@ -16,7 +16,7 @@ return new class extends Migration
             $table->double('first_cord');
             $table->double('second_cord');
             $table->text('description');
-            $table->string('date');
+            $table->date('date');
             $table->string('map_path')->nullable();
 
             $table->boolean('finished')->default(0);
