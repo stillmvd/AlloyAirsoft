@@ -41,17 +41,17 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 56.3926128,
             'second_cord' => 38.1018651,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'playtime' => '2022.09.04 15:00:00',
+            'date' => '10.11.2022',
         ]);
 
         DB::table('games')->insert([
-            'name' => 'Temich',
+            'name' => 'Woodpecker',
             'first_cord' => 56.2384338,
             'second_cord' => 43.4570157,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'playtime' => '2022.10.16 11:45:00',
+            'date' => '10.11.2022',
         ]);
-        
+
         $user_id = User::find(1001)->id;
 
         DB::table('user_game')->insert([
