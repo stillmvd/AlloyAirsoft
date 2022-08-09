@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Game;
 use App\Models\User;
+use Carbon\Carbon;
 use Faker\Provider\Lorem;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 58.5854678,
             'second_cord' => 49.4319945,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.09.2022',
+            'date' => '10.02.2003',
         ]);
 
         DB::table('games')->insert([
@@ -37,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 58.5854678,
             'second_cord' => 49.4319945,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.10.2022',
+            'date' => '10.02.2003',
         ]);
 
         DB::table('games')->insert([
@@ -45,7 +46,8 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 58.5854678,
             'second_cord' => 49.4319945,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.11.2022',
+            'date' => '10.02.2003',
+
         ]);
 
         $user_id = User::find(1001)->id;
