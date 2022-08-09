@@ -12,7 +12,7 @@
         <x-text.gamedate :game='$game'/>
     </div>
 
-    <div class="relative group w-full h-400px overflow-hidden rounded-3xl">
+    <div class="relative group w-full h-400px overflow-hidden rounded-3xl ring-2 ring-amber-500/75">
         <div id="map" class="h-[400px] w-full bg-[#303030]/25 scale-110">
             
         </div>
