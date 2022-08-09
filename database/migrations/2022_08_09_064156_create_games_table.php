@@ -13,9 +13,10 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('name');
-            $table->string('place');
+            $table->double('first_cord');
+            $table->double('second_cord');
             $table->text('description');
-            $table->foreignId('user_id')->constrained();
+            $table->string('map_path')->nullable();
 
             $table->boolean('finished')->default(0);
         });
