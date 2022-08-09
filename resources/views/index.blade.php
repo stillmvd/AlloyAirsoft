@@ -16,8 +16,10 @@
         </div>
         <div class="relative group w-full h-400px overflow-hidden rounded-3xl ring-2 ring-amber-500/75">
             <a href="{{ route('game', $game->id) }}">
-                <div class="bg-black/50 w-full h-full z-10 absolute backdrop-blur-[2px] select-none ease-out duration-[.2s] group-hover:backdrop-blur-0 group-hover:bg-[#303030]/75">
-    
+                <div class="bg-black/75 w-full h-full p-6 z-10 absolute backdrop-blur-[3px] select-none ease-out duration-[.2s] group-hover:backdrop-blur-0 group-hover:bg-black/25">
+                    <x-text.title class="text-white font-light">
+                        {{ __($game->name) }}
+                    </x-text.title>
                 </div>
                 <div id="map{{ $loop->index }}" class="h-[400px] w-full z-[-20] scale-110">
                     
