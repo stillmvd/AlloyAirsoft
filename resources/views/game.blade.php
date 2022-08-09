@@ -62,16 +62,6 @@
                         - The player is considered dead after a second hit in the status of wounded or with a bandage
                         - The player is considered dead after being attacked with a melee weapon in any case.
 
-                        Game bans
-                        - It is forbidden to replenish at the place of arrival at the game / parking lot. Anyone who replenishes / changes equipment automatically disqualifies the entire team
-                        - Act outside the boundaries of Canadian criminal law
-                        - Using any pyrotechnics (Grenades, Flares)
-                    </x-text.paragraph>
-                    <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="pl-5 pt-4">
-                </div>
-            </div>
         </div>
     </div>
-
-    <form action="route('store')"></form>
 @endsection
