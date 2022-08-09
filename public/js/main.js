@@ -1,6 +1,14 @@
 let map;
 
+
+
+
 function initMap() {
+        // 1. Создать переменную с координатами метки.
+    var Moscow_point = new GLatLng(55.752,37.616);
+    // 2. Создать маркер
+    var Moscow = new GMarker(Moscow_point, {title: '’Москва’'});
+
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 8,
@@ -230,5 +238,8 @@ function initMap() {
   },
   );
 }
-
+// 3. Отобразить маркер
+map.addOverlay(Moscow);
+// 4. Добавить окно-подсказку
+Moscow.openInfoWindowHtml('‘Москва – лучший город земли!’');
 window.initMap = initMap;

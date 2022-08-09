@@ -11,13 +11,12 @@
 </head>
 <body class="h-[100vh] flex flex-col bg-[#111111]">
     @include('includes.header')
-
     <main class="">
         <x-pages.container>
             @yield('content')
         </x-pages.container>
     </main>
-    
+
     @include('includes.footer')
 </body>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5BMgYqx4r4s70XywuwblM-k1qi2ErGA0&callback=initMap"></script>

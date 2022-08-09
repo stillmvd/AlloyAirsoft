@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+    <div id="map" class="w-full h-[450px]"></div>
     <div class="flex w-full justify-center py-6">
         <x-text.gamedate/>
     </div>
