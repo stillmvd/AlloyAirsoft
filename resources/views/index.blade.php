@@ -1,12 +1,14 @@
 @extends('layouts.base')
 
 @section('alert')
-    @if($alert != '')
-    <x-pages.success_alert>
-        {{ __($alert) }}
-    </x-pages.success_alert>
-    @else
-
+    @if ($success != "")
+        <x-pages.alert color="amber-500">
+            {{ $success }}
+        </x-pages.alert>
+        @else
+        <x-pages.alert color="red-500">
+            {{ $error }}
+        </x-pages.alert>
     @endif
 @endsection
 
@@ -15,14 +17,21 @@
 @endsection
 
 @section('content')
+
     <p class="hidden" id="count_maps">{{ $games->count() }}</p>
     @foreach ($games as $game)
-
         <p class="hidden" id="first_cord{{ $loop->index }}">{{ $game->first_cord }}</p>
         <p class="hidden" id="second_cord{{ $loop->index }}">{{ $game->second_cord }}</p>
-
+        
         <div class="flex w-full justify-center py-6">
-            <x-text.gamedate :game='$game'/>
+            <div class="flex flex-row items-end">
+                <p class="text-white text-[3rem] font-light mr-3">
+                    {{ date('d', strtotime($game->playtime)) }}
+                </p>
+                <p class="text-white text-[1.2rem] font-light pb-3">
+                    {{ date('M', strtotime($game->playtime)) }}
+                </p>
+            </div>
         </div>
         <div class="relative group w-full h-400px overflow-hidden rounded-3xl ring-2 ring-amber-500/75">
             <a href="{{ route('game', $game->id) }}">
@@ -35,6 +44,7 @@
             </a>
         </div>
     @endforeach
+    
 @endsection
 
 @section('footer')

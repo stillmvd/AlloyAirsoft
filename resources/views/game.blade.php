@@ -8,12 +8,12 @@
     <p class="hidden" id="first_cord">{{ $first_cord }}</p>
     <p class="hidden" id="second_cord">{{ $second_cord }}</p>
 
-    <div class="grid grid-cols-3 auto-cols-max my-10">
+    <div class="grid grid-cols-3 auto-cols-max py-6">
         <x-text.title class="w-full text-white font-light flex items-end pb-4">
             {{ __($game->name) }}
         </x-text.title>
-        <x-text.gamedate class="w-full items-end justify-center text-center font-light" :game='$game'/>
-        <x-text.gametime class="w-full items-end justify-end text-end font-light" :game='$game'/>
+        <x-text.gamedate class="w-full flex flex-row items-end justify-center text-center font-light" :game='$game'/>
+        <x-text.gametime class="w-full flex flex-row items-end justify-end text-end font-light" :game='$game'/>
     </div>
 
     <div class="relative group w-full h-400px overflow-hidden rounded-3xl ring-2 ring-amber-500/75">

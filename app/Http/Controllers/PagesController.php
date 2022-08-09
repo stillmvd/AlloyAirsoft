@@ -13,14 +13,16 @@ class PagesController extends Controller
 {
     public function index() {
         $games = DB::table('games')->get();
-        $alert = Session::get('alert');
-        return view('index', compact('games', 'alert'));
+        $success = Session::get('success');
+        $error = Session::get('error');
+        return view('index', compact('games', 'success', 'error'));
     }
 
     public function archive() {
         $games = DB::table('games')->where('finished', '=', 1)->get();
-        $alert = Session::get('alert');
-        return view('archive', compact('games', 'alert'));
+        $success = Session::get('success');
+        $error = Session::get('error');
+        return view('archive', compact('games', 'success', 'error'));
     }
 
     public function game($id) {
@@ -40,11 +42,14 @@ class PagesController extends Controller
         ]);
 
         if(DB::table('emails')->where('email', '=', $request->email)->exists()) {
-            return redirect(url()->previous())->with(['alert' => 'You have already subscribed to the newsletter!']);
+            return redirect()->back()->with(
+                ['error' => 'You have already subscribed to the newsletter!']
+            );
         }
 
         DB::table('emails')->insert(['email' => $request->email, 'created_at' => now(), 'updated_at' => now()]);
-        return redirect(url()->previous())
-             ->with(['alert' => 'You have successfully subscribed to the newsletter!']);
+        return redirect()->back()->with(
+            ['success' => 'You have successfully subscribed to the newsletter!']
+        );
     }
 }
