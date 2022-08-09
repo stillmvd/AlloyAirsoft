@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 58.5854678,
             'second_cord' => 49.4319945,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.10.2022',
+            'date' => '22.08.19',
         ]);
 
         DB::table('games')->insert([
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 56.3926128,
             'second_cord' => 38.1018651,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.11.2022',
+            'date' => '22.09.04',
         ]);
 
         DB::table('games')->insert([
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 56.2384338,
             'second_cord' => 43.4570157,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.11.2022', 
+            'date' => '22.10.16', 
         ]);
 
         $user_id = User::find(1001)->id;

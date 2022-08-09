@@ -9,15 +9,23 @@
     <title>Alloy Airsoft</title>
 </head>
 <body class="h-[100vh] flex flex-col bg-[#111111]">
-    @include('includes.header')
-    
+    <header>
+        <x-pages.container>
+            @yield('header')
+        </x-pages.container>
+    </header>
+
     <main class="">
         <x-pages.container>
             @yield('content')
         </x-pages.container>
     </main>
-    
-    @include('includes.footer')
+
+    <footer>
+        <x-pages.container>
+            @yield('footer')
+        </x-pages.container>
+    </footer>
 </body>
 
 @if (Route::is('index'))
