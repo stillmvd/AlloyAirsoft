@@ -61,7 +61,10 @@
                         Kill
                         - The player is considered dead after a second hit in the status of wounded or with a bandage
                         - The player is considered dead after being attacked with a melee weapon in any case.
-
+                    </x-text.paragraph>
+                    <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="pl-5 pt-4">
+                </div>
+            </div>
         </div>
     </div>
 @endsection

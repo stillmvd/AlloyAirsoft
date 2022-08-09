@@ -1,5 +1,15 @@
 @extends('layouts.base')
 
+@section('alert')
+    @if($alert != '')
+    <x-pages.success_alert>
+        {{ __($alert) }}
+    </x-pages.success_alert>
+    @else
+
+    @endif
+@endsection
+
 @section('header')
     @include('includes.header')
 @endsection
@@ -12,7 +22,7 @@
         <p class="hidden" id="second_cord{{ $loop->index }}">{{ $game->second_cord }}</p>
 
         <div class="flex w-full justify-center py-6">
-            {{-- <x-text.gamedate :game='$game'/> --}}
+            <x-text.gamedate :game='$game'/>
         </div>
         <div class="relative group w-full h-400px overflow-hidden rounded-3xl ring-2 ring-amber-500/75">
             <a href="{{ route('game', $game->id) }}">

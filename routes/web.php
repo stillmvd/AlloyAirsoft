@@ -11,3 +11,5 @@ Route::post('game/{id}', [PagesController::class, 'game'])->name('store');
 
 Route::get('admin', [AdminController::class, 'index'])->name('admin');
 Route::get('admin/users', [AdminController::class, 'users'])->name('users');
+
+Route::post('/', [PagesController::class, 'save_email'])->name('save_email');

@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 56.3926128,
             'second_cord' => 38.1018651,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.11.2022',
+            'playtime' => '2022.08.19 10:30:00',
         ]);
 
         DB::table('games')->insert([
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 56.2384338,
             'second_cord' => 43.4570157,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-            'date' => '10.11.2022',
+            'playtime' => '2022.08.19 10:30:00',
         ]);
 
         $user_id = User::find(1001)->id;

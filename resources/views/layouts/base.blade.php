@@ -8,6 +8,7 @@
     @vite('resources/css/app.css')
     <title>Alloy Airsoft</title>
 </head>
+@yield('alert')
 <body class="h-[100vh] flex flex-col bg-[#111111]">
     <header>
         <x-pages.container>
@@ -28,10 +29,10 @@
     </footer>
 </body>
 
-@if (Route::is('index'))
-    <script src="{{ asset('js/main.js') }}"></script>
-@else
+@if (Route::is('game'))
     <script src="{{ asset('js/map.js') }}"></script>
+@else
+    <script src="{{ asset('js/main.js') }}"></script>
 @endif
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5BMgYqx4r4s70XywuwblM-k1qi2ErGA0&callback=initMap"></script>

@@ -1,5 +1,15 @@
 @extends('layouts.base')
 
+@section('alert')
+    @if($alert != '')
+    <x-pages.success_alert>
+        {{ __($alert) }}
+    </x-pages.success_alert>
+    @else
+
+    @endif
+@endsection
+
 @section('header')
     @include('includes.header')
 @endsection

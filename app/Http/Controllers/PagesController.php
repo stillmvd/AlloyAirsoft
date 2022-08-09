@@ -7,17 +7,20 @@ use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class PagesController extends Controller
 {
     public function index() {
         $games = DB::table('games')->get();
-        return view('index', compact('games'));
+        $alert = Session::get('alert');
+        return view('index', compact('games', 'alert'));
     }
 
     public function archive() {
         $games = DB::table('games')->where('finished', '=', 1)->get();
-        return view('archive', compact('games'));
+        $alert = Session::get('alert');
+        return view('archive', compact('games', 'alert'));
     }
 
     public function game($id) {
@@ -29,5 +32,19 @@ class PagesController extends Controller
 
     public function store($id) {
         return 'Сохраняю';
+    }
+
+    public function save_email(Request $request) {
+        $request->validate([
+            'email' => ['required', 'email:rfc,dns']
+        ]);
+
+        if(DB::table('emails')->where('email', '=', $request->email)->exists()) {
+            return redirect(url()->previous())->with(['alert' => 'You have already subscribed to the newsletter!']);
+        }
+
+        DB::table('emails')->insert(['email' => $request->email, 'created_at' => now(), 'updated_at' => now()]);
+        return redirect(url()->previous())
+             ->with(['alert' => 'You have successfully subscribed to the newsletter!']);
     }
 }

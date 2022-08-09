@@ -19,7 +19,8 @@
                 <x-text.subtitle class="text-white font-light mb-8">
                     {{ __('Subscribe to our updates') }}
                 </x-text.subtitle>
-                <form action="" class="w-full flex flex-row">
+                <form action="{{ route('save_email') }}" method="POST" class="w-full flex flex-row">
+                    @csrf
                     <input type="email" name="email" placeholder="Email" class="bg-transparent border-b-2 w-full focus:outline-none text-white pb-1">
                     <input type="submit" class="bg-transparent border-b-2 focus:outline-none text-white pb-2 w-min cursor-pointer" value="→">
                 </form>
