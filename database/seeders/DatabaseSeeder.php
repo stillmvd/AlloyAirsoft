@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             'login' => 'Ginze',
-            'email' => '',
-            'first_name' => 'Hlip',
+            'email' => 'glebka@gmail.com',
+            'first_name' => 'Hlib',
             'second_name' => 'Fedchenko',
-            'isAdmin' => true,
+            'isAdmin' => 1,
             'password' => Hash::make(env('AD_PASSWORD'))
         ]);
 
@@ -28,21 +28,24 @@ class DatabaseSeeder extends Seeder
             'name' => 'Kirov',
             'first_cord' => 58.5854678,
             'second_cord' => 49.4319945,
-            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.'
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
+            'date' => '10.09.2022',
         ]);
 
         DB::table('games')->insert([
             'name' => 'Kirov',
             'first_cord' => 58.5854678,
             'second_cord' => 49.4319945,
-            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.'
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
+            'date' => '10.10.2022',
         ]);
 
         DB::table('games')->insert([
             'name' => 'Kirov',
             'first_cord' => 58.5854678,
             'second_cord' => 49.4319945,
-            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.'
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
+            'date' => '10.11.2022',
         ]);
 
         $user_id = User::find(1001)->id;

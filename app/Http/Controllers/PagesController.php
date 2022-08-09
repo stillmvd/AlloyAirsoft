@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 class PagesController extends Controller
 {
     public function index() {
-
-        return view('index');
+        $games = DB::table('games')->get();
+        return view('index', compact('games'));
     }
 
     public function archive() {
