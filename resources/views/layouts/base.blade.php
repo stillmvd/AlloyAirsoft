@@ -11,6 +11,7 @@
 </head>
 <body class="h-[100vh] flex flex-col bg-[#111111]">
     @include('includes.header')
+
     <main class="">
         <x-pages.container>
             @yield('content')
