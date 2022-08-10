@@ -18,9 +18,14 @@
             </x-text.paragraph>
         </div>
     </div>
-    <div class="w-full h-[200px] p-6 mt-20 group hover:bg-[#303030]/25 duration-[.1s] ease-out bg-[#303030]/50 rounded-3xl flex flex-row justify-between">
+    <div class="w-full h-[200px] p-6 mt-20 group hover:bg-[#303030]/25 duration-[.1s] ease-out bg-[#303030]/50 rounded-3xl flex flex-col justify-between">
         <x-text.title class="text-white/25 group-hover:text-white duration-[.1s] ease-out font-light">
             {{ __('Log in') }}
         </x-text.title>
+        <form action="" class="flex flex-col w-[40%] overflow-hidden box-border">
+            <input type="text" placeholder="login" class="py-2 px-4 font-light text-white placeholder-text-white/50 placeholder-font-light focus:outline-none border-2 border-amber-500/50 bg-transparent rounded-xl my-3">
+            <input type="text" placeholder="password" class="py-2 px-4 font-light text-white placeholder-text-white/50 placeholder-font-light focus:outline-none border-2 border-amber-500/50 bg-transparent rounded-xl my-3">
+            <input type="submit" class="py-2 px-4 font-light text-white focus:otutline-none ring-2 ring-white/75 bg-transparent rounded-xl my-6">
+        </form>
     </div>
 </div>

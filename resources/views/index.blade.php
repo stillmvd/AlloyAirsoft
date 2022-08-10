@@ -18,7 +18,7 @@
 
 @section('content')
 
-    @include('includes.infoblock')
+    @include('includes.pageblocks')
 
     <p class="hidden" id="count_maps">{{ $games->count() }}</p>
     @foreach ($games as $game)
