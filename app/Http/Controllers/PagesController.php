@@ -29,7 +29,10 @@ class PagesController extends Controller
         $first_cord = Game::find($id)->first_cord;
         $second_cord = Game::find($id)->second_cord;
         $game = Game::find($id);
-        return view('game', compact('first_cord', 'second_cord', 'game'));
+
+        $success = Session::get('success');
+        $error = Session::get('error');
+        return view('game', compact('first_cord', 'second_cord', 'game', 'success', 'error'));
     }
 
     public function store($id) {

@@ -1,12 +1,14 @@
 @extends('layouts.base')
 
 @section('alert')
-    @if($alert != '')
-    <x-pages.success_alert>
-        {{ __($alert) }}
-    </x-pages.success_alert>
-    @else
-
+    @if ($success != "")
+        <x-pages.alert color="amber-500">
+            {{ $success }}
+        </x-pages.alert>
+        @else
+        <x-pages.alert color="red-500">
+            {{ $error }}
+        </x-pages.alert>
     @endif
 @endsection
 

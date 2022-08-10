@@ -18,6 +18,8 @@
 
 @section('content')
 
+    @include('includes.infoblock')
+
     <p class="hidden" id="count_maps">{{ $games->count() }}</p>
     @foreach ($games as $game)
         <p class="hidden" id="first_cord{{ $loop->index }}">{{ $game->first_cord }}</p>

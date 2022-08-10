@@ -9,3 +9,10 @@ html::-webkit-scrollbar{
 html {
     font-family: Poppins, sans-serif;
 }
+
+::selection {
+    background: #f59e0bbf;
+    }
+    ::-moz-selection {
+    background: #f59e0bbf;
+    }

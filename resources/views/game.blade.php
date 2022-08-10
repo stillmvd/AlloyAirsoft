@@ -1,5 +1,17 @@
 @extends('layouts.base')
 
+@section('alert')
+    @if ($success != "")
+    <x-pages.alert color='amber-500'>
+        {{ $success }}
+    </x-pages.alert>
+    @else
+    <x-pages.alert color="red-500">
+        {{ $error }}
+    </x-pages.alert>
+    @endif
+@endsection
+
 @section('header')
     @include('includes.header')
 @endsection
