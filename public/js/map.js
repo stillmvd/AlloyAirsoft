@@ -329,6 +329,33 @@ function initMap() {
 
 window.initMap = initMap;
 
+<<<<<<< HEAD
+document.getElementById('input_call').addEventListener('focus', function() {
+    upThirdLineLabel('label_input_call');
+});
+document.getElementById('input_team').addEventListener('focus', function() {
+    upThirdLineLabel('label_input_team');
+});
+
+
+
+document.getElementById('input_first_name').addEventListener('blur', function() {
+    downFirstLineLabel('label_input_first_name');
+    if (document.getElementById('input_first_name').value != '') {
+        upFirstLineLabel('label_input_first_name');
+    }
+    else{
+        downFirstLineLabel('label_input_first_name');
+    }
+});
+document.getElementById('input_email').addEventListener('blur', function() {
+    downFirstLineLabel('label_input_email');
+    if (document.getElementById('input_email').value != '') {
+        upFirstLineLabel('label_input_email');
+    }
+    else{
+        downFirstLineLabel('label_input_email');
+=======
 // Register inputs and labels
 function upFirstLineLabel (labelName) {
     let label = document.getElementById(labelName);
@@ -365,6 +392,7 @@ function downThirdLineLabel (labelName){
     label.style.margin = "0px 0px 0px 0px";
     label.classList.remove('text-[13px]');
     label.style.margin = "214px 0px 0px 0px";
+>>>>>>> f9713c83b679a1dff3ebd186ad94701545336925
 }
 
 document.getElementById('input_first_name').addEventListener('focus', function() {
