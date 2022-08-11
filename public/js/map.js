@@ -335,6 +335,31 @@ function initMap() {
         ]
     });
 
+document.getElementById('input_call').addEventListener('focus', function() {
+    upThirdLineLabel('label_input_call');
+});
+document.getElementById('input_team').addEventListener('focus', function() {
+    upThirdLineLabel('label_input_team');
+});
+
+
+
+document.getElementById('input_first_name').addEventListener('blur', function() {
+    downFirstLineLabel('label_input_first_name');
+    if (document.getElementById('input_first_name').value != '') {
+        upFirstLineLabel('label_input_first_name');
+    }
+    else{
+        downFirstLineLabel('label_input_first_name');
+    }
+});
+document.getElementById('input_email').addEventListener('blur', function() {
+    downFirstLineLabel('label_input_email');
+    if (document.getElementById('input_email').value != '') {
+        upFirstLineLabel('label_input_email');
+    }
+    else{
+        downFirstLineLabel('label_input_email');
 }
 
 window.initMap = initMap;

@@ -137,6 +137,8 @@
             </div>
         </div>
     </div>
+
+    @include('includes.registration')
 @endsection
 
 @section('footer')
