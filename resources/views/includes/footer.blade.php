@@ -1,8 +1,6 @@
 <footer class="py-10">
     <x-pages.container>
-        <div class="h-[2px] mt-10 mb-10 w-full bg-[#242424]">
-
-        </div>
+        <div class="h-[2px] mt-10 mb-10 w-full bg-[#242424]"></div>
         <div class="flex flex-row justify-between">
             <div class="flex flex-col">
                 <x-text.subtitle class="text-white font-light mb-8">

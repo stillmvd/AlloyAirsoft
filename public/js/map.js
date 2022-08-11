@@ -335,12 +335,12 @@ function upFirstLineLabel (labelName) {
     label.classList.remove('mt-6');
     label.classList.remove('text-[20px]');
     label.classList.add('mt-2');
-    label.classList.add('text-[13px]');
+    label.classList.add('text-sm');
 }
 function downFirstLineLabel (labelName){
     let label = document.getElementById(labelName);
     label.classList.remove('mt-2');
-    label.classList.remove('text-[13px]');
+    label.classList.remove('text-sm');
     label.classList.add('mt-6');
     label.classList.add('text-[20px]');
 }
@@ -349,12 +349,12 @@ function upSecondLineLabel (labelName) {
     label.classList.remove('mt-[117px]');
     label.classList.remove('text-[20px]');
     label.style.margin = "100px 0px 0px 0px";
-    label.classList.add('text-[13px]');
+    label.classList.add('text-sm');
 }
 function downSecondLineLabel (labelName){
     let label = document.getElementById(labelName);
     label.style.margin = "0px 0px 0px 0px";
-    label.classList.remove('text-[13px]');
+    label.classList.remove('text-sm');
     label.classList.add('text-[20px]');
     label.style.margin = "117px 0px 0px 0px";
 }
@@ -363,12 +363,12 @@ function upThirdLineLabel (labelName) {
     label.classList.remove('mt-[214px]');
     label.classList.remove('text-[20px]');
     label.style.margin = "195px 0px 0px 0px";
-    label.classList.add('text-[13px]');
+    label.classList.add('text-sm');
 }
 function downThirdLineLabel (labelName){
     let label = document.getElementById(labelName);
     label.style.margin = "0px 0px 0px 0px";
-    label.classList.remove('text-[13px]');
+    label.classList.remove('text-sm');
     label.classList.add('text-[20px]');
     label.style.margin = "214px 0px 0px 0px";
 }
