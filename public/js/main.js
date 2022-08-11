@@ -48,7 +48,7 @@ function initMap() {
           "elementType": "geometry.fill",
           "stylers": [
             {
-              "color": "#02df8f"
+              "color": "#00aa64"
             }
           ]
         },
@@ -93,14 +93,6 @@ function initMap() {
         },
         {
           "featureType": "poi",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "poi",
           "elementType": "labels.text",
           "stylers": [
             {
@@ -134,7 +126,7 @@ function initMap() {
           "elementType": "geometry.fill",
           "stylers": [
             {
-              "color": "#02df8f"
+              "color": "#00aa64"
             },
             {
               "visibility": "simplified"
@@ -164,7 +156,7 @@ function initMap() {
           "elementType": "geometry.fill",
           "stylers": [
             {
-              "color": "#00b371"
+              "color": "#00aa64"
             },
             {
               "visibility": "on"
@@ -354,12 +346,12 @@ function openinfo() {
       titleinfo.classList.remove('text-white/75');
       titleinfo.style.color = '#f59e0b';
       titleinfo.classList.add('mt-6');
-      
+
       let text = document.getElementById('textinfo');
       text.classList.add('mt-6');
       text.classList.remove('text-white/50');
       text.classList.add('text-white/75');
-      
+
       let undertext = document.getElementById('undertext');
       undertext.classList.remove('text-white/50');
       undertext.classList.add('text-white/75');
@@ -376,12 +368,12 @@ function openinfo() {
       let titleinfo = document.getElementById('titleinfo');
       titleinfo.style.color = '#ffffffbf';
       titleinfo.classList.remove('mt-6');
-      
+
       let text = document.getElementById('textinfo');
       text.classList.remove('mt-6');
       text.classList.remove('text-white/75');
       text.classList.add('text-white/50');
-      
+
       let undertext = document.getElementById('undertext');
       undertext.classList.remove('text-white/75');
       undertext.classList.add('text-white/50');
