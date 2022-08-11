@@ -329,37 +329,11 @@ function initMap() {
 
 window.initMap = initMap;
 
-<<<<<<< HEAD
-document.getElementById('input_call').addEventListener('focus', function() {
-    upThirdLineLabel('label_input_call');
-});
-document.getElementById('input_team').addEventListener('focus', function() {
-    upThirdLineLabel('label_input_team');
-});
-
-
-
-document.getElementById('input_first_name').addEventListener('blur', function() {
-    downFirstLineLabel('label_input_first_name');
-    if (document.getElementById('input_first_name').value != '') {
-        upFirstLineLabel('label_input_first_name');
-    }
-    else{
-        downFirstLineLabel('label_input_first_name');
-    }
-});
-document.getElementById('input_email').addEventListener('blur', function() {
-    downFirstLineLabel('label_input_email');
-    if (document.getElementById('input_email').value != '') {
-        upFirstLineLabel('label_input_email');
-    }
-    else{
-        downFirstLineLabel('label_input_email');
-=======
 // Register inputs and labels
 function upFirstLineLabel (labelName) {
     let label = document.getElementById(labelName);
     label.classList.remove('mt-6');
+    label.classList.remove('text-[20px]');
     label.classList.add('mt-2');
     label.classList.add('text-[13px]');
 }
@@ -368,10 +342,12 @@ function downFirstLineLabel (labelName){
     label.classList.remove('mt-2');
     label.classList.remove('text-[13px]');
     label.classList.add('mt-6');
+    label.classList.add('text-[20px]');
 }
 function upSecondLineLabel (labelName) {
     let label = document.getElementById(labelName);
     label.classList.remove('mt-[117px]');
+    label.classList.remove('text-[20px]');
     label.style.margin = "100px 0px 0px 0px";
     label.classList.add('text-[13px]');
 }
@@ -379,11 +355,13 @@ function downSecondLineLabel (labelName){
     let label = document.getElementById(labelName);
     label.style.margin = "0px 0px 0px 0px";
     label.classList.remove('text-[13px]');
+    label.classList.add('text-[20px]');
     label.style.margin = "117px 0px 0px 0px";
 }
 function upThirdLineLabel (labelName) {
     let label = document.getElementById(labelName);
     label.classList.remove('mt-[214px]');
+    label.classList.remove('text-[20px]');
     label.style.margin = "195px 0px 0px 0px";
     label.classList.add('text-[13px]');
 }
@@ -391,8 +369,8 @@ function downThirdLineLabel (labelName){
     let label = document.getElementById(labelName);
     label.style.margin = "0px 0px 0px 0px";
     label.classList.remove('text-[13px]');
+    label.classList.add('text-[20px]');
     label.style.margin = "214px 0px 0px 0px";
->>>>>>> f9713c83b679a1dff3ebd186ad94701545336925
 }
 
 document.getElementById('input_first_name').addEventListener('focus', function() {

@@ -25,5 +25,5 @@
             <label for="input_team" id="label_input_team" class="text-[#707070] text-[20px] absolute pl-5 mt-[214px] ease-out duration-200">{{ __('Team') }}</label>
         </div>
     </div>
-    <input id="submit" type="submit" value="Play" class="flex w-[100%] text-[#242424] text-[25px] m-auto h-[75px] rounded-2xl bg-[#02DF8F]">
+    <input id="submit" type="submit" value="Play" class="flex justify-center w-[100%] text-[#242424] text-[25px] h-[75px] rounded-2xl bg-[#02DF8F] cursor-pointer">
 </form>
