@@ -12,16 +12,14 @@ return new class extends Migration
             $table->id()->from(1001);
             $table->timestamps();
 
-            $table->string('login');
+            $table->foreignId('game_id')->constrained('games');
+            $table->string('first_name')->nullable();
+            $table->string('second_name')->nullable();
+            $table->string('call');
             $table->string('email');
+            $table->string('phone');
+            $table->foreignId('team_id')->constrained('teams');
 
-            $table->string('name')->nullable();
-            $table->string('surname')->nullable();
-
-            $table->boolean('isAdmin')->default(0);
-            $table->boolean('isActive')->default(1);
-
-            $table->string('password');
         });
     }
 

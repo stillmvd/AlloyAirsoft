@@ -18,14 +18,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // ---------- Admin
-        DB::table('users')->insert([
-            'login' => 'Ginze',
-            'email' => 'glebka@gmail.com',
-            'name' => 'Hlib',
-            'surname' => 'Fedchenko',
-            'isAdmin' => 1,
-            'password' => Hash::make(env('AD_PASSWORD'))
-        ]);
 
         // ---------- Games
         DB::table('games')->insert([
@@ -55,11 +47,8 @@ class DatabaseSeeder extends Seeder
         //     'playtime' => '2022.08.19 15:45:00',
         // ]);
 
-        // $user_id = User::find(1001)->id;
+        DB::table('teams')->insert(['name' => 'Mercenaries']);
+        DB::table('teams')->insert(['name' => 'Bandits']);
 
-        // DB::table('user_game')->insert([
-        //     'user_id' => $user_id,
-        //     'game_id' => Game::find(1001)->name . ' ' . Game::find(1002)->name . ' ' . Game::find(1003)->name,
-        // ]);
     }
 }
