@@ -406,27 +406,7 @@ document.getElementById('input_email').addEventListener('blur', function() {
     }
     else{
         downFirstLineLabel('label_input_email');
-    }
-});
-
-document.getElementById('input_second_name').addEventListener('blur', function() {
-    downSecondLineLabel('label_input_second_name');
-    if (document.getElementById('input_second_name').value != '') {
-        upSecondLineLabel('label_input_second_name');
-    }
-    else{
-        downSecondLineLabel('label_input_second_name');
-    }
-});
-document.getElementById('input_phone').addEventListener('blur', function() {
-    downSecondLineLabel('label_input_phone');
-    if (document.getElementById('input_phone').value != '') {
-        upSecondLineLabel('label_input_phone');
-    }
-    else{
-        downSecondLineLabel('label_input_phone');
-    }
-});
+}
 
 document.getElementById('input_call').addEventListener('blur', function() {
     downThirdLineLabel('label_input_call');
