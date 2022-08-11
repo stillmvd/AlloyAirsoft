@@ -2,7 +2,6 @@ let first_cord = document.getElementById("first_cord");
 let second_cord = document.getElementById("second_cord");
 
 function initMap() {
-
     map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(first_cord.textContent, second_cord.textContent),
         zoom: 15,
@@ -327,6 +326,7 @@ function initMap() {
           ]
     });
 }
+
 window.initMap = initMap;
 
 // Register inputs and labels
@@ -388,8 +388,7 @@ document.getElementById('input_team').addEventListener('focus', function() {
     upThirdLineLabel('label_input_team');
 });
 
-
-
+// blur
 document.getElementById('input_first_name').addEventListener('blur', function() {
     downFirstLineLabel('label_input_first_name');
     if (document.getElementById('input_first_name').value != '') {
@@ -406,7 +405,27 @@ document.getElementById('input_email').addEventListener('blur', function() {
     }
     else{
         downFirstLineLabel('label_input_email');
-}
+    }
+});
+
+document.getElementById('input_second_name').addEventListener('blur', function() {
+    downSecondLineLabel('label_input_second_name');
+    if (document.getElementById('input_second_name').value != '') {
+        upSecondLineLabel('label_input_second_name');
+    }
+    else{
+        downSecondLineLabel('label_input_second_name');
+    }
+});
+document.getElementById('input_phone').addEventListener('blur', function() {
+    downSecondLineLabel('label_input_phone');
+    if (document.getElementById('input_phone').value != '') {
+        upSecondLineLabel('label_input_phone');
+    }
+    else{
+        downSecondLineLabel('label_input_phone');
+    }
+});
 
 document.getElementById('input_call').addEventListener('blur', function() {
     downThirdLineLabel('label_input_call');

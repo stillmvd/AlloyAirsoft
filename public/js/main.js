@@ -333,7 +333,6 @@ function initMap() {
 
 }
 
-<<<<<<< HEAD
 window.initMap = initMap;
 
 let open = true;
