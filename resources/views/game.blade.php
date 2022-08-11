@@ -34,16 +34,16 @@
             <x-text.title>
                 {{ __('Info') }}
             </x-text.title>
-            <div class="flex flex-row justify-between w-[60%] items-start">
-                <div class="text-left flex flex-col items-start">
-                    <x-text.paragraph class="w-[80%] text-[#CACACA]">
-                        A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
+            <div class="flex flex-row justify-between w-[60%] h-[130px] ease-out duration-[.1s] overflow-hidden items-start">
+                <div class="text-left flex flex-col items-start w-[80%]">
+                    <x-text.subtitle class="mb-2">
+                        Mercenaries!
+                    </x-text.subtitle>
+                    <x-text.paragraph class="w-[80%] text-[#CACACA] mb-6">
+                        Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we of course we will pay you.
                     </x-text.paragraph>
                     <x-text.paragraph class="text-[#CACACA]">
-                        Number of enemy teams: unknown
-                    </x-text.paragraph>
-                    <x-text.paragraph class="text-[#CACACA]">
-                        Amount of locals on the territory: unknown
+                        “Colleagues”, do with them at your own discretion, no fines or rewards for You don't have to remove them. To clarify one point, we cannot transfer a group of more than 11 people, so Choose your best fighters and equip as you see fit. Take with you everything you need, because due to high risks we are not ready to transfer supplies to this territory.
                     </x-text.paragraph>
                 </div>
                 <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="cursor-pointer">
