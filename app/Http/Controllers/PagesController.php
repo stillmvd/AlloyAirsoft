@@ -32,11 +32,13 @@ class PagesController extends Controller
 
         $success = Session::get('success');
         $error = Session::get('error');
-        return view('game', compact('first_cord', 'second_cord', 'game', 'success', 'error'));
+
+        $teams = Db::table('teams')->get('name');
+        return view('game', compact('first_cord', 'second_cord', 'game', 'success', 'error', 'teams'));
     }
 
-    public function store($id) {
-        return 'Сохраняю';
+    public function store(Request $request, $id) {
+        dd($request, $id);
     }
 
     public function save_email(Request $request) {
