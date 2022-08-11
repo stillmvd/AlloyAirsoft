@@ -2,13 +2,9 @@
 
 @section('alert')
     @if ($success != "")
-        <x-pages.alert color="amber-500">
+        <p class="text-center text-[#02DF8F] py-4">
             {{ $success }}
-        </x-pages.alert>
-        @else
-        <x-pages.alert color="red-500">
-            {{ $error }}
-        </x-pages.alert>
+        </p>
     @endif
 @endsection
 
@@ -17,6 +13,7 @@
 @endsection
 
 @section('content')
+
     @if ($games->count() > 0)
         @foreach ($games as $game)
             <div class="flex w-full justify-center py-6">
@@ -40,6 +37,7 @@
             </div>
         </a>
     @endif
+    
 @endsection
 
 @section('footer')

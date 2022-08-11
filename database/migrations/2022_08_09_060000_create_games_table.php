@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('name');
             $table->double('first_cord');
             $table->double('second_cord');
+            $table->string('polygon');
             $table->text('description');
             $table->text('rule')->nullable();
             $table->dateTime('playtime');
