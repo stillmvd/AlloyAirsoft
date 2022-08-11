@@ -9,9 +9,5 @@ class User extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'login', 'email', 'first_name', 'second_name', 'isActive', 'isAdmin'];
-
-    public function users() {
-        return $this->belongsToMany(Game::class);
-    }
+    protected $fillable = ['id', 'game_id', 'first_name', 'second_name', 'call', 'email', 'phone', 'team_id'];
 }

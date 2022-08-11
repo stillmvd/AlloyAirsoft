@@ -31,22 +31,6 @@ class DatabaseSeeder extends Seeder
             'playtime' => '2022.08.19 10:30:00',
         ]);
 
-        // DB::table('games')->insert([
-        //     'name' => 'Barrie',
-        //     'first_cord' => 44.393084,
-        //     'second_cord' => -79.689487,
-        //     'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-        //     'playtime' => '2022.09.04 13:30:00',
-        // ]);
-
-        // DB::table('games')->insert([
-        //     'name' => 'Kingston',
-        //     'first_cord' => 44.231527,
-        //     'second_cord' => -76.490457,
-        //     'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores obcaecati modi pariatur harum sunt ab quibusdam labore cumque eius omnis, quas nostrum, quasi in eligendi vel ad facilis. Numquam, voluptatibus.',
-        //     'playtime' => '2022.08.19 15:45:00',
-        // ]);
-
         DB::table('teams')->insert(['name' => 'Mercenaries']);
         DB::table('teams')->insert(['name' => 'Bandits']);
 
