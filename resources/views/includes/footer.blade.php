@@ -8,10 +8,10 @@
                 <x-text.subtitle class="text-white font-light mb-8">
                     {{ __('Contacts') }}
                 </x-text.subtitle>
-                <x-text.paragraph class="text-white font-light my-2">
+                <x-text.paragraph class="text-[#CACACA] font-light my-2">
                     glebka@gmail.com
                 </x-text.paragraph>
-                <x-text.paragraph class="text-white font-light mt-2">
+                <x-text.paragraph class="text-[#CACACA] font-light mt-2">
                     +1 245 586 54 13
                 </x-text.paragraph>
             </div>
@@ -21,8 +21,15 @@
                 </x-text.subtitle>
                 <form action="{{ route('save_email') }}" method="POST" class="w-full flex flex-row">
                     @csrf
-                    <input type="email" name="email" placeholder="Email" class="bg-transparent border-b-2 w-full focus:outline-none text-white pb-1">
-                    <input type="submit" class="bg-transparent border-b-2 focus:outline-none text-white pb-2 w-min cursor-pointer" value="→">
+                    <div class="flex flex-col w-full">
+                        <div class="flex flex-row">
+                            <input type="email" name="email" placeholder="Email" class="bg-transparent border-b-2 w-full focus:outline-none text-white pb-1">
+                            <input type="submit" class="bg-transparent border-b-2 focus:outline-none text-white pb-2 w-min cursor-pointer" value="→">
+                        </div>
+                        <label for="email" class="text-red-500 text-sm mt-4 font-light">
+                            {{ $error }}
+                        </label>
+                    </div>
                 </form>
             </div>
         </div>

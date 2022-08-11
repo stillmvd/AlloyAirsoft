@@ -43,13 +43,13 @@ class PagesController extends Controller
         $request->validate([
             'email' => ['required', 'email:rfc,dns']
         ]);
-
+        
         if(DB::table('emails')->where('email', '=', $request->email)->exists()) {
             return redirect()->back()->with(
                 ['error' => 'You have already subscribed to the newsletter!']
             );
         }
-
+        
         DB::table('emails')->insert(['email' => $request->email, 'created_at' => now(), 'updated_at' => now()]);
         return redirect()->back()->with(
             ['success' => 'You have successfully subscribed to the newsletter!']
