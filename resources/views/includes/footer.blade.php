@@ -1,4 +1,4 @@
-<footer class="py-10">
+<footer class="pb-10 mt-20">
     <x-pages.container>
         <div class="h-[2px] mt-10 mb-10 w-full bg-[#242424]"></div>
         <div class="flex flex-row justify-between">

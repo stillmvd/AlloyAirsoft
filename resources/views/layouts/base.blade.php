@@ -34,7 +34,7 @@
         </x-pages.container>
     </header>
 
-    <main>
+    <main class="flex items-center">
         <x-pages.container>
             @yield('content')
         </x-pages.container>

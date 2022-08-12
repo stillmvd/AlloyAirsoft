@@ -27,6 +27,13 @@ html {
     animation-delay: 2s;
 }
 
+#input_team{
+    background-image: url('../image/arrow.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position: 97%;
+}
+
 @keyframes slide {
     from {
         visibility: visible;

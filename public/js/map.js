@@ -331,127 +331,82 @@ function initMap() {
 
 window.initMap = initMap;
 
-// Register inputs and labels
-function upFirstLineLabel (labelName) {
-    let label = document.getElementById(labelName);
-    label.classList.remove('mt-6');
-    label.classList.remove('text-[20px]');
-    label.classList.add('mt-2');
-    label.classList.add('text-sm');
-}
-function downFirstLineLabel (labelName){
-    let label = document.getElementById(labelName);
-    label.classList.remove('mt-2');
-    label.classList.remove('text-sm');
-    label.classList.add('mt-6');
-    label.classList.add('text-[20px]');
-}
-function upSecondLineLabel (labelName) {
-    let label = document.getElementById(labelName);
-    label.classList.remove('mt-[117px]');
-    label.classList.remove('text-[20px]');
-    label.style.margin = "100px 0px 0px 0px";
-    label.classList.add('text-sm');
-}
-function downSecondLineLabel (labelName){
-    let label = document.getElementById(labelName);
-    label.style.margin = "0px 0px 0px 0px";
-    label.classList.remove('text-sm');
-    label.classList.add('text-[20px]');
-    label.style.margin = "117px 0px 0px 0px";
-}
-function upThirdLineLabel (labelName) {
-    let label = document.getElementById(labelName);
-    label.classList.remove('mt-[214px]');
-    label.classList.remove('text-[20px]');
-    label.style.margin = "195px 0px 0px 0px";
-    label.classList.add('text-sm');
-}
-function downThirdLineLabel (labelName){
-    let label = document.getElementById(labelName);
-    label.style.margin = "0px 0px 0px 0px";
-    label.classList.remove('text-sm');
-    label.classList.add('text-[20px]');
-    label.style.margin = "214px 0px 0px 0px";
+function upLabel(labelName) {
+  let label = document.getElementById(labelName);
+  label.style.top = '-18px';
 }
 
-document.getElementById('input_first_name').addEventListener('focus', function() {
-    upFirstLineLabel('label_input_first_name');
+function downLabel(labelName) {
+  let label = document.getElementById(labelName);
+  label.style.top = '0px';
+}
+
+document.getElementById('input_name').addEventListener('focus', function() {
+    upLabel('name_label');
+});
+document.getElementById('input_surname').addEventListener('focus', function() {
+    upLabel('surname_label');
+});
+document.getElementById('input_callsign').addEventListener('focus', function() {
+    upLabel('callsign_label');
 });
 document.getElementById('input_email').addEventListener('focus', function() {
-    upFirstLineLabel('label_input_email');
-});
-
-document.getElementById('input_second_name').addEventListener('focus', function() {
-    upSecondLineLabel('label_input_second_name');
+    upLabel('email_label');
 });
 document.getElementById('input_phone').addEventListener('focus', function() {
-    upSecondLineLabel('label_input_phone');
-});
-
-document.getElementById('input_call').addEventListener('focus', function() {
-    upThirdLineLabel('label_input_call');
+    upLabel('phone_label');
 });
 document.getElementById('input_team').addEventListener('focus', function() {
-    upThirdLineLabel('label_input_team');
+    upLabel('team_label');
 });
 
-// blur
-document.getElementById('input_first_name').addEventListener('blur', function() {
-    downFirstLineLabel('label_input_first_name');
-    if (document.getElementById('input_first_name').value != '') {
-        upFirstLineLabel('label_input_first_name');
-    }
-    else{
-        downFirstLineLabel('label_input_first_name');
-    }
+document.getElementById('input_name').addEventListener('blur', function() {
+  downLabel('name_label');
+  if (document.getElementById('input_name').value != '') {
+      upLabel('name_label');
+  } else {
+      downLabel('name_label');
+  }
+});
+document.getElementById('input_surname').addEventListener('blur', function() {
+  downLabel('surname_label');
+  if (document.getElementById('input_surname').value != '') {
+      upLabel('surname_label');
+  } else {
+      downLabel('surname_label');
+  }
+});
+document.getElementById('input_callsign').addEventListener('blur', function() {
+  downLabel('callsign_label');
+  if (document.getElementById('input_callsign').value != '') {
+      upLabel('callsign_label');
+  } else {
+      downLabel('callsign_label');
+  }
 });
 document.getElementById('input_email').addEventListener('blur', function() {
-    downFirstLineLabel('label_input_email');
-    if (document.getElementById('input_email').value != '') {
-        upFirstLineLabel('label_input_email');
-    }
-    else{
-        downFirstLineLabel('label_input_email');
-    }
-});
-
-document.getElementById('input_second_name').addEventListener('blur', function() {
-    downSecondLineLabel('label_input_second_name');
-    if (document.getElementById('input_second_name').value != '') {
-        upSecondLineLabel('label_input_second_name');
-    }
-    else{
-        downSecondLineLabel('label_input_second_name');
-    }
+  downLabel('email_label');
+  if (document.getElementById('input_email').value != '') {
+      upLabel('email_label');
+  } else {
+      downLabel('email_label');
+  }
 });
 document.getElementById('input_phone').addEventListener('blur', function() {
-    downSecondLineLabel('label_input_phone');
-    if (document.getElementById('input_phone').value != '') {
-        upSecondLineLabel('label_input_phone');
-    }
-    else{
-        downSecondLineLabel('label_input_phone');
-    }
-});
-
-document.getElementById('input_call').addEventListener('blur', function() {
-    downThirdLineLabel('label_input_call');
-    if (document.getElementById('input_call').value != '') {
-        upThirdLineLabel('label_input_call');
-    }
-    else{
-        downThirdLineLabel('label_input_call');
-    }
+  downLabel('phone_label');
+  if (document.getElementById('input_phone').value != '') {
+      upLabel('phone_label');
+  } else {
+      downLabel('phone_label');
+  }
 });
 document.getElementById('input_team').addEventListener('blur', function() {
-    downThirdLineLabel('label_input_team');
-    if (document.getElementById('input_team').value != '') {
-        upThirdLineLabel('label_input_team');
-    }
-    else{
-        downThirdLineLabel('label_input_team');
-    }
+  downLabel('team_label');
+  if (document.getElementById('input_team').value != '') {
+      upLabel('team_label');
+  } else {
+      downLabel('team_label');
+  }
 });
 
 function showInfoBlock() {

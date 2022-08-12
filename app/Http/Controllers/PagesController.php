@@ -37,7 +37,7 @@ class PagesController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:20'],
             'surname' => ['required', 'string', 'max:20'],
-            'call' => ['required', 'string', 'max:20'],
+            'callsign' => ['required', 'string', 'max:20'],
             'email' => ['required', 'email:rfc,dns'],
             'phone' => ['required', 'max:20'],
             'team' => ['required'],
@@ -47,7 +47,7 @@ class PagesController extends Controller
             'game_id' => $id,
             'name' => $request->name,
             'surname' => $request->surname,
-            'call' => $request->call,
+            'callsign' => $request->callsign,
             'email' => $request->email,
             'phone' => $request->phone,
             'team_id' =>  $request->team,
