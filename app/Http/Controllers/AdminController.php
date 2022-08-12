@@ -6,10 +6,30 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function login() {
+        return view('admin.login');
+    }
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'login' => 'required',
+            'password' => 'required',
+        ]);
+        if (auth()->attempt($validated)) {
+            return redirect('admin');
+        } else {
+            return redirect()->back()->withErrors([
+                'loginError' => 'You have some errors',
+            ]);
+        }
+    }
+    public function logout() {
+        auth()->logout();
+        return redirect('index');
+    }
     public function index() {
-        return view('admin');
+        return view('admin.index');
     }
     public function users() {
-        return view('users');
+        return view('admin.users');
     }
 }

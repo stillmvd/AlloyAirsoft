@@ -1,13 +1,5 @@
 @extends('layouts.base')
 
-@section('alert')
-    @if ($success != "")
-        <p class="text-center text-[#02DF8F] py-4">
-            {{ $success }}
-        </p>
-    @endif
-@endsection
-
 @section('header')
     @include('includes.header')
 @endsection

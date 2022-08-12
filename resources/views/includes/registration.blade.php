@@ -5,9 +5,9 @@
     @csrf
     <div class="flex flex-row justify-center mt-[65px]">
         <div class="flex flex-col mr-[30px] w-[643px] h-[302px]">
-            <x-input type="text" name="first_name" id="input_first_name"/>
+            <x-input type="text" name="name" id="input_first_name"/>
             <label for="input_first_name" id="label_input_first_name" class="text-[#707070] text-[20px] absolute pl-5 mt-6 ease-out duration-200">{{ __('First Name') }}</label>
-            <x-input type="text" name="second_name" id="input_second_name"/>
+            <x-input type="text" name="surname" id="input_second_name"/>
             <label for="input_second_name" id="label_input_second_name" class="text-[#707070] text-[20px] absolute pl-5 mt-[117px] ease-out duration-200">{{ __('Second Name') }}</label>
             <x-input type="text" name="call" id="input_call"/>
             <label for="input_call" id="label_input_call" class="text-[#707070] text-[20px] absolute pl-5 mt-[214px] ease-out duration-200">{{ __('Call') }}</label>
