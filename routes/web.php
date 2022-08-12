@@ -9,7 +9,13 @@ Route::get('archive', [PagesController::class, 'archive'])->name('archive');
 Route::get('game/{id}', [PagesController::class, 'game'])->name('game');
 Route::post('game/{id}', [PagesController::class, 'store'])->name('store');
 
-Route::get('admin', [AdminController::class, 'index'])->name('admin');
-Route::get('admin/users', [AdminController::class, 'users'])->name('users');
+Route::get('login', [AdminController::class, 'login'])->name('login');
+Route::post('login', [AdminController::class, 'store'])->name('store');
+Route::get('logout', [AdminController::class, 'logout'])->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('admin/users', [AdminController::class, 'users'])->name('users');
+});
 
 Route::post('/', [PagesController::class, 'save_email'])->name('save_email');

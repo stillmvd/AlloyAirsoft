@@ -19,6 +19,11 @@ class DatabaseSeeder extends Seeder
     {
         // ---------- Admin
 
+        DB::table('users')->insert([
+            'login' => 'Ginze',
+            'password' => Hash::make('Ginze123'),
+        ]);
+
         // ---------- Games
         DB::table('games')->insert([
             'name' => 'Woodpecker',

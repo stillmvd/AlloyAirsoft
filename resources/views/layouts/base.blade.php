@@ -8,7 +8,11 @@
     @vite('resources/css/app.css')
     <title>Alloy Airsoft</title>
 </head>
-@yield('alert')
+@if ($success != "")
+    <p class="text-center text-[#02DF8F] py-4">
+        {{ $success }}
+    </p>
+@endif
 <body class="h-[100vh] flex flex-col bg-[#111111]">
     <header>
         <x-pages.container>

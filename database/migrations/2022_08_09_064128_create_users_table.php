@@ -12,14 +12,8 @@ return new class extends Migration
             $table->id()->from(1001);
             $table->timestamps();
 
-            $table->foreignId('game_id')->constrained('games');
-            $table->string('first_name')->nullable();
-            $table->string('second_name')->nullable();
-            $table->string('call');
-            $table->string('email');
-            $table->string('phone');
-            $table->foreignId('team_id')->constrained('teams');
-
+            $table->string('login');
+            $table->string('password');
         });
     }
 
