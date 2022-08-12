@@ -1,19 +1,6 @@
 @extends('layouts.base')
 
-@section('alert')
-    @if ($success != "")
-        <p class="text-center text-[#02DF8F] py-4">
-            {{ $success }}
-        </p>
-    @endif
-@endsection
-
-@section('header')
-    @include('includes.header')
-@endsection
-
 @section('content')
-
     @if ($games->count() > 0)
         @foreach ($games as $game)
             <div class="flex w-full justify-center py-6">
@@ -37,9 +24,4 @@
             </div>
         </a>
     @endif
-    
-@endsection
-
-@section('footer')
-    @include('includes.footer')
 @endsection

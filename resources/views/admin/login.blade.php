@@ -19,9 +19,6 @@
             <input type="password" name="password" placeholder="password" class="text-[#FFFFFF] text-[1rem] px-5 py-4 font-light mb-[20px] rounded-2xl ring-1 ring-[#707070] bg-[#111111] focus:outline-none">
             <input type="submit" value="penetrate" class="w-full py-4 px-6 text-[#111111] text-[2rem] font-semibold rounded-2xl bg-[#02DF8F] cursor-pointer ease duration-[.2s] hover:ring-1 hover:ring-[#02DF8F] hover:bg-transparent hover:text-white">
         </form>
-        <x-text.subtitle>
-            {{ $errors }}
-        </x-text.subtitle>
     </div>
 </body>
 </html>

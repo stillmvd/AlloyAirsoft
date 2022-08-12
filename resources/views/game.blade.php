@@ -1,17 +1,5 @@
 @extends('layouts.base')
 
-@section('alert')
-    @if ($success != "")
-        <p class="text-center text-[#02DF8F] py-4">
-            {{ $success }}
-        </p>
-    @endif
-@endsection
-
-@section('header')
-    @include('includes.header')
-@endsection
-
 @section('content')
     <p class="hidden" id="first_cord">{{ $first_cord }}</p>
     <p class="hidden" id="second_cord">{{ $second_cord }}</p>
@@ -139,8 +127,4 @@
     </div>
     <div class="h-[2px] mt-10 mb-10 w-full bg-[#242424]"></div>
     @include('includes.registration')
-@endsection
-
-@section('footer')
-    @include('includes.footer')
 @endsection

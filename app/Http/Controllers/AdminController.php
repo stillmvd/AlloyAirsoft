@@ -9,6 +9,10 @@ class AdminController extends Controller
     public function login() {
         return view('admin.login');
     }
+    public function logout() {
+        auth()->logout();
+        return redirect('/');
+    }
     public function store(Request $request) {
         $validated = $request->validate([
             'login' => 'required',
@@ -21,10 +25,6 @@ class AdminController extends Controller
                 'loginError' => 'You have some errors',
             ]);
         }
-    }
-    public function logout() {
-        auth()->logout();
-        return redirect('index');
     }
     public function index() {
         return view('admin.index');

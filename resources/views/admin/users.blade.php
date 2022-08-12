@@ -1,6 +1,6 @@
-@extends('layouts.admin')
+@extends('layouts.base')
 
-@section('admin-content')
+@section('content')
     <div class="bg-[#303030]/25 w-full mt-20 rounded-3xl p-6">
         <x-text.title class="text-white font-light">
             {{ __('Active players') }}

@@ -8,19 +8,24 @@
     @vite('resources/css/app.css')
     <title>Alloy Airsoft</title>
 </head>
-@if ($success != "")
-    <p class="text-center text-[#02DF8F] py-4">
-        {{ $success }}
+@if (session()->get('success'))
+    <p class="text-center text-[#02DF8F] pt-4 animation-ping">
+        {{ session()->get('success') }}
     </p>
 @endif
 <body class="h-[100vh] flex flex-col bg-[#111111]">
     <header>
         <x-pages.container>
-            @yield('header')
+            @auth
+                @include('includes.admin-header')
+            @endauth
+            @guest
+                @include('includes.header')
+            @endguest
         </x-pages.container>
     </header>
 
-    <main class="">
+    <main>
         <x-pages.container>
             @yield('content')
         </x-pages.container>
@@ -28,7 +33,7 @@
 
     <footer>
         <x-pages.container>
-            @yield('footer')
+            @include('includes.footer')
         </x-pages.container>
     </footer>
 </body>

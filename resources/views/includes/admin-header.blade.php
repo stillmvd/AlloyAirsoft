@@ -15,7 +15,9 @@
                 </x-text.link>
             </div>
             <div class="flex items-center w-[20%] justify-end">
-                <x-text.date/>
+                <x-text.link href="{{ route('logout') }}" class="text-[1.2rem] text-gray-200/75 font-light hover:text-[2.5rem] hover:text-white ease-out duration-[.2s]">
+                    Logout
+                </x-text.link>
             </div>
         </div>
         <div class="h-[2px] mt-3 w-full bg-[#242424]">

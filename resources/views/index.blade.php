@@ -1,9 +1,5 @@
 @extends('layouts.base')
 
-@section('header')
-    @include('includes.header')
-@endsection
-
 @section('content')
     <p class="hidden" id="count_maps">{{ $games->count() }}</p>
     @foreach ($games as $game)
@@ -52,8 +48,4 @@
             </a>
         </div>
     @endforeach
-@endsection
-
-@section('footer')
-    @include('includes.footer')
 @endsection
