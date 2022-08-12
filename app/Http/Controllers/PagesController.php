@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Player;
+use App\Models\Team;
 use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
@@ -14,15 +16,14 @@ class PagesController extends Controller
     public function index() {
         $games = DB::table('games')->get();
         $success = Session::get('success');
-        $error = Session::get('error');
-        return view('index', compact('games', 'success', 'error'));
+        return view('index', compact('games', 'success'));
     }
 
     public function archive() {
         $games = DB::table('games')->where('finished', '=', 1)->get();
         $success = Session::get('success');
-        $error = Session::get('error');
-        return view('archive', compact('games', 'success', 'error'));
+        $teams = DB::table('teams')->get();
+        return view('archive', compact('games', 'success'));
     }
 
     public function game($id) {
@@ -31,27 +32,45 @@ class PagesController extends Controller
         $game = Game::find($id);
 
         $success = Session::get('success');
-        $error = Session::get('error');
-
-        $teams = Db::table('teams')->get('name');
-        return view('game', compact('first_cord', 'second_cord', 'game', 'success', 'error', 'teams'));
+        $teams = DB::table('teams')->get();
+        $teams_count = DB::table('teams')->count();
+        return view('game', compact('first_cord', 'second_cord', 'game', 'success', 'teams', 'teams_count'));
     }
 
-    public function store(Request $request, $id) {
-        dd($request, $id);
+    public function store_players(Request $request, $id) {
+        $request->validate([
+            'name' => ['required', 'string', 'max:20'],
+            'surname' => ['required', 'string', 'max:20'],
+            'call' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'email:rfc,dns'],
+            'phone' => ['required', 'max:20'],
+            'team' => ['required'],
+        ]);
+        $player = new Player([
+            'created_at' => now(),
+            'game_id' => $id,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'call' => $request->call,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'team_id' =>  $request->team,
+        ]);
+        $player->save();
+        return redirect()->route('game', $id)->with(['success' => 'You are registered for the game']);
     }
 
     public function save_email(Request $request) {
         $request->validate([
             'email' => ['required', 'email:rfc,dns']
         ]);
-        
+
         if(DB::table('emails')->where('email', '=', $request->email)->exists()) {
             return redirect()->back()->with(
                 ['error' => 'You have already subscribed to the newsletter!']
             );
         }
-        
+
         DB::table('emails')->insert(['email' => $request->email, 'created_at' => now(), 'updated_at' => now()]);
         return redirect()->back()->with(
             ['success' => 'You have successfully subscribed to the newsletter!']

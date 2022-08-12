@@ -24,11 +24,11 @@
                             <input type="email" name="email" placeholder="Email" class="bg-transparent border-b-2 w-full focus:outline-none text-white pb-1">
                             <input type="submit" class="bg-transparent border-b-2 focus:outline-none text-white pb-2 w-min cursor-pointer" value="→">
                         </div>
-                        @if ($errors->any())
+                        {{-- @if ($errors->any())
                             <label for="email" class="text-red-500 text-sm mt-4 font-light">
                                 {{ $error }}
                             </label>
-                        @endif
+                        @endif --}}
                     </div>
                 </form>
             </div>

@@ -1,7 +1,7 @@
 <x-text.title class="text-center mt-10">
     {{ __('Registration') }}
 </x-text.title>
-<form action="{{ route('store', $game->id) }}" method="post" class="w-[80%] m-auto">
+<form action="{{ route('store_players', $game->id) }}" method="post" class="w-[80%] m-auto">
     @csrf
     <div class="flex flex-row justify-center mt-[65px]">
         <div class="flex flex-col mr-[30px] w-[643px] h-[302px]">
@@ -13,14 +13,15 @@
             <label for="input_call" id="label_input_call" class="text-[#707070] text-[20px] absolute pl-5 mt-[214px] ease-out duration-200">{{ __('Call') }}</label>
         </div>
         <div class="flex flex-col w-[643px] h-[302px]">
-            <x-input type="email" name="input_email" id="input_email"/>
+            <x-input type="email" name="email" id="input_email"/>
             <label for="input_email" class="text-[#707070] text-[20px] absolute pl-5 mt-6 ease-out duration-200" id="label_input_email">{{ __('Email') }}</label>
-            <x-input type="text" name="input_phone" id="input_phone"/>
+            <x-input type="text" name="phone" id="input_phone"/>
             <label for="input_phone" id="label_input_phone" class="text-[#707070] text-[20px] absolute pl-5 mt-[117px] ease-out duration-200">{{ __('Phone') }}</label>
             <select name="team" class=" h-[75px] mb-[20px] rounded-2xl ring-1 ring-[#707070] bg-[#111111] focus:outline-none text-[#FFFFFF] text-[20px] pl-5 pt-4" id="input_team">
                 <option selected disabled></option>
-                <option value="Mercenaries">Mercenaries</option>
-                <option value="Bandits">Bandits</option>
+                @for ($i = 0; $i < $teams_count; $i++)
+                    <option value="{{ $i+1 }}">{{ $teams[$i]->name }}</option>
+                @endfor
             </select>
             <label for="input_team" id="label_input_team" class="text-[#707070] text-[20px] absolute pl-5 mt-[214px] ease-out duration-200">{{ __('Team') }}</label>
         </div>
