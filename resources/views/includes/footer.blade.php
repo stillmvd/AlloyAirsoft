@@ -28,7 +28,7 @@
                             <label for="email" class="bg-red-500 py-2 w-full text-white text-sm mt-4 font-light rounded flex text-center items-center justify-center absolute top-[-60px] slide-card">
                                 {{ session()->get('error') }}
                             </label>
-                        @endif
+                        @endif --}}
                     </div>
                 </form>
             </div>
