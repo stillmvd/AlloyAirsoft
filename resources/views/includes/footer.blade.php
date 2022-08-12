@@ -24,11 +24,6 @@
                             <input type="email" name="email" placeholder="Email" class="bg-transparent border-b-2 w-full focus:outline-none text-white pb-1">
                             <input type="submit" class="bg-transparent border-b-2 focus:outline-none text-white pb-2 w-min cursor-pointer" value="→">
                         </div>
-                        @if (session()->get('error'))
-                            <label for="email" class="bg-red-500 py-2 w-full text-white text-sm mt-4 font-light rounded flex text-center items-center justify-center absolute top-[-60px] slide-card">
-                                {{ session()->get('error') }}
-                            </label>
-                        @endif --}}
                     </div>
                 </form>
             </div>

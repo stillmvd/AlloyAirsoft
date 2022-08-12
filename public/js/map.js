@@ -454,37 +454,39 @@ document.getElementById('input_team').addEventListener('blur', function() {
     }
 });
 
+function showInfoBlock() {
+  let infoBlock = document.getElementById('info_block');
+  let arrow = document.getElementById('info_arrow');
+  let firstHeight = parseInt(window.getComputedStyle(document.getElementById('first_text'), null).height);
+  let secondHeight = parseInt(window.getComputedStyle(document.getElementById('second_text'), null).height);
+  let fullHeight = firstHeight + secondHeight + 70 + "px";
+  if(openInfoBlock){
+      infoBlock.classList.remove('h-[130px]');
+      infoBlock.style.height = fullHeight;
+      arrow.style.transform = 'rotate(90deg)';
+      openInfoBlock = false;
+  }
+  else{
+      infoBlock.classList.add('h-[130px]');
+      infoBlock.style.height = "130px";
+      arrow.style.transform = 'rotate(0deg)';
+      openInfoBlock = true;
+  }
+}
 
 function showRulesBlock() {
-    let rulesBlock = document.getElementById('rules_block');
-    let arrow = document.getElementById('rules_arrow');
+  let rulesBlock = document.getElementById('rules_block');
+  let arrow = document.getElementById('rules_arrow');
     if(openRulesBlock){
-        rulesBlock.classList.remove('h-[200px]');
-        rulesBlock.style.height = "970px";
+        rulesBlock.classList.remove('h-[160px]');
+        rulesBlock.style.height = '860px';
         arrow.style.transform = 'rotate(90deg)';
         openRulesBlock = false;
     }
     else{
-        rulesBlock.classList.add('h-[200px]');
-        rulesBlock.style.height = "200px";
+        rulesBlock.classList.add('h-[160px]');
+        rulesBlock.style.height = "160px";
         arrow.style.transform = 'rotate(0deg)';
         openRulesBlock = true;
-    }
-}
-
-function showInfoBlock() {
-    let infoBlock = document.getElementById('info_block');
-    let arrow = document.getElementById('info_arrow');
-    if(openInfoBlock){
-        infoBlock.classList.remove('h-[130px]');
-        infoBlock.style.height = "300px";
-        arrow.style.transform = 'rotate(90deg)';
-        openInfoBlock = false;
-    }
-    else{
-        infoBlock.classList.add('h-130px');
-        infoBlock.style.height = "130px";
-        arrow.style.transform = 'rotate(0deg)';
-        openInfoBlock = true;
     }
 }

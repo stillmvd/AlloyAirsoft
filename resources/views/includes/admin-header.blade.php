@@ -10,8 +10,8 @@
                 <x-text.link href="{{ route('admin') }}" class="font-light mr-4 hover:text-[2.5rem] ease-out duration-[.2s] {{ Route::is('admin') ? 'text-[2.5rem] hover:pb-0 text-white' : 'text-[1.2rem] pb-2 hover:pb-0 hover:text-white text-gray-200/75' }}">
                     {{ __('Control') }}
                 </x-text.link>
-                <x-text.link href="{{ route('users') }}" class="font-light ml-4 hover:text-[2.5rem] ease-out duration-[.2s] {{ Route::is('users') ? 'text-[2.5rem] hover:pb-0 text-white' : 'text-[1.2rem] pb-2 hover:pb-0 hover:text-white text-gray-200/75' }}">
-                    {{ __('Users') }}
+                <x-text.link href="{{ route('players') }}" class="font-light ml-4 hover:text-[2.5rem] ease-out duration-[.2s] {{ Route::is('players') ? 'text-[2.5rem] hover:pb-0 text-white' : 'text-[1.2rem] pb-2 hover:pb-0 hover:text-white text-gray-200/75' }}">
+                    {{ __('Players') }}
                 </x-text.link>
             </div>
             <div class="flex items-center w-[20%] justify-end">

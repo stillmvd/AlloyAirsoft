@@ -22,19 +22,19 @@
             <x-text.title>
                 {{ __('Info') }}
             </x-text.title>
-            <div class="flex flex-row justify-between w-[60%] h-[130px] ease-out duration-500 overflow-hidden items-start" id="info_block">
+            <div class="flex flex-row justify-between w-[60%] h-[130px] ease-out duration-200 overflow-hidden items-start" id="info_block">
                 <div class="text-left flex flex-col items-start w-[80%]">
                     <x-text.subtitle class="mb-2">
                         Mercenaries!
                     </x-text.subtitle>
-                    <x-text.paragraph class="w-[80%] text-[#CACACA] mb-6">
-                        Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we of course we will pay you.
+                    <x-text.paragraph id="first_text" class="w-[80%] text-[#CACACA] mb-6">
+                        Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we of course we will pay you. 
                     </x-text.paragraph>
-                    <x-text.paragraph class="text-[#CACACA]">
+                    <x-text.paragraph id="second_text" class="text-[#CACACA]">
                         “Colleagues”, do with them at your own discretion, no fines or rewards for You don't have to remove them. To clarify one point, we cannot transfer a group of more than 11 people, so Choose your best fighters and equip as you see fit. Take with you everything you need, because due to high risks we are not ready to transfer supplies to this territory.
                     </x-text.paragraph>
                 </div>
-                <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="cursor-pointer" onclick="showInfoBlock()" id="info_arrow">
+                <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="cursor-pointer duration-200 ease-out" onclick="showInfoBlock()" id="info_arrow">
             </div>
         </div>
         <div class="h-[2px] mt-10 mb-10 w-full bg-[#242424]"></div>
@@ -44,7 +44,7 @@
                 {{ __('Rules') }}
             </x-text.title>
             <div class="flex flex-row justify-end w-[60%]">
-                <div class="text-left flex flex-row items-start justify-between h-[200px] overflow-hidden duration-500 ease-out" id="rules_block">
+                <div class="text-left flex flex-row items-start justify-between h-[160px] overflow-hidden duration-300 ease-out" id="rules_block">
                     <div class="flex flex-col">
                         <x-text.block>
                             <x-text.subtitle class="mb-2">
@@ -120,7 +120,7 @@
                             </x-text.paragraph>
                         </x-text.block>
                     </div>
-                    <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="cursor-pointer duration-500 ease-out" onclick="showRulesBlock()" id="rules_arrow">
+                    <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="cursor-pointer duration-200 ease-out" onclick="showRulesBlock()" id="rules_arrow">
                 </div>
             </div>
         </div>

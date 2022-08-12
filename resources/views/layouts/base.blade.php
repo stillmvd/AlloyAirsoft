@@ -9,15 +9,24 @@
     <title>Alloy Airsoft</title>
 </head>
 @if (session()->get('success'))
-    <p class="text-center text-[#02DF8F] pt-4 animation-ping">
+    <p class="text-white bg-[#02DF8F] py-10 px-16 w-min whitespace-nowrap text-xl mt-2 font-light rounded flex text-center items-center justify-center slide-card absolute left-0 right-0 mx-auto">
         {{ session()->get('success') }}
+    </p>
+@endif
+@if (session()->get('error'))
+    <p class="bg-red-500 py-10 px-16 w-min whitespace-nowrap text-white text-xl mt-2 font-light rounded flex text-center items-center justify-center slide-card absolute left-0 right-0 mx-auto">
+        {{ session()->get('error') }}
     </p>
 @endif
 <body class="h-[100vh] flex flex-col bg-[#111111]">
     <header>
         <x-pages.container>
             @auth
-                @include('includes.admin-header')
+                @if (Route::is('admin') || Route::is('players'))
+                    @include('includes.admin-header')    
+                @else
+                    @include('includes.header')
+                @endif
             @endauth
             @guest
                 @include('includes.header')
@@ -33,7 +42,9 @@
 
     <footer>
         <x-pages.container>
-            @include('includes.footer')
+            @unless (Route::is('admin') || Route::is('players'))
+                @include('includes.footer')
+            @endunless
         </x-pages.container>
     </footer>
 </body>

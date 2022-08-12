@@ -16,6 +16,6 @@ Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('admin', [AdminController::class, 'index'])->name('admin');
-    Route::get('admin/users', [AdminController::class, 'users'])->name('users');
+    Route::get('admin/players', [AdminController::class, 'players'])->name('players');
 });
 
