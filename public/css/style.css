@@ -19,7 +19,7 @@ html {
 
 .slide-card{
     animation-name: slide;
-    animation-timing-function: ease-out; 
+    animation-timing-function: ease-out;
     animation-duration: .3s;
     animation-iteration-count: 1;
     animation-direction: normal;
@@ -34,11 +34,22 @@ html {
     background-position: 97%;
 }
 
+#rules_arrow{
+    transform: rotate(270deg);
+    padding-top: 10px;
+    padding-right: 2px;
+}
+#info_arrow{
+    transform: rotate(270deg);
+    padding-top: 10px;
+    padding-right: 2px;
+}
+
 @keyframes slide {
     from {
         visibility: visible;
         opacity: 100%;
-        transform: translateY(0px);   
+        transform: translateY(0px);
     }
     to {
         visibility: hidden;

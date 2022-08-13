@@ -1,5 +1,5 @@
 <header class="pt-[2%]">
-    <x-pages.container class="flex flex-col">
+    <div class="flex flex-col">
         <div class="flex flex-row justify-between">
             <div class="flex items-center w-[20%]">
                 <x-text.link href="{{ route('index') }}" class="text-[1.2rem] text-gray-200/75 font-light hover:text-[2.5rem] hover:text-white ease-out duration-[.2s]">
@@ -23,5 +23,5 @@
         <div class="h-[2px] mt-3 w-full bg-[#242424]">
 
         </div>
-    </x-pages.container>
+    </div>
 </header>

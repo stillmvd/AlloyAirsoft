@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Mailing;
 use App\Models\Game;
 use App\Models\Player;
 use App\Models\Team;
@@ -9,6 +10,7 @@ use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class PagesController extends Controller
@@ -53,6 +55,10 @@ class PagesController extends Controller
             'team_id' =>  $request->team,
         ]);
         $player->save();
+        Mail::to($request->email)->send(new Mailing([
+            'title' => 'Поздравляем с регистрацией на игру!',
+            'message' => 'Вы успешно зарегистрировались на игру!',
+        ]));
         return redirect()->route('game', $id)->with(['success' => 'You are registered for the game']);
     }
 
@@ -67,6 +73,10 @@ class PagesController extends Controller
             );
         } else {
             DB::table('emails')->insert(['email' => $request->email, 'created_at' => now(), 'updated_at' => now()]);
+            Mail::to($request->email)->send(new Mailing([
+                'title' => 'Вы успешно подписались на расслыку!',
+                'message' => 'Вы успешно подписались на расслыку!',
+            ]));
             return redirect()->back()->with(
                 ['success' => 'You have successfully subscribed to the newsletter!']
             );

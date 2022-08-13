@@ -1,5 +1,5 @@
 <footer class="pb-10 mt-20">
-    <x-pages.container>
+    <div>
         <div class="h-[2px] mt-10 mb-10 w-full bg-[#242424]"></div>
         <div class="flex flex-row justify-between">
             <div class="flex flex-col">
@@ -13,7 +13,7 @@
                     +1 245 586 54 13
                 </x-text.paragraph>
             </div>
-            <div class="w-1/4 flex flex-col items-end">
+            <div class="tablet-md:w-1/3 tablet:w-1/3 phone:w-1/2 flex flex-col items-end">
                 <x-text.subtitle class="text-white font-light mb-8">
                     {{ __('Subscribe to our updates') }}
                 </x-text.subtitle>
@@ -28,5 +28,5 @@
                 </form>
             </div>
         </div>
-    </x-pages.container>
+    </div>
 </footer>

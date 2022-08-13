@@ -1,3 +1,9 @@
+let phone = 320,
+    tablet = 640,
+    tabletMd = 768,
+    laptop = 1024,
+    desktop = 1280,
+    desktop2xl = 1536;
 let firstCord = document.getElementById("first_cord");
 let secondCord = document.getElementById("second_cord");
 let openRulesBlock = true;
@@ -418,30 +424,55 @@ function showInfoBlock() {
   if(openInfoBlock){
       infoBlock.classList.remove('h-[130px]');
       infoBlock.style.height = fullHeight;
-      arrow.style.transform = 'rotate(90deg)';
+      arrow.style.transform = 'rotate(360deg)';
       openInfoBlock = false;
   }
   else{
       infoBlock.classList.add('h-[130px]');
       infoBlock.style.height = "130px";
-      arrow.style.transform = 'rotate(0deg)';
+      arrow.style.transform = 'rotate(270deg)';
       openInfoBlock = true;
   }
 }
 
 function showRulesBlock() {
+  let windowSize = window.screen.width;
   let rulesBlock = document.getElementById('rules_block');
   let arrow = document.getElementById('rules_arrow');
     if(openRulesBlock){
         rulesBlock.classList.remove('h-[160px]');
-        rulesBlock.style.height = '860px';
-        arrow.style.transform = 'rotate(90deg)';
+        if (windowSize > desktop2xl){
+            rulesBlock.style.height = '860px';
+        }
+        else if (windowSize >= desktop){
+            rulesBlock.style.height = '900px';
+        }
+        else if (windowSize >= laptop){
+            rulesBlock.style.height = '1020px';
+        }
+        else if (windowSize >= tabletMd){
+            rulesBlock.classList.add('h-[165px]')
+            rulesBlock.style.height = '1020px';
+        }
+        else if (windowSize >= tablet){
+            rulesBlock.style.height = '1100px';
+        }
+        else if (windowSize >= phone){
+            rulesBlock.style.height = '1200px';
+        }
+        arrow.style.transform = 'rotate(360deg)';
         openRulesBlock = false;
     }
     else{
-        rulesBlock.classList.add('h-[160px]');
-        rulesBlock.style.height = "160px";
-        arrow.style.transform = 'rotate(0deg)';
+        if (windowSize >= tabletMd){
+            rulesBlock.classList.add('h-[165px]')
+            rulesBlock.style.height = "165px";
+        }
+        else{
+            rulesBlock.classList.add('h-[180px]');
+            rulesBlock.style.height = "160px";
+        }
+        arrow.style.transform = 'rotate(270deg)';
         openRulesBlock = true;
     }
 }

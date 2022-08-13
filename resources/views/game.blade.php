@@ -28,13 +28,13 @@
                         Mercenaries!
                     </x-text.subtitle>
                     <x-text.paragraph id="first_text" class="w-[80%] text-[#CACACA] mb-6">
-                        Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we of course we will pay you. 
+                        Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we of course we will pay you.
                     </x-text.paragraph>
                     <x-text.paragraph id="second_text" class="text-[#CACACA]">
                         “Colleagues”, do with them at your own discretion, no fines or rewards for You don't have to remove them. To clarify one point, we cannot transfer a group of more than 11 people, so Choose your best fighters and equip as you see fit. Take with you everything you need, because due to high risks we are not ready to transfer supplies to this territory.
                     </x-text.paragraph>
                 </div>
-                <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="cursor-pointer duration-200 ease-out" onclick="showInfoBlock()" id="info_arrow">
+                <img src="{{ asset('image/arrow.svg') }}" alt="arrows" class="cursor-pointer duration-200 ease-out" onclick="showInfoBlock()" id="info_arrow">
             </div>
         </div>
         <div class="h-[2px] mt-10 mb-10 w-full bg-[#242424]"></div>
@@ -120,7 +120,7 @@
                             </x-text.paragraph>
                         </x-text.block>
                     </div>
-                    <img src="{{ asset('image/arrows.svg') }}" alt="arrows" class="cursor-pointer duration-200 ease-out" onclick="showRulesBlock()" id="rules_arrow">
+                    <img src="{{ asset('image/arrow.svg') }}" alt="arrows" class="cursor-pointer duration-200 ease-out" onclick="showRulesBlock()" id="rules_arrow">
                 </div>
             </div>
         </div>

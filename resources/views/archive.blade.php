@@ -7,9 +7,7 @@
                 <x-text.gamedate :game='$game'/>
             </div>
             <a href="{{ route('game', $game->id) }}">
-                <div class="h-[400px] w-full bg-[#303030]/25 rounded-3xl">
-
-                </div>
+                <div class="h-[400px] w-full bg-[#303030]/25 rounded-3xl"></div>
             </a>
         @endforeach
     @else

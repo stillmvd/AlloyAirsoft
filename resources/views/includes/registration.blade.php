@@ -1,9 +1,12 @@
 <x-text.title class="text-center my-10">
     {{ __('Registration') }}
 </x-text.title>
-<form action="{{ route('store_players', $game->id) }}" method="post" class="w-[80%] m-auto">
+<form action="{{ route('store_players', $game->id) }}" method="post" class="phone:w-[90%] tablet:w-[80%] tablet-md:w-[80%] laptop:w-[80%] desktop:w-[80%] desktop-2xl:w-[80%] m-auto">
     @csrf
-    <div class="grid grid-cols-2 grid-rows-4 gap-6">
+    <div class="grid
+    tablet-md:grid-cols-2 tablet:grid-cols-1
+    tablet-md:grid-rows-4 tablet:grid-rows-7
+    laptop:gap-6 tablet-md:gap-4">
         <div class="flex relative">
             <x-label id="name_label" for="name">{{ __('Name') }}</x-label>
             <x-input type="text" name="name" id="input_name"/>

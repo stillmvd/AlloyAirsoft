@@ -23,7 +23,7 @@
         <x-pages.container>
             @auth
                 @if (Route::is('admin') || Route::is('players'))
-                    @include('includes.admin-header')    
+                    @include('includes.admin-header')
                 @else
                     @include('includes.header')
                 @endif

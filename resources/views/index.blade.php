@@ -5,7 +5,7 @@
     @foreach ($games as $game)
         <p class="hidden" id="first_cord{{ $loop->index }}">{{ $game->first_cord }}</p>
         <p class="hidden" id="second_cord{{ $loop->index }}">{{ $game->second_cord }}</p>
-        
+
         <div class="flex w-full justify-center py-6">
             <div class="flex flex-row items-end">
                 <p class="text-white text-[3rem] font-light mr-3">
