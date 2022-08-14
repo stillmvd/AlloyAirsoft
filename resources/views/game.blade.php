@@ -1,23 +1,25 @@
 @extends('layouts.base')
 
 @section('content')
-    <div class="grid grid-cols-3 auto-cols-max py-6">
-        <x-text.title class="w-full text-white font-light flex items-end pb-4">
+    <x-page.gameinfo class="items-end py-9">
+        <x-text.title class="h-min text-white font-normal">
             {{ __($game->name) }}
         </x-text.title>
-        <x-text.gamedate class="w-full flex flex-row items-end justify-center text-center font-light" :game='$game'/>
-        <x-text.gametime class="w-full flex flex-row items-end justify-end text-end font-light" :game='$game'/>
-    </div>
+        <x-text.gamedate :game='$game' class="" />
+        <x-text.gametime :game='$game' class="" />
+    </x-page.gameinfo>
     
-    <x-elems.map id="map" />
+    <x-text.cords first_cord='{{ $game->first_cord }}' second_cord='{{ $game->second_cord }}' />
+    <x-gamecard.body>
+        <x-elems.map id="map" />
+    </x-gamecard.body>
 
     <div class="flex flex-col mt-20">
-
         <div class="flex flex-row justify-between w-full">
             <x-text.title>
                 {{ __('Info') }}
             </x-text.title>
-            <div class="flex flex-row justify-between w-[60%] h-[130px] ease-out duration-200 overflow-hidden items-start" id="info_block">
+            <div class="flex flex-row justify-between w-[60%] h-[140px] ease-out duration-200 overflow-hidden items-start" id="info_block">
                 <div class="text-left flex flex-col items-start w-[80%]">
                     <x-text.subtitle class="mb-2">
                         Mercenaries!

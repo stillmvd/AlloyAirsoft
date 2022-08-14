@@ -17,7 +17,7 @@ module.exports = {
         'tablet': '640px',
         // => @media (min-width: 640px) { ... }
 
-        'tablet-md': '768px',
+        'tablet-xl': '768px',
         // => @media (min-width: 768px) { ... }
 
         'laptop': '1024px',
@@ -26,7 +26,7 @@ module.exports = {
         'desktop': '1280px',
         // => @media (min-width: 1280px) { ... }
 
-        'desktop-2xl': '1536px',
+        'desktop-xl': '1536px',
         // => @media (min-width: 1536px) { ... }
       },
     },

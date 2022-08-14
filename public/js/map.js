@@ -4,14 +4,14 @@ let phone = 320,
     laptop = 1024,
     desktop = 1280,
     desktop2xl = 1536;
-let firstCord = document.getElementById("first_cord");
-let secondCord = document.getElementById("second_cord");
+let map_1cord = document.getElementById("first_cord");
+let map_2cord = document.getElementById("second_cord");
 let openRulesBlock = true;
 let openInfoBlock = true;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-        center: new google.maps.LatLng(firstCord.textContent, secondCord.textContent),
+        center: new google.maps.LatLng(map_1cord.textContent, map_2cord.textContent),
         zoom: 15,
         disableDefaultUI: true,
         styles: [
@@ -444,7 +444,7 @@ function showRulesBlock() {
     if(openRulesBlock){
         rulesBlock.classList.remove('h-[160px]');
         if (windowSize > desktop2xl){
-            rulesBlock.style.height = '860px';
+            rulesBlock.style.height = '870px';
         }
         else if (windowSize >= desktop){
             rulesBlock.style.height = '900px';

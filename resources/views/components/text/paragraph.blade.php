@@ -1,5 +1,5 @@
 <p {{ $attributes->class(
-    'phone:text-sm tablet:text-sm tablet-md:text-sm laptop:text-base desktop:text-base desktop-3xl:text-[20px]
+    'phone:text-sm tablet:text-sm tablet-xl:text-sm laptop:text-base desktop:text-base desktop-xl:text-[1rem]
      text-white font-light'
 ) }}>
     {{ $slot }}

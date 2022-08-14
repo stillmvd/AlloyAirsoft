@@ -1,8 +1,8 @@
-<div class="flex w-full justify-center items-end py-6">
-    <p class="text-white text-[3rem] font-light mr-3">
+<div class="flex flex-row items-end justify-center">
+    <p class="text-[3rem] text-white font-normal mr-3 leading-none">
         {{ date('d', strtotime($game->playtime)) }}
     </p>
-    <p class="text-white text-[1.2rem] font-light pb-3">
+    <p class="text-[1.4rem] text-white font-light leading-8">
         {{ date('M', strtotime($game->playtime)) }}
     </p>
 </div>

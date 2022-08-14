@@ -1,14 +1,14 @@
-<div {{ $attributes }}>
-    <p class="text-white text-[3rem] font-light mr-3">
+<div class="flex flex-row items-end justify-end">
+    <p class="text-[3rem] text-white font-normal mr-3 leading-none">
         {{ date('h:s', strtotime($game->playtime)) }}
     </p>
     @if (date('h', strtotime($game->playtime)) < 12)
-        <p class="text-white text-[1.2rem] font-light pb-3">
-            {{ __('AM') }}
+        <p class="text-[1.4rem] text-white font-light leading-8">
+            {{ __('Am') }}
         </p>
         @else
-        <p class="text-white text-[1.2rem] font-light pb-3">
-            {{ __('PM') }}
+        <p class="text-[1.4rem] text-white font-light leading-8">
+            {{ __('Pm') }}
         </p>
     @endif
 </div>
