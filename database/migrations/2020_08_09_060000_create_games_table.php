@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('polygon');
             $table->text('info');
             $table->text('game_info');
-            $table->foreignId('description_id')->constrained('descriptions');
             $table->dateTime('playtime');
             $table->string('levels')->default('0');
             $table->string('tags_icon')->default('0');

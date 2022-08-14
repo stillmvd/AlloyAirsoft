@@ -68,6 +68,7 @@ class AdminController extends Controller
             'text7' => $request->text7,
             'text8' => $request->text8,
             'text9' => $request->text9,
+            'amount' => $request->count,
         ]);
         $description->save();
         return redirect()->route('admin');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Mailing;
+use App\Models\Description;
 use App\Models\Game;
 use App\Models\Player;
 use App\Models\Team;
@@ -30,9 +31,13 @@ class PagesController extends Controller
         $first_cord = Game::find($id)->first_cord;
         $second_cord = Game::find($id)->second_cord;
         $game = Game::find($id);
+        $titles = DB::table('descriptions')->where('game_id', $game->id)->pluck('title');
+        $texts = DB::table('descriptions')->where('game_id', $game->id)->pluck('text');
+        $items = DB::table('descriptions')->get();
+        $amount = $titles->count();
         $teams = Db::table('teams')->get('name');
         $teams_count = DB::table('teams')->count();
-        return view('game', compact('first_cord', 'second_cord', 'game', 'teams', 'teams_count'));
+        return view('game', compact('first_cord', 'second_cord', 'game', 'teams', 'teams_count', 'titles', 'texts', 'items'));
     }
 
     public function store_players(Request $request, $id) {
