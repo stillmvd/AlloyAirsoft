@@ -1,4 +1,4 @@
-<div class="flex flex-row items-end justify-center">
+<div class="flex flex-row items-end place-self-center">
     <p class="text-[3rem] text-white font-normal mr-3 leading-none">
         {{ date('d', strtotime($game->playtime)) }}
     </p>

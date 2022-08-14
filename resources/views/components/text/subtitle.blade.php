@@ -1,6 +1,12 @@
-<h2 {{ $attributes->class(
-    'phone:text-base tablet:text-base tablet-xl:text-base laptop:text-lg desktop:text-xl desktop-xl:text-2xl 
-     text-white font-light'
+<p {{ $attributes->class(
+    'text-white font-light
+     phone:text-base 
+     tablet:text-base 
+     tablet-xl:text-base 
+     laptop:text-lg 
+     desktop:text-xl 
+     desktop-xl:text-2xl 
+    '
 ) }}>
     {{ $slot }}
-</h2>
+</p>

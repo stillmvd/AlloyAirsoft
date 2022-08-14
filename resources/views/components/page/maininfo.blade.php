@@ -1,5 +1,5 @@
 <div {{ $attributes->class([
-    'flex flex-row justify-between mt-20'
+    'grid grid-cols-3'
 ]) }}>
     {{ $slot }}
 </div>

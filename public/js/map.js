@@ -1,9 +1,9 @@
 let phone = 320,
     tablet = 640,
-    tabletMd = 768,
+    tabletXL = 768,
     laptop = 1024,
     desktop = 1280,
-    desktop2xl = 1536;
+    desktopXL = 1536;
 let map_1cord = document.getElementById("first_cord");
 let map_2cord = document.getElementById("second_cord");
 let openRulesBlock = true;
@@ -418,63 +418,37 @@ document.getElementById('input_team').addEventListener('blur', function() {
 });
 
 function showInfoBlock() {
-  let infoBlock = document.getElementById('info_block');
-  let arrow = document.getElementById('info_arrow');
-  let firstHeight = parseInt(window.getComputedStyle(document.getElementById('first_text'), null).height);
-  let secondHeight = parseInt(window.getComputedStyle(document.getElementById('second_text'), null).height);
-  let fullHeight = firstHeight + secondHeight + 70 + "px";
+  let infoBlock = document.getElementById('info-block');
+  let arrow = document.getElementById('info-arrow');
+  let fullHeight = parseInt(window.getComputedStyle(document.getElementById('info-text'), null).height);
   if(openInfoBlock){
-      infoBlock.classList.remove('h-[130px]');
-      infoBlock.style.height = fullHeight;
-      arrow.style.transform = 'rotate(360deg)';
+      infoBlock.classList.remove('h-[160px]');
+      infoBlock.style.height = fullHeight + 30 + 'px';
+      arrow.style.transform = 'rotate(0deg)';
       openInfoBlock = false;
   }
   else{
-      infoBlock.classList.add('h-[130px]');
-      infoBlock.style.height = "130px";
-      arrow.style.transform = 'rotate(270deg)';
+      infoBlock.classList.add('h-[160px]');
+      infoBlock.style.height = "160px";
+      arrow.style.transform = 'rotate(-90deg)';
       openInfoBlock = true;
   }
 }
 
 function showRulesBlock() {
   let windowSize = window.screen.width;
-  let rulesBlock = document.getElementById('rules_block');
-  let arrow = document.getElementById('rules_arrow');
-    if(openRulesBlock){
-        rulesBlock.classList.remove('h-[160px]');
-        if (windowSize > desktop2xl){
-            rulesBlock.style.height = '870px';
-        }
-        else if (windowSize >= desktop){
-            rulesBlock.style.height = '900px';
-        }
-        else if (windowSize >= laptop){
-            rulesBlock.style.height = '1020px';
-        }
-        else if (windowSize >= tabletMd){
-            rulesBlock.classList.add('h-[165px]')
-            rulesBlock.style.height = '1020px';
-        }
-        else if (windowSize >= tablet){
-            rulesBlock.style.height = '1100px';
-        }
-        else if (windowSize >= phone){
-            rulesBlock.style.height = '1200px';
-        }
-        arrow.style.transform = 'rotate(360deg)';
-        openRulesBlock = false;
+  let rulesBlock = document.getElementById('rules-block');
+  let arrow = document.getElementById('rules-arrow');
+  if(openRulesBlock){
+      rulesBlock.classList.remove('h-[180px]');
+      rulesBlock.style.height = 1090 + 'px';
+      arrow.style.transform = 'rotate(0deg)';
+      openRulesBlock = false;
     }
     else{
-        if (windowSize >= tabletMd){
-            rulesBlock.classList.add('h-[165px]')
-            rulesBlock.style.height = "165px";
-        }
-        else{
-            rulesBlock.classList.add('h-[180px]');
-            rulesBlock.style.height = "160px";
-        }
-        arrow.style.transform = 'rotate(270deg)';
-        openRulesBlock = true;
+      rulesBlock.classList.add('h-[180px]');
+      rulesBlock.style.height = "180px";
+      arrow.style.transform = 'rotate(-90deg)';
+      openRulesBlock = true;
     }
 }
