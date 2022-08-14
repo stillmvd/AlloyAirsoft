@@ -18,7 +18,7 @@
             </x-text.title>
         </div>
     </div>
-    <form method="POST" action="{{ route('create', ['count' => $count]) }}" class="mt-10 flex flex-col justify-center m-auto w-1/2">
+    <form method="POST" action="{{ route('create', ['count' => $count, 'game_id' => 1001]) }}" class="mt-10 flex flex-col justify-center m-auto w-1/2">
         @csrf
         @for ($i = 0; $i < $count; $i++)
         <div class="flex flex-col justify-between h-[200px]">
