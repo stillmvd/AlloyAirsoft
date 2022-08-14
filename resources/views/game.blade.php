@@ -8,10 +8,8 @@
         <x-text.gamedate class="w-full flex flex-row items-end justify-center text-center font-light" :game='$game'/>
         <x-text.gametime class="w-full flex flex-row items-end justify-end text-end font-light" :game='$game'/>
     </div>
-
-    <div class="relative group w-full h-400px overflow-hidden rounded-3xl ring-2 ring-[#02DF8Fbf]">
-        <x-elems.map/>
-    </div>
+    
+    <x-elems.map id="map" />
 
     <div class="flex flex-col mt-20">
 
