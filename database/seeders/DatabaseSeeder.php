@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Description;
 use App\Models\Game;
 use App\Models\User;
 use Carbon\Carbon;
@@ -23,7 +24,30 @@ class DatabaseSeeder extends Seeder
             'login' => 'Ginze',
             'password' => Hash::make('Ginze123'),
         ]);
-
+        $description = new Description([
+            'title0' => '1.Groups',
+            'text0' => '- There will be no team in the usual environment, only your group and an unknown number of other similar groups;
+            - The group can be any size from 2 to 11 people;
+            - There are no restrictions on equipment and camouflage for a group, the group gathers according to its destination.',
+            'title1' => '2. Start of the game and interaction with the hosts',
+            'text1' => "- Registration takes place at the parking lot, after which the group is allowed to move to their spawn point;
+            - All players in a single group need to add a host in Messenger to receive tasks directly on the players' mobile devices;
+            - To contact the host, you can use both mobile devices and a pre-installed radio wave;
+            - The conditions for completing the task will be transmitted to the players using the messenger, until then the conditions of any task will be unknown.",
+            'title2' => '3. Injuries',
+            'text2' => '- The game has a wound system. Those. after the first hit anywhere, the player is considered wounded and must sit on the ground without a death bandage;
+            - Injured players are allowed to call their own for help;
+            - A wounded player can be lifted by bandaging any limb;
+            - The bandage can be removed 60 minutes after application.',
+            'title3' => '4. Kill',
+            'text3' => '- The player is considered dead after a second hit in the status of wounded or with a bandage;
+            - The player is considered dead after being attacked with a melee weapon in any case.',
+            'title4' => '5. Game bans',
+            'text4' => '- It is forbidden to replenish at the place of arrival at the game / parking lot. Anyone who replenishes / changes equipment automatically disqualifies the entire team;
+            - Act outside the boundaries of Canadian criminal law;
+            - Using any pyrotechnics (Grenades, Flares).',
+        ]);
+        $description->save();
         // ---------- Games
         DB::table('games')->insert([
             'name' => 'Woodpecker',
@@ -33,11 +57,16 @@ class DatabaseSeeder extends Seeder
             'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
             Number of enemy teams: unknown
             Amount of locals on the territory: unknown',
+            'game_info' => "Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we of course we will pay you.
+
+            “Colleagues”, do with them at your own discretion, no fines or rewards for You don't have to remove them. To clarify one point, we cannot transfer a group of more than 11 people, so Choose your best fighters and equip as you see fit. Take with you everything you need, because due to high risks we are not ready to transfer supplies to this territory.",
+            'description_id' => '1',
             'playtime' => '2022.08.19 10:30:00',
         ]);
 
         DB::table('teams')->insert(['name' => 'Mercenaries']);
         DB::table('teams')->insert(['name' => 'Bandits']);
+
 
     }
 }

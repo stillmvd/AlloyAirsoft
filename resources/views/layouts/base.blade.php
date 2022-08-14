@@ -51,6 +51,8 @@
 
 @if (Route::is('game'))
     <script src="{{ asset('js/map.js') }}"></script>
+@elseif (Route::is('admin'))
+    <script src="{{ asset('js/admin.js') }}"></script>
 @else
     <script src="{{ asset('js/main.js') }}"></script>
 @endif
