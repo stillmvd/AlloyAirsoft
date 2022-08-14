@@ -17,12 +17,11 @@ return new class extends Migration
             $table->double('second_cord');
             $table->string('polygon');
             $table->text('info');
-            // $table->text('short_description');
-            // $table->text('rule')->nullable();
+            $table->text('game_info');
+            $table->foreignId('description_id')->constrained('descriptions');
             $table->dateTime('playtime');
             $table->string('levels')->default('0');
             $table->string('tags_icon')->default('0');
-
             $table->boolean('finished')->default(0);
         });
     }
