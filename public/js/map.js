@@ -340,11 +340,13 @@ window.initMap = initMap;
 function upLabel(labelName) {
   let label = document.getElementById(labelName);
   label.style.top = '-18px';
+  label.style.fontSize = '12px';
 }
 
 function downLabel(labelName) {
   let label = document.getElementById(labelName);
   label.style.top = '0px';
+  label.style.fontSize = '16px';
 }
 
 document.getElementById('input_name').addEventListener('focus', function() {

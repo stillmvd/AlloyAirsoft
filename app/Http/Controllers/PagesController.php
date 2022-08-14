@@ -7,7 +7,6 @@ use App\Models\Game;
 use App\Models\Player;
 use App\Models\Team;
 use App\Models\User;
-use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -17,7 +16,8 @@ class PagesController extends Controller
 {
     public function index() {
         $games = DB::table('games')->get();
-        return view('index', compact('games'));
+        $number = DB::table('games')->get()->count();
+        return view('index', compact('games', 'number'));
     }
 
     public function archive() {

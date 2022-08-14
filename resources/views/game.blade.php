@@ -1,9 +1,6 @@
 @extends('layouts.base')
 
 @section('content')
-    <p class="hidden" id="first_cord">{{ $first_cord }}</p>
-    <p class="hidden" id="second_cord">{{ $second_cord }}</p>
-
     <div class="grid grid-cols-3 auto-cols-max py-6">
         <x-text.title class="w-full text-white font-light flex items-end pb-4">
             {{ __($game->name) }}
@@ -13,7 +10,7 @@
     </div>
 
     <div class="relative group w-full h-400px overflow-hidden rounded-3xl ring-2 ring-[#02DF8Fbf]">
-        <x-map/>
+        <x-elems.map/>
     </div>
 
     <div class="flex flex-col mt-20">

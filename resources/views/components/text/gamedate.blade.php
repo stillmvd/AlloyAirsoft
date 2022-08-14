@@ -1,4 +1,4 @@
-<div {{ $attributes }}>
+<div class="flex w-full justify-center items-end py-6">
     <p class="text-white text-[3rem] font-light mr-3">
         {{ date('d', strtotime($game->playtime)) }}
     </p>

@@ -30,7 +30,27 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 43.144122,
             'second_cord' => -80.258407,
             'polygon' => 'Clarington Woods',
-            'description' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
+            'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
+            Number of enemy teams: unknown
+            Amount of locals on the territory: unknown',
+            'playtime' => '2022.08.19 10:30:00',
+        ]);
+        DB::table('games')->insert([
+            'name' => 'Woodpecker',
+            'first_cord' => 43.144122,
+            'second_cord' => -80.258407,
+            'polygon' => 'Clarington Woods',
+            'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
+            Number of enemy teams: unknown
+            Amount of locals on the territory: unknown',
+            'playtime' => '2022.08.19 10:30:00',
+        ]);
+        DB::table('games')->insert([
+            'name' => 'Woodpecker',
+            'first_cord' => 43.144122,
+            'second_cord' => -80.258407,
+            'polygon' => 'Clarington Woods',
+            'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
             Number of enemy teams: unknown
             Amount of locals on the territory: unknown',
             'playtime' => '2022.08.19 10:30:00',

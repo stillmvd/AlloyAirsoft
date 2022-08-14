@@ -1,13 +1,10 @@
-let count_maps = document.getElementById("count_maps").textContent;
-
 function initMap() {
+  for (let i = 0; i < Number(document.getElementById('map-counter').textContent); i++) {
+    let map_1cord = document.getElementById('first_cord' + i);
+    let map_2cord = document.getElementById('second_cord' + i);
 
-  for (let i = 0; i < count_maps; i++) {
-    let map1_cord = document.getElementById("first_cord" + i);
-    let map2_cord = document.getElementById("second_cord" + i);
-
-    map = new google.maps.Map(document.getElementById("map" + i), {
-      center: new google.maps.LatLng(map1_cord.textContent, map2_cord.textContent),
+    map = new google.maps.Map(document.getElementById('map' + i), {
+      center: new google.maps.LatLng(map_1cord.textContent, map_2cord.textContent),
     zoom: 15,
       disableDefaultUI: true,
       styles: [

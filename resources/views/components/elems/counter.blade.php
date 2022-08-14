@@ -1,0 +1,1 @@
+<p id="map-counter" class="hidden">{{ $number }}</p>

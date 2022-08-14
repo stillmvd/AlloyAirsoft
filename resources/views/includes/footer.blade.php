@@ -19,8 +19,8 @@
                 </x-text.subtitle>
                 <form action="{{ route('save_email') }}" method="POST" class="w-full flex flex-col h-full justify-end">
                     @csrf
-                    <div class="flex flex-col w-full relative">
-                        <div class="flex flex-row">
+                    <div class="flex flex-col items-end relative">
+                        <div class="flex flex-row w-[70%]">
                             <input type="email" name="email" placeholder="Email" class="bg-transparent border-b-2 w-full focus:outline-none text-white pb-1">
                             <input type="submit" class="bg-transparent border-b-2 focus:outline-none text-white pb-2 w-min cursor-pointer" value="→">
                         </div>

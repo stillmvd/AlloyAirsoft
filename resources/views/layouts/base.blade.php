@@ -20,7 +20,7 @@
 @endif
 <body class="h-[100vh] flex flex-col bg-[#111111]">
     <header>
-        <x-pages.container>
+        <x-page.container>
             @auth
                 @if (Route::is('admin') || Route::is('players'))
                     @include('includes.admin-header')
@@ -31,21 +31,21 @@
             @guest
                 @include('includes.header')
             @endguest
-        </x-pages.container>
+        </x-page.container>
     </header>
 
     <main class="flex items-center">
-        <x-pages.container>
+        <x-page.container>
             @yield('content')
-        </x-pages.container>
+        </x-page.container>
     </main>
 
     <footer>
-        <x-pages.container>
+        <x-page.container>
             @unless (Route::is('admin') || Route::is('players'))
                 @include('includes.footer')
             @endunless
-        </x-pages.container>
+        </x-page.container>
     </footer>
 </body>
 

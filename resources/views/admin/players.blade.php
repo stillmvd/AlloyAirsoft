@@ -7,7 +7,7 @@
         </x-text.title>
         <x-admin.name_col_players/>
         @for ($i = 0; $i < $players_count; $i++)
-            <div class="grid grid-cols-10 grid-cols-1 grid-flow-col">
+            <div class="grid grid-cols-1">
                 <p class="text-white text-[1rem] pt-10 text-center">{{ $players[$i]->id }}</p>
                 <p class="text-white text-[1rem] pt-10 text-center">{{ $players[$i]->created_at }}</p>
                 <p class="text-white text-[1rem] pt-10 text-center">{{ $players[$i]->updated_at }}</p>
@@ -28,7 +28,7 @@
         </x-text.title>
         <x-admin.name_col_games/>
         @for ($i = 0; $i < $games_count; $i++)
-            <div class="grid grid-cols-12 grid-cols-1 grid-flow-col">
+            <div class="grid grid-cols-1 grid-flow-col">
                 <p class="text-white text-[1rem] pt-10 text-center">{{ $games[$i]->id }}</p>
                 <p class="text-white text-[1rem] pt-10 text-center">{{ $games[$i]->created_at }}</p>
                 <p class="text-white text-[1rem] pt-10 text-center">{{ $games[$i]->updated_at }}</p>
@@ -51,7 +51,7 @@
         </x-text.title>
         <x-admin.name_col_emails/>
         @for ($i = 0; $i < $emails_count; $i++)
-            <div class="grid grid-cols-4 grid-cols-1 grid-flow-col">
+            <div class="grid grid-cols-1 grid-flow-col">
                 <p class="text-white text-[1rem] pt-10 text-center">{{ $emails[$i]->id }}</p>
                 <p class="text-white text-[1rem] pt-10 text-center">{{ $emails[$i]->created_at }}</p>
                 <p class="text-white text-[1rem] pt-10 text-center">{{ $emails[$i]->updated_at }}</p>
