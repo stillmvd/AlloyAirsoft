@@ -3,12 +3,12 @@
 @section('content')
     @if ($games->count() > 0)
         @foreach ($games as $game)
-            <div class="flex w-full justify-center py-6">
-                <x-text.gamedate :game='$game'/>
-            </div>
-            <a href="{{ route('game', $game->id) }}">
-                <div class="h-[400px] w-full bg-[#303030]/25 rounded-3xl"></div>
-            </a>
+            <x-elems.counter :number=$number />
+            <x-text.cords loop='{{ $loop->index }}' first_cord='{{ $game->first_cord }}' second_cord='{{ $game->second_cord }}' />
+                
+            <x-page.gamedate :game=$game />
+
+            <x-elems.gamecard :loop=$loop :game=$game />
         @endforeach
     @else
         <x-text.title class="text-white font-light mt-20">

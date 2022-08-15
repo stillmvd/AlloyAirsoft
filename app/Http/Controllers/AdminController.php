@@ -21,7 +21,10 @@ class AdminController extends Controller
     }
     public function store(StoreAdminRequest $request) {
 
-        $validated = $request->validate();
+        $validated = $request->validate([
+            'login' => 'required',
+            'password' => 'required',
+        ]);
         if (auth()->attempt($validated)) {
 
             return redirect('admin');

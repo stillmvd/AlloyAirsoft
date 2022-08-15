@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('descriptions')->insert([
-            'title' => '1.Groups',
+            'title' => '1. Groups',
             'text' => '- There will be no team in the usual environment, only your group and an unknown number of other similar groups;
             - The group can be any size from 2 to 11 people;
             - There are no restrictions on equipment and camouflage for a group, the group gathers according to its destination.',
