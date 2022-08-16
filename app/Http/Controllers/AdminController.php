@@ -42,19 +42,24 @@ class AdminController extends Controller
     }
 
     public function create(Request $request) {
-        dd($request->all());
         Game::create([
             'op-date' => $request->op_date,
             'op-name' => $request->op_name,
-            'op-info' => $request->op_info,
+            'card-info' => $request->op_info,
             'op-time' => $request->op_time,
             'op-polygon' => $request->op_polygon,
+            'first-cord' => $request->first_cord,
+            'second-cord' => $request->second_cord,
+            'game-info-title' => $request->title_info,
+            'game-info' => $request->text_info,
+            'levels' => $request->levels,
+            'finished' => 0,
         ]);
         for($i = 0; $i < $request->count; $i++){
             DB::table('descriptions')->insert([
                 'title' => request('title' . $i),
                 'text' => request('text' . $i),
-                'game_id' => $request->game_id,
+                'game_id' => 1006,
             ]);
         }
         return redirect()->route('admin');

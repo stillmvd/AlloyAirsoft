@@ -1,5 +1,6 @@
 function setIdAndNameInput(){
     let blocks = document.getElementsByClassName('block');
+    document.getElementById('count').value = blocks.length;
     for (let i = 0; i < blocks.length; i++){
         blocks[i].setAttribute('id', ('block'+i));
         blocks[i].childNodes[1].name = 'title' + i;
@@ -17,7 +18,7 @@ function addColumns() {
 function removeColumns() {
     let length = document.getElementsByClassName('block').length;
     if (length <= 1){
-        
+
     } else {
         let block = document.getElementById('block' + (length-1));
         block.remove();

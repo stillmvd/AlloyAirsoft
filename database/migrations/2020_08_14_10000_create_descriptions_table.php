@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('descriptions', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
-            $table->text('text');
+            $table->string('title')->nullable();
+            $table->text('text')->nullable();
 
             $table->foreignId('game_id')->constrained('games');
         });
