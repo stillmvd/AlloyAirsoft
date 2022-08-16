@@ -47,11 +47,11 @@
             <x-admin.input placeholder="Title" type="text" name="title" />
             <x-elems.textarea placeholder="Text" name="text" />
         </x-admin.textblock>
+        <div id="added"></div>
         <x-elems.button value="Add game" />
     </x-admin.form>
-    
-    <x-admin.addform class="mx-auto my-10" :count=$count>
-        <x-admin.button value="{{ 'Add columns' }}" name="add" class="bg-[#ffe260]" onclick="addColumns()" />
-        <x-admin.button value="{{ 'Remove columns' }}" name="remove" class="bg-[#ff6d6d]" onclick="removeColumns()" />
-    </x-admin.addform>
+    <div class="flex flex-row justify-center gap-4">
+        <x-admin.button value="{{ 'Add columns' }}" id="add" class="bg-[#ffe260] text-center" onclick="addColumns()" />
+        <x-admin.button value="{{ 'Remove columns' }}" id="remove" class="bg-[#ff6d6d] text-center" onclick="removeColumns()" />
+    </div>
 @endsection

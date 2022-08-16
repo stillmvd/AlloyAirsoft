@@ -38,15 +38,16 @@ class AdminController extends Controller
     public function changeInputs(Request $request){
 
         $counter = $request->count;
-        if($request->Add == 'Add'){
+        if($request->Add == 'add'){
             $counter++;
         }
-        else if($request->Remove == 'Remove'){
+        else if($request->Remove == 'remove'){
             $counter--;
         }
-
-        return redirect()->route('admin')
-                ->with(['counter' => $counter]);
+        dd($counter);
+        return redirect()->route('admin')->with(
+            ['counter' => $counter]
+        );
     }
 
     public function index(Request $request) {
