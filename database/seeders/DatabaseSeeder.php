@@ -27,17 +27,18 @@ class DatabaseSeeder extends Seeder
 
         // ---------- Games
         DB::table('games')->insert([
-            'name' => 'Woodpecker',
-            'first_cord' => 43.144122,
-            'second_cord' => -80.258407,
-            'polygon' => 'Clarington Woods',
-            'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
+            'op-name' => 'Woodpecker',
+            'first-cord' => 43.144122,
+            'second-cord' => -80.258407,
+            'op-polygon' => 'Clarington Woods',
+            'card-info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
             Number of enemy teams: unknown
             Amount of locals on the territory: unknown',
-            'game_info' => "Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we of course we will pay you.
+            'game-info' => "Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we of course we will pay you.
 
             “Colleagues”, do with them at your own discretion, no fines or rewards for You don't have to remove them. To clarify one point, we cannot transfer a group of more than 11 people, so Choose your best fighters and equip as you see fit. Take with you everything you need, because due to high risks we are not ready to transfer supplies to this territory.",
-            'playtime' => '2022.08.19 10:30:00',
+            'game-date' => '2022.08.19',
+            'game-time' => '10:30:00',
         ]);
 
         DB::table('descriptions')->insert([

@@ -53,11 +53,12 @@ class AdminController extends Controller
     public function index(Request $request) {
 
         return view('admin.index', [
-            'count' => $request->session()->get('counter', 1)
+            'count' => $request->session()->get('counter', 1),
         ]);
     }
-
+    
     public function create(Request $request) {
+        dd($request->all());
         for($i = 0; $i < $request->count; $i++){
             DB::table('descriptions')->insert([
                 'title' => request('title' . $i),
