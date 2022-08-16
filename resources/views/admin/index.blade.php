@@ -50,8 +50,12 @@
         <div id="added"></div>
         <x-elems.button value="Add game" />
     </x-admin.form>
-    <div class="flex flex-row justify-center gap-4">
-        <x-admin.button value="{{ 'Add columns' }}" id="add" class="bg-[#ffe260] text-center" onclick="addColumns()" />
-        <x-admin.button value="{{ 'Remove columns' }}" id="remove" class="bg-[#ff6d6d] text-center" onclick="removeColumns()" />
+    <div class="flex justify-between w-[26%] my-10 mx-auto">
+        <x-admin.button class="place-self-end hover:text-[#02DF8F]" onclick="addColumns()">
+            {{ 'Add columns' }}
+        </x-admin.button>
+        <x-admin.button class="place-self-start hover:text-[#ce2f2f]" onclick="removeColumns()">
+            {{ 'Remove columns' }}
+        </x-admin.button>
     </div>
 @endsection

@@ -17,13 +17,10 @@ function addColumns() {
 function removeColumns() {
     let length = document.getElementsByClassName('block').length;
     if (length <= 1){
-
-    }
-    else{
+        
+    } else {
         let block = document.getElementById('block' + (length-1));
-        block.id = ''
-        block.classList.add('hidden');
-        block.classList.remove('block');
+        block.remove();
     }
 }
 
