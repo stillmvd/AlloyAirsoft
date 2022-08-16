@@ -22,6 +22,7 @@ function removeColumns() {
     } else {
         let block = document.getElementById('block' + (length-1));
         block.remove();
+        document.getElementById('count').value = length;
     }
 }
 

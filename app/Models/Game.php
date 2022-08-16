@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     protected $fillable = [
+        'date',
         'name',
+        'info',
+        'info',
+        'polygon',
         'first_cord',
         'second_cord',
-        'polygon',
-        'info',
-        'game_info',
-        'description_id',
-        'playtime',
         'levels',
-        'tags_icon',
+        'time',
+        'tags-icon',
         'finished',
     ];
 

@@ -12,15 +12,13 @@ return new class extends Migration
             $table->id()->from(1001);
             $table->timestamps();
 
-            $table->string('op-date')->nullable();
-            $table->string('op-name')->nullable();
-            $table->text('card-info')->nullable();
-            $table->string('op-time')->nullable();
-            $table->string('op-polygon')->nullable();
-            $table->double('first-cord')->nullable();
-            $table->double('second-cord')->nullable();
-            $table->string('game-info-title')->nullable();
-            $table->text('game-info')->nullable();
+            $table->date('date');
+            $table->string('name');
+            $table->text('info');
+            $table->time('time');
+            $table->string('polygon');
+            $table->string('first_cord');
+            $table->string('second_cord');
 
             $table->string('levels')->default('0');
             $table->string('tags-icon')->default('0');

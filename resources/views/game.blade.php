@@ -18,12 +18,12 @@
         <x-text.title>
             {{ __('Info') }}
         </x-text.title>
-        <x-page.block class="flex-col w-[60%] h-[160px] ease-out duration-200 overflow-hidden" id="info-block">
+        <x-page.block class="flex-col w-[60%] h-[154px] ease-out duration-200 overflow-hidden" id="info-block">
             <x-text.subtitle class="text-white font-normal">
-                {{ __('Mercenaries!') }}
+                {{ $infos->title }}
             </x-text.subtitle>
             <x-text.paragraph class="w-[70%]" id="info-text">
-                {{ $game->game_info }}
+                {{ $infos->text }}
             </x-text.paragraph>
             <x-elems.arrow onclick="showInfoBlock()" id="info-arrow" />
         </x-page.block>
@@ -36,12 +36,12 @@
             {{ __('Rules') }}
         </x-text.title>
         <x-page.block class="flex-col w-[60%] h-[180px] ease-out duration-200 overflow-hidden" id="rules-block">
-            @foreach ($items as $item)
+            @foreach ($rules as $rule)
                 <x-text.subtitle class="mb-0 text-white font-normal {{ ($loop->index > 0) ? 'mt-10' : '' }}">
-                    {{ $item->title }}
+                    {{ $rule->title }}
                 </x-text.subtitle>
                 <x-text.paragraph class="w-[70%]">
-                    {{ $item->text }}
+                    {{ $rule->text }}
                 </x-text.paragraph>
             @endforeach
             <x-elems.arrow onclick="showRulesBlock()" id="rules-arrow" />

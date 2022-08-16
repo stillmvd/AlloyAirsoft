@@ -422,14 +422,14 @@ function showInfoBlock() {
   let arrow = document.getElementById('info-arrow');
   let fullHeight = parseInt(window.getComputedStyle(document.getElementById('info-text'), null).height);
   if(openInfoBlock){
-      infoBlock.classList.remove('h-[160px]');
+      infoBlock.classList.remove('h-[154px]');
       infoBlock.style.height = fullHeight + 30 + 'px';
       arrow.style.transform = 'rotate(0deg)';
       openInfoBlock = false;
   }
   else{
-      infoBlock.classList.add('h-[160px]');
-      infoBlock.style.height = "160px";
+      infoBlock.classList.add('h-[154px]');
+      infoBlock.style.height = "154px";
       arrow.style.transform = 'rotate(-90deg)';
       openInfoBlock = true;
   }

@@ -8,18 +8,20 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('descriptions', function (Blueprint $table) {
+        Schema::create('rules', function (Blueprint $table) {
             $table->id();
 
             $table->string('title')->nullable();
             $table->text('text')->nullable();
 
             $table->foreignId('game_id')->constrained('games');
+
+            $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('descriptions');
+        Schema::dropIfExists('rules');
     }
 };

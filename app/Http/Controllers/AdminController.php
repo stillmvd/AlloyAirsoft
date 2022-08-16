@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAdminRequest;
-use App\Models\Description;
 use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,57 +10,71 @@ use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    public function login() {
-
-        return view('admin.login');
-    }
-    public function logout() {
-
-        auth()->logout();
-        return redirect('/');
-    }
-
-    public function store(StoreAdminRequest $request) {
-
-        $validated = $request->validate();
+    public function login(StoreAdminRequest $request) {
+        // Comment
+        $validated = $request->validate([
+            'login' => 'required',
+            'password' => 'required',
+        ]);
         if (auth()->attempt($validated)) {
-
+            // Comment
             return redirect('admin');
         } else {
-
+            // Comment
             return redirect()->back()
                     ->withErrors(['loginError' => 'You have some errors']);
         }
     }
 
-    public function index(Request $request) {
+    public function logout() {
+        // Comment
+        auth()->logout();
+        return redirect('/');
+    }
 
-        return view('admin.index', [
-            'count' => $request->session()->get('counter', 1),
-        ]);
+    public function index(Request $request) {
+        // Comment
+        return view('admin.index');
     }
 
     public function create(Request $request) {
-        Game::create([
-            'op-date' => $request->op_date,
-            'op-name' => $request->op_name,
-            'card-info' => $request->op_info,
-            'op-time' => $request->op_time,
-            'op-polygon' => $request->op_polygon,
-            'first-cord' => $request->first_cord,
-            'second-cord' => $request->second_cord,
-            'game-info-title' => $request->title_info,
-            'game-info' => $request->text_info,
-            'levels' => $request->levels,
+        $game = Game::create([
+            'date' => $request->input('date'),
+            'name' => $request->input('name'),
+            'info' => request('info'),
+            'time' => $request->input('time'),
+            'polygon' => $request->input('polygon'),
+            'first_cord' => $request->input('first_cord'),
+            'second_cord' => $request->input('second_cord'),
+            'levels' => $request->input('levels'),
             'finished' => 0,
         ]);
-        for($i = 0; $i < $request->count; $i++){
-            DB::table('descriptions')->insert([
-                'title' => request('title' . $i),
-                'text' => request('text' . $i),
-                'game_id' => 1006,
+        DB::table('infos')->insert([
+            'title' => request('title'),
+            'text' => request('text'),
+            'game_id' => $game->id,
+        ]);
+
+        if ($request->count <= 1) {
+            DB::table('rules')->insert([
+                'title' => $request->input('title'),
+                'text' => $request->input('text'),
+                'game_id' => $game->id,
             ]);
+        } else {
+            for($i = 0; $i < $request->count; $i++){
+                if ($request->input('title' . $i) == null || $request->input('text' . $i) == null) {
+
+                } else {
+                    DB::table('rules')->insert([
+                        'title' => $request->input('title' . $i),
+                        'text' => $request->input('text' . $i),
+                        'game_id' => $game->id,
+                    ]);
+                }
+            }
         }
+
         return redirect()->route('admin');
     }
 

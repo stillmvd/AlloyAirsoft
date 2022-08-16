@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
 use App\Models\Game;
+use App\Models\Info;
 use App\Models\Player;
+use App\Models\Rule;
 use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
@@ -29,13 +31,15 @@ class PagesController extends Controller
 
     public function game($id) {
 
-        $items = DB::table('descriptions')->get();
-        $amount = $items->count();
+        $infos = Info::where('game_id', $id)->first();
+        $rules = Rule::where('game_id', $id)->get();
+        $amount = $rules->count();
         return view('game', [
             'first_cord' => Game::find($id)->first_cord,
             'second_cord' => Game::find($id)->second_cord,
             'game' => Game::find($id),
-            'items' => $items,
+            'infos' => $infos,
+            'rules' => $rules,
             'amount' => $amount,
             'teams' => Db::table('teams')->get('name'),
             'teams_count' => DB::table('teams')->count(),
