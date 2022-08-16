@@ -1,5 +1,5 @@
 <p {{ $attributes->class(
-    'text-white font-light
+    'font-normal
      phone:text-base 
      tablet:text-base 
      tablet-xl:text-base 

@@ -19,7 +19,7 @@
             {{ __('Info') }}
         </x-text.title>
         <x-page.block class="flex-col w-[60%] h-[160px] ease-out duration-200 overflow-hidden" id="info-block">
-            <x-text.subtitle>
+            <x-text.subtitle class="text-white font-normal">
                 {{ __('Mercenaries!') }}
             </x-text.subtitle>
             <x-text.paragraph class="w-[70%]" id="info-text">
@@ -37,7 +37,7 @@
         </x-text.title>
         <x-page.block class="flex-col w-[60%] h-[180px] ease-out duration-200 overflow-hidden" id="rules-block">
             @foreach ($items as $item)
-                <x-text.subtitle class="mb-0 {{ ($loop->index > 0) ? 'mt-10' : '' }}">
+                <x-text.subtitle class="mb-0 text-white font-normal {{ ($loop->index > 0) ? 'mt-10' : '' }}">
                     {{ $item->title }}
                 </x-text.subtitle>
                 <x-text.paragraph class="w-[70%]">
