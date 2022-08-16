@@ -3,7 +3,7 @@
 @section('content')
     <x-page.maininfo>
         <x-text.title class="col-span-3 place-self-center mt-20 mb-10">
-            Admin information
+            {{ __('Admin information') }}
         </x-text.title>
     </x-page.maininfo>
 
@@ -27,7 +27,7 @@
 
     <x-page.maininfo>
         <x-text.title class="col-span-3 place-self-center mt-20 mb-10">
-            Add new game
+            {{ __('Add new game') }}
         </x-text.title>
     </x-page.maininfo>
 
@@ -40,9 +40,9 @@
         @endfor
         <x-elems.button value="Add game" />
     </x-admin.form>
-
+    
     <x-admin.addform class="mx-auto my-10" :count=$count>
-        <x-admin.button name="Add" value="{{ __('Add columns') }}" class="bg-[#ffe260]" />
-        <x-admin.button name="Remove" value="{{ __('Remove columns') }}" class="bg-[#ff6d6d]" />
+        <x-admin.button value="{{ 'Add columns' }}" name="add" class="bg-[#ffe260]" onclick="addColumns()" />
+        <x-admin.button value="{{ 'Remove columns' }}" name="remove" class="bg-[#ff6d6d]" onclick="removeColumns()" />
     </x-admin.addform>
 @endsection

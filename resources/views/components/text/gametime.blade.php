@@ -3,11 +3,11 @@
         {{ date('h:s', strtotime($game->playtime)) }}
     </p>
     @if (date('h', strtotime($game->playtime)) < 12)
-        <p class="text-[1.4rem] text-white font-light leading-8">
+        <p class="text-[1.4rem] text-[#CACACA] font-light leading-8">
             {{ __('Am') }}
         </p>
         @else
-        <p class="text-[1.4rem] text-white font-light leading-8">
+        <p class="text-[1.4rem] text-[#CACACA] font-light leading-8">
             {{ __('Pm') }}
         </p>
     @endif

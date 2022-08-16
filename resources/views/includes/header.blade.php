@@ -7,10 +7,10 @@
                 </x-text.link>
             </div>
             <div class="flex items-end">
-                <x-text.link href="{{ route('index') }}" class="font-light mr-4 hover:text-[2.5rem] ease-out duration-[.2s] {{ Route::is('index') ? 'text-[2.5rem] hover:pb-0 text-white' : 'text-[1.2rem] pb-2 hover:pb-0 hover:text-white text-gray-200/75' }}">
+                <x-text.link href="{{ route('index') }}" class="font-normal mr-4 hover:text-[2.5rem] ease-out duration-[.2s] {{ Route::is('index') ? 'text-[2.5rem] hover:pb-0 text-white font-normal' : 'text-[1.2rem] pb-2 hover:pb-0 hover:text-white text-[#CACACA]' }}">
                     {{ __('Upcoming') }}
                 </x-text.link>
-                <x-text.link href="{{ route('archive') }}" class="font-light ml-4 hover:text-[2.5rem] ease-out duration-[.2s] {{ Route::is('archive') ? 'text-[2.5rem] hover:pb-0 text-white' : 'text-[1.2rem] pb-2 hover:pb-0 hover:text-white text-gray-200/75' }}">
+                <x-text.link href="{{ route('archive') }}" class="font-normal ml-4 hover:text-[2.5rem] ease-out duration-[.2s] {{ Route::is('archive') ? 'text-[2.5rem] hover:pb-0 text-white font-normal' : 'text-[1.2rem] pb-2 hover:pb-0 hover:text-white text-[#CACACA]' }}">
                     {{ __('Archive') }}
                 </x-text.link>
             </div>

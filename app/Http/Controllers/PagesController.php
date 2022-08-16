@@ -13,7 +13,7 @@ class PagesController extends Controller
     public function index() {
 
         return view('index', [
-            'games' => DB::table('games')->get(),
+            'games' => DB::table('games')->where('finished', '=', '0')->get(),
             'number' => DB::table('games')->get()->count()
         ]);
     }
@@ -22,6 +22,7 @@ class PagesController extends Controller
 
         return view('archive', [
             'teams' => DB::table('teams')->get(),
+            'number' => DB::table('games')->get()->count(),
             'games' => DB::table('games')->where('finished', 1)->get(),
         ]);
     }
