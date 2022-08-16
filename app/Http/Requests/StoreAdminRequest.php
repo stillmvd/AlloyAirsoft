@@ -15,8 +15,8 @@ class StoreAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'login' => 'required',
-            'password' => 'required',
+            'login' => ['required'],
+            'password' => ['required'],
         ];
     }
 }
