@@ -17,7 +17,6 @@ Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('admin', [AdminController::class, 'index'])->name('admin');
     Route::post('admin', [AdminController::class, 'create'])->name('create');
-    Route::post('admin/changeInputs', [AdminController::class, 'changeInputs'])->name('changeInputs');
     Route::get('admin/players', [AdminController::class, 'players'])->name('players');
 });
 
