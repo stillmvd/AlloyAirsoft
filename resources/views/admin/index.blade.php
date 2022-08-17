@@ -31,7 +31,7 @@
         </x-text.title>
     </x-page.maininfo>
 
-    <x-admin.form class="w-[40%] mx-auto">
+    <x-admin.form method="POST" class="w-[40%] mx-auto">
 
         <x-text.subtitle class="text-[#02DF8F]">
             {{ __('Card information') }}

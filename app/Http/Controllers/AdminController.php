@@ -6,7 +6,6 @@ use App\Http\Requests\StoreAdminRequest;
 use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -34,7 +33,12 @@ class AdminController extends Controller
 
     public function index(Request $request) {
         // Comment
-        return view('admin.index');
+        return view('admin.index', [
+            'infos' => $request->infos,
+            'rules' => $request->rules,
+            'players' => $request->players,
+            'games' =>  $request->games,
+        ]);
     }
 
     public function create(Request $request) {
@@ -76,6 +80,58 @@ class AdminController extends Controller
         }
 
         return redirect()->route('admin');
+    }
+    public function edit($id){
+        return view('admin.edit', [
+            'infos' => DB::table('infos')->where('game_id', $id)->get()->first(),
+            'rules' => DB::table('rules')->where('game_id', $id)->get(),
+            'players' => DB::table('players')->where('game_id', $id)->get(),
+            'games' =>  DB::table('games')->where('id', $id)->get()->first(),
+        ]);
+    }
+
+    public function update(Request $request, $id){
+        $game = Game::find($id);
+        DB::table('games')->update([
+            'date' => $request->input('date'),
+            'name' => $request->input('name'),
+            'info' => request('info'),
+            'time' => $request->input('time'),
+            'polygon' => $request->input('polygon'),
+            'first_cord' => $request->input('first_cord'),
+            'second_cord' => $request->input('second_cord'),
+            'levels' => $request->input('levels'),
+            'finished' => 0,
+        ]);
+
+        DB::table('infos')->update([
+            'title' => request('title'),
+            'text' => request('text'),
+            'game_id' => $game->id,
+        ]);
+
+        if ($request->count <= 1) {
+            DB::table('rules')->update([
+                'title' => $request->input('title'),
+                'text' => $request->input('text'),
+                'game_id' => $game->id,
+            ]);
+        } else {
+            for($i = 0; $i < $request->count; $i++){
+                if ($request->input('title' . $i) == null || $request->input('text' . $i) == null) {
+
+                } else {
+                    DB::table('rules')->update([
+                        'title' => $request->input('title' . $i),
+                        'text' => $request->input('text' . $i),
+                        'game_id' => $game->id,
+                    ]);
+                }
+            }
+        }
+        return redirect()->route('index')->with([
+            'success' => 'The game "' . $game->name . '" was successfully change',
+        ]);
     }
 
     public function delete($id) {

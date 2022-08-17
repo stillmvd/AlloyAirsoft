@@ -42,7 +42,7 @@
 
     <footer>
         <x-page.container>
-            @unless (Route::is('admin') || Route::is('players'))
+            @unless (Route::is('admin') || Route::is('players') || Route::is('edit'))
                 @include('includes.footer')
             @endunless
         </x-page.container>
@@ -51,7 +51,7 @@
 
 @if (Route::is('game'))
     <script src="{{ asset('js/map.js') }}"></script>
-@elseif (Route::is('admin'))
+@elseif (Route::is('admin') || Route::is('edit'))
     <script src="{{ asset('js/admin.js') }}"></script>
 @else
     <script src="{{ asset('js/main.js') }}"></script>

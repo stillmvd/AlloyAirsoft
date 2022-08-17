@@ -1,8 +1,9 @@
-<form action="{{ route('create', ['game_id' => 1001]) }}" {{ $attributes->class([
+@props(['id' => ''])
+
+<form action="{{ route('update', ['id' => $id]) }}" {{ $attributes->class([
     'flex flex-col gap-y-6'
-])->merge([
-    'method' => 'POST',
 ]) }}>
     @csrf
+    {{ method_field('put') }}
     {{ $slot }}
 </form>
