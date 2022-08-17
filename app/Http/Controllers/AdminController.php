@@ -78,6 +78,17 @@ class AdminController extends Controller
         return redirect()->route('admin');
     }
 
+    public function delete($id) {
+        $game_name = Game::find($id)->name;
+        DB::table('infos')->where('game_id', $id)->delete();
+        DB::table('rules')->where('game_id', $id)->delete();
+        DB::table('players')->where('game_id', $id)->delete();
+        DB::table('games')->where('id', $id)->delete();
+        return redirect()->back()->with([
+            'success' => 'The game "' . $game_name . '" was successfully deleted',
+        ]);
+    }
+
     public function players() {
         $players = DB::table('players')->get();
         $players_count = DB::table('players')->count();

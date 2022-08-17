@@ -8,15 +8,15 @@
     @vite('resources/css/app.css')
     <title>Alloy Airsoft</title>
 </head>
-@if (session()->get('success'))
-    <p class="text-white bg-[#02DF8F] py-10 px-16 w-min whitespace-nowrap text-xl mt-2 font-light rounded flex text-center items-center justify-center slide-card absolute left-0 right-0 mx-auto">
-        {{ session()->get('success') }}
-    </p>
+@if ($message = session()->get('success'))
+    <x-elems.alert class="bg-[#02DF8F]">
+        {{ $message }}
+    </x-elems.alert>
 @endif
-@if (session()->get('error'))
-    <p class="bg-red-500 py-10 px-16 w-min whitespace-nowrap text-white text-xl mt-2 font-light rounded flex text-center items-center justify-center slide-card absolute left-0 right-0 mx-auto">
-        {{ session()->get('error') }}
-    </p>
+@if ($message = session()->get('error'))
+    <x-elems.alert class="bg-red-500">
+        {{ $message }}
+    </x-elems.alert>
 @endif
 <body class="h-[100vh] flex flex-col bg-[#111111]">
     <header>

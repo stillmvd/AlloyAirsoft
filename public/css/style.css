@@ -20,7 +20,7 @@ html {
 .slide-card{
     animation-name: slide;
     animation-timing-function: ease-out;
-    animation-duration: .3s;
+    animation-duration: .16s;
     animation-iteration-count: 1;
     animation-direction: normal;
     animation-fill-mode: forwards;
