@@ -1,9 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-html::-webkit-scrollbar{
-    width: 0;
+::-webkit-scrollbar {
+    width: 6px;
+    height: 14px;
+}
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment  {
+    background-color: transparent;
+}
+::-webkit-scrollbar-track-piece  {
+    background-color: transparent;
+    -webkit-border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:vertical {
+    height: 2%px;
+    background-color: #CACACA;
+    border: none;
+    -webkit-border-radius: 50px;
+}
+
+#textarea::-webkit-scrollbar-track{
     visibility: hidden;
-    display: none;
+}
+#textarea::-webkit-scrollbar{
+    visibility: hidden;
+}
+#textarea::-webkit-scrollbar-thumb{
+    visibility: hidden;
 }
 
 html {
