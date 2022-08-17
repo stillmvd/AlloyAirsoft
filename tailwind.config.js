@@ -28,6 +28,9 @@ module.exports = {
 
         'desktop-xl': '1536px',
         // => @media (min-width: 1536px) { ... }
+
+        'desktop-4k': '2560px',
+        // => @media (min-width: 1536px) { ... }
       },
     },
   },

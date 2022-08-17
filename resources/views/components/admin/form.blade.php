@@ -1,6 +1,6 @@
 @props(['id' => ''])
 
-<form action="{{ route('update', ['id' => $id]) }}" {{ $attributes->class([
+<form {{ $attributes->class([
     'flex flex-col gap-y-6'
 ]) }}>
     @csrf
