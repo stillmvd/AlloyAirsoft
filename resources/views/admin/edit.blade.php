@@ -3,7 +3,7 @@
 @section('content')
 <x-page.maininfo>
     <x-text.title class="col-span-3 place-self-center mt-20 mb-10">
-        {{ __('Add new game') }}
+        {{ __('Edit game information') }}
     </x-text.title>
 </x-page.maininfo>
 
@@ -12,7 +12,7 @@
     <x-text.subtitle class="text-[#02DF8F]">
         {{ __('Card information') }}
     </x-text.subtitle>
-
+    
     <x-admin.input placeholder="Game date" type="text" name="date" value="{{ $games->date }}" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
     <x-admin.input placeholder="Game name" type="text" name="name" value="{{ $games->name }}" />
     <x-elems.textarea placeholder="Game short info" name="info">
