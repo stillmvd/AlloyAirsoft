@@ -1,9 +1,8 @@
-@props(['id' => ''])
-
-<form action="{{ route('update', ['id' => $id]) }}" {{ $attributes->class([
+<form {{ $attributes->class([
     'flex flex-col gap-y-6'
+])->merge([
+    'method' => 'POST',
 ]) }}>
     @csrf
-    {{ method_field('put') }}
     {{ $slot }}
 </form>

@@ -3,5 +3,4 @@
      focus:outline-none
     '
 ]) }} id="textarea" cols="30" rows="4">
-{{ $slot }}
-</textarea>
+{{ $slot }}</textarea>

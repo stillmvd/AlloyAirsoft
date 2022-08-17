@@ -7,8 +7,8 @@
     </x-text.title>
 </x-page.maininfo>
 
-<x-admin.form id="{{ $games->id }}" method="POST" class="w-[40%] mx-auto">
-    
+<x-admin.form action="{{ route('update', $games->id) }}" class="w-[40%] mx-auto">
+    @method('put')
     <x-text.subtitle class="text-[#02DF8F]">
         {{ __('Card information') }}
     </x-text.subtitle>

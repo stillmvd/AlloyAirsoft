@@ -12,16 +12,74 @@
             <x-text.subtitle class="text-white font-normal">
                 {{ __('Upcoming games') }}
             </x-text.subtitle>
+            @foreach ($games as $game)
+                @if ($game->finished == 0)
+                    <div class="flex flex-row w-full justify-between mt-3">
+                        <x-text.link href="{{ route('game', $game->id) }}" class="text-[#CACACA] font-normal">
+                            {{ $game->name }}
+                        </x-text.link>
+                        <div class="flex flex-row">
+                            <x-text.paragraph class="text-[#CACACA] font-normal mr-2">
+                                {{ $players->where('id', $game->id)->count() }}
+                            </x-text.paragraph>
+                            <x-text.paragraph>
+                                {{ __('players') }}
+                            </x-text.paragraph>
+                        </div>
+                        <x-text.paragraph>
+                            {{ $game->date }}
+                        </x-text.paragraph>
+                    </div>
+                @endif
+            @endforeach
         </x-admin.block>
+
         <x-admin.block>
             <x-text.subtitle class="text-white font-normal">
                 {{ __('Finished games') }}
             </x-text.subtitle>
+            @foreach ($games as $game)
+                @if ($game->finished == 1)
+                    <div class="flex flex-row w-full justify-between mt-3">
+                        <x-text.link href="{{ route('game', $game->id) }}" class="text-[#CACACA] font-normal">
+                            {{ $game->name }}
+                        </x-text.link>
+                        <div class="flex flex-row">
+                            <x-text.paragraph class="text-[#CACACA] font-normal mr-2">
+                                {{ $players->where('id', $game->id)->count() }}
+                            </x-text.paragraph>
+                            <x-text.paragraph>
+                                {{ __('players') }}
+                            </x-text.paragraph>
+                        </div>
+                        <x-text.paragraph>
+                            {{ $game->date }}
+                        </x-text.paragraph>
+                    </div>
+                @endif
+            @endforeach
         </x-admin.block>
+
         <x-admin.block>
             <x-text.subtitle class="text-white font-normal">
-                {{ __('Upcoming games') }}
+                {{ __('Statistics') }}
             </x-text.subtitle>
+            <div class="flex flex-row w-full justify-between mt-3">
+                <x-text.link class="text-[#CACACA] font-normal">
+                    {{ __('Players') }}
+                </x-text.link>
+                <x-text.paragraph>
+                    {{ $players->count() }}
+                </x-text.paragraph>
+            </div>
+            <div class="flex flex-row w-full justify-between mt-3">
+                <x-text.link class="text-[#CACACA] font-normal">
+                    {{ __('Played games') }}
+                </x-text.link>
+                <x-text.paragraph>
+                    {{ $games->where('finished', '1')->count() }}
+                </x-text.paragraph>
+            </div>
         </x-admin.block>
     </x-admin.cards>
 
@@ -31,7 +89,7 @@
         </x-text.title>
     </x-page.maininfo>
 
-    <x-admin.form method="POST" class="w-[40%] mx-auto">
+    <x-admin.form action="{{ route('create') }}" class="w-[40%] mx-auto">
 
         <x-text.subtitle class="text-[#02DF8F]">
             {{ __('Card information') }}
