@@ -13,11 +13,8 @@
     <x-gamecard.body>
         <x-elems.map id="map" />
         <div class="hidden" id="info">
-            <p>
-                {{ $game->info }}
-            </p>
+            {{ $game->name }}
         </div>
-        <link rel="stylesheet" href="{{ asset('css/label.css') }}">
     </x-gamecard.body>
 
     <x-page.gameinfo>
