@@ -5,13 +5,19 @@
         <x-text.title class="h-min text-white font-normal">
             {{ __($game->name) }}
         </x-text.title>
-        <x-text.gamedate :game='$game' class="" />
-        <x-text.gametime :game='$game' class="" />
+        <x-text.gamedate :game='$game' />
+        <x-text.gametime :game='$game' />
     </x-page.maininfo>
-    
+
     <x-text.cords first_cord='{{ $game->first_cord }}' second_cord='{{ $game->second_cord }}' />
     <x-gamecard.body>
         <x-elems.map id="map" />
+        <div class="hidden" id="info">
+            <p>
+                {{ $game->info }}
+            </p>
+        </div>
+        <link rel="stylesheet" href="{{ asset('css/label.css') }}">
     </x-gamecard.body>
 
     <x-page.gameinfo>
