@@ -25,7 +25,7 @@
             <x-text.subtitle class="text-white font-normal">
                 {{ $infos->title }}
             </x-text.subtitle>
-            <x-text.paragraph class="w-[70%]" id="info-text">
+            <x-text.paragraph class="whitespace-pre-line w-[70%]" id="info-text">
                 {{ $infos->text }}
             </x-text.paragraph>
             <x-elems.arrow onclick="showInfoBlock()" id="info-arrow" />
@@ -43,7 +43,7 @@
                 <x-text.subtitle class="mb-0 text-white font-normal {{ ($loop->index > 0) ? 'mt-10' : '' }}">
                     {{ $rule->title }}
                 </x-text.subtitle>
-                <x-text.paragraph class="w-[70%]">
+                <x-text.paragraph class="whitespace-pre-line w-[70%]">
                     {{ $rule->text }}
                 </x-text.paragraph>
             @endforeach

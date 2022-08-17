@@ -33,12 +33,9 @@ class AdminController extends Controller
 
     public function index(Request $request) {
         // Comment
-        return view('admin.index', [
-            'infos' => $request->infos,
-            'rules' => $request->rules,
-            'players' => $request->players,
-            'games' =>  $request->games,
-        ]);
+        $games = DB::table('games')->get();
+        $players = DB::table('players')->get();
+        return view('admin.index', compact('games', 'players'));
     }
 
     public function create(Request $request) {
@@ -92,7 +89,7 @@ class AdminController extends Controller
 
     public function update(Request $request, $id){
         $game = Game::find($id);
-        DB::table('games')->update([
+        DB::table('games')->where('id', $game->id)->update([
             'date' => $request->input('date'),
             'name' => $request->input('name'),
             'info' => request('info'),
@@ -104,14 +101,14 @@ class AdminController extends Controller
             'finished' => 0,
         ]);
 
-        DB::table('infos')->update([
+        DB::table('infos')->where('id', $game->id)->update([
             'title' => request('title'),
             'text' => request('text'),
             'game_id' => $game->id,
         ]);
 
         if ($request->count <= 1) {
-            DB::table('rules')->update([
+            DB::table('rules')->where('id', $game->id)->update([
                 'title' => $request->input('title'),
                 'text' => $request->input('text'),
                 'game_id' => $game->id,
@@ -121,7 +118,7 @@ class AdminController extends Controller
                 if ($request->input('title' . $i) == null || $request->input('text' . $i) == null) {
 
                 } else {
-                    DB::table('rules')->update([
+                    DB::table('rules')->where('id', $game->id)->update([
                         'title' => $request->input('title' . $i),
                         'text' => $request->input('text' . $i),
                         'game_id' => $game->id,
