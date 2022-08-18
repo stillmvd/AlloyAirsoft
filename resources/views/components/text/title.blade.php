@@ -1,10 +1,10 @@
 <p {{$attributes->class(
     'text-white
-     zero:text-xl
-     phone:text-2xl
-     tablet:text-2xl
-     tablet-xl:text-2xl
-     laptop:text-3xl
+     zero:text-4xl
+     phone:text-4xl
+     tablet:text-4xl
+     tablet-xl:text-4xl
+     laptop:text-4xl
      desktop:text-4xl
      desktop-xl:text-5xl
     '

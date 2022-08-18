@@ -1,5 +1,5 @@
 <x-gamecard.body href="{{ route('game', $game->id) }}">
-    <x-gamecard.block>
+    <x-gamecard.block class="">
         <x-gamecard.title>
             {{ $game->name }}
         </x-gamecard.title>
@@ -9,7 +9,7 @@
             @include('includes.gametime')
         </x-gamecard.time>
     </x-gamecard.block>
-    <x-gamecard.block class="items-end">
+    <x-gamecard.block  class="items-end">
         <x-gamecard.info>
             {{ $game->info }}
         </x-gamecard.info>
@@ -19,7 +19,8 @@
             {{ $game->polygon }}
         </x-gamecard.polygon>
     </x-gamecard.block>
-    
+
     <x-gamecard.bg />
     <x-elems.map id="map{{ $loop->index }}" />
 </x-gamecard.body>
+

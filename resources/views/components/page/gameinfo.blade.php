@@ -1,5 +1,5 @@
 <div {{ $attributes->class([
-    'flex flex-row justify-between mt-20'
+    'flex laptop:flex-row tablet-xl:flex-col tablet:flex-col phone:flex-col zero:flex-col justify-between mt-20'
 ]) }}>
     {{ $slot }}
 </div>

@@ -1,11 +1,12 @@
 <p {{ $attributes->class(
     'text-[#CACACA] font-light leading-none
-     phone:text-sm 
-     tablet:text-sm 
-     tablet-xl:text-sm 
-     laptop:text-base 
-     desktop:text-base 
-     desktop-xl:text-[1rem]
+     zero:text-xl
+     phone:text-lg
+     tablet:text-lg
+     tablet-xl:text-lg
+     laptop:text-lg
+     desktop:text-lg
+     desktop-xl:text-lg
     '
 ) }}>
     {{ $slot }}

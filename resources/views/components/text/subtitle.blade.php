@@ -1,11 +1,12 @@
 <p {{ $attributes->class(
     'font-normal
-     phone:text-base 
-     tablet:text-base 
-     tablet-xl:text-base 
-     laptop:text-lg 
-     desktop:text-xl 
-     desktop-xl:text-2xl 
+     zero:text-xl
+     phone:text-2xl
+     tablet:text-2xl
+     tablet-xl:text-2xl
+     laptop:text-2xl
+     desktop:text-2xl
+     desktop-xl:text-2xl
     '
 ) }}>
     {{ $slot }}

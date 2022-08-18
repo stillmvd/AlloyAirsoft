@@ -5,7 +5,7 @@
      desktop:w-[80%]
      laptop:w-[80%]
      tablet-md:w-[80%]
-     tablet:w-[80%]
+     tablet:w-[90%]
      phone:w-[90%]
      zero:w-[90%]
     '

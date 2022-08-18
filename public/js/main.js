@@ -1,3 +1,9 @@
+let phone = 320,
+    tablet = 640,
+    tabletXL = 768,
+    laptop = 1024,
+    desktop = 1280,
+    desktopXL = 1536;
 function initMap() {
   for (let i = 0; i < Number(document.getElementById('map-counter').textContent); i++) {
     let map_1cord = document.getElementById('first_cord' + i);
@@ -364,4 +370,14 @@ function initMap() {
 }
 
 window.initMap = initMap;
+
+// window.onload = function () {
+//     let width = document.documentElement.scrollWidth
+//     if (width < tablet) {
+//         document.getElementById('game-name').classList.add('hidden');
+//         document.getElementById('game-gametime').classList.add('hidden');
+//         document.getElementById('game-info').classList.add('hidden');
+//         document.getElementById('game-polygon').classList.add('hidden');
+//     }
+// }
 
