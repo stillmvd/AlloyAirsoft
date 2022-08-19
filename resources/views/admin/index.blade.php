@@ -65,17 +65,17 @@
                 {{ __('Statistics') }}
             </x-text.subtitle>
             <div class="flex flex-row w-full justify-between mt-3">
-                <x-text.link class="text-[#CACACA] font-normal">
+                <x-text.paragraph class="text-[#CACACA] font-normal">
                     {{ __('Players') }}
-                </x-text.link>
+                </x-text.paragraph>
                 <x-text.paragraph>
                     {{ $players->count() }}
                 </x-text.paragraph>
             </div>
             <div class="flex flex-row w-full justify-between mt-3">
-                <x-text.link class="text-[#CACACA] font-normal">
+                <x-text.paragraph class="text-[#CACACA] font-normal">
                     {{ __('Played games') }}
-                </x-text.link>
+                </x-text.paragraph>
                 <x-text.paragraph>
                     {{ $games->where('finished', '1')->count() }}
                 </x-text.paragraph>
