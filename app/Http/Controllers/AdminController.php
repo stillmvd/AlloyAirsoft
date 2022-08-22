@@ -10,29 +10,29 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function login(StoreAdminRequest $request) {
-        // Comment
+        
         $validated = $request->validate([
             'login' => 'required',
             'password' => 'required',
         ]);
         if (auth()->attempt($validated)) {
-            // Comment
+            
             return redirect('admin');
         } else {
-            // Comment
+            
             return redirect()->back()
                     ->withErrors(['loginError' => 'You have some errors']);
         }
     }
 
     public function logout() {
-        // Comment
+        
         auth()->logout();
         return redirect('/');
     }
 
     public function index(Request $request) {
-        // Comment
+        
         $games = DB::table('games')->get();
         $players = DB::table('players')->get();
         return view('admin.index', compact('games', 'players'));
