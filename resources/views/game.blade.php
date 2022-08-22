@@ -63,8 +63,6 @@
             @endforeach
         </x-page.block>
     </x-page.gamerules>
-
-    <x-elems.separator />
-
+    <x-elems.separator/>
     @include('includes.registration')
 @endsection
