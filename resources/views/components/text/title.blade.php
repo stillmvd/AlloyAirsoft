@@ -1,5 +1,5 @@
 <p {{$attributes->class(
-    'text-white
+    'text-white hovered
      zero:text-4xl
      phone:text-4xl
      tablet:text-4xl

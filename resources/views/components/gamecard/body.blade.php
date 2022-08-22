@@ -1,5 +1,5 @@
 <a {{ $attributes->class([
-    'w-full h-[300px] grid grid-cols-2 grid-rows-2 ring-2 ring-[#CACACA] rounded-3xl p-6 cursor-pointer relative overflow-hidden group
+    'w-full h-[300px] grid grid-cols-2 grid-rows-2 ring-2 ring-[#282828] rounded-3xl p-6 cursor-pointer relative overflow-hidden group
      laptop:h-[270px]
      tablet-xl:h-[250px]
      tablet:h-[230px]

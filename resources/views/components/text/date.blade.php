@@ -1,4 +1,4 @@
-<div class="flex flex-row items-end">
+<div class="flex flex-row items-end hovered">
     <p class="text-white font-normal mr-3
                 desktop-xl:text-[2.5rem]
                 desktop:text-[2.4rem]

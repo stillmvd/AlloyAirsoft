@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-[#111111]">
+<html lang="en" class="bg-[#43454F]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,9 @@
 @endif
 <body class="h-[100vh] flex flex-col">
     <header>
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
         <x-page.container>
             @auth
                 @if (Route::is('admin') || Route::is('players'))
