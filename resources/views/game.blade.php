@@ -1,13 +1,13 @@
 @extends('layouts.base')
 
 @section('content')
-    <x-page.maininfo class="items-end py-9">
-        <x-text.title class="h-min text-white font-normal">
-            {{ __($game->name) }}
-        </x-text.title>
-        <x-text.gamedate :game='$game' />
-        <x-text.gametime :game='$game' />
-    </x-page.maininfo>
+<x-page.maininfo class="items-end py-9">
+    <x-text.title class="h-min text-white font-normal">
+        {{ __($game->name) }}
+    </x-text.title>
+    <x-text.gamedate :game='$game' />
+    <x-text.gametime :game='$game' />
+</x-page.maininfo>
 
     <x-text.cords first_cord='{{ $game->first_cord }}' second_cord='{{ $game->second_cord }}' />
     <x-gamecard.body>
@@ -20,6 +20,8 @@
         {{ $game->date . ' ' . $game->time }}
     </p>
     <x-page.downcounter/>
+
+
     <x-page.gameinfo>
         <x-text.title id="info-title">
             {{ __('Info') }}
