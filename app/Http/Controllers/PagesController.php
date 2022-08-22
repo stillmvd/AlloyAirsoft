@@ -2,86 +2,58 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\GetArchiveGamesAction;
+use App\Actions\GetGameInfoAction;
+use App\Actions\GetUpcomingGamesAction;
+use App\Actions\SendEmailAction;
+use App\Actions\StoreEmailAction;
+use App\Actions\StorePlayerAction;
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
-use App\Models\Game;
-use App\Models\Info;
-use App\Models\Player;
-use App\Models\Rule;
+use App\Mail\Mailing;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
-    public function index() {
-
-        return view('index', [
-            'games' => DB::table('games')->where('finished', '=', '0')->get(),
-            'number' => DB::table('games')->get()->count()
-        ]);
+    public function index(GetUpcomingGamesAction $getUpcomingGamesAction)
+    {
+        return view('index', $getUpcomingGamesAction->get_info());
     }
 
-    public function archive() {
-
-        return view('archive', [
-            'teams' => DB::table('teams')->get(),
-            'number' => DB::table('games')->get()->count(),
-            'games' => DB::table('games')->where('finished', 1)->get(),
-        ]);
+    public function archive(GetArchiveGamesAction $getArchiveGamesAction)
+    {
+        return view('archive', $getArchiveGamesAction->get_info());
     }
 
-    public function game($id) {
-
-        $infos = Info::where('game_id', $id)->first();
-        $rules = Rule::where('game_id', $id)->get();
-        $amount = $rules->count();
-        return view('game', [
-            'first_cord' => Game::find($id)->first_cord,
-            'second_cord' => Game::find($id)->second_cord,
-            'game' => Game::find($id),
-            'infos' => $infos,
-            'rules' => $rules,
-            'amount' => $amount,
-            'teams' => Db::table('teams')->get('name'),
-            'teams_count' => DB::table('teams')->count(),
-        ]);
+    public function game(GetGameInfoAction $getGameInfoAction, $game_id)
+    {
+        return view('game', $getGameInfoAction->get_info($game_id));
     }
 
-    public function store_players(StoreFormRequest $request, $id) {
-
-        $request->validate();
-        Player::create([
-            'created_at' => now(),
-            'game_id' => $id,
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'callsign' => $request->callsign,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'team_id' =>  $request->team,
-        ]);
-        // Mail::to($request->email)->send(new Mailing([
-        //     'title' => 'Поздравляем с регистрацией на игру!',
-        //     'message' => 'Вы успешно зарегистрировались на игру!',
-        // ]));
-        return redirect()->route('game', $id)
-                ->with(['success' => 'You are registered for the game']);
+    public function store_players(StoreFormRequest $request, $game_id,
+                                  StorePlayerAction $storePlayerAction, SendEmailAction $sendEmailAction)
+    {
+        $storePlayerAction->save($request, $game_id);
+        $sendEmailAction->send($request->email, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
+        return redirect()->route('game', $game_id)->with(
+            ['success' => 'You are registered for the game']
+        );
     }
 
-    public function save_email(StoreEmailRequest $request) {
-        if(DB::table('emails')->where('email', $request->email)->exists()) {
-
-            return redirect()->back()
-                    ->with(['error' => 'You have already subscribed to the newsletter!']);
+    public function save_email(StoreEmailRequest $request, StoreEmailAction $storeEmailAction,
+                               SendEmailAction $sendEmailAction)
+    {
+        if(isExistsDB($request->email)) {
+            return redirect()->back()->with(
+                ['error' => 'You have already subscribed to the newsletter!']
+            );
         } else {
-
-            DB::table('emails')->insert(['email' => $request->email, 'created_at' => now(), 'updated_at' => now()]);
-            // Mail::to($request->email)->send(new Mailing([
-            //     'title' => 'Вы успешно подписались на расслыку!',
-            //     'message' => 'Вы успешно подписались на расслыку!',
-            // ]));
-
-            return redirect()->back()
-                    ->with(['success' => 'You have successfully subscribed to the newsletter!']);
+            $storeEmailAction->save($request->email);
+            $sendEmailAction->send($request->email, 'Вы успешно подписались на расслыку', 'Вы успешно подписались на расслыку');
+            return redirect()->back()->with(
+                ['success' => 'You have successfully subscribed to the newsletter!']
+            );
         }
     }
 }

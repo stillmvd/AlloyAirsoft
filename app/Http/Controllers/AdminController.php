@@ -9,36 +9,36 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function login(StoreAdminRequest $request) {
-        // Comment
+    public function login(StoreAdminRequest $request)
+    {
         $validated = $request->validate([
             'login' => 'required',
             'password' => 'required',
         ]);
         if (auth()->attempt($validated)) {
-            // Comment
             return redirect('admin');
         } else {
-            // Comment
-            return redirect()->back()
-                    ->withErrors(['loginError' => 'You have some errors']);
+            return redirect()->back()->withErrors(
+                ['loginError' => 'You have some errors']
+            );
         }
     }
 
-    public function logout() {
-        // Comment
+    public function logout()
+    {
         auth()->logout();
         return redirect('/');
     }
 
-    public function index(Request $request) {
-        // Comment
+    public function index(Request $request)
+    {
         $games = DB::table('games')->get();
         $players = DB::table('players')->get();
         return view('admin.index', compact('games', 'players'));
     }
 
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $game = Game::create([
             'date' => $request->input('date'),
             'name' => $request->input('name'),
@@ -78,7 +78,8 @@ class AdminController extends Controller
 
         return redirect()->route('admin');
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return view('admin.edit', [
             'infos' => DB::table('infos')->where('game_id', $id)->get()->first(),
             'rules' => DB::table('rules')->where('game_id', $id)->get(),
@@ -87,7 +88,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $game = Game::find($id);
         DB::table('games')->where('id', $game->id)->update([
             'date' => $request->input('date'),
@@ -131,7 +133,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $game_name = Game::find($id)->name;
         DB::table('infos')->where('game_id', $id)->delete();
         DB::table('rules')->where('game_id', $id)->delete();
@@ -142,7 +145,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function players() {
+    public function players()
+    {
         $players = DB::table('players')->get();
         $players_count = DB::table('players')->count();
 
