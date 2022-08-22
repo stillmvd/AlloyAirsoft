@@ -443,59 +443,26 @@ document.getElementById('input_team').addEventListener('blur', function() {
   }
 });
 
-let infoBlockHeight;
-let rulesBlockHeight;
+var countDownDate = new Date(document.getElementById('countdown').textContent).getTime();
+console.log(countDownDate);
+var x = setInterval(function() {
 
-window.onload = function () {
-    let infoBlock = document.getElementById('info-block');
-    let rulesBlock = document.getElementById('rules-block');
-    infoBlock.classList.remove('h-[154px]');
-    infoBlockHeight = document.getElementById("info-title").clientHeight + document.getElementById("info-subtitle").clientHeight + document.getElementById("info-text").clientHeight - 300 + 'px';
-    infoBlock.style.height = infoBlockHeight;
-    infoBlock.classList.add('h-[' + infoBlockHeight + ']');
-    rulesBlock.classList.remove('h-[200px]')
-    rulesBlockHeight = document.getElementById("rules-title").clientHeight + document.getElementById("rules-subtitle 0").clientHeight + document.getElementById("rules-text 0").clientHeight - 40 + 'px';
-    rulesBlock.style.height = rulesBlockHeight;
+var now = new Date().getTime();
+
+var distance = countDownDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById('days').setAttribute('style', ('--value:' + days));
+document.getElementById('hours').setAttribute('style', ('--value:' + hours));
+document.getElementById('min').setAttribute('style', ('--value:' + minutes));
+document.getElementById('sec').setAttribute('style', ('--value:' + seconds));
+
+if (distance < 0) {
+    clearInterval(x);
+    // document.getElementById("demo").innerHTML = "EXPIRED";
 }
-
-
-function showInfoBlock() {
-  let infoBlock = document.getElementById('info-block');
-  let arrow = document.getElementById('info-arrow');
-  let fullHeight = parseInt(window.getComputedStyle(document.getElementById('info-text'), null).height);
-  if(openInfoBlock){
-      infoBlock.classList.remove('h-[154px]');
-      infoBlock.style.height = fullHeight + 30 + 'px';
-      arrow.style.transform = 'rotate(0deg)';
-      openInfoBlock = false;
-  }
-  else{
-      infoBlock.classList.add('h-[' + infoBlockHeight + ']');
-      infoBlock.style.height = infoBlockHeight;
-      arrow.style.transform = 'rotate(-90deg)';
-      openInfoBlock = true;
-  }
-}
-
-function showRulesBlock() {
-    let rulesBlock = document.getElementById('rules-block');
-    let arrow = document.getElementById('rules-arrow');
-    let count = document.getElementById('rules-count').textContent;
-    let fullHeight = 0;
-    for(let i = 0; i < count; i++){
-        fullHeight += parseInt(document.getElementById('rules-subtitle ' + i).clientHeight);
-        fullHeight += parseInt(document.getElementById('rules-text ' + i).clientHeight);
-    }
-  if(openRulesBlock){
-      rulesBlock.classList.remove('h-[200px]');
-      rulesBlock.style.height = fullHeight + 'px';
-      arrow.style.transform = 'rotate(0deg)';
-      openRulesBlock = false;
-    }
-    else{
-      rulesBlock.classList.add('h-[' + rulesBlockHeight + ']');
-      rulesBlock.style.height = rulesBlockHeight;
-      arrow.style.transform = 'rotate(-90deg)';
-      openRulesBlock = true;
-    }
-}
+}, 1000);

@@ -16,7 +16,10 @@
             {{ $game->name }}
         </div>
     </x-gamecard.body>
-
+    <p class="hidden" id="countdown">
+        {{ $game->date . ' ' . $game->time }}
+    </p>
+    <x-page.downcounter/>
     <x-page.gameinfo>
         <x-text.title id="info-title">
             {{ __('Info') }}
@@ -25,7 +28,7 @@
             <x-text.subtitle class="collapse-title font-medium text-white">
                 {{ $infos->title }}
             </x-text.subtitle>
-            <x-text.paragraph class="collapse-content whitespace-pre-line font-normal text-[#acacac]"> 
+            <x-text.paragraph class="collapse-content whitespace-pre-line font-normal text-[#acacac]">
                 {{ $infos->text }}
             </x-text.paragraph>
         </x-page.block>
@@ -52,7 +55,7 @@
                     <x-text.subtitle class="collapse-content font-medium text-white">
                         {{ $rule->title }}
                     </x-text.subtitle>
-                    <x-text.paragraph class="collapse-content whitespace-pre-line font-normal text-[#acacac]"> 
+                    <x-text.paragraph class="collapse-content whitespace-pre-line font-normal text-[#acacac]">
                         {{ $rule->text }}
                     </x-text.paragraph>
                 </div>

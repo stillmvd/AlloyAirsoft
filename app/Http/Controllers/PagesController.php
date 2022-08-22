@@ -10,9 +10,6 @@ use App\Actions\StoreEmailAction;
 use App\Actions\StorePlayerAction;
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
-use App\Mail\Mailing;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -50,7 +47,7 @@ class PagesController extends Controller
             );
         } else {
             $storeEmailAction->save($request->email);
-            $sendEmailAction->send($request->email, 'Вы успешно подписались на расслыку', 'Вы успешно подписались на расслыку');
+            $sendEmailAction->send($request->email, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
             return redirect()->back()->with(
                 ['success' => 'You have successfully subscribed to the newsletter!']
             );
