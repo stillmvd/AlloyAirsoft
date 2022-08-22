@@ -18,37 +18,46 @@
     </x-gamecard.body>
 
     <x-page.gameinfo>
-        <x-text.title class="mb-2" id="info-title">
+        <x-text.title id="info-title">
             {{ __('Info') }}
         </x-text.title>
-        <x-page.block class="flex-col laptop:w-[60%] tablet-xl:w-[100%] tablet:w-[100%] h-[189px] ease-out duration-200 overflow-hidden" id="info-block">
-            <x-text.subtitle class="text-white font-normal" id="info-subtitle">
+        <x-page.block tabindex="0">
+            <x-text.subtitle class="collapse-title font-medium text-white">
                 {{ $infos->title }}
             </x-text.subtitle>
-            <x-text.paragraph class="whitespace-pre-line tablet-xl:w-[70%] tablet:w-[80%] phone:w-[80%] zero:w-[80%]" id="info-text">
+            <x-text.paragraph class="collapse-content whitespace-pre-line font-normal text-[#acacac]"> 
                 {{ $infos->text }}
             </x-text.paragraph>
-            <x-elems.arrow onclick="showInfoBlock()" id="info-arrow" />
         </x-page.block>
     </x-page.gameinfo>
 
     <x-elems.separator />
 
     <x-page.gamerules>
-        <x-text.title class="mb-2" id="rules-title">
+        <x-text.title id="rules-title">
             {{ __('Rules') }}
         </x-text.title>
-        <x-page.block class="flex-col laptop:w-[60%] tablet-xl:w-[100%] tablet:w-[100%] ease-out duration-200 overflow-hidden h-[200px]" id="rules-block">
+        <x-page.block tabindex="0">
             <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
             @foreach ($rules as $rule)
-                <x-text.subtitle class="mb-0 text-white font-normal {{ ($loop->index > 0) ? 'mt-10' : '' }}" id="rules-subtitle {{ $loop->index }}">
-                    {{ $rule->title }}
-                </x-text.subtitle>
-                <x-text.paragraph class="whitespace-pre-line tablet-xl:w-[70%] tablet:w-[80%] phone:w-[80%] zero:w-[80%]" id="rules-text {{ $loop->index }}">
-                    {{ $rule->text }}
-                </x-text.paragraph>
+                @if ($loop->index < 1)
+                    <x-text.subtitle class="collapse-title font-medium text-white">
+                        {{ $rule->title }}
+                    </x-text.subtitle>
+                    <x-text.paragraph class="collapse-title whitespace-pre-line font-normal mt-10 text-[#acacac]">
+                        {{ $rule->text }}
+                    </x-text.paragraph>
+                @else
+                <div class="">
+                    <x-text.subtitle class="collapse-content font-medium text-white">
+                        {{ $rule->title }}
+                    </x-text.subtitle>
+                    <x-text.paragraph class="collapse-content whitespace-pre-line font-normal text-[#acacac]"> 
+                        {{ $rule->text }}
+                    </x-text.paragraph>
+                </div>
+                @endif
             @endforeach
-            <x-elems.arrow onclick="showRulesBlock()" id="rules-arrow" />
         </x-page.block>
     </x-page.gamerules>
 
