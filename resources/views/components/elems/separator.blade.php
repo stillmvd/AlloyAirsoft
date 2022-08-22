@@ -1,1 +1,1 @@
-<div class="h-[2px] mt-10 mb-10 w-full bg-[#242424]"></div>
+<div class="h-[2px] mt-10 mb-10 w-full bg-dark"></div>

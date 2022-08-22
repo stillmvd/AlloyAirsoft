@@ -1,6 +1,6 @@
 <p {{ $attributes->class([
-    'text-[1rem] text-[#CACACA] font-light whitespace-pre-line w-[68%] rounded-3xl h-min ease-out duration-[.2s]
-     group-hover:bg-[#111111] group-hover:p-4 group-hover:desktop-xl:w-[80%] group-hover:desktop:w-[100%] group-hover:tablet-xl:w-[100%]
+    'text-[1rem] text-white font-normal whitespace-pre-line w-[68%] rounded-3xl h-min ease-out duration-[.2s]
+     group-hover:bg-bg group-hover:p-4 group-hover:desktop-xl:w-[80%] group-hover:desktop:w-[100%] group-hover:tablet-xl:w-[100%]
      desktop-xl:text-[1rem] desktop-xl:w-[68%]
      desktop:text-[0.9rem] desktop:w-[80%]
      laptop:text-[0.9rem] laptop:w-[92%]

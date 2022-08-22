@@ -3,24 +3,24 @@
       <span class="countdown font-mono text-5xl">
         <span id="days" style="--value:100;"></span>
       </span>
-      days
+      {{ __('days') }}
     </div>
     <div class="flex flex-col">
       <span class="countdown font-mono text-5xl">
         <span id="hours" style="--value:100;"></span>
       </span>
-      hours
+      {{ __('hours') }}
     </div>
     <div class="flex flex-col">
       <span class="countdown font-mono text-5xl">
         <span id="min" style="--value:100;"></span>
       </span>
-      min
+      {{ __('min') }}
     </div>
     <div class="flex flex-col">
       <span class="countdown font-mono text-5xl">
         <span id="sec" style="--value:100;"></span>
       </span>
-      sec
+      {{ __('sec') }}
     </div>
 </div>

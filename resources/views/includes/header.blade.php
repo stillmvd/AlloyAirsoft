@@ -2,9 +2,9 @@
     <div class="flex flex-col">
         <div class="flex flex-row justify-between">
             <div class="flex items-center w-[20%]">
-                <x-text.link href="{{ route('index') }}" class="text-[1.2rem] ease-out duration-[.2s] text-white font-normal">
+                <a href="{{ route('index') }}" class="text-[2.5rem] text-white font-normal">
                     Alloy Airsoft
-                </x-text.link>
+                </a>
             </div>
             <div class="flex items-end">
                 <x-text.link href="{{ route('index') }}" class="font-normal mr-4  ease-out duration-[.2s] {{ Route::is('index') ? '

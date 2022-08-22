@@ -6,7 +6,7 @@
                 <x-text.subtitle class="text-white font-normal">
                     {{ __('Contacts') }}
                 </x-text.subtitle>
-                <p class="text-[#CACACA] font-light leading-none pt-6
+                <p class="text-subwhite font-light leading-none pt-6
                 phone:text-sm
                 tablet:text-sm
                 tablet-xl:text-sm
@@ -16,7 +16,7 @@
                 ">
                     glebka@gmail.com
                 </p>
-                <p class="text-[#CACACA] font-light leading-none pt-2
+                <p class="text-subwhite font-light leading-none pt-2
                 phone:text-sm
                 tablet:text-sm
                 tablet-xl:text-sm

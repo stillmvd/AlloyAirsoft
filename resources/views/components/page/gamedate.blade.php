@@ -9,7 +9,7 @@
                 zero:text-[1.0rem]">
         {{ date('d', strtotime($game->date)) }}
     </p>
-    <p class="text-[#CACACA] font-light leading-6 
+    <p class="text-subwhite font-light leading-6
                 desktop-xl:text-[1.2rem]
                 desktop:text-[1.2rem]
                 laptop:text-[1.0rem]
