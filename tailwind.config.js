@@ -33,6 +33,18 @@ module.exports = {
         // => @media (min-width: 1536px) { ... }
       },
     },
+    colors: {
+      'bg' : '#151515',
+      'main' : '#7AA973',
+      'addictive' : '#A99D73',
+      'card_bg' : '#1B1B1B',
+      'white' : '#DADADA',
+      'dark' : '#282828',
+      'subwhite' : '#6F6F6F',
+      'red' : '#991D1D',
+      'green' : '#2E991D',
+      'yellow' : '#97991D',
+    }
   },
   plugins: [require("daisyui")],
 }

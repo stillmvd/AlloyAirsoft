@@ -1,8 +1,8 @@
 @props(['teams' => '', 'teams_count' => ''])
 
 <select {{ $attributes->class(
-    "w-full px-5 pt-4 pb-0 box-border rounded-2xl ring-2 ring-[#282828] bg-transparent font-medium text-[#FFFFFF] text-[1.1rem] appearance-none
-     focus:outline-none focus:ring-[#190061] hover:ring-[#190061]
+    "w-full px-5 pt-4 pb-0 box-border rounded-2xl ring-2 ring-subwhite bg-transparent font-medium text-white text-[1.1rem] appearance-none
+     focus:outline-none
      laptop:pt-4 laptop:text-[1.1rem]
      tablet-xl:pt-3 tablet-xl:text-[1rem]
      tablet:pt-6 tablet:pb-3

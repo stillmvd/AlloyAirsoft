@@ -9,7 +9,7 @@
 
 <x-admin.form action="{{ route('update', $games->id) }}" class="w-[40%] mx-auto">
     @method('put')
-    <x-text.subtitle class="text-[#02DF8F]">
+    <x-text.subtitle class="text-addictive">
         {{ __('Card information') }}
     </x-text.subtitle>
 
@@ -21,7 +21,7 @@
     <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" value="{{ $games->time }}" />
     <x-admin.input placeholder="Polygon" type="text" name="polygon" value="{{ $games->polygon }}" />
 
-    <x-text.subtitle class="text-[#02DF8F]">
+    <x-text.subtitle class="text-addictive">
         {{ __('Map coordinates') }}
     </x-text.subtitle>
     <div class="grid grid-cols-2 gap-x-6">
@@ -29,7 +29,7 @@
         <x-admin.input placeholder="Second coordinates" type="text" name="second_cord" value="{{ $games->second_cord }}"/>
     </div>
 
-    <x-text.subtitle class="text-[#02DF8F]">
+    <x-text.subtitle class="text-addictive">
         {{ __('Game information') }}
     </x-text.subtitle>
     <x-admin.textblock>
@@ -40,7 +40,7 @@
         <x-admin.input type="number" placeholder="Levels" name="levels" value="{{ $games->levels }}"/>
     </x-admin.textblock>
 
-    <x-text.subtitle class="text-[#02DF8F]">
+    <x-text.subtitle class="text-addictive">
         {{ __('Game rules') }}
     </x-text.subtitle>
     @for ($i = 0; $i < $rules->count(); $i++)
@@ -58,10 +58,10 @@
 
 </x-admin.form>
 <div class="flex justify-between w-[26%] my-10 mx-auto">
-    <x-admin.button class="place-self-end hover:text-[#02DF8F]" onclick="addColumns()">
+    <x-admin.button class="place-self-end hover:text-green" onclick="addColumns()">
         {{ 'Add columns' }}
     </x-admin.button>
-    <x-admin.button class="place-self-start hover:text-[#ce2f2f]" onclick="removeColumns()">
+    <x-admin.button class="place-self-start hover:text-red" onclick="removeColumns()">
         {{ 'Remove columns' }}
     </x-admin.button>
 </div>

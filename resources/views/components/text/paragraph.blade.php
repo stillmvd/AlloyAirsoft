@@ -1,5 +1,5 @@
 <p {{ $attributes->class(
-    'text-[#CACACA] font-light leading-none
+    'text-subwhite font-normal leading-none
      zero:text-xl
      phone:text-lg
      tablet:text-lg

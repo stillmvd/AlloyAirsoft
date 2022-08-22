@@ -22,7 +22,7 @@
                 tablet-xl:text-[0.8rem]
                 tablet:text-[0.6rem]
                 phone:text-[0.5rem]
-                pb-2 hover:pb-0 hover:text-white text-[#CACACA]' }}">
+                pb-2 hover:pb-0 hover:text-white text-subwhite' }}">
                     {{ __('Upcoming') }}
                 </x-text.link>
                 <x-text.link href="{{ route('archive') }}" class="font-normal ml-4 ease-out duration-[.2s] {{ Route::is('archive') ? '
@@ -40,7 +40,7 @@
                 tablet-xl:text-[0.8rem]
                 tablet:text-[0.6rem]
                 phone:text-[0.5rem]
-                pb-2 hover:pb-0 hover:text-white text-[#CACACA]' }}">
+                pb-2 hover:pb-0 hover:text-white text-subwhite' }}">
                     {{ __('Archive') }}
                 </x-text.link>
             </div>

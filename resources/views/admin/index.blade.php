@@ -15,11 +15,11 @@
             @foreach ($games as $game)
                 @if ($game->finished == 0)
                     <div class="flex flex-row w-full justify-between mt-3">
-                        <x-text.link href="{{ route('game', $game->id) }}" class="text-[#CACACA] font-normal">
+                        <x-text.link href="{{ route('game', $game->id) }}" class="text-subwhite font-normal">
                             {{ $game->name }}
                         </x-text.link>
                         <div class="flex flex-row">
-                            <x-text.paragraph class="text-[#CACACA] font-normal mr-2">
+                            <x-text.paragraph class="font-normal mr-2">
                                 {{ $players->where('id', $game->id)->count() }}
                             </x-text.paragraph>
                             <x-text.paragraph>
@@ -41,11 +41,11 @@
             @foreach ($games as $game)
                 @if ($game->finished == 1)
                     <div class="flex flex-row w-full justify-between mt-3">
-                        <x-text.link href="{{ route('game', $game->id) }}" class="text-[#CACACA] font-normal">
+                        <x-text.link href="{{ route('game', $game->id) }}" class="text-subwhite font-normal">
                             {{ $game->name }}
                         </x-text.link>
                         <div class="flex flex-row">
-                            <x-text.paragraph class="text-[#CACACA] font-normal mr-2">
+                            <x-text.paragraph class="font-normal mr-2">
                                 {{ $players->where('id', $game->id)->count() }}
                             </x-text.paragraph>
                             <x-text.paragraph>
@@ -65,7 +65,7 @@
                 {{ __('Statistics') }}
             </x-text.subtitle>
             <div class="flex flex-row w-full justify-between mt-3">
-                <x-text.paragraph class="text-[#CACACA] font-normal">
+                <x-text.paragraph class="font-normal">
                     {{ __('Players') }}
                 </x-text.paragraph>
                 <x-text.paragraph>
@@ -73,7 +73,7 @@
                 </x-text.paragraph>
             </div>
             <div class="flex flex-row w-full justify-between mt-3">
-                <x-text.paragraph class="text-[#CACACA] font-normal">
+                <x-text.paragraph class="font-normal">
                     {{ __('Played games') }}
                 </x-text.paragraph>
                 <x-text.paragraph>
@@ -91,7 +91,7 @@
 
     <x-admin.form action="{{ route('create') }}" class="w-[40%] mx-auto">
 
-        <x-text.subtitle class="text-[#02DF8F]">
+        <x-text.subtitle class="text-addictive">
             {{ __('Card information') }}
         </x-text.subtitle>
         <x-admin.input placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
@@ -100,7 +100,7 @@
         <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
         <x-admin.input placeholder="Polygon" type="text" name="polygon" />
 
-        <x-text.subtitle class="text-[#02DF8F]">
+        <x-text.subtitle class="text-addictive">
             {{ __('Map coordinates') }}
         </x-text.subtitle>
         <div class="grid grid-cols-2 gap-x-6">
@@ -108,7 +108,7 @@
             <x-admin.input placeholder="Second coordinates" type="text" name="second_cord" />
         </div>
 
-        <x-text.subtitle class="text-[#02DF8F]">
+        <x-text.subtitle class="text-addictive">
             {{ __('Game information') }}
         </x-text.subtitle>
         <x-admin.textblock>
@@ -117,7 +117,7 @@
             <x-admin.input type="number" placeholder="Levels" name="levels" />
         </x-admin.textblock>
 
-        <x-text.subtitle class="text-[#02DF8F]">
+        <x-text.subtitle class="text-addictive">
             {{ __('Game rules') }}
         </x-text.subtitle>
         <x-admin.textblock class="block">
@@ -131,10 +131,10 @@
 
     </x-admin.form>
     <div class="flex justify-between w-[26%] my-10 mx-auto">
-        <x-admin.button class="place-self-end hover:text-[#02DF8F]" onclick="addColumns()">
+        <x-admin.button class="place-self-end hover:text-green" onclick="addColumns()">
             {{ 'Add columns' }}
         </x-admin.button>
-        <x-admin.button class="place-self-start hover:text-[#ce2f2f]" onclick="removeColumns()">
+        <x-admin.button class="place-self-start hover:text-red" onclick="removeColumns()">
             {{ 'Remove columns' }}
         </x-admin.button>
     </div>
