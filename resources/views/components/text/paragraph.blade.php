@@ -8,6 +8,4 @@
      desktop:text-lg
      desktop-xl:text-lg
     '
-) }}>
-    {{ $slot }}
-</p>
+) }}>{{ $slot }}</p>

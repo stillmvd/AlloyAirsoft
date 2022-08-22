@@ -1,8 +1,22 @@
 <div class="flex flex-row items-end justify-center my-9">
-    <p class="text-[3rem] text-white font-normal mr-3 leading-none">
+    <p class="text-white font-normal mr-3 leading-none
+                desktop-xl:text-[2.5rem]
+                desktop:text-[2.4rem]
+                laptop:text-[2.3rem]
+                tablet-xl:text-[2.0rem]
+                tablet:text-[1.7rem]
+                phone:text-[1.4rem]
+                zero:text-[1.0rem]">
         {{ date('d', strtotime($game->date)) }}
     </p>
-    <p class="text-[1.4rem] text-[#CACACA] font-light leading-8">
-    {{ date('M', strtotime($game->date)) }}
+    <p class="text-[#CACACA] font-light leading-6 
+                desktop-xl:text-[1.2rem]
+                desktop:text-[1.2rem]
+                laptop:text-[1.0rem]
+                tablet-xl:text-[0.8rem]
+                tablet:text-[0.6rem]
+                phone:text-[0.5rem]
+                zero:text-[0.4rem]">
+        {{ date('M', strtotime($game->date)) }}
     </p>
 </div>

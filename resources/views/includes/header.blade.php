@@ -2,8 +2,8 @@
     <div class="flex flex-col">
         <div class="flex flex-row justify-between">
             <div class="flex items-center w-[20%]">
-                <x-text.link href="{{ route('index') }}" class="text-[1.2rem] text-white font-light">
-                    Logo
+                <x-text.link href="{{ route('index') }}" class="text-[1.2rem] ease-out duration-[.2s] text-white font-normal">
+                    Alloy Airsoft
                 </x-text.link>
             </div>
             <div class="flex items-end">

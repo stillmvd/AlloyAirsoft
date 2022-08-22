@@ -1,5 +1,5 @@
 <div class="flex flex-row items-end">
-    <p class="text-white font-normal mr-1
+    <p class="text-white font-normal mr-3
                 desktop-xl:text-[2.5rem]
                 desktop:text-[2.4rem]
                 laptop:text-[2.3rem]
@@ -9,7 +9,7 @@
                 zero:text-[1.0rem]">
         {{ now()->format('d') }}
     </p>
-    <p class="text-[#CACACA] font-light pb-2
+    <p class="text-[#CACACA] font-light leading-10
                 desktop-xl:text-[1.2rem]
                 desktop:text-[1.2rem]
                 laptop:text-[1.0rem]
