@@ -1,4 +1,4 @@
-<x-text.title class="m-auto my-10">
+<x-text.title class="my-10 text-center">
     {{ __('Registration') }}
 </x-text.title>
 <x-elems.regform>

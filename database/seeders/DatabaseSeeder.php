@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
             Number of enemy teams: unknown
             Amount of locals on the territory: unknown',
-            'date' => '2022.08.19',
+            'date' => '2022.10.06',
             'time' => '10:30:00',
         ]);
 
