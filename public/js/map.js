@@ -310,3 +310,17 @@ if (distance < 0) {
     // document.getElementById("demo").innerHTML = "EXPIRED";
 }
 }, 1000);
+
+let square = document.getElementById('square');
+function getHeight() {
+  let blockHeight = document.getElementById('infoBlock').clientHeight;
+  let blockWidth = document.getElementById('infoBlock').clientWidth;
+  square.classList.remove('hidden');
+  square.style.height = blockHeight + 'px';
+  square.style.width = blockWidth + 'px';
+  square.style.opacity = 40 + '%';
+  square.classList.add('h-[' + blockHeight + 'px]');
+  square.classList.add('w-[' + blockWidth + 'px]');
+  square.style.right = -20 + 'px';
+  square.style.bottom = -20 + 'px';
+}

@@ -26,7 +26,7 @@
         <x-text.title id="info-title">
             {{ __('Info') }}
         </x-text.title>
-        <x-page.block tabindex="0">
+        <x-page.block tabindex="0" onclick="getHeight()" id="infoBlock">
             <x-text.subtitle class="collapse-title font-medium text-white">
                 {{ $infos->title }}
             </x-text.subtitle>
@@ -34,6 +34,9 @@
                 {{ $infos->text }}
             </x-text.paragraph>
         </x-page.block>
+
+        <div class="bg-main absolute opacity-0 w-[40%] right-0 bottom-0 rounded-2xl z-0 hidden ease-out duration-200" id="square"></div>
+
     </x-page.gameinfo>
 
     <x-elems.separator />
