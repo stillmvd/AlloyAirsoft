@@ -12,7 +12,7 @@ let openInfoBlock = true;
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(map_1cord.textContent, map_2cord.textContent),
-        zoom: 17,
+        zoom: 15,
         disableDefaultUI: true,
         styles: [
             {
@@ -318,7 +318,6 @@ function getHeight() {
   square.classList.remove('hidden');
   square.style.height = blockHeight + 'px';
   square.style.width = blockWidth + 'px';
-  square.style.opacity = 40 + '%';
   square.classList.add('h-[' + blockHeight + 'px]');
   square.classList.add('w-[' + blockWidth + 'px]');
   square.style.right = -20 + 'px';
