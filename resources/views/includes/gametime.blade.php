@@ -7,7 +7,7 @@
             zero:text-[1.1rem]">
     {{ date('g:i', strtotime($game->time))}}
 </p>
-<p class="text-subwhite font-light leading-8 
+<p class="text-subwhite font-normal leading-8 
             desktop-xl:text-[1.2rem]
             desktop:text-[1.2rem]
             laptop:text-[1.0rem]

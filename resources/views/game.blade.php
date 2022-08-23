@@ -30,7 +30,7 @@
             <x-text.subtitle class="collapse-title font-medium text-white">
                 {{ $infos->title }}
             </x-text.subtitle>
-            <x-text.paragraph class="collapse-content whitespace-pre-line font-normal">
+            <x-text.paragraph class="collapse-content whitespace-pre-line font-normal text-subwhite">
                 {{ $infos->text }}
             </x-text.paragraph>
         </x-page.block>
@@ -49,7 +49,7 @@
                     <x-text.subtitle class="collapse-title font-medium text-white">
                         {{ $rule->title }}
                     </x-text.subtitle>
-                    <x-text.paragraph class="collapse-title whitespace-pre-line font-normal mt-10">
+                    <x-text.paragraph class="collapse-title whitespace-pre-line font-normal mt-10 text-subwhite">
                         {{ $rule->text }}
                     </x-text.paragraph>
                 @else
@@ -57,7 +57,7 @@
                     <x-text.subtitle class="collapse-content font-medium text-white">
                         {{ $rule->title }}
                     </x-text.subtitle>
-                    <x-text.paragraph class="collapse-content whitespace-pre-line">
+                    <x-text.paragraph class="collapse-content whitespace-pre-line text-subwhite">
                         {{ $rule->text }}
                     </x-text.paragraph>
                 </div>

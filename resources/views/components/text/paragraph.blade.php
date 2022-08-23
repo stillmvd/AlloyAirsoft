@@ -6,6 +6,4 @@
      laptop:text-lg
      desktop:text-lg
      desktop-xl:text-lg'
-])->merge([
-    'class' => ''
 ]) }}>{{ $slot }}</p>

@@ -1,13 +1,9 @@
-<p {{ $attributes->class(
-    'font-normal text-white
-     zero:text-xl
+<p {{ $attributes->class([
+    'zero:text-xl
      phone:text-2xl
      tablet:text-2xl
      tablet-xl:text-2xl
      laptop:text-2xl
      desktop:text-2xl
-     desktop-xl:text-2xl
-    '
-) }}>
-    {{ $slot }}
-</p>
+     desktop-xl:text-2xl'
+]) }}>{{ $slot }}</p>
