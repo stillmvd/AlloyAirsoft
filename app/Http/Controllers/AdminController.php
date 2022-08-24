@@ -2,37 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAdminRequest;
 use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function login(StoreAdminRequest $request) {
-        // Comment
+    public function login(Request $request) {
         $validated = $request->validate([
             'login' => 'required',
             'password' => 'required',
         ]);
         if (auth()->attempt($validated)) {
-            // Comment
-            return redirect('admin');
+            return redirect()->route('admin');
         } else {
-            // Comment
-            return redirect()->back()
-                    ->withErrors(['loginError' => 'You have some errors']);
+            return redirect()->back()->withErrors(
+                ['loginError' => 'You have some errors']
+            );
         }
     }
 
     public function logout() {
-        // Comment
         auth()->logout();
         return redirect('/');
     }
 
     public function index(Request $request) {
-        // Comment
         $games = DB::table('games')->get();
         $players = DB::table('players')->get();
         return view('admin.index', compact('games', 'players'));

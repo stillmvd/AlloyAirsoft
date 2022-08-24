@@ -20,7 +20,7 @@
         <span class="whitespace-nowrap">{{ $message }}</span>
     </x-elems.alert>
 @endif
-<body class="h-[100vh] flex flex-col">
+<body class="h-[100vh] flex flex-col" id="body">
     <header>
         <div id='stars'></div>
         <div id='stars2'></div>

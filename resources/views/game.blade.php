@@ -26,7 +26,7 @@
         <x-text.title id="info-title">
             {{ __('Info') }}
         </x-text.title>
-        <x-page.block tabindex="0" onclick="getHeight()" id="infoBlock">
+        <x-page.block tabindex="0" onclick="createInfoSquare()" id="infoBlock">
             <x-text.subtitle class="collapse-title font-medium text-white">
                 {{ $infos->title }}
             </x-text.subtitle>
@@ -35,7 +35,7 @@
             </x-text.paragraph>
         </x-page.block>
 
-        <div class="bg-main absolute opacity-0 w-[40%] right-0 bottom-0 rounded-2xl z-0 hidden ease-out duration-200" id="square"></div>
+        <div class="bg-main absolute opacity-0 w-[40%] right-0 bottom-0 rounded-2xl z-0 hidden ease-out duration-200" id="infoSquare"></div>
 
     </x-page.gameinfo>
 
@@ -45,7 +45,7 @@
         <x-text.title id="rules-title">
             {{ __('Rules') }}
         </x-text.title>
-        <x-page.block tabindex="0">
+        <x-page.block tabindex="0" id="rulesBlock" onclick="createRuleSquare()">
             <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
             @foreach ($rules as $rule)
                 @if ($loop->index < 1)
@@ -67,6 +67,7 @@
                 @endif
             @endforeach
         </x-page.block>
+        <div class="bg-main absolute opacity-0 w-[40%] right-0 bottom-0 rounded-2xl z-0 hidden ease-out duration-200" id="rulesSquare"></div>
     </x-page.gamerules>
     <x-elems.separator/>
     @include('includes.registration')
