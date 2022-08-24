@@ -4,8 +4,7 @@
      tablet-xl:h-[250px]
      tablet:h-[230px]
      phone:h-[210px]
-     zero:h-[200px]
-    '
+     zero:h-[200px]'
 ])->merge([
 
 ]) }}>

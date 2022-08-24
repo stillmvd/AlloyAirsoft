@@ -92,7 +92,7 @@
     </div>
 
     <div class="flex justify-center">
-        <h2>
+        <h2 class="my-10">
             {{ __('Add new game') }}
         </h2>
     </div>

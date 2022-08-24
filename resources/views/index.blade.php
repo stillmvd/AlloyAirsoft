@@ -17,7 +17,7 @@
                             {{ __('Delete') }}
                         </x-admin.delete-button>
                     </form>
-                    <x-elems.edit-button href="{{ route('edit', $game->id) }}" class="hover:text-green" />
+                    <x-elems.edit-button href="{{ route('edit', $game->id) }}" class="hover:text-green leading-7" />
                 </div>
             @endauth
         @endforeach

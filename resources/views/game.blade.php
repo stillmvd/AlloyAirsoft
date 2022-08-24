@@ -1,39 +1,53 @@
 @extends('layouts.base')
 
 @section('content')
-<x-page.maininfo class="items-end py-9">
-    <x-text.title class="h-min text-white font-normal">
-        {{ __($game->name) }}
-    </x-text.title>
-    <x-text.gamedate :game='$game' />
-    <x-text.gametime :game='$game' />
-</x-page.maininfo>
-
-    <x-text.cords first_cord='{{ $game->first_cord }}' second_cord='{{ $game->second_cord }}' />
+    <div class="grid grid-cols-3 py-9">
+        <b class="text-5xl font-normal">
+            {{ __($game->name) }}
+        </b>
+        <div class="flex flex-row items-end place-self-center hovered">
+            <b class="text-5xl mr-3 font-normal">
+                {{ date('d', strtotime($game->date)) }}
+            </b>
+            <p class="leading-6">
+                {{ date('M', strtotime($game->date)) }}
+            </p>
+        </div>
+        <div class="flex flex-row items-end place-self-end hovered">
+            <b class="text-5xl mr-3 font-normal">
+                {{ date('g:i', strtotime($game->time))}}
+            </b>
+            <p class="leading-6">
+                {{ ucfirst(date('a', strtotime($game->time))) }}
+            </p>
+        </div>
+    </div>
+    <div class="hidden boolshit">
+        <p class="hidden" id="first_cord">{{ $first_cord }}</p>
+        <p class="hidden" id="second_cord">{{ $second_cord }}</p>
+        <p class="hidden" id="info">{{ $game->name }}</p>
+        <p class="hidden" id="countdown">{{ $game->date . ' ' . $game->time }}</p>
+        <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
+    </div>
     <x-gamecard.body>
         <x-elems.map id="map" />
-        <div class="hidden" id="info">
-            {{ $game->name }}
-        </div>
     </x-gamecard.body>
-    <p class="hidden" id="countdown">
-        {{ $game->date . ' ' . $game->time }}
-    </p>
+
     @unless ($game->finished)
         <x-page.downcounter/>
     @endunless
     
     <x-page.gameinfo>
-        <x-text.title id="info-title">
+        <h2 id="info-title">
             {{ __('Info') }}
-        </x-text.title>
+        </h2>
         <x-page.block tabindex="0" onclick="createInfoSquare()" onblur="removeInfoSquare()" id="infoBlock">
-            <x-text.subtitle class="collapse-title font-medium text-white">
+            <h3 class="collapse-title text-white">
                 {{ $infos->title }}
-            </x-text.subtitle>
-            <x-text.paragraph class="collapse-content whitespace-pre-line font-light text-white">
+            </h3>
+            <p class="collapse-content whitespace-pre-line text-white font-light">
                 {{ $infos->text }}
-            </x-text.paragraph>
+            </p>
         </x-page.block>
         <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-2xl z-0 ease-out duration-500" id="infoSquare"></div>
     </x-page.gameinfo>
@@ -41,27 +55,24 @@
     <x-elems.separator />
 
     <x-page.gamerules>
-        <x-text.title id="rules-title">
+        <h2 id="rules-title">
             {{ __('Rules') }}
-        </x-text.title>
+        </h2>
         <x-page.block tabindex="0" id="rulesBlock" onclick="createRulesSquare()" onblur="removeRulesSquare()">
-            <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
             @foreach ($rules as $rule)
                 @if ($loop->index < 1)
-                    <x-text.subtitle class="collapse-title font-medium text-white">
+                    <h3 class="collapse-title text-white">
                         {{ $rule->title }}
-                    </x-text.subtitle>
-                    <x-text.paragraph class="collapse-title whitespace-pre-line font-normal mt-10 text-subwhite">
+                    </h3>
+                    <p class="collapse-title whitespace-pre-line mt-6 text-white font-light">
                         {{ $rule->text }}
-                    </x-text.paragraph>
+                    </p>
                 @else
-                <div class="">
-                    <x-text.subtitle class="collapse-content font-medium text-white">
+                <div>
+                    <h3 class="collapse-content text-white">
                         {{ $rule->title }}
-                    </x-text.subtitle>
-                    <x-text.paragraph class="collapse-content whitespace-pre-line text-subwhite">
-                        {{ $rule->text }}
-                    </x-text.paragraph>
+                    </h3>
+                    <p class="collapse-content whitespace-pre-line text-white font-light">{{ $rule->text }}</p>
                 </div>
                 @endif
             @endforeach

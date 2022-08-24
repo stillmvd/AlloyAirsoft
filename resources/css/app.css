@@ -6,22 +6,24 @@
     html {
         font-family: Poppins, sans-serif;
     }
+
     h1 {
-       @apply text-white text-5xl my-14 leading-none flex items-end;
+       @apply text-white text-6xl my-14 leading-none;
     }
     h2 {
-        @apply text-white text-4xl my-10 leading-none flex items-end;
+        @apply text-white text-5xl leading-none;
     }
     h3 {
-        @apply text-white text-3xl leading-none flex items-end;
+        @apply text-white text-3xl leading-none;
     }
+
     a {
-        @apply text-white text-base font-medium leading-none flex items-end;
+        @apply text-white text-base font-medium leading-none;
     }
     b {
-        @apply text-white text-base font-medium leading-none flex items-end;
+        @apply text-white text-base font-medium leading-none;
     }
     p {
-        @apply text-subwhite text-base font-normal leading-none flex items-end;
+        @apply text-subwhite text-base font-normal;
     }
 }
