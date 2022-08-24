@@ -4,23 +4,26 @@ namespace App\Actions;
 use App\Models\Game;
 use App\Models\Info;
 use App\Models\Rule;
-use Illuminate\Foundation\Bus\DispatchesJobs;
+
 use Illuminate\Support\Facades\DB;
 
 class GetGameInfoAction
 {
-    use DispatchesJobs;
-
-    public function get_info(int $game_id) : array
+    /**
+     * Возвращает массив данных об игре для вывода на сайт
+     * @param int $gameId id игры
+     * @return array
+     */
+    public function getInfo(int $gameId)
     {
-        $rules = Rule::where('game_id', $game_id)->get();
+        $rules = Rule::where('game_id', $gameId)->get();
         return [
-            'first_cord' => Game::find($game_id)->first_cord,
-            'second_cord' => Game::find($game_id)->second_cord,
-            'infos' => Info::where('game_id', $game_id)->first(),
+            'first_cord' => Game::find($gameId)->first_cord,
+            'second_cord' => Game::find($gameId)->second_cord,
+            'infos' => Info::where('game_id', $gameId)->first(),
             'rules' => $rules,
             'amount' => $rules->count(),
-            'game' => Game::find($game_id),
+            'game' => Game::find($gameId),
             'teams' => DB::table('teams')->get('name'),
             'teams_count' => DB::table('teams')->count(),
         ];

@@ -19,7 +19,7 @@ function initMap() {
           "stylers": [
             {
               "color": "#212121"
-            }   
+            }
           ]
         },
         {
@@ -51,7 +51,7 @@ function initMap() {
           "elementType": "geometry",
           "stylers": [
             {
-              "color": "#7aa973"
+              "color": "#37c564"
             }
           ]
         },
@@ -78,7 +78,7 @@ function initMap() {
           "elementType": "geometry.fill",
           "stylers": [
             {
-              "color": "#7aa973"
+              "color": "#37c564"
             }
           ]
         },
@@ -105,7 +105,7 @@ function initMap() {
           "elementType": "geometry.fill",
           "stylers": [
             {
-              "color": "#7aa973"
+              "color": "#37c564"
             }
           ]
         },
@@ -150,7 +150,7 @@ function initMap() {
           "elementType": "geometry.fill",
           "stylers": [
             {
-              "color": "#7aa973"
+              "color": "#a99d73"
             }
           ]
         },
@@ -168,7 +168,7 @@ function initMap() {
           "elementType": "geometry.fill",
           "stylers": [
             {
-              "color": "#7aa973"
+              "color": "#a99d73"
             }
           ]
         },
@@ -186,7 +186,7 @@ function initMap() {
           "elementType": "geometry.fill",
           "stylers": [
             {
-              "color": "#7aa973"
+              "color": "#a99d73"
             }
           ]
         },

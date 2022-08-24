@@ -8,46 +8,53 @@ use App\Actions\GetUpcomingGamesAction;
 use App\Actions\SendEmailAction;
 use App\Actions\StoreEmailAction;
 use App\Actions\StorePlayerAction;
+
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
 
+/** PagesController содержит основные контроллеры работающие на сайте. */
 class PagesController extends Controller
 {
-    public function index(GetUpcomingGamesAction $getUpcomingGamesAction)
+    public function index(GetUpcomingGamesAction $getUpcomingGames)
     {
-        return view('index', $getUpcomingGamesAction->get_info());
+        return view('index', $getUpcomingGames->getGames());
     }
 
-    public function archive(GetArchiveGamesAction $getArchiveGamesAction)
+    public function archive(GetArchiveGamesAction $getArchiveGames)
     {
-        return view('archive', $getArchiveGamesAction->get_info());
+        return view('archive', $getArchiveGames->getGames());
     }
 
-    public function game(GetGameInfoAction $getGameInfoAction, $game_id)
+    public function game(GetGameInfoAction $getGameInfo, int $gameId)
     {
-        return view('game', $getGameInfoAction->get_info($game_id));
+        return view('game', $getGameInfo->getInfo($gameId));
     }
 
-    public function store_players(StoreFormRequest $request, $game_id,
-                                  StorePlayerAction $storePlayerAction, SendEmailAction $sendEmailAction)
+    public function storePlayers(StoreFormRequest $request, int $gameId,
+                                  StorePlayerAction $storePlayer, SendEmailAction $sendEmail)
     {
-        $storePlayerAction->save($request, $game_id);
-        $sendEmailAction->send($request->email, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
-        return redirect()->route('game', $game_id)->with(
+        $storePlayer->createPlayerInDB($request, $gameId);
+        $sendEmail->sendEmail($request->email, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
+
+        return redirect()->route('game', $gameId)->with(
             ['success' => 'You are registered for the game']
         );
     }
 
-    public function save_email(StoreEmailRequest $request, StoreEmailAction $storeEmailAction,
-                               SendEmailAction $sendEmailAction)
+    public function saveEmail(StoreEmailRequest $request,
+                              StoreEmailAction $storeEmail, SendEmailAction $sendEmail)
     {
-        if(isExistsDB($request->email)) {
+        if(isExistsDB($request->email))
+        {
             return redirect()->back()->with(
                 ['error' => 'You have already subscribed to the newsletter!']
             );
-        } else {
-            $storeEmailAction->save($request->email);
-            $sendEmailAction->send($request->email, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
+        }
+        else
+        {
+            $storeEmail->saveEmail($request->email);
+            $sendEmail->sendEmail($request->email, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
+
             return redirect()->back()->with(
                 ['success' => 'You have successfully subscribed to the newsletter!']
             );

@@ -1,14 +1,16 @@
 <?php
 namespace App\Actions;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\DB;
 
 class GetUpcomingGamesAction
 {
-    use DispatchesJobs;
-
-    public function get_info() : array
+    /**
+     * Возвращает из базы данных игры которые не завершены
+     *
+     * @return array
+     */
+    public function getGames()
     {
         return [
             'games' => DB::table('games')->where('finished', '=', '0')->get(),

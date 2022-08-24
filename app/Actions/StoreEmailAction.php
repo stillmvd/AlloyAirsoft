@@ -1,14 +1,17 @@
 <?php
 namespace App\Actions;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\DB;
 
 class StoreEmailAction
 {
-    use DispatchesJobs;
-
-    public function save($email) : void
+/**
+ * Сохраняет в базе данных переданный email
+ *
+ * @param string $email
+ * @return void
+ */
+    public function saveEmail(string $email)
     {
         DB::table('emails')->insert([
             'email' => $email,

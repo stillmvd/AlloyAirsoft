@@ -1,16 +1,20 @@
 <?php
 namespace App\Actions;
 
-use App\Http\Requests\StoreFormRequest;
 use App\Mail\Mailing;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\Mail;
 
 class SendEmailAction
 {
-    use DispatchesJobs;
-
-    public function send(String $email, String $title, String $message): void
+    /**
+     * Отправляет сообщение на заданный email с задаными title и message
+     *
+     * @param string $email
+     * @param string $title Заголовок письма
+     * @param string $message Сообщение письма
+     * @return void
+     */
+    public function sendEmail(string $email, string $title, string $message)
     {
         Mail::to($email)->send(new Mailing([
             'title' => $title,
