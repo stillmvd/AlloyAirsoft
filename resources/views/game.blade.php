@@ -30,7 +30,7 @@
             <x-text.subtitle class="collapse-title font-medium text-white">
                 {{ $infos->title }}
             </x-text.subtitle>
-            <x-text.paragraph class="collapse-content whitespace-pre-line font-normal text-subwhite">
+            <x-text.paragraph class="collapse-content whitespace-pre-line font-light text-white">
                 {{ $infos->text }}
             </x-text.paragraph>
         </x-page.block>

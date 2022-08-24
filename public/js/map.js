@@ -13,7 +13,7 @@ let body = document.getElementById("body");
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(map_1cord.textContent, map_2cord.textContent),
-        zoom: 17,
+        zoom: 15,
         disableDefaultUI: true,
         styles: [
             {
