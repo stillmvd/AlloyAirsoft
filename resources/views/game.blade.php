@@ -19,14 +19,15 @@
     <p class="hidden" id="countdown">
         {{ $game->date . ' ' . $game->time }}
     </p>
-    <x-page.downcounter/>
-
-
+    @unless ($game->finished)
+        <x-page.downcounter/>
+    @endunless
+    
     <x-page.gameinfo>
         <x-text.title id="info-title">
             {{ __('Info') }}
         </x-text.title>
-        <x-page.block tabindex="0" onclick="createInfoSquare()" id="infoBlock">
+        <x-page.block tabindex="0" onclick="createInfoSquare()" onblur="removeInfoSquare()" id="infoBlock">
             <x-text.subtitle class="collapse-title font-medium text-white">
                 {{ $infos->title }}
             </x-text.subtitle>
@@ -34,9 +35,7 @@
                 {{ $infos->text }}
             </x-text.paragraph>
         </x-page.block>
-
-        <div class="bg-main absolute opacity-0 w-[40%] right-0 bottom-0 rounded-2xl z-0 hidden ease-out duration-200" id="infoSquare"></div>
-
+        <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-2xl z-0 ease-out duration-500" id="infoSquare"></div>
     </x-page.gameinfo>
 
     <x-elems.separator />
@@ -45,7 +44,7 @@
         <x-text.title id="rules-title">
             {{ __('Rules') }}
         </x-text.title>
-        <x-page.block tabindex="0" id="rulesBlock" onclick="createRuleSquare()">
+        <x-page.block tabindex="0" id="rulesBlock" onclick="createRulesSquare()" onblur="removeRulesSquare()">
             <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
             @foreach ($rules as $rule)
                 @if ($loop->index < 1)
@@ -67,8 +66,10 @@
                 @endif
             @endforeach
         </x-page.block>
-        <div class="bg-main absolute opacity-0 w-[40%] right-0 bottom-0 rounded-2xl z-0 hidden ease-out duration-200" id="rulesSquare"></div>
+        <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-2xl z-0 ease-out duration-500" id="rulesSquare"></div>
     </x-page.gamerules>
-    <x-elems.separator/>
-    @include('includes.registration')
+    @unless ($game->finished)
+        <x-elems.separator/>
+        @include('includes.registration')
+    @endunless
 @endsection

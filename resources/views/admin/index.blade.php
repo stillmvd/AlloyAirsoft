@@ -1,125 +1,134 @@
 @extends('layouts.base')
 
 @section('content')
-    <x-page.maininfo>
-        <x-text.title class="col-span-3 place-self-center mt-20 mb-10">
-            {{ __('Admin information') }}
-        </x-text.title>
-    </x-page.maininfo>
+    <div class="flex justify-center">
+        <h1>
+            {{ __('Admin panel') }}
+        </h1>
+    </div>
 
-    <x-admin.cards>
+    <div class="grid grid-cols-3 grid-rows-1 gap-6">
         <x-admin.block>
-            <x-text.subtitle class="text-white font-normal">
+            <h3 class="px-6 pt-6">
                 {{ __('Upcoming games') }}
-            </x-text.subtitle>
+            </h3>
             @foreach ($games as $game)
-                @if ($game->finished == 0)
-                    <div class="flex flex-row w-full justify-between mt-3">
-                        <x-text.link href="{{ route('game', $game->id) }}" class="text-subwhite font-normal">
+                @if (0 == $game->finished)
+                    <div class="flex flex-row w-full justify-between mt-6 bg-dark p-6 rounded-2xl">
+                        <a href="{{ route('game', $game->id) }}">
                             {{ $game->name }}
-                        </x-text.link>
+                        </a>
                         <div class="flex flex-row">
-                            <x-text.paragraph class="font-normal mr-2">
+                            <b class="mr-3">
                                 {{ $players->where('id', $game->id)->count() }}
-                            </x-text.paragraph>
-                            <x-text.paragraph>
+                            </b>
+                            <p>
                                 {{ __('players') }}
-                            </x-text.paragraph>
+                            </p>
                         </div>
-                        <x-text.paragraph>
+                        <b>
                             {{ $game->date }}
-                        </x-text.paragraph>
+                        </b>
                     </div>
                 @endif
             @endforeach
         </x-admin.block>
-
+    
         <x-admin.block>
-            <x-text.subtitle class="text-white font-normal">
+            <h3 class="px-6 pt-6">
                 {{ __('Finished games') }}
-            </x-text.subtitle>
-            @foreach ($games as $game)
-                @if ($game->finished == 1)
-                    <div class="flex flex-row w-full justify-between mt-3">
-                        <x-text.link href="{{ route('game', $game->id) }}" class="text-subwhite font-normal">
-                            {{ $game->name }}
-                        </x-text.link>
-                        <div class="flex flex-row">
-                            <x-text.paragraph class="font-normal mr-2">
-                                {{ $players->where('id', $game->id)->count() }}
-                            </x-text.paragraph>
-                            <x-text.paragraph>
-                                {{ __('players') }}
-                            </x-text.paragraph>
+            </h3>
+            @if (1 > $games->where('finished', 1)->count())
+                <div class="flex flex-row w-full justify-between mt-6 bg-dark p-6 rounded-2xl">
+                    <b>
+                        {{ __('No game is over yet') }}
+                    </b>
+                </div>
+            @else
+                @foreach ($games as $game)
+                    @if (1 == $game->finished)
+                        <div class="flex flex-row w-full justify-between mt-6 bg-dark p-6 rounded-2xl">
+                            <a href="{{ route('game', $game->id) }}">
+                                {{ $game->name }}
+                            </a>
+                            <div class="flex flex-row">
+                                <b class="mr-3">
+                                    {{ $players->where('id', $game->id)->count() }}
+                                </b>
+                                <p>
+                                    {{ __('players') }}
+                                </p>
+                            </div>
+                            <b>
+                                {{ $game->date }}
+                            </b>
                         </div>
-                        <x-text.paragraph>
-                            {{ $game->date }}
-                        </x-text.paragraph>
-                    </div>
-                @endif
-            @endforeach
+                    @endif
+                @endforeach
+            @endif
         </x-admin.block>
-
+    
         <x-admin.block>
-            <x-text.subtitle class="text-white font-normal">
+            <h3 class="px-6 pt-6">
                 {{ __('Statistics') }}
-            </x-text.subtitle>
-            <div class="flex flex-row w-full justify-between mt-3">
-                <x-text.paragraph class="font-normal">
+            </h3>
+            <div class="flex flex-row w-full justify-between mt-6 bg-dark p-6 rounded-2xl">
+                <b>
                     {{ __('Players') }}
-                </x-text.paragraph>
-                <x-text.paragraph>
+                </b>
+                <p>
                     {{ $players->count() }}
-                </x-text.paragraph>
+                </p>
             </div>
-            <div class="flex flex-row w-full justify-between mt-3">
-                <x-text.paragraph class="font-normal">
+            <div class="flex flex-row w-full justify-between mt-3 bg-dark p-6 rounded-2xl">
+                <b>
                     {{ __('Played games') }}
-                </x-text.paragraph>
-                <x-text.paragraph>
+                </b>
+                <p>
                     {{ $games->where('finished', '1')->count() }}
-                </x-text.paragraph>
+                </p>
             </div>
         </x-admin.block>
-    </x-admin.cards>
+    </div>
 
-    <x-page.maininfo>
-        <x-text.title class="col-span-3 place-self-center mt-20 mb-10">
+    <div class="flex justify-center">
+        <h2>
             {{ __('Add new game') }}
-        </x-text.title>
-    </x-page.maininfo>
+        </h2>
+    </div>
 
-    <x-admin.form action="{{ route('create') }}" class="w-[40%] mx-auto">
+    <form action="POST" class="flex flex-col gap-y-6 w-[40%] mx-auto">
+        @csrf
 
-        <x-text.subtitle class="text-addictive">
+        <h3 class="text-addictive">
             {{ __('Card information') }}
-        </x-text.subtitle>
+        </h3>
         <x-admin.input placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
         <x-admin.input placeholder="Game name" type="text" name="name" />
         <x-elems.textarea placeholder="Game short info" name="info" />
         <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
         <x-admin.input placeholder="Polygon" type="text" name="polygon" />
 
-        <x-text.subtitle class="text-addictive">
+        <h3 class="text-addictive">
             {{ __('Map coordinates') }}
-        </x-text.subtitle>
+        </h3>
         <div class="grid grid-cols-2 gap-x-6">
             <x-admin.input placeholder="First coordinates" type="text" name="first_cord" />
             <x-admin.input placeholder="Second coordinates" type="text" name="second_cord" />
         </div>
 
-        <x-text.subtitle class="text-addictive">
+        <h3 class="text-addictive">
             {{ __('Game information') }}
-        </x-text.subtitle>
+        </h3>
         <x-admin.textblock>
             <x-admin.input placeholder="Title" type="text" name="title" />
             <x-elems.textarea placeholder="Text" name="text" />
             <x-admin.input type="number" placeholder="Levels" name="levels" />
         </x-admin.textblock>
 
-        <x-text.subtitle class="text-addictive">
+        <h3 class="text-addictive">
             {{ __('Game rules') }}
-        </x-text.subtitle>
+        </h3>
         <x-admin.textblock class="block">
             <x-admin.input placeholder="Title" type="text" name="title" />
             <x-elems.textarea placeholder="Text" name="text" />
@@ -129,7 +138,8 @@
         <input id="count" type="number" class="hidden" value="1" name="count"/>
         <x-elems.button value="Add game" />
 
-    </x-admin.form>
+    </form>
+
     <div class="flex justify-between w-[26%] my-10 mx-auto">
         <x-admin.button class="place-self-end hover:text-green" onclick="addColumns()">
             {{ 'Add columns' }}

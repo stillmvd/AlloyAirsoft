@@ -10,13 +10,13 @@
 }
 ::-webkit-scrollbar-track-piece  {
     background-color: transparent;
-    -webkit-border-radius: 50px;
+    border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb:vertical {
-    height: 2%px;
+    height: 2%;
     background-color: #CACACA;
     border: none;
-    -webkit-border-radius: 50px;
+    border-radius: 50px;
 }
 
 #textarea::-webkit-scrollbar-track{

@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div class="flex items-end">
-                <x-text.link href="{{ route('index') }}" class="font-normal mr-4  ease-out duration-[.2s] {{ Route::is('index') ? '
+                <x-text.headerLink href="{{ route('index') }}" class="font-normal mr-4  ease-out duration-[.2s] {{ Route::is('index') ? '
                 desktop-xl:text-[2.5rem]
                 desktop:text-[2.4rem]
                 laptop:text-[2.3rem]
@@ -25,7 +25,7 @@
                 pb-2 hover:pb-0 hover:text-white text-subwhite' }}">
                     {{ __('Upcoming') }}
                 </x-text.link>
-                <x-text.link href="{{ route('archive') }}" class="font-normal ml-4 ease-out duration-[.2s] {{ Route::is('archive') ? '
+                <x-text.headerLink href="{{ route('archive') }}" class="font-normal ml-4 ease-out duration-[.2s] {{ Route::is('archive') ? '
                 desktop-xl:text-[2.5rem]
                 desktop:text-[2.4rem]
                 laptop:text-[2.3rem]

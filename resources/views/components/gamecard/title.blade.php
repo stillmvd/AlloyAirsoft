@@ -8,8 +8,4 @@
      phone:text-[1.2rem]
      zero:text-[1.1rem]
     '
-])->merge([
-
-]) }}>
-    {{ $slot }}
-</p>
+]) }}>{{ $slot }}</p>

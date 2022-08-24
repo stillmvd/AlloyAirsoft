@@ -1,5 +1,5 @@
 <div {{ $attributes->class([
-    'w-full h-min p-6 bg-card_bg rounded-3xl'
+    'w-full h-min bg-card_bg rounded-2xl'
 ]) }}>
     {{ $slot }}
 </div>

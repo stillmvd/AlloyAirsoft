@@ -366,29 +366,52 @@ if (distance < 0) {
 
 body.addEventListener()
 
-let infoSquare = document.getElementById('infoSquare');
 function createInfoSquare() {
+  setTimeout(() => {
+    let infoSquare = document.getElementById('infoSquare');
+    let infoBlockHeight = document.getElementById('infoBlock').clientHeight;
+    let infoBlockWidth = document.getElementById('infoBlock').clientWidth;
+    infoSquare.classList.add('duration-500');
+    infoSquare.style.height = infoBlockHeight + 'px';
+    infoSquare.style.width = infoBlockWidth + 'px';
+    infoSquare.style.opacity = 70 + '%';
+    infoSquare.style.right = -20 + 'px';
+    infoSquare.style.bottom = -20 + 'px';
+  }, 100);
+}
+function removeInfoSquare() {
+  let infoSquare = document.getElementById('infoSquare');
   let infoBlockHeight = document.getElementById('infoBlock').clientHeight;
   let infoBlockWidth = document.getElementById('infoBlock').clientWidth;
-  infoSquare.classList.remove('hidden');
-  infoSquare.style.height = infoBlockHeight + 'px';
-  infoSquare.style.width = infoBlockWidth + 'px';
-  infoSquare.style.opacity = 69 + '%';
-  infoSquare.classList.add('h-[' + infoBlockHeight + 'px]');
-  infoSquare.classList.add('w-[' + infoBlockWidth + 'px]');
-  infoSquare.style.right = -20 + 'px';
-  infoSquare.style.bottom = -20 + 'px';
+  infoSquare.classList.remove('duration-500');
+  infoSquare.style.height = 0 + 'px';
+  infoSquare.style.width = 0 + 'px';
+  infoSquare.style.opacity = 0 + '%';
+  infoSquare.style.right = 0 + 'px';
+  infoSquare.style.bottom = 0 + 'px';
 }
-let rulesSquare = document.getElementById('rulesSquare');
-function createRuleSquare() {
-  let rulesblockHeight = document.getElementById('rulesBlock').clientHeight;
-  let rulesblockWidth = document.getElementById('rulesBlock').clientWidth;
-  rulesSquare.classList.remove('hidden');
-  rulesSquare.style.height = rulesblockHeight + 'px';
-  rulesSquare.style.width = rulesblockWidth + 'px';
-  rulesSquare.style.opacity = 69 + '%';
-  rulesSquare.classList.add('h-[' + rulesblockHeight + 'px]');
-  rulesSquare.classList.add('w-[' + rulesblockWidth + 'px]');
-  rulesSquare.style.right = -20 + 'px';
-  rulesSquare.style.bottom = -20 + 'px';
+
+function createRulesSquare() {
+  setTimeout(() => {
+    let rulesSquare = document.getElementById('rulesSquare');
+    let rulesBlockHeight = document.getElementById('rulesBlock').clientHeight;
+    let rulesBlockWidth = document.getElementById('rulesBlock').clientWidth;
+    rulesSquare.classList.add('duration-500');
+    rulesSquare.style.height = rulesBlockHeight + 'px';
+    rulesSquare.style.width = rulesBlockWidth + 'px';
+    rulesSquare.style.opacity = 70 + '%';
+    rulesSquare.style.right = -20 + 'px';
+    rulesSquare.style.bottom = -20 + 'px';
+  }, 150);
+}
+function removeRulesSquare() {
+  let rulesSquare = document.getElementById('rulesSquare');
+  let rulesBlockHeight = document.getElementById('rulesBlock').clientHeight;
+  let rulesBlockWidth = document.getElementById('rulesBlock').clientWidth;
+  rulesSquare.classList.remove('duration-500');
+  rulesSquare.style.height = 0 + 'px';
+  rulesSquare.style.width = 0 + 'px';
+  rulesSquare.style.opacity = 0 + '%';
+  rulesSquare.style.right = 0 + 'px';
+  rulesSquare.style.bottom = 0 + 'px';
 }
