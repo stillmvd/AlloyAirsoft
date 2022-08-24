@@ -2,7 +2,6 @@
 
 namespace App\Actions;
 
-use App\Models\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +15,8 @@ class UpdateRulesAction
      * @param int $gameId id игры
      * @return void
      */
-    public function update(Request $request, int $count, int $gameId){
+    public function update(Request $request, int $count, int $gameId)
+    {
         if ($request->count <= 1)
         {
             DB::table('rules')->where('id', $gameId)->update([

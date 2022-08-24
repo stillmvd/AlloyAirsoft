@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\GetArchiveGamesAction;
 use App\Actions\GetGameInfoAction;
+use App\Actions\getOldDataOfPlayer;
 use App\Actions\GetUpcomingGamesAction;
 use App\Actions\SendEmailAction;
 use App\Actions\StoreEmailAction;
@@ -30,9 +31,10 @@ class PagesController extends Controller
         return view('game', $getGameInfo->getInfo($gameId));
     }
 
-    public function storePlayers(StoreFormRequest $request, int $gameId,
+    public function storePlayers(StoreFormRequest $request, int $gameId, getOldDataOfPlayer $getOldData,
                                   StorePlayerAction $storePlayer, SendEmailAction $sendEmail)
     {
+        $getOldData->getData($request);
         $storePlayer->createPlayerInDB($request, $gameId);
         $sendEmail->sendEmail($request->email, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
 
@@ -44,6 +46,7 @@ class PagesController extends Controller
     public function saveEmail(StoreEmailRequest $request,
                               StoreEmailAction $storeEmail, SendEmailAction $sendEmail)
     {
+        $request->old('email');
         if(isExistsDB($request->email))
         {
             return redirect()->back()->with(

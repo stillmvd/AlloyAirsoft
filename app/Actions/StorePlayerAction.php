@@ -21,7 +21,7 @@ class StorePlayerAction
             'name' => $request->name,
             'surname' => $request->surname,
             'callsign' => $request->callsign,
-            'email' => $request->email,
+            'email' => $request->emailPlayer,
             'phone' => $request->phone,
             'team_id' =>  $request->team,
         ]);
