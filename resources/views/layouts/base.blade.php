@@ -22,9 +22,6 @@
 @endif
 <body class="h-[100vh] flex flex-col" id="body">
     <header>
-        <div id='stars'></div>
-        <div id='stars2'></div>
-        <div id='stars3'></div>
         <x-page.container>
             @auth
                 @if (Route::is('admin') || Route::is('players'))

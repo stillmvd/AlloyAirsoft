@@ -44,20 +44,31 @@
             </x-text.subtitle>
             <form action="{{ route('save_email') }}" method="POST">
                 @csrf
-                <div class="flex flex-row items-center pl-6 w-min rounded-2xl bg-card_bg group hover:bg-main ease-out duration-300 cursor-pointer">
+                <div class="flex flex-row items-center pl-6 w-min rounded-2xl bg-card_bg group hover:bg-main ease-out duration-300 cursor-pointer @error('email') ring-2 ring-red @enderror">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8 mr-4 group-hover:fill-dark" viewBox="0 0 16 16">
                         <path d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2H4Zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6v-2.55Zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v5.417Zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267v2.55Zm13 .566v5.734l-4.778-2.867L15 7.383Zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083l6.965 4.18ZM1 13.116V7.383l4.778 2.867L1 13.117Z"/>
                     </svg>
-                    <input type="email" name="email" placeholder="Your email" class="font-semibold bg-main placeholder:text-dark p-6 rounded-2xl ease-out duration-100
+                    <input type="text" name="email" placeholder="Your email" value="{{ old('email') }}" class="font-semibold bg-main placeholder:text-dark p-6 rounded-2xl ease-out duration-100
                     focus:outline-none group-hover:bg-card_bg group-hover:placeholder:text-white group-hover:scale-90 focus:scale-90 hover:text-white
-                        desktop-xl:text-lg
-                        desktop:text-lg
-                        laptop:text-lg
-                        tablet-xl:text-lg
-                        tablet:text-lg
-                        phone:text-lg
-                        zero:text-xl">
+                    desktop-xl:text-lg
+                    desktop:text-lg
+                    laptop:text-lg
+                    tablet-xl:text-lg
+                    tablet:text-lg
+                    phone:text-lg
+                    zero:text-xl">
                 </div>
+                @error('email')
+                    <div class="flex flex-row items-center pt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="red" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                        </svg>
+                        <p class="pl-2 text-red">
+                            {{ $message }}
+                        </p>
+                    </div>
+                @enderror
                 <input required type="submit" value="{{ __('Subscribe') }}" class="mt-6 whitespace-nowrap font-medium text-[1.7rem] text-white rounded-2xl px-6 py-4 bg-transparent ring-main ring-2 cursor-pointer ease-out duration-200
                 group-hover:bg-card_bg group-hover:text-white group-hover:scale-90 hover:ring-2 hover:ring-transparent hover:bg-main hover:text-dark
                 desktop-xl:w-[42vmin]

@@ -18,7 +18,7 @@ class StoreFormRequest extends FormRequest
             'name' => ['required', 'string', 'max:20'],
             'surname' => ['required', 'string', 'max:20'],
             'callsign' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'email:rfc,dns'],
+            'emailPlayer' => ['required', 'email:rfc,dns'],
             'phone' => ['required', 'max:20'],
             'team' => ['required'],
         ];

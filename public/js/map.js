@@ -9,6 +9,7 @@ let map_2cord = document.getElementById("second_cord");
 let openRulesBlock = true;
 let openInfoBlock = true;
 let body = document.getElementById("body");
+checkInputWithValidation()
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -339,6 +340,41 @@ document.getElementById('input_team').addEventListener('blur', function() {
       downLabel('team_label');
   }
 });
+
+function checkInputWithValidation(){
+    if (document.getElementById('input_name').value != '') {
+        upLabel('name_label');
+    } else {
+        downLabel('name_label');
+    }
+    if (document.getElementById('input_surname').value != '') {
+        upLabel('surname_label');
+    } else {
+        downLabel('surname_label');
+    }
+    if (document.getElementById('input_callsign').value != '') {
+        upLabel('callsign_label');
+    } else {
+        downLabel('callsign_label');
+    }
+    downLabel('email_label');
+    if (document.getElementById('input_email').value != '') {
+        upLabel('email_label');
+    } else {
+        downLabel('email_label');
+    }
+    if (document.getElementById('input_phone').value != '') {
+        upLabel('phone_label');
+    } else {
+        downLabel('phone_label');
+    }
+    downLabel('team_label');
+    if (document.getElementById('input_team').value != '') {
+        upLabel('team_label');
+    } else {
+        downLabel('team_label');
+    }
+}
 
 var countDownDate = new Date(document.getElementById('countdown').textContent).getTime();
 console.log(countDownDate);
