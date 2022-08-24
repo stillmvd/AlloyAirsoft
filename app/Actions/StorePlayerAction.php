@@ -3,13 +3,17 @@ namespace App\Actions;
 
 use App\Http\Requests\StoreFormRequest;
 use App\Models\Player;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class StorePlayerAction
 {
-    use DispatchesJobs;
-
-    public function save(StoreFormRequest $request, $game_id): void
+    /**
+     * Создает запись в базе данных Players и заносит туда данные из request
+     *
+     * @param App\Http\Requests\StoreFormRequest $request
+     * @param int $game_id id игры
+     * @return void
+     */
+    public function createPlayerInDB(StoreFormRequest $request, int $game_id)
     {
         Player::create([
             'created_at' => now(),
