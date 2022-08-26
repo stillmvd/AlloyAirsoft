@@ -8,6 +8,7 @@
     @vite('resources/css/app.css')
     <title>Alloy Airsoft</title>
 </head>
+
 @if ($message = session()->get('success'))
     <x-elems.alert class="alert-success">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -20,23 +21,22 @@
         <span class="whitespace-nowrap">{{ $message }}</span>
     </x-elems.alert>
 @endif
-<body class="h-[100vh] flex flex-col" id="body">
-    <header>
-        <x-page.container>
-            @auth
-                @if (Route::is('admin') || Route::is('players'))
-                    @include('includes.admin-header')
-                @else
-                    @include('includes.header')
-                @endif
-            @endauth
-            @guest
-                @include('includes.header')
-            @endguest
-        </x-page.container>
-    </header>
 
-    <main class="flex items-center">
+<body class="min-h-screen flex flex-col" id="body">
+    <x-page.container>
+        @auth
+            @if (Route::is('admin') || Route::is('players'))
+                @include('includes.admin-header')
+            @else
+                @include('includes.header')
+            @endif
+        @endauth
+        @guest
+            @include('includes.header')
+        @endguest
+    </x-page.container>
+
+    <main class="flex items-start">
         <x-page.container>
             @yield('content')
         </x-page.container>
@@ -50,6 +50,8 @@
         </x-page.container>
     </footer>
 </body>
+
+<script src="{{ asset('js/header.js') }}"></script>
 
 @if (Route::is('game'))
     <script src="{{ asset('js/map.js') }}"></script>

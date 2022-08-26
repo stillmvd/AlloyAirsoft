@@ -1,1 +1,3 @@
-<div class="h-[2px] mt-10 mb-10 w-full bg-dark"></div>
+<div {{ $attributes->class([
+    'h-[2px] w-full bg-dark'
+]) }}></div>

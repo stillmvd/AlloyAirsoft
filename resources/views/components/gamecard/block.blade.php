@@ -1,5 +1,5 @@
 <div {{ $attributes->class([
-    'z-20 flex'
+    'z-40 flex'
 ]) }}>
     {{ $slot }}
 </div>

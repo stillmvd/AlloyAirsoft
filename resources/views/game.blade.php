@@ -22,7 +22,7 @@
             </p>
         </div>
     </div>
-    <div class="hidden boolshit">
+    <div class="hidden">
         <p class="hidden" id="first_cord">{{ $first_cord }}</p>
         <p class="hidden" id="second_cord">{{ $second_cord }}</p>
         <p class="hidden" id="info">{{ $game->name }}</p>
@@ -31,11 +31,10 @@
     </div>
     <x-gamecard.body>
         <x-elems.map id="map" />
+        @unless ($game->finished)
+            <x-page.downcounter/>
+        @endunless
     </x-gamecard.body>
-
-    @unless ($game->finished)
-        <x-page.downcounter/>
-    @endunless
     
     <x-page.gameinfo>
         <h2 id="info-title">
@@ -52,7 +51,7 @@
         <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-2xl z-0 ease-out duration-500" id="infoSquare"></div>
     </x-page.gameinfo>
 
-    <x-elems.separator />
+    <x-elems.separator class="my-10" />
 
     <x-page.gamerules>
         <h2 id="rules-title">
@@ -80,7 +79,7 @@
         <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-2xl z-0 ease-out duration-500" id="rulesSquare"></div>
     </x-page.gamerules>
     @unless ($game->finished)
-        <x-elems.separator/>
+        <x-elems.separator class="mt-10" />
         @include('includes.registration')
     @endunless
 @endsection

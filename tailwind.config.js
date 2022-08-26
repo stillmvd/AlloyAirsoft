@@ -39,9 +39,9 @@ module.exports = {
       'addictive' : '#A99D73',
       'card_bg' : '#1B1B1B',
       'white' : '#DADADA',
+      'subwhite' : '#a7a7a7',
       'dark' : '#282828',
-      'subwhite' : '#6F6F6F',
-      'red' : '#991D1D',
+      'red' : '#C53737',
       'green' : '#2E991D',
       'yellow' : '#97991D',
     }

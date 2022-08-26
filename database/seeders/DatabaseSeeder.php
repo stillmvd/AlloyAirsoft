@@ -31,9 +31,10 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 44.0506173,
             'second_cord' => -78.6915067,
             'polygon' => 'Clarington Woods',
-            'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
-            Number of enemy teams: unknown
-            Amount of locals on the territory: unknown',
+            'info' => 'A 24 hours mission to find and identify signal marks on the 
+enemy territory with small fire team.
+Number of enemy teams: unknown
+Amount of locals on the territory: unknown',
             'date' => '2022.10.06',
             'time' => '10:30:00',
         ]);
