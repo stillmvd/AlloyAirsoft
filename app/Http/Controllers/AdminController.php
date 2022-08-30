@@ -18,6 +18,12 @@ use Illuminate\Http\Request;
 /** AdminController содержит основные контроллеры работающие в админке. */
 class AdminController extends Controller
 {
+    /**
+     * Login для админа
+     * 
+     * @param Request $request
+     * @return \Illuminate\View\View Возвращает главную страничку админки
+     */
     public function login(Request $request)
     {
         $validated = $request->validate([
@@ -36,18 +42,38 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Выхдит из админки
+     * 
+     * @return \Illuminate\Redirect Редирект на главную страничку
+     */
     public function logout()
     {
         auth()->logout();
         return redirect()->route('index');
     }
 
+    /**
+     * Отображает главную страничку админки
+     * 
+     * @param App\Actions\getAdminInfoAction $getAdminInfo Получает информацию для админки
+     * @return \Illuminate\View\View 
+     */
     public function index(GetAdminInfoAction $getAdminInfo)
     {
         return view('admin.index', $getAdminInfo->getInfo());
     }
 
-    public function create(Request $request, StoreGameAction $storeGame,
+    /**
+     * Создает игру
+     * 
+     * @param Request $request 
+     * @param App\Actions\StoreGameAction $storeGame Сохраняет игру в базе данных данными из request-a
+     * @param App\Actions\StoreInfosGameAction $storeInfosGame Сохраняет информацию об игре в базе данных данными из request-a
+     * @param App\Actions\StoreRulesGameAction $storeRulesGame Сохраняет правила игры в базе данных данными из request-a
+     * @return \Illuminate\Redirect
+     */
+     public function create(Request $request, StoreGameAction $storeGame,
                            StoreInfosGameAction $storeInfosGame, StoreRulesGameAction $storeRulesGame)
     {
         $game = $storeGame->saveGame($request);
@@ -58,11 +84,28 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Возращает страничку редактирования игры
+     * 
+     * @param  int $gameId ID игры
+     * @param  App\Actions\GetInfoFromEditGameAction $getInfoFromEditGame Получает данные игры для их редактирования
+     * @return \Illuminate\View\View
+     */
     public function edit(int $gameId, GetInfoFromEditGameAction $getInfoFromEditGame)
     {
         return view('admin.edit', $getInfoFromEditGame->getInfo($gameId));
     }
 
+    /**
+     * Обновляет информацию об игре
+     * 
+     * @param Request $request
+     * @param int $gameId ID игры
+     * @param App\Actions\UpdateGameAction $updateGame Обновляет игру в базе данных
+     * @param App\Actions\UpdateInfosAction $updateInfos Обновляет информацию об игре в базе данных
+     * @param App\Actions\UpdateRulesAction $updateRules Обновляет правила игры в базе данных
+     * @return \Illuminate\Redirect
+     */
     public function update(Request $request, int $gameId,
                            UpdateGameAction $updateGame, UpdateInfosAction $updateInfos, UpdateRulesAction $updateRules)
     {
@@ -74,6 +117,13 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Удаляет игру
+     * 
+     * @param int $gameId ID игры
+     * @param App\Acions\DeleteAllDataAction $deleteAllData Удаляет данные об игре
+     * @return \Illuminate\Redirect
+     */
     public function delete(int $gameId, DeleteAllDataAction $deleteAllData)
     {
         $gameName = getNameGame($gameId);
@@ -84,6 +134,12 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Возращает страничку players
+     * 
+     * @param GetAllInfoAction $getAllInfo Получает все данные из базы данных
+     * @return \Illuminate\View\View
+     */
     public function players(GetAllInfoAction $getAllInfo)
     {
         return view('admin.players', $getAllInfo->get());
