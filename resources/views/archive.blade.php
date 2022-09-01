@@ -11,15 +11,12 @@
             <x-elems.gamecard :loop=$loop :game=$game />
         @endforeach
     @else
-        <x-text.title class="text-white font-light mt-20">
+        <h2 class="mt-20">
             {{ __('Nothing here') }}
-        </x-text.title>
-        <div class="w-1/2 h-[200px] p-6 mt-20 group hover:bg-card_bg/50 duration-[.1s] ease-out bg-card_bg rounded-3xl cursor-pointer">
-            <a href="{{ route('index') }}" class="w-1/2">
-                <x-text.title class="text-white/25 group-hover:text-white duration-[.1s] ease-out font-light">
-                    {{ __('Wanna see our future games?') }}
-                </x-text.title>
-            </a>
-        </div>
+        </h2>
+        <a href="{{ route('index') }}" class="flex flex-row w-min mt-6 whitespace-pre bg-dark/50 pl-6 py-6 pb-[6%] pr-[14%] rounded-2xl ease-out duration-100 hover:bg-dark">
+            <p class="leading-none text-5xl">{{ __('Wanna see our 
+future games?') }}</p>
+        </a>
     @endif
 @endsection
