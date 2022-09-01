@@ -9,18 +9,26 @@ use App\Actions\GetInfoFromEditGameAction;
 use App\Actions\StoreGameAction;
 use App\Actions\StoreInfosGameAction;
 use App\Actions\StoreRulesGameAction;
+use App\Actions\UpdateContactAction;
 use App\Actions\UpdateGameAction;
 use App\Actions\UpdateInfosAction;
+use App\Actions\UpdateLoginAction;
+use App\Actions\UpdatePlayerAction;
 use App\Actions\UpdateRulesAction;
 
+use App\Http\Requests\StoreContactInformation;
+use App\Http\Requests\StoreFormRequest;
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /** AdminController содержит основные контроллеры работающие в админке. */
 class AdminController extends Controller
 {
     /**
      * Login для админа
-     * 
+     *
      * @param Request $request
      * @return \Illuminate\View\View Возвращает главную страничку админки
      */
@@ -44,7 +52,7 @@ class AdminController extends Controller
 
     /**
      * Выхдит из админки
-     * 
+     *
      * @return \Illuminate\Redirect Редирект на главную страничку
      */
     public function logout()
@@ -55,9 +63,9 @@ class AdminController extends Controller
 
     /**
      * Отображает главную страничку админки
-     * 
+     *
      * @param App\Actions\getAdminInfoAction $getAdminInfo Получает информацию для админки
-     * @return \Illuminate\View\View 
+     * @return \Illuminate\View\View
      */
     public function index(GetAdminInfoAction $getAdminInfo)
     {
@@ -66,7 +74,7 @@ class AdminController extends Controller
 
     /**
      * Отображает страницу изменения данных
-     * 
+     *
      * @param App\Actions\getAdminInfoAction $getAdminInfo Получает информацию для админки
      * @return \Illuminate\View\View
      */
@@ -77,8 +85,8 @@ class AdminController extends Controller
 
     /**
      * Создает игру
-     * 
-     * @param Request $request 
+     *
+     * @param Request $request
      * @param App\Actions\StoreGameAction $storeGame Сохраняет игру в базе данных данными из request-a
      * @param App\Actions\StoreInfosGameAction $storeInfosGame Сохраняет информацию об игре в базе данных данными из request-a
      * @param App\Actions\StoreRulesGameAction $storeRulesGame Сохраняет правила игры в базе данных данными из request-a
@@ -97,7 +105,7 @@ class AdminController extends Controller
 
     /**
      * Возращает страничку редактирования игры
-     * 
+     *
      * @param  int $gameId ID игры
      * @param  App\Actions\GetInfoFromEditGameAction $getInfoFromEditGame Получает данные игры для их редактирования
      * @return \Illuminate\View\View
@@ -109,7 +117,7 @@ class AdminController extends Controller
 
     /**
      * Обновляет информацию об игре
-     * 
+     *
      * @param Request $request
      * @param int $gameId ID игры
      * @param App\Actions\UpdateGameAction $updateGame Обновляет игру в базе данных
@@ -130,7 +138,7 @@ class AdminController extends Controller
 
     /**
      * Удаляет игру
-     * 
+     *
      * @param int $gameId ID игры
      * @param App\Acions\DeleteAllDataAction $deleteAllData Удаляет данные об игре
      * @return \Illuminate\Redirect
@@ -147,12 +155,51 @@ class AdminController extends Controller
 
     /**
      * Возращает страничку players
-     * 
-     * @param GetAllInfoAction $getAllInfo Получает все данные из базы данных
+     *
+     * @param App\Acions\GetAllInfoAction $getAllInfo Получает все данные из базы данных
      * @return \Illuminate\View\View
      */
     public function players(GetAllInfoAction $getAllInfo)
     {
         return view('admin.players', $getAllInfo->get());
+    }
+
+    /**
+     *  Изменяет контактную информацию admin-а
+     *
+     * @param App\Http\Request\StoreContactInformation $request
+     * @param App\Actions\UpdateContactAction $updateContact Обновляет контактные данные
+     * @return \Illuminate\Redirect
+     */
+    public function contactInformation(StoreContactInformation $request, UpdateContactAction $updateContact)
+    {
+        $updateContact->update($request);
+        return redirect()->route('credential');
+    }
+
+    /**
+     * Изменяет игровую информацию admin-а
+     *
+     * @param App\Http\Request\StoreFormRequest $request
+     * @param App\Actions\UpdatePlayerAction $updatePlayer Обновляет игровые данные admin-а
+     * @return \Illuminate\Redirect
+     */
+    public function playerInformation(StoreFormRequest $request, UpdatePlayerAction $updatePlayer)
+    {
+        $updatePlayer->update($request);
+        return redirect()->route('credential');
+    }
+
+    /**
+     * Обновляет логин
+     *
+     * @param Illuminate\Http\Request $request
+     * @param App\Actions\UpdateLoginAction $updateLogin Обновляет логин через старый пароль
+     * @return \Illuminate\Redirect
+     */
+    public function adminInformation(Request $request, UpdateLoginAction $updateLogin)
+    {
+        $updateLogin->update($request);
+        return redirect()->route('credential');
     }
 }

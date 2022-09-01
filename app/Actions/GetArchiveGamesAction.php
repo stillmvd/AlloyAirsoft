@@ -16,6 +16,8 @@ class GetArchiveGamesAction
             'teams' => DB::table('teams')->get(),
             'number' => DB::table('games')->get()->count(),
             'games' => DB::table('games')->where('finished', 1)->get(),
+            'phone' => DB::table('contact')->pluck('phone')[0],
+            'email' => DB::table('contact')->pluck('email')[0],
         ];
     }
 }
