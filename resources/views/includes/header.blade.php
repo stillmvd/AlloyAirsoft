@@ -1,27 +1,75 @@
-<header class="relative pt-8 flex flex-row justify-between w-full">
+<header class="relative pt-8 grid grid-cols-3 gap-x-6 justify-between w-full">
     <a href="{{ route('index') }}" class="text-[2.5rem] text-white font-normal">
         Alloy Airsoft
     </a>
-    <div id="menu" class="absolute bg-dark w-min left-0 right-0 mx-auto rounded-full p-2 group cursor-pointer hover:rounded-2xl hover:px-10 ease-out duration-100 z-30" tabindex="0" onclick="openMenu()" onblur="closeMenu()">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="w-8 group-hover:scale-[1.2] ease-out duration-100" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-        </svg>
-    </div>
-    <div id="links" class="absolute w-[10%] left-0 flex justify-between right-0 mx-auto whitespace-nowrap bottom-[20%] ease-out duration-200 invisible">
-        <a href="{{ route('index') }}" class="flex justify-end w-[20%]">
-            {{ __('Upcoming') }}
-        </a>
-        <a href="{{ route('archive') }}" class="flex justify-start w-[20%]">
-            {{ __('Archive') }}
-        </a>
-    </div>
-    <div class="flex flex-row items-end">
-        <b class="text-5xl mr-3 font-normal">
-            {{ now()->format('d') }}
-        </b>
-        <p class="leading-6">
-            {{ now()->format('M') }}
-        </p>
-    </div>
+    @guest
+        <div class="flex flex-row items-center justify-center">
+            <div class="flex bg-dark rounded-2xl">
+                <a href="{{ route('index') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('index') ? 'bg-card_bg/75' : '' }}">
+                    {{ __('Upcoming') }}
+                </a>
+                <a href="{{ route('archive') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('archive') ? 'bg-card_bg/75' : '' }}">
+                    {{ __('Archive') }}
+                </a>
+            </div>
+        </div>
+    @endguest
+    @auth
+        @if (Route::is('admin') || Route::is('players'))
+            <div class="flex flex-row items-center justify-center">
+                <div class="flex bg-dark rounded-2xl">
+                    <a href="{{ route('admin') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('admin') ? 'bg-card_bg/75' : '' }}">
+                        {{ __('Control') }}
+                    </a>
+                    <a href="{{ route('players') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('players') ? 'bg-card_bg/75' : '' }}">
+                        {{ __('Players') }}
+                    </a>
+                </div>
+            </div>
+        @elseif (Route::is('credential'))
+            <div class="flex flex-row items-center justify-center">
+                
+            </div>
+        @else
+            <div class="flex flex-row items-center justify-center">
+                <div class="flex bg-dark rounded-2xl">
+                    <a href="{{ route('index') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('index') ? 'bg-card_bg/75' : '' }}">
+                        {{ __('Upcoming games') }}
+                    </a>
+                    <a href="{{ route('archive') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('archive') ? 'bg-card_bg/75' : '' }}">
+                        {{ __('Finished games') }}
+                    </a>
+                </div>
+            </div>
+        @endif
+        <div class="flex flex-row items-center justify-end">
+            @if (Route::is('admin'))
+                <div class="flex bg-dark rounded-2xl">
+                    <a href="{{ route('credential') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-card_bg">
+                        {{ __('Change credential') }}
+                    </a>
+                    <a href="{{ route('logout') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-card_bg">
+                        {{ __('Logout') }}
+                    </a>
+                </div>
+            @else
+                <div class="flex bg-dark rounded-2xl justify-center">
+                    <a href="{{ route('admin') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-2xl ease-out duration-100 hover:bg-card_bg">
+                        {{ __('Admin panel') }}
+                    </a>
+                </div>
+            @endif
+        </div>
+    @endauth
+    @guest
+        <div class="flex flex-row items-end place-self-end">
+            <b class="text-5xl mr-3 font-normal">
+                {{ now()->format('d') }}
+            </b>
+            <p class="leading-6">
+                {{ now()->format('M') }}
+            </p>
+        </div>
+    @endguest
 </header>
 <x-elems.separator class="mt-6" />

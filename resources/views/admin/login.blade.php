@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @vite('resources/css/app.css')
-    <title>Please login</title>
+    <title>Wrong Door</title>
 </head>
 <body class="h-[100vh] bg-[#161616] flex justify-center items-center">
-    <div class="flex flex-col">
-        <x-text.title class="text-center mb-10">
+    <div class="flex flex-col items-center gap-y-10">
+        <h2>
             {{ __('Enjoy!') }}
-        </x-text.title>
-        <form action="{{ route('login') }}" method="POST" class="flex flex-col">
+        </h2>
+        <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-y-5">
             @csrf
-            <input type="text" name="login" placeholder="login" class="text-white text-[1rem] px-5 py-4 font-medium mb-[20px] rounded-2xl ring-1 ring-subwhite bg-transparent focus:outline-none">
-            <input type="password" name="password" placeholder="password" class="text-white text-[1rem] px-5 py-4 font-medium mb-[20px] rounded-2xl ring-1 ring-subwhite bg-transparent focus:outline-none">
-            <input type="submit" value="penetrate" class="w-full py-4 px-6 text-white text-[2rem] font-semibold rounded-2xl bg-transparent ring-2 ring-main cursor-pointer ease duration-[.2s] hover:ring-1 hover:ring-transparent hover:bg-main hover:text-dark">
+            <x-admin.input placeholder="Login" type="text" name="login" />
+            <x-admin.input placeholder="Password" type="password" name="password" />
+            <x-elems.button value="Penetrate" />
         </form>
     </div>
 </body>

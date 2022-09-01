@@ -1,46 +1,38 @@
 @extends('layouts.base')
 
 @section('content')
-<div class="overflow-x-auto">
-    <table class="table table-compact w-full">
-      <thead>
-        <tr>
-            <th>id</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>callsign</th>
-            <th>email</th>
-            <th>phone</th>
-            <th>team_id</th>
-            <th>game_id</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for ($i = 0; $i < $players_count; $i++)
-        <tr>
-            <td>{{ $players[$i]->id }}</td>
-            <td>{{ $players[$i]->name }}</td>
-            <td>{{ $players[$i]->surname }}</td>
-            <td>{{ $players[$i]->callsign }}</td>
-            <td>{{ $players[$i]->email }}</td>
-            <td>{{ $players[$i]->phone }}</td>
-            <td>{{ $players[$i]->team_id }}</td>
-            <td>{{ $players[$i]->game_id }}</td>
-        </tr>
-        @endfor
-      </tbody>
-      <tfoot>
-        <tr>
-            <th>id</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>callsign</th>
-            <th>email</th>
-            <th>phone</th>
-            <th>team_id</th>
-            <th>game_id</th>
-        </tr>
-      </tfoot>
-    </table>
+  <div class="flex justify-center">
+    <h1>
+      {{ __('All players') }}
+    </h1>
   </div>
+
+  <table class="w-full bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
+    <thead>
+      <tr class="text-white">
+          <th class="font-semibold text-left bg-card_bg/75 rounded-tl-xl rounded-bl-xl">id</th>
+          <th class="font-semibold text-left bg-card_bg/75">Name</th>
+          <th class="font-semibold text-left bg-card_bg/75">Surname</th>
+          <th class="font-semibold text-left bg-card_bg/75">callsign</th>
+          <th class="font-semibold text-left bg-card_bg/75">email</th>
+          <th class="font-semibold text-left bg-card_bg/75">phone</th>
+          <th class="font-semibold text-left bg-card_bg/75">team_id</th>
+          <th class="font-semibold text-left bg-card_bg/75 rounded-tr-xl rounded-br-xl">game_id</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for ($i = 0; $i < $players_count; $i++)
+      <tr class="text-[#979797]">
+          <td class="font-medium">{{ $players[$i]->id }}</td>
+          <td class="font-medium">{{ $players[$i]->name }}</td>
+          <td class="font-medium">{{ $players[$i]->surname }}</td>
+          <td class="font-medium">{{ $players[$i]->callsign }}</td>
+          <td class="font-medium">{{ $players[$i]->email }}</td>
+          <td class="font-medium">{{ $players[$i]->phone }}</td>
+          <td class="font-medium">{{ $players[$i]->team_id }}</td>
+          <td class="font-medium">{{ $players[$i]->game_id }}</td>
+      </tr>
+      @endfor
+    </tbody>
+  </table>
 @endsection

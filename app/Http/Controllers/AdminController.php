@@ -47,6 +47,11 @@ class AdminController extends Controller
         return view('admin.index', $getAdminInfo->getInfo());
     }
 
+    public function credential(GetAdminInfoAction $getAdminInfo)
+    {
+        return view('admin.credential', $getAdminInfo->getInfo());
+    }
+
     public function create(Request $request, StoreGameAction $storeGame,
                            StoreInfosGameAction $storeInfosGame, StoreRulesGameAction $storeRulesGame)
     {

@@ -14,22 +14,22 @@
             </h3>
             @foreach ($games as $game)
                 @if (0 == $game->finished)
-                    <div class="flex flex-row w-full justify-between mt-6 bg-dark p-6 rounded-2xl">
-                        <a href="{{ route('game', $game->id) }}">
+                    <a href="{{ route('game', $game->id) }}" class="flex flex-row w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                        <b class="leading-none">
                             {{ $game->name }}
-                        </a>
+                        </b>
                         <div class="flex flex-row">
-                            <b class="mr-3">
+                            <b class="mr-3 leading-none">
                                 {{ $players->where('id', $game->id)->count() }}
                             </b>
-                            <p>
+                            <p class="leading-none">
                                 {{ __('players') }}
                             </p>
                         </div>
-                        <b>
+                        <b class="leading-none">
                             {{ $game->date }}
                         </b>
-                    </div>
+                    </a>
                 @endif
             @endforeach
         </x-admin.block>
@@ -39,30 +39,30 @@
                 {{ __('Finished games') }}
             </h3>
             @if (1 > $games->where('finished', 1)->count())
-                <div class="flex flex-row w-full justify-between mt-6 bg-dark p-6 rounded-2xl">
-                    <b>
+                <div class="flex flex-row w-full justify-between mt-6 bg-dark p-5 rounded-2xl">
+                    <b class="leading-none">
                         {{ __('No game is over yet') }}
                     </b>
                 </div>
             @else
                 @foreach ($games as $game)
                     @if (1 == $game->finished)
-                        <div class="flex flex-row w-full justify-between mt-6 bg-dark p-6 rounded-2xl">
-                            <a href="{{ route('game', $game->id) }}">
+                        <a href="{{ route('game', $game->id) }}" class="flex flex-row w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                            <b class="leading-none">
                                 {{ $game->name }}
-                            </a>
+                            </b>
                             <div class="flex flex-row">
-                                <b class="mr-3">
+                                <b class="mr-3 leading-none">
                                     {{ $players->where('id', $game->id)->count() }}
                                 </b>
-                                <p>
+                                <p class="leading-none">
                                     {{ __('players') }}
                                 </p>
                             </div>
-                            <b>
+                            <b class="leading-none">
                                 {{ $game->date }}
                             </b>
-                        </div>
+                        </a>
                     @endif
                 @endforeach
             @endif
@@ -72,19 +72,19 @@
             <h3 class="px-6 pt-6">
                 {{ __('Statistics') }}
             </h3>
-            <div class="flex flex-row w-full justify-between mt-6 bg-dark p-6 rounded-2xl">
-                <b>
+            <div class="flex flex-row w-full justify-between mt-6 bg-dark p-5 rounded-2xl">
+                <b class="leading-none">
                     {{ __('Players') }}
                 </b>
-                <p>
+                <p class="leading-none">
                     {{ $players->count() }}
                 </p>
             </div>
-            <div class="flex flex-row w-full justify-between mt-3 bg-dark p-6 rounded-2xl">
-                <b>
+            <div class="flex flex-row w-full justify-between mt-3 bg-dark p-5 rounded-2xl">
+                <b class="leading-none">
                     {{ __('Played games') }}
                 </b>
-                <p>
+                <p class="leading-none">
                     {{ $games->where('finished', '1')->count() }}
                 </p>
             </div>
@@ -140,7 +140,7 @@
 
     </form>
 
-    <div class="flex justify-between w-[26%] my-10 mx-auto">
+    <div class="flex justify-between w-[22%] my-10 mx-auto">
         <x-admin.button class="place-self-end hover:text-green" onclick="addColumns()">
             {{ 'Add columns' }}
         </x-admin.button>

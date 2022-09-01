@@ -24,16 +24,7 @@
 
 <body class="min-h-screen flex flex-col" id="body">
     <x-page.container>
-        @auth
-            @if (Route::is('admin') || Route::is('players'))
-                @include('includes.admin-header')
-            @else
-                @include('includes.header')
-            @endif
-        @endauth
-        @guest
-            @include('includes.header')
-        @endguest
+        @include('includes.header')
     </x-page.container>
 
     <main class="flex items-start">
@@ -44,7 +35,7 @@
 
     <footer>
         <x-page.container>
-            @unless (Route::is('admin') || Route::is('players') || Route::is('edit'))
+            @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential'))
                 @include('includes.footer')
             @endunless
         </x-page.container>

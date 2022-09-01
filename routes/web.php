@@ -16,6 +16,7 @@ Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('credential', [AdminController::class, 'credential'])->name('credential');
     Route::post('admin', [AdminController::class, 'create'])->name('create');
     Route::get('admin/players', [AdminController::class, 'players'])->name('players');
 
