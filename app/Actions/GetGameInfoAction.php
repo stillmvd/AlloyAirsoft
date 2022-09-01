@@ -24,8 +24,10 @@ class GetGameInfoAction
             'rules' => $rules,
             'amount' => $rules->count(),
             'game' => Game::find($gameId),
-            'teams' => DB::table('teams')->get('name'),
+            'teams' => DB::table('teams')->get(),
             'teams_count' => DB::table('teams')->count(),
+            'phone' => DB::table('contact')->pluck('phone')[0],
+            'email' => DB::table('contact')->pluck('email')[0],
         ];
     }
 }

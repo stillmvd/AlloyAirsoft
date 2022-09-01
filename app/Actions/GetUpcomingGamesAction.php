@@ -14,7 +14,9 @@ class GetUpcomingGamesAction
     {
         return [
             'games' => DB::table('games')->where('finished', '=', '0')->get(),
-            'number' => DB::table('games')->get()->count()
+            'number' => DB::table('games')->get()->count(),
+            'phone' => DB::table('contact')->pluck('phone')[0],
+            'email' => DB::table('contact')->pluck('email')[0],
         ];
     }
 }

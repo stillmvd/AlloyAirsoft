@@ -14,6 +14,6 @@
 ]) }}>
     <option selected disabled></option>
     @for ($i = 0; $i < $teams_count; $i++)
-        <option value="{{ $i+1 }}">{{ $teams[$i]->name }}</option>
+        <option value="{{ $teams[$i]->id }}">{{ $teams[$i]->name }}</option>
     @endfor
 </select>

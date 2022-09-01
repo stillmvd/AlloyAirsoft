@@ -1,7 +1,7 @@
 <x-text.title class="my-10 text-center">
     {{ __('Registration') }}
 </x-text.title>
-<x-elems.regform>
+<x-elems.regform action="{{ route('store_players', $game->id) }}">
     <div class="flex relative">
         <x-text.label id="name_label" for="name">{{ __('Name') }}</x-text.label>
         <x-elems.input type="text" name="name" id="input_name" value="{{ old('name') }}"/>

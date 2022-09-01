@@ -19,6 +19,11 @@ class DatabaseSeeder extends Seeder
     {
         // ---------- Admin
 
+        DB::table('contact')->insert([
+            'email' => 'glebka@gmail.com',
+            'phone' => '+1-613-555-0137',
+        ]);
+
         DB::table('users')->insert([
             'login' => 'Ginze',
             'password' => Hash::make('Ginze123'),
@@ -31,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'first_cord' => 44.0506173,
             'second_cord' => -78.6915067,
             'polygon' => 'Clarington Woods',
-            'info' => 'A 24 hours mission to find and identify signal marks on the 
+            'info' => 'A 24 hours mission to find and identify signal marks on the
 enemy territory with small fire team.
 Number of enemy teams: unknown
 Amount of locals on the territory: unknown',
@@ -101,12 +106,12 @@ According to our records, you may also be interfered with by our “Colleagues�
 
         DB::table('infos')->insert([
             'title' => 'What the fuck is this?',
-            'text' => "Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we Of course we will pay you.  
-            
+            'text' => "Our company is extremely interested in renting your services for identification signals on territory hostile to us with a large group of unidentified armed individuals involved in activities and for information about which we Of course we will pay you.
+
 According to our records, you may also be interfered with by our “Colleagues”, do with them at your own discretion, no fines or rewards for You don't have to remove them. To clarify one point, we cannot transfer a group of more than 11 people, so Choose your best fighters and equip as you see fit.  Take with you everything you need, because due to high risks we are not ready to transfer supplies to this territory. You have 24 hours for everything about everything, you will receive your payment at a personal meeting after evacuation from the area.",
             'game_id' => '1002',
         ]);
-        
+
         DB::table('rules')->insert([
             'title' => '1. Groups',
             'text' => '- There will be no team in the usual environment, only your group and an unknown number of other similar groups;
