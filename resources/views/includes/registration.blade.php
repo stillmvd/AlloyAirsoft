@@ -80,5 +80,5 @@
             </b>
         @enderror
     </div>
-    <x-elems.button value="Play" class="w-full"/>
+    <x-elems.button value="Play" class="w-full z-20"/>
 </x-elems.regform>
