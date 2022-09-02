@@ -100,7 +100,7 @@ According to our records, you may also be interfered with by our â€œColleaguesâ€
             'name' => 'Hlib',
             'surname' => 'Fedchenko',
             'callsign' => 'Ginze',
-            'email' => 'glebka@gmail.com',
+            'emailPlayer' => 'glebka@gmail.com',
             'phone' => '+1-613-555-0137',
             'team_id' => '1001',
         ]);

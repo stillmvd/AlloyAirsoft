@@ -14,7 +14,7 @@ class Player extends Model
     protected $fillable = [
         'id', 'game_id', 'team_id',
         'name', 'surname', 'callsign',
-        'email', 'phone',
+        'emailPlayer', 'phone',
     ];
 
     use HasFactory;

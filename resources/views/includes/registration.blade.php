@@ -42,7 +42,7 @@
         @enderror
     </div>
     <div class="flex relative flex-col">
-        <x-text.label id="email_label" for="email">{{ __('Email') }}</x-text.label>
+        <x-text.label id="email_label" for="emailPlayer">{{ __('Email') }}</x-text.label>
         <x-elems.input type="text" name="emailPlayer" id="input_email" value="{{ old('emailPlayer') }}"/>
         @error('emailPlayer')
             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] right-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap tablet-xl:whitespace-nowrap zero:whitespace-normal">

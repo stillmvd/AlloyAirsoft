@@ -11,7 +11,6 @@
 )->merge([
 
 ]) }}>
-    <option selected disabled></option>
     @for ($i = 0; $i < $teams_count; $i++)
         <option value="{{ $teams[$i]->id }}">{{ $teams[$i]->name }}</option>
     @endfor

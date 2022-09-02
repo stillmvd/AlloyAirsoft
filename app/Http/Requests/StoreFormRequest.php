@@ -15,12 +15,12 @@ class StoreFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:20'],
-            'surname' => ['required', 'string', 'max:20'],
-            'callsign' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'email:rfc,dns'],
-            'phone' => ['required', 'max:20'],
-            'team_id' => ['required'],
+            'name' => ['required', 'alpha', 'max:20'],
+            'surname' => ['required', 'alpha', 'max:20'],
+            'callsign' => ['required', 'alpha_num', 'max:20'],
+            'emailPlayer' => ['required', 'email:rfc,dns', 'unique:players'],
+            'phone' => ['required', 'max:20', 'unique:players'],
+            'team' => ['required'],
         ];
     }
 }
