@@ -4,6 +4,7 @@ let phone = 320,
     laptop = 1024,
     desktop = 1280,
     desktopXL = 1536;
+
 function initMap() {
   for (let i = 0; i < Number(document.getElementById('map-counter').textContent); i++) {
     let map_1cord = document.getElementById('first_cord' + i);
@@ -11,7 +12,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map' + i), {
       center: new google.maps.LatLng(map_1cord.textContent, map_2cord.textContent),
-    zoom: 15,
+      zoom: 15,
       disableDefaultUI: true,
       styles: [
         {
@@ -227,40 +228,6 @@ function initMap() {
           ]
         }
       ],
-    });
-    let image = 'https://cdn.icon-icons.com/icons2/2104/PNG/32/map_location_icon_129048.png';
-
-    const infowindow = new google.maps.InfoWindow({
-        content: "A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.\
-        Number of enemy teams: unknown\
-        Amount of locals on the territory: unknown",
-    });
-
-    let marker = new google.maps.Marker({
-        position: new google.maps.LatLng(map_1cord.textContent, map_2cord.textContent),
-        map,
-        animation: google.maps.Animation.DROP,
-        icon: image,
-    });
-
-    google.maps.event.addListener(map, 'click', function(event) {
-        secondMarker = event.latLng;
-        placeMarker(event.latLng);
-    });
-    function placeMarker(location) {
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map,
-            animation: google.maps.Animation.DROP,
-            icon: image,
-        });
-    }
-    marker.addListener("click", () => {
-    infowindow.open({
-        anchor: marker,
-        map,
-        shouldFocus: false,
-        });
     });
   }
 }

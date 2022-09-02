@@ -1,14 +1,14 @@
 function openMenu() {
     let links = document.getElementById('links');
     let menu = document.getElementById('menu');
-  
+
     links.classList.remove('invisible');
     links.style.width = 20 + '%';
     menu.style.padding = '8px 40px 8px 40px';
     menu.style.borderRadius = '16px';
-  }
-  
-  function closeMenu() {
+}
+
+function closeMenu() {
     let links = document.getElementById('links');
     let menu = document.getElementById('menu');
     setTimeout(() => {
@@ -19,4 +19,4 @@ function openMenu() {
       menu.style.padding = '8px';
       menu.style.borderRadius = '9999px';
     }, 400);
-  }
+}
