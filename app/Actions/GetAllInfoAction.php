@@ -12,10 +12,7 @@ class GetAllInfoAction
             'players_count' => getCountRecordOfTable('players'),
 
             'emails' => getAllDataOfTable('emails'),
-            'emails' => getCountRecordOfTable('emails'),
-
-            'games' => getAllDataOfTable('games'),
-            'games_count' => getCountRecordOfTable('games'),
+            'emails_count' => getCountRecordOfTable('emails'),
         ];
     }
 }
