@@ -26,9 +26,20 @@
                     </a>
                 </div>
             </div>
-        @elseif (Route::is('credential'))
+        @elseif (Route::is('credential') || Route::is('edit'))
             <div class="flex flex-row items-center justify-center">
                 
+            </div>
+        @elseif (Route::is('game'))
+            <div class="flex flex-row items-center justify-center">
+                <div class="flex bg-dark rounded-2xl">
+                    <a href="{{ route('edit', $game->id) }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('index') ? 'bg-card_bg/75' : '' }}">
+                        {{ __('Edit this game') }}
+                    </a>
+                    <a href="{{ route('delete', $game->id) }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('archive') ? 'bg-card_bg/75' : '' }}">
+                        {{ __('Delete this game') }}
+                    </a>
+                </div>
             </div>
         @else
             <div class="flex flex-row items-center justify-center">

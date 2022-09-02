@@ -29,14 +29,14 @@
         <p class="hidden" id="countdown">{{ $game->date . ' ' . $game->time }}</p>
         <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
     </div>
-    <x-gamecard.body>
+    <div class="h-[300px] relative group ring-2 ring-main rounded-2xl p-6 grid grid-cols-2 grid-rows-2 overflow-hidden z-40">
         <x-elems.map id="map" />
         @unless ($game->finished)
             <x-page.downcounter/>
         @endunless
-    </x-gamecard.body>
+    </div>
     
-    <x-page.gameinfo>
+    <div class="flex flex-row justify-between mt-10 relative">
         <h2 id="info-title">
             {{ __('Info') }}
         </h2>
@@ -49,11 +49,11 @@
             </p>
         </x-page.block>
         <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-2xl z-0 ease-out duration-500" id="infoSquare"></div>
-    </x-page.gameinfo>
+    </div>
 
     <x-elems.separator class="my-10" />
 
-    <x-page.gamerules>
+    <div class="flex justify-between relative">
         <h2 id="rules-title">
             {{ __('Rules') }}
         </h2>
@@ -77,9 +77,11 @@
             @endforeach
         </x-page.block>
         <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-2xl z-0 ease-out duration-500" id="rulesSquare"></div>
-    </x-page.gamerules>
+    </div>
+
     @unless ($game->finished)
         <x-elems.separator class="mt-10" />
         @include('includes.registration')
     @endunless
+    
 @endsection

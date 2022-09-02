@@ -11,7 +11,7 @@
             <h3 class="w-min h-min rounded-2xl ease-out duration-200 whitespace-nowrap bg-[#A99D73]/[.18] p-4 group-hover:bg-bg group-hover:p-6 z-40 place-self-end self-end"> {{ $game->polygon }} </h3>
             
             <div class="w-full h-[300px] bg-bg/50 backdrop-blur-[3px] absolute ease-out duration-200 group-hover:backdrop-blur-0 group-hover:bg-transparent z-30"></div>
-            <x-elems.map id="map{{ $loop->index }}" />
+            <x-elems.map class="group-hover:scale-[1.2]" id="map{{ $loop->index }}" />
 
         </div>
     </a>

@@ -1,5 +1,3 @@
-@extends('mails.layouts.base')
-
-<div style="margin: auto; padding-bottom: 10px">
+<div class="text-2xl font-bold">
     {{ $text }}
 </div>

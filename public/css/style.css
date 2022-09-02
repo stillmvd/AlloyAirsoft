@@ -40,16 +40,6 @@ html {
     background: #758e77;
 }
 
-.slide-card{
-    animation-name: slide;
-    animation-timing-function: ease-out;
-    animation-duration: .16s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-fill-mode: forwards;
-    animation-delay: 2s;
-}
-
 #input_team{
     background-image: url('../image/arrow.svg');
     background-repeat: no-repeat;
@@ -66,6 +56,16 @@ html {
     transform: rotate(270deg);
     padding-top: 10px;
     padding-right: 2px;
+}
+
+.slide-card{
+    animation-name: slide;
+    animation-timing-function: ease-out;
+    animation-duration: .16s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-delay: 3.5s;
 }
 
 @keyframes slide {

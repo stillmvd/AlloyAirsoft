@@ -99,7 +99,7 @@ class AdminController extends Controller
         $storeInfosGame->saveInfos($request, $game->id);
         $storeRulesGame->saveRules($request, $request->count, $game->id);
         return redirect()->route('index')->with([
-            'success' => 'The game "' . $game->name . '" was successfully create',
+            'success' => 'The game "' . $game->name . '" was successfully created',
         ]);
     }
 
@@ -112,7 +112,8 @@ class AdminController extends Controller
      */
     public function edit(int $gameId, GetInfoFromEditGameAction $getInfoFromEditGame)
     {
-        return view('admin.edit', $getInfoFromEditGame->getInfo($gameId));
+        $game = DB::table('games')->where('id', $gameId)->get()->all()[0];
+        return view('admin.edit', $getInfoFromEditGame->getInfo($gameId), compact('game'));
     }
 
     /**
@@ -131,8 +132,8 @@ class AdminController extends Controller
         $game = $updateGame->update($request, $gameId);
         $updateInfos->update($gameId);
         $updateRules->update($request, $request->count, $gameId);
-        return redirect()->route('index')->with([
-            'success' => 'The game "' . $game->name . '" was successfully change',
+        return redirect()->route('game', $gameId)->with([
+            'success' => 'The information for "' . $game->name . '" was updated',
         ]);
     }
 
@@ -149,7 +150,7 @@ class AdminController extends Controller
         $deleteAllData->delete($gameId);
 
         return redirect()->back()->with([
-            'success' => 'The game "' . $gameName . '" was successfully deleted',
+            'success' => 'The game "' . $gameName . '" was deleted',
         ]);
     }
 
@@ -174,7 +175,9 @@ class AdminController extends Controller
     public function contactInformation(StoreContactInformation $request, UpdateContactAction $updateContact)
     {
         $updateContact->update($request);
-        return redirect()->route('credential');
+        return redirect()->route('credential')->with([
+            'success' => 'Your contact information was updated',
+        ]);
     }
 
     /**
@@ -187,7 +190,9 @@ class AdminController extends Controller
     public function playerInformation(StoreFormRequest $request, UpdatePlayerAction $updatePlayer)
     {
         $updatePlayer->update($request);
-        return redirect()->route('credential');
+        return redirect()->route('credential')->with([
+            'success' => 'Your game information was updated',
+        ]);
     }
 
     /**
@@ -199,7 +204,17 @@ class AdminController extends Controller
      */
     public function adminInformation(Request $request, UpdateLoginAction $updateLogin)
     {
-        $updateLogin->update($request);
-        return redirect()->route('credential');
+        if($updateLogin->update($request))
+        {
+            return redirect()->route('credential')->with([
+                'success' => 'Login was changed to ' . $request->login,
+            ]);
+        } 
+        else 
+        {
+            return redirect()->route('credential')->with([
+                'error' => 'Incorrect password for ' . DB::table('users')->where('id', auth()->id())->get()->value('login'),
+            ]);
+        }
     }
 }

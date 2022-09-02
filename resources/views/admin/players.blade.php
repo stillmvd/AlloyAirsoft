@@ -10,14 +10,14 @@
   <table class="w-full bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
     <thead>
       <tr class="text-white">
-          <th class="font-semibold text-left bg-card_bg/75 rounded-tl-xl rounded-bl-xl">id</th>
+          <th class="font-semibold text-left bg-card_bg/75 rounded-tl-xl rounded-bl-xl">Id</th>
           <th class="font-semibold text-left bg-card_bg/75">Name</th>
           <th class="font-semibold text-left bg-card_bg/75">Surname</th>
-          <th class="font-semibold text-left bg-card_bg/75">callsign</th>
-          <th class="font-semibold text-left bg-card_bg/75">email</th>
-          <th class="font-semibold text-left bg-card_bg/75">phone</th>
-          <th class="font-semibold text-left bg-card_bg/75">team_id</th>
-          <th class="font-semibold text-left bg-card_bg/75 rounded-tr-xl rounded-br-xl">game_id</th>
+          <th class="font-semibold text-left bg-card_bg/75">Callsign</th>
+          <th class="font-semibold text-left bg-card_bg/75">Email</th>
+          <th class="font-semibold text-left bg-card_bg/75">Phone</th>
+          <th class="font-semibold text-left bg-card_bg/75">Game</th>
+          <th class="font-semibold text-left bg-card_bg/75 rounded-tr-xl rounded-br-xl">Team</th>
       </tr>
     </thead>
     <tbody>
@@ -29,8 +29,8 @@
           <td class="font-medium">{{ $players[$i]->callsign }}</td>
           <td class="font-medium">{{ $players[$i]->emailPlayer }}</td>
           <td class="font-medium">{{ $players[$i]->phone }}</td>
-          <td class="font-medium">{{ $players[$i]->team_id }}</td>
-          <td class="font-medium">{{ $players[$i]->game_id }}</td>
+          <td class="font-medium">{{ $games->where('id', $players[$i]->game_id)->value('name') }}</td>
+          <td class="font-medium">{{ $teams->where('id', $players[$i]->team_id)->value('name') }}</td>
       </tr>
       @endfor
     </tbody>
@@ -45,7 +45,7 @@
   <table class="w-[30%] m-auto bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
     <thead>
       <tr class="text-white">
-          <th class="font-semibold text-left bg-card_bg/75 rounded-tl-xl rounded-bl-xl">id</th>
+          <th class="font-semibold text-left bg-card_bg/75 rounded-tl-xl rounded-bl-xl">Id</th>
           <th class="font-semibold text-left bg-card_bg/75">Email</th>
       </tr>
     </thead>

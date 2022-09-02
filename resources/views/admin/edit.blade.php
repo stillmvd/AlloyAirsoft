@@ -1,63 +1,82 @@
 @extends('layouts.base')
 
 @section('content')
-<x-page.maininfo>
-    <x-text.title class="col-span-3 place-self-center mt-20 mb-10">
-        {{ __('Edit game information') }}
-    </x-text.title>
-</x-page.maininfo>
+<div class="flex justify-center">
+    <h1>
+        {{ __('Edit information for') }}
+    </h1>
+</div>
 
-<x-admin.form action="{{ route('update', $games->id) }}" class="w-[40%] mx-auto">
+<div class="hidden boolshit">
+    <p class="hidden" id="first_cord">{{ $game->first_cord }}</p>
+    <p class="hidden" id="second_cord">{{ $game->second_cord }}</p>
+</div>
+<div class="relative mb-20">
+    <a href="{{ route('game', $game->id) }}">
+        <div class="h-[200px] w-[60%] relative group ring-2 mx-auto ring-main rounded-2xl p-6 overflow-hidden z-40">
+            
+            <h1 class="absolute w-min h-[300px] whitespace-nowrap z-50 left-0 right-0 top-[6%] mx-auto">
+                {{ $game->name }}
+            </h1>
+            <div class="w-full h-[200px] bg-bg/75 backdrop-blur-[3px] absolute top-0 left-0 z-30"></div>
+            <x-elems.map id="map" class="top-0 left-0" />
+
+        </div>
+    </a>
+</div>
+
+<form action="{{ route('update', $games->id) }}" method="POST" class="flex flex-col gap-y-6 w-[40%] mx-auto">
+    @csrf
     @method('put')
-    <x-text.subtitle class="text-addictive">
-        {{ __('Card information') }}
-    </x-text.subtitle>
 
-    <x-admin.input placeholder="Game date" type="text" name="date" value="{{ $games->date }}" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
-    <x-admin.input placeholder="Game name" type="text" name="name" value="{{ $games->name }}" />
+    <h3 class="text-addictive">
+        {{ __('Card information') }}
+    </h3>
+    <x-admin.input placeholder="Game date" type="text" value="{{ $games->date }}" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
+    <x-admin.input placeholder="Game name" type="text" value="{{ $games->name }}" name="name" />
     <x-elems.textarea placeholder="Game short info" name="info">
         {{ $games->info }}
     </x-elems.textarea>
-    <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" value="{{ $games->time }}" />
-    <x-admin.input placeholder="Polygon" type="text" name="polygon" value="{{ $games->polygon }}" />
+    <x-admin.input placeholder="Game time" type="text" value="{{ $games->time }}" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
+    <x-admin.input placeholder="Polygon" type="text" value="{{ $games->polygon }}" name="polygon" />
 
-    <x-text.subtitle class="text-addictive">
+    <h3 class="text-addictive">
         {{ __('Map coordinates') }}
-    </x-text.subtitle>
+    </h3>
     <div class="grid grid-cols-2 gap-x-6">
-        <x-admin.input placeholder="First coordinates" type="text" name="first_cord" value="{{ $games->first_cord }}"/>
-        <x-admin.input placeholder="Second coordinates" type="text" name="second_cord" value="{{ $games->second_cord }}"/>
+        <x-admin.input placeholder="First coordinates" type="text" value="{{ $games->first_cord }}" name="first_cord" />
+        <x-admin.input placeholder="Second coordinates" type="text" value="{{ $games->second_cord }}" name="second_cord" />
     </div>
 
-    <x-text.subtitle class="text-addictive">
+    <h3 class="text-addictive">
         {{ __('Game information') }}
-    </x-text.subtitle>
+    </h3>
     <x-admin.textblock>
-        <x-admin.input placeholder="Title" type="text" name="title" value="{{ $infos->title }}"/>
+        <x-admin.input placeholder="Title" type="text" value="{{ $infos->title }}" name="title" />
         <x-elems.textarea placeholder="Text" name="text">
             {{ $infos->text }}
         </x-elems.textarea>
-        <x-admin.input type="number" placeholder="Levels" name="levels" value="{{ $games->levels }}"/>
+        <x-admin.input type="number" placeholder="Levels" value="{{ $games->levels }}" name="levels" />
     </x-admin.textblock>
 
-    <x-text.subtitle class="text-addictive">
+    <h3 class="text-addictive">
         {{ __('Game rules') }}
-    </x-text.subtitle>
+    </h3>
     @for ($i = 0; $i < $rules->count(); $i++)
         <x-admin.textblock class="block">
-            <x-admin.input placeholder="Title" type="text" name="title" value="{{ $rules[$i]->title }}"/>
+            <x-admin.input placeholder="Title" type="text" value="{{ $rules[$i]->title }}" name="title" />
             <x-elems.textarea placeholder="Text" name="text">
                 {{ $rules[$i]->text }}
             </x-elems.textarea>
         </x-admin.textblock>
     @endfor
-
+    
     <div id="added"></div>
     <input id="count" type="number" class="hidden" value="1" name="count"/>
-    <x-elems.button value="Change game" />
+    <x-elems.button value="Save" />
+</form>
 
-</x-admin.form>
-<div class="flex justify-between w-[26%] my-10 mx-auto">
+<div class="flex justify-between w-[22%] my-10 mx-auto">
     <x-admin.button class="place-self-end hover:text-green" onclick="addColumns()">
         {{ 'Add columns' }}
     </x-admin.button>

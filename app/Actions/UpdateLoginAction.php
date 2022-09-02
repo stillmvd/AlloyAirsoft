@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 class UpdateLoginAction
 {
     /**
-     * Обновляет пароль для админа через старый пароль
+     * Обновляет логин админа, проверив его пароль
      *
      * @param Illuminate\Http\Request $request
      * @return void
@@ -20,6 +20,7 @@ class UpdateLoginAction
             DB::table('users')->update([
                'login' => $request->login,
             ]);
+            return true;
         }
     }
 }

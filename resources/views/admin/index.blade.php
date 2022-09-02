@@ -14,13 +14,13 @@
             </h3>
             @foreach ($games as $game)
                 @if (0 == $game->finished)
-                    <a href="{{ route('game', $game->id) }}" class="flex flex-row w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                    <a href="{{ route('game', $game->id) }}" class="grid grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
                         <b class="leading-none">
                             {{ $game->name }}
                         </b>
                         <div class="flex flex-row">
                             <b class="mr-3 leading-none">
-                                {{ $players->where('id', $game->id)->count() }}
+                                {{ $players->where('game_id', $game->id)->count() }}
                             </b>
                             <p class="leading-none">
                                 {{ __('players') }}
@@ -97,7 +97,7 @@
         </h2>
     </div>
 
-    <form action="POST" class="flex flex-col gap-y-6 w-[40%] mx-auto">
+    <form action="{{ route('create') }}" method="POST" class="flex flex-col gap-y-6 w-[40%] mx-auto">
         @csrf
 
         <h3 class="text-addictive">

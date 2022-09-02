@@ -8,6 +8,9 @@ class GetAllInfoAction
 {
     public function get(){
         return [
+            'teams' => getAllDataOfTable('teams'),
+            'games' => getAllDataOfTable('games'),
+
             'players' => getAllDataOfTable('players'),
             'players_count' => getCountRecordOfTable('players'),
 

@@ -3,11 +3,19 @@
 @section('content')
     @if ($games->count() > 0)
         @foreach ($games as $game)
-            <x-elems.counter :number=$number />
-            <x-text.cords loop='{{ $loop->index }}' first_cord='{{ $game->first_cord }}' second_cord='{{ $game->second_cord }}' />
-                
-            <x-page.gamedate :game=$game />
-
+            <div class="hidden boolshit">
+                <p class="hidden" id="map-counter">{{ $number }}</p>
+                <p class="hidden" id="first_cord{{ $loop->index }}">{{ $game->first_cord }}</p>
+                <p class="hidden" id="second_cord{{ $loop->index }}">{{ $game->second_cord }}</p>
+            </div>
+            <div class="flex flex-row items-end justify-center my-9">
+                <b class="text-5xl mr-3 font-normal">
+                    {{ date('d', strtotime($game->date)) }}
+                </b>
+                <p class="leading-6">
+                    {{ date('M', strtotime($game->date)) }}
+                </p>
+            </div>
             <x-elems.gamecard :loop=$loop :game=$game />
         @endforeach
     @else
