@@ -38,7 +38,7 @@
 
   <div class="flex justify-center">
     <h1>
-      {{ __('All Emails') }}
+      {{ __('Subscribers') }}
     </h1>
   </div>
 
