@@ -34,7 +34,7 @@ module.exports = {
       },
     },
     colors: {
-      'bg' : '#151515',
+      'bg' : '#161616',
       'main' : '#37C564',
       'addictive' : '#A99D73',
       'card_bg' : '#1B1B1B',

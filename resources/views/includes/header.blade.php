@@ -33,12 +33,14 @@
         @elseif (Route::is('game'))
             <div class="flex flex-row items-center justify-center">
                 <div class="flex bg-dark rounded-2xl">
-                    <a href="{{ route('edit', $game->id) }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('index') ? 'bg-card_bg/75' : '' }}">
+                    <a href="{{ route('edit', $game->id) }}" class="w-min whitespace-nowrap flex items-center px-6 py-3 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('index') ? 'bg-card_bg/75' : '' }}">
                         {{ __('Edit this game') }}
                     </a>
-                    <a href="{{ route('delete', $game->id) }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('archive') ? 'bg-card_bg/75' : '' }}">
-                        {{ __('Delete this game') }}
-                    </a>
+                    <form action="{{ route('delete', $game->id) }}" method="POST" class="w-min rounded-tr-2xl cursor-pointer rounded-br-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('archive') ? 'bg-card_bg/75' : '' }}">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Delete this game" class="cursor-pointer px-6 py-3 text-white text-base font-medium whitespace-nowrap">
+                    </form>
                 </div>
             </div>
         @else

@@ -47,7 +47,7 @@
             @else
                 @foreach ($games as $game)
                     @if (1 == $game->finished)
-                        <a href="{{ route('game', $game->id) }}" class="flex flex-row w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                        <a href="{{ route('game', $game->id) }}" class="grid grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
                             <b class="leading-none">
                                 {{ $game->name }}
                             </b>

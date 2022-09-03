@@ -1,6 +1,6 @@
-<div class="m-auto grid grid-flow-col gap-5 text-center ring-2 ring-addictive auto-cols-max justify-center bg-transparent backdrop-blur-[6px] px-6 py-3 w-min rounded-2xl absolute left-[2%] bottom-[12%] z-40">
+<div class="m-auto grid grid-flow-col gap-5 text-center auto-cols-max justify-center bg-bg/[.78] px-6 py-3 w-min rounded-2xl absolute left-[2%] bottom-[10%] z-40">
     <div class="text-white flex flex-col">
-      <span class="countdown font-normal text-4xl">
+      <span class="countdown font-normal text-3xl">
         <span id="days" style="--value:100;"></span>
       </span>
       <p>
@@ -8,7 +8,7 @@
       </p>
     </div>
     <div class="text-white flex flex-col">
-      <span class="countdown font-normal text-4xl">
+      <span class="countdown font-normal text-3xl">
         <span id="hours" style="--value:100;"></span>
       </span>
       <p>
@@ -16,7 +16,7 @@
       </p>
     </div>
     <div class="text-white flex flex-col">
-      <span class="countdown font-normal text-4xl">
+      <span class="countdown font-normal text-3xl">
         <span id="min" style="--value:100;"></span>
       </span>
       <p>
@@ -24,7 +24,7 @@
       </p>
     </div>
     <div class="text-white flex flex-col">
-      <span class="countdown font-normal text-4xl">
+      <span class="countdown font-normal text-3xl">
         <span id="sec" style="--value:100;"></span>
       </span>
       <p>
