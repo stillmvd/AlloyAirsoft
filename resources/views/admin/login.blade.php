@@ -15,8 +15,8 @@
         </h2>
         <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-y-5">
             @csrf
-            <x-admin.input placeholder="Login" type="text" name="login" />
-            <x-admin.input placeholder="Password" type="password" name="password" />
+            <x-admin.input autocomplete="off" placeholder="Login" type="text" name="login" />
+            <x-admin.input autocomplete="off" placeholder="Password" type="password" name="password" />
             <x-elems.button value="Penetrate" />
         </form>
     </div>
