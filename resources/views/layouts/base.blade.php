@@ -22,7 +22,7 @@
     </x-elems.alert>
 @endif
 
-<body class="min-h-screen flex flex-col" id="body">
+<body class="min-h-screen flex flex-col selection:bg-dark selection:text-main" id="body">
     <x-page.container>
         @include('includes.header')
     </x-page.container>

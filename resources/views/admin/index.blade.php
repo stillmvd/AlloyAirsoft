@@ -123,7 +123,7 @@
         <x-admin.textblock>
             <x-admin.input placeholder="Title" type="text" name="title" />
             <x-elems.textarea placeholder="Text" name="text" />
-            <x-admin.input type="number" placeholder="Levels" name="levels" />
+            <x-admin.input min="1" max="3" type="number" placeholder="Levels" name="levels" />
         </x-admin.textblock>
 
         <h3 class="text-addictive">
@@ -141,10 +141,10 @@
     </form>
 
     <div class="flex justify-between w-[22%] my-10 mx-auto">
-        <x-admin.button class="place-self-end hover:text-green" onclick="addColumns()">
+        <x-admin.button class="place-self-end hover:text-[#94C843]" onclick="addColumns()">
             {{ 'Add columns' }}
         </x-admin.button>
-        <x-admin.button class="place-self-start hover:text-red" onclick="removeColumns()">
+        <x-admin.button class="place-self-start hover:text-[#D64545]" onclick="removeColumns()">
             {{ 'Remove columns' }}
         </x-admin.button>
     </div>

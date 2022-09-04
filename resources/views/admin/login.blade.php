@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     <title>Wrong Door</title>
 </head>
-<body class="h-[100vh] bg-[#161616] flex justify-center items-center">
+<body class="h-[100vh] bg-[#161616] flex justify-center items-center" id="body">
     <div class="flex flex-col items-center gap-y-10">
         <h2>
             {{ __('Enjoy!') }}
