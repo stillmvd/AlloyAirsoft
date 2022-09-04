@@ -1,4 +1,7 @@
 let count = document.getElementsByClassName('block').length
+let text = [],
+    title = [],
+    blocks = [];
 
 function setIdAndNameInput(){
     let blocks = document.getElementsByClassName('block');
@@ -7,10 +10,6 @@ function setIdAndNameInput(){
         blocks[i].setAttribute('id', ('block'+i));
         blocks[i].childNodes[1].name = 'title' + i;
         blocks[i].childNodes[3].name = 'text' + i;
-        if (i >= count){
-            blocks[i].childNodes[1].value = '';
-            blocks[i].childNodes[3].value = '';
-        }
     };
 }
 
