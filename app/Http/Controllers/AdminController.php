@@ -18,6 +18,7 @@ use App\Actions\UpdateRulesAction;
 
 use App\Http\Requests\StoreContactInformation;
 use App\Http\Requests\StoreFormRequest;
+use App\Http\Requests\UpdatePlayerRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -199,7 +200,7 @@ class AdminController extends Controller
      * @param App\Actions\UpdatePlayerAction $updatePlayer Обновляет игровые данные admin-а
      * @return \Illuminate\Redirect
      */
-    public function playerInformation(StoreFormRequest $request, UpdatePlayerAction $updatePlayer)
+    public function playerInformation(UpdatePlayerRequest $request, UpdatePlayerAction $updatePlayer)
     {
         $updatePlayer->update($request);
         return redirect()->route('credential')->with([
@@ -221,8 +222,8 @@ class AdminController extends Controller
             return redirect()->route('credential')->with([
                 'success' => 'Login was changed to ' . $request->login,
             ]);
-        } 
-        else 
+        }
+        else
         {
             return redirect()->route('credential')->with([
                 'error' => 'Incorrect password for ' . DB::table('users')->where('id', auth()->id())->get()->value('login'),

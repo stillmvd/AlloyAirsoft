@@ -2,7 +2,7 @@
 
 namespace App\Actions;
 
-use App\Http\Requests\StoreFormRequest;
+use App\Http\Requests\UpdatePlayerRequest;
 use Illuminate\Support\Facades\DB;
 
 class UpdatePlayerAction
@@ -10,10 +10,10 @@ class UpdatePlayerAction
     /**
      * Обновляет
      *
-     * @param App\Http\Request\StoreFormRequest $request
+     * @param App\Http\Request\UpdatePlayerRequest $request
      * @return
      */
-    public function update(StoreFormRequest $request)
+    public function update(UpdatePlayerRequest $request)
     {
         DB::table('players')->where('id', 1001)->update([
             'name' => $request->name,
