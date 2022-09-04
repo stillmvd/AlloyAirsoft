@@ -36,13 +36,13 @@ module.exports = {
     colors: {
       'bg' : '#161616',
       'main' : '#37C564',
-      'addictive' : '#A99D73',
+      'addictive' : '#FADB5F',
       'card_bg' : '#1B1B1B',
       'white' : '#DADADA',
       'subwhite' : '#a7a7a7',
       'dark' : '#282828',
       'red' : '#C53737',
-      'green' : '#2E991D',
+      'green' : '#3F9142',
       'yellow' : '#97991D',
     }
   },

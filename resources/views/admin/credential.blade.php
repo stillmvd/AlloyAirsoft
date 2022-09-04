@@ -18,15 +18,15 @@
                     <p class="mr-10">
                         {{ __('Phone') }}
                     </p>
-                    <x-admin.input value="{{ $phone }}" name="phone" class="w-[70%]" required />
+                    <x-admin.input value="{{ $phone }}" name="phone" class="w-[70%]  bg-transparent" required />
                 </div>
                 <div class="flex flex-row items-center w-full justify-between">
                     <p class="mr-10">
                         {{ __('Email') }}
                     </p>
-                    <x-admin.input value="{{ $email }}" name="email" type="email" class="w-[70%]" required />
+                    <x-admin.input value="{{ $email }}" name="email" type="email" class="w-[70%] bg-transparent" required />
                 </div>
-                <x-elems.button class="w-full py-1" value="Save" />
+                <x-elems.button class="w-full" value="Save" />
             </form>
         </x-admin.block>
 
@@ -40,31 +40,31 @@
                     <p class="mr-10">
                         {{ __('Name') }}
                     </p>
-                    <x-admin.input name="name" value="{{ $admin->name }}" class="w-[70%]" />
+                    <x-admin.input name="name" value="{{ $admin->name }}" class="w-[70%] bg-transparent" />
                 </div>
                 <div class="flex flex-row items-center w-full justify-between">
                     <p class="mr-10">
                         {{ __('Surname') }}
                     </p>
-                    <x-admin.input name="surname" value="{{ $admin->surname }}" type="text" class="w-[70%]" />
+                    <x-admin.input name="surname" value="{{ $admin->surname }}" type="text" class="w-[70%] bg-transparent" />
                 </div>
                 <div class="flex flex-row items-center w-full justify-between">
                     <p class="mr-10">
                         {{ __('Callsign') }}
                     </p>
-                    <x-admin.input name="callsign" value="{{ $admin->callsign }}" class="w-[70%]" />
+                    <x-admin.input name="callsign" value="{{ $admin->callsign }}" class="w-[70%] bg-transparent" />
                 </div>
                 <div class="flex flex-row items-center w-full justify-between">
                     <p class="mr-10">
                         {{ __('Email') }}
                     </p>
-                    <x-admin.input name="email" value="{{ $admin->emailPlayer }}" type="email" class="w-[70%]" />
+                    <x-admin.input name="email" value="{{ $admin->emailPlayer }}" type="email" class="w-[70%] bg-transparent" />
                 </div>
                 <div class="flex flex-row items-center w-full justify-between">
                     <p class="mr-10">
                         {{ __('Phone') }}
                     </p>
-                    <x-admin.input name="phone" value="{{ $admin->phone }}" class="w-[70%]" />
+                    <x-admin.input name="phone" value="{{ $admin->phone }}" class="w-[70%] bg-transparent" />
                 </div>
                 <div class="flex flex-row items-center w-full justify-between">
                     <p class="mr-10">
@@ -80,7 +80,7 @@
                         @endfor
                     </select>
                 </div>
-                <x-elems.button class="w-full py-1" value="Save" />
+                <x-elems.button class="w-full" value="Save" />
             </form>
         </x-admin.block>
 
@@ -94,15 +94,15 @@
                     <p class="mr-10">
                         {{ __('Login') }}
                     </p>
-                    <x-admin.input value="{{ $login }}" name="login" class="text" class="w-[70%]" />
+                    <x-admin.input value="{{ $login }}" name="login" class="text" class="w-[70%] bg-transparent" />
                 </div>
                 <div class="flex flex-row items-center w-full justify-between">
                     <p class="mr-10">
                         {{ __('Password') }}
                     </p>
-                    <x-admin.input name="password" type="password" class="w-[70%]" />
+                    <x-admin.input name="password" type="password" class="w-[70%] bg-transparent" />
                 </div>
-                <x-elems.button class="w-full py-1" value="Save" />
+                <x-elems.button class="w-full" value="Save" />
             </form>
         </x-admin.block>
     </div>

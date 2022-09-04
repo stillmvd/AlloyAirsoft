@@ -45,7 +45,7 @@
                         {{ $message }}
                     </b>
                 @enderror
-                <input required type="submit" value="{{ __('Subscribe') }}" class="mt-6 font-bold text-base text-white rounded-2xl px-6 py-4 bg-transparent ring-main ring-2 cursor-pointer ease-out duration-200 desktop-xl:w-[58%] tablet-xl:w-[74%] tablet:w-[50%] zero:w-[80%]
+                <input required type="submit" value="{{ __('Subscribe') }}" class="mt-6 font-bold text-base text-white rounded-2xl px-6 py-4 bg-bg ring-main ring-2 cursor-pointer ease-out duration-200 desktop-xl:w-[58%] tablet-xl:w-[74%] tablet:w-[50%] zero:w-[80%]
                 group-hover:bg-card_bg group-hover:text-white group-hover:scale-90 hover:ring-2 hover:ring-transparent hover:bg-main hover:text-dark">
             </form>
         </div>

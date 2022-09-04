@@ -103,40 +103,40 @@
         <h3 class="text-addictive">
             {{ __('Card information') }}
         </h3>
-        <x-admin.input placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
-        <x-admin.input placeholder="Game name" type="text" name="name" />
-        <x-elems.textarea placeholder="Game short info" name="info" />
-        <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
-        <x-admin.input placeholder="Polygon" type="text" name="polygon" />
+        <x-admin.input class="bg-bg" placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
+        <x-admin.input class="bg-bg" placeholder="Game name" type="text" name="name" />
+        <x-elems.textarea class="bg-bg" placeholder="Game short info" name="info" />
+        <x-admin.input class="bg-bg" placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
+        <x-admin.input class="bg-bg" placeholder="Polygon" type="text" name="polygon" />
 
         <h3 class="text-addictive">
             {{ __('Map coordinates') }}
         </h3>
         <div class="grid grid-cols-2 gap-x-6">
-            <x-admin.input placeholder="First coordinates" type="text" name="first_cord" />
-            <x-admin.input placeholder="Second coordinates" type="text" name="second_cord" />
+            <x-admin.input class="bg-bg" placeholder="First coordinates" type="text" name="first_cord" />
+            <x-admin.input class="bg-bg" placeholder="Second coordinates" type="text" name="second_cord" />
         </div>
 
         <h3 class="text-addictive">
             {{ __('Game information') }}
         </h3>
         <x-admin.textblock>
-            <x-admin.input placeholder="Title" type="text" name="title" />
-            <x-elems.textarea placeholder="Text" name="text" />
-            <x-admin.input min="1" max="3" type="number" placeholder="Levels" name="levels" />
+            <x-admin.input class="bg-bg" placeholder="Title" type="text" name="title" />
+            <x-elems.textarea class="bg-bg" placeholder="Text" name="text" />
+            <x-admin.input min="1" max="3" type="number" class="bg-bg" placeholder="Levels" name="levels" />
         </x-admin.textblock>
 
         <h3 class="text-addictive">
             {{ __('Game rules') }}
         </h3>
         <x-admin.textblock class="block">
-            <x-admin.input placeholder="Title" type="text" name="title" />
-            <x-elems.textarea placeholder="Text" name="text" />
+            <x-admin.input class="bg-bg" placeholder="Title" type="text" name="title" />
+            <x-elems.textarea class="bg-bg" placeholder="Text" name="text" />
         </x-admin.textblock>
 
         <div id="added"></div>
         <input id="count" type="number" class="hidden" value="1" name="count"/>
-        <x-elems.button value="Add game" />
+        <x-elems.button class="bg-bg" value="Add game" />
 
     </form>
 

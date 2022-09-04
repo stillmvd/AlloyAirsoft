@@ -32,31 +32,31 @@
     <h3 class="text-addictive">
         {{ __('Card information') }}
     </h3>
-    <x-admin.input placeholder="Game date" type="text" value="{{ $games->date }}" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
-    <x-admin.input placeholder="Game name" type="text" value="{{ $games->name }}" name="name" />
-    <x-elems.textarea placeholder="Game short info" name="info">
+    <x-admin.input class="bg-bg" placeholder="Game date" type="text" value="{{ $games->date }}" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
+    <x-admin.input class="bg-bg" placeholder="Game name" type="text" value="{{ $games->name }}" name="name" />
+    <x-elems.textarea class="bg-bg" placeholder="Game short info" name="info">
         {{ $games->info }}
     </x-elems.textarea>
-    <x-admin.input placeholder="Game time" type="text" value="{{ $games->time }}" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
-    <x-admin.input placeholder="Polygon" type="text" value="{{ $games->polygon }}" name="polygon" />
+    <x-admin.input class="bg-bg" placeholder="Game time" type="text" value="{{ $games->time }}" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
+    <x-admin.input class="bg-bg" placeholder="Polygon" type="text" value="{{ $games->polygon }}" name="polygon" />
 
     <h3 class="text-addictive">
         {{ __('Map coordinates') }}
     </h3>
     <div class="grid grid-cols-2 gap-x-6">
-        <x-admin.input placeholder="First coordinates" type="text" value="{{ $games->first_cord }}" name="first_cord" />
-        <x-admin.input placeholder="Second coordinates" type="text" value="{{ $games->second_cord }}" name="second_cord" />
+        <x-admin.input class="bg-bg" placeholder="First coordinates" type="text" value="{{ $games->first_cord }}" name="first_cord" />
+        <x-admin.input class="bg-bg" placeholder="Second coordinates" type="text" value="{{ $games->second_cord }}" name="second_cord" />
     </div>
 
     <h3 class="text-addictive">
         {{ __('Game information') }}
     </h3>
     <x-admin.textblock>
-        <x-admin.input placeholder="Title" type="text" value="{{ $infos->title }}" name="title" />
-        <x-elems.textarea placeholder="Text" name="text">
+        <x-admin.input class="bg-bg" placeholder="Title" type="text" value="{{ $infos->title }}" name="title" />
+        <x-elems.textarea class="bg-bg" placeholder="Text" name="text">
             {{ $infos->text }}
         </x-elems.textarea>
-        <x-admin.input type="number" placeholder="Levels" value="{{ $games->levels }}" name="levels" />
+        <x-admin.input type="number" class="bg-bg" placeholder="Levels" value="{{ $games->levels }}" name="levels" />
     </x-admin.textblock>
 
     <h3 class="text-addictive">
@@ -64,8 +64,8 @@
     </h3>
     @for ($i = 0; $i < $rules->count(); $i++)
         <x-admin.textblock class="block">
-            <x-admin.input placeholder="Title" type="text" value="{{ $rules[$i]->title }}" name="title" />
-            <x-elems.textarea placeholder="Text" name="text">
+            <x-admin.input class="bg-bg" placeholder="Title" type="text" value="{{ $rules[$i]->title }}" name="title" />
+            <x-elems.textarea class="bg-bg" placeholder="Text" name="text">
                 {{ $rules[$i]->text }}
             </x-elems.textarea>
         </x-admin.textblock>
@@ -73,7 +73,7 @@
     
     <div id="added"></div>
     <input id="count" type="number" class="hidden" value="1" name="count"/>
-    <x-elems.button value="Save" />
+    <x-elems.button class="bg-bg" value="Save" />
 </form>
 
 <div class="flex justify-between w-[22%] my-10 mx-auto">

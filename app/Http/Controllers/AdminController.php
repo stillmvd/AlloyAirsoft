@@ -26,13 +26,25 @@ use Illuminate\Support\Facades\Hash;
 /** AdminController содержит основные контроллеры работающие в админке. */
 class AdminController extends Controller
 {
+    public function login()
+    {
+        if (auth()->check())
+        {
+            return redirect('admin');
+        }
+        else
+        {
+            return view('admin.login');
+        }
+    }
+
     /**
      * Login для админа
      *
      * @param Request $request
      * @return \Illuminate\View\View Возвращает главную страничку админки
      */
-    public function login(Request $request)
+    public function login_store(Request $request)
     {
         $validated = $request->validate([
             'login' => 'required',
