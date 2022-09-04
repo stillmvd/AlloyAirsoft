@@ -19,7 +19,7 @@ class UpdatePlayerAction
             'name' => $request->name,
             'surname' => $request->surname,
             'callsign' => $request->callsign,
-            'emailPlayer' => $request->emailPlayer,
+            'emailPlayer' => $request->email,
             'phone' => $request->phone,
             'team_id' => $request->team_id,
         ]);
