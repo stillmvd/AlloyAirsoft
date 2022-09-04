@@ -44,9 +44,10 @@
 
 <script src="{{ asset('js/header.js') }}"></script>
 
-@if (Route::is('game') || Route::is('edit'))
+@if (Route::is('game'))
     <script src="{{ asset('js/map.js') }}"></script>
 @elseif (Route::is('admin') || Route::is('edit'))
+    <script src="{{ asset('js/map.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
 @else
     <script src="{{ asset('js/main.js') }}"></script>

@@ -58,7 +58,7 @@
                     <p class="mr-10">
                         {{ __('Email') }}
                     </p>
-                    <x-admin.input name="email" value="{{ $admin->email }}" type="email" class="w-[70%]" />
+                    <x-admin.input name="email" value="{{ $admin->emailPlayer }}" type="email" class="w-[70%]" />
                 </div>
                 <div class="flex flex-row items-center w-full justify-between">
                     <p class="mr-10">
