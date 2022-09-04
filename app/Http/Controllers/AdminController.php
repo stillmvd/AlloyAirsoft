@@ -149,7 +149,7 @@ class AdminController extends Controller
         $gameName = getNameGame($gameId);
         $deleteAllData->delete($gameId);
 
-        return redirect()->back()->with([
+        return redirect('/')->with([
             'success' => 'The game "' . $gameName . '" was deleted',
         ]);
     }
