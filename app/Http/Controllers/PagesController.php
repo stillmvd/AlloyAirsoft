@@ -69,7 +69,7 @@ class PagesController extends Controller
         $sendEmail->sendEmail($request->emailPlayer, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
 
         return redirect()->route('game', $gameId)->with(
-            ['success' => 'you were registered for the game']
+            ['success' => 'You were registered for the game']
         );
     }
 
@@ -97,7 +97,7 @@ class PagesController extends Controller
             $sendEmail->sendEmail($request->email, 'Регистрация на игру', 'Вы успешно зарегистрировались на игру');
 
             return redirect()->back()->with(
-                ['success' => 'you have been subscribed to the newsletter!']
+                ['success' => 'You have been subscribed to the newsletter!']
             );
         }
     }
