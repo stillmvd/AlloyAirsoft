@@ -1,11 +1,11 @@
 @extends('layouts.base')
 
 @section('content')
-    <div class="grid grid-cols-3 py-9">
-        <b class="text-5xl font-normal">
+    <div class="w-full grid gap-6 grid-cols-1 grid-rows-3 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-9">
+        <b class="text-5xl font-normal self-center lg:self-end place-self-center lg:place-self-start sm:col-span-2 lg:col-span-1">
             {{ __($game->name) }}
         </b>
-        <div class="flex flex-row items-end place-self-center hovered">
+        <div class="w-full lg:w-min flex flex-row bg-card_bg lg:bg-transparent rounded-2xl py-6 lg:py-0 items-end justify-center lg:justify-end lg:place-self-center">
             <b class="text-5xl mr-3 font-normal">
                 {{ date('d', strtotime($game->date)) }}
             </b>
@@ -13,7 +13,7 @@
                 {{ date('M', strtotime($game->date)) }}
             </p>
         </div>
-        <div class="flex flex-row items-end place-self-end hovered">
+        <div class="w-full lg:w-min bg-card_bg lg:bg-transparent rounded-2xl py-6 lg:py-0 justify-center lg:justify-end flex flex-row items-end place-self-end">
             <b class="text-5xl mr-3 font-normal">
                 {{ date('g:i', strtotime($game->time))}}
             </b>
@@ -29,15 +29,15 @@
         <p class="hidden" id="countdown">{{ $game->date . ' ' . $game->time }}</p>
         <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
     </div>
-    <div class="h-[300px] relative group ring-2 ring-main rounded-2xl p-6 grid grid-cols-2 grid-rows-2 overflow-hidden z-40">
+    <div class="h-[500px] lg:h-[300px] w-full relative group ring-2 ring-main rounded-2xl p-6 grid overflow-hidden z-40">
         <x-elems.map id="map" />
         @unless ($game->finished)
             <x-page.downcounter/>
         @endunless
     </div>
     
-    <div class="flex flex-row justify-between mt-10 relative">
-        <h2 id="info-title">
+    <div class="flex flex-col md:flex-row w-full mt-10 md:justify-between relative">
+        <h2 id="info-title" class="mb-10 md:mb-0">
             {{ __('Info') }}
         </h2>
         <x-page.block tabindex="0" onclick="createInfoSquare()" onblur="removeInfoSquare()" id="infoBlock">
@@ -53,8 +53,8 @@
 
     <x-elems.separator class="my-10" />
 
-    <div class="flex justify-between relative">
-        <h2 id="rules-title">
+    <div class="flex flex-col md:flex-row w-full md:justify-between relative">
+        <h2 id="rules-title" class="mb-10 md:mb-0">
             {{ __('Rules') }}
         </h2>
         <x-page.block tabindex="0" id="rulesBlock" onclick="createRulesSquare()" onblur="removeRulesSquare()">

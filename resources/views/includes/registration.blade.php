@@ -1,4 +1,4 @@
-<div class="flex justify-center">
+<div class="w-full flex justify-center">
     <h2 class="my-10">
         {{ __('Registration') }}
     </h2>
@@ -82,5 +82,5 @@
             </b>
         @enderror
     </div>
-    <x-elems.button value="Play" class="w-full z-20 bg-bg"/>
+    <x-elems.button value="Play" class="py-4 w-full z-20 bg-bg"/>
 </x-elems.regform>

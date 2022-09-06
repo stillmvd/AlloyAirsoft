@@ -1,4 +1,4 @@
-<div class="m-auto grid grid-flow-col gap-5 text-center auto-cols-max justify-center bg-bg/[.78] px-6 py-3 w-min rounded-2xl absolute left-[2%] bottom-[10%] z-40">
+<div class="m-auto grid grid-flow-col gap-5 text-center items-center justify-center auto-cols-max bg-bg/[.78] px-6 py-3 w-full lg:w-min rounded-2xl absolute bottom-0 lg:left-[2%] lg:bottom-[7%] 2xl:bottom-[10%] z-40">
     <div class="text-white flex flex-col">
       <span class="countdown font-normal text-3xl">
         <span id="days" style="--value:100;"></span>

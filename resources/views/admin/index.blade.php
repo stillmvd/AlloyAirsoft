@@ -1,45 +1,53 @@
 @extends('layouts.base')
 
 @section('content')
-    <div class="flex justify-center">
-        <h1>
+    <div class="w-full flex justify-center">
+        <h1 class="text-4xl sm:text-6xl">
             {{ __('Admin panel') }}
         </h1>
     </div>
 
-    <div class="grid grid-cols-3 grid-rows-1 gap-6">
-        <x-admin.block>
-            <h3 class="px-6 pt-6">
+    <div class="w-full grid grid-cols-1 grid-rows-3 lg:grid-cols-2 xl:grid-cols-3 lg:grid-rows-1 gap-6">
+        <x-admin.block class="lg:col-span-2 xl:col-span-1 grow h-full">
+            <h3 class="px-6 pt-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
                 {{ __('Upcoming games') }}
             </h3>
-            @foreach ($games as $game)
-                @if (0 == $game->finished)
-                    <a href="{{ route('game', $game->id) }}" class="grid grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
-                        <b class="leading-none">
-                            {{ $game->name }}
-                        </b>
-                        <div class="flex flex-row">
-                            <b class="mr-3 leading-none">
-                                {{ $players->where('game_id', $game->id)->count() }}
+            @if (1 > $games->where('finished', 0)->count())
+                <div class="flex flex-row w-full mt-6 bg-dark py-10 px-6 rounded-2xl">
+                    <b class="leading-none">
+                        {{ __('There are no games here') }}
+                    </b>
+                </div>
+            @else
+                @foreach ($games as $game)
+                    @if (0 == $game->finished)
+                        <a href="{{ route('game', $game->id) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                            <b class="leading-none text-2xl lg:text-base lg:leading-none">
+                                {{ $game->name }}
                             </b>
-                            <p class="leading-none">
-                                {{ __('players') }}
-                            </p>
-                        </div>
-                        <b class="leading-none">
-                            {{ $game->date }}
-                        </b>
-                    </a>
-                @endif
-            @endforeach
+                            <div class="flex flex-row">
+                                <b class="mr-3 leading-none">
+                                    {{ $players->where('game_id', $game->id)->count() }}
+                                </b>
+                                <p class="leading-none">
+                                    {{ __('players') }}
+                                </p>
+                            </div>
+                            <b class="leading-none">
+                                {{ $game->date }}
+                            </b>
+                        </a>
+                    @endif
+                @endforeach
+            @endif
         </x-admin.block>
     
-        <x-admin.block>
-            <h3 class="px-6 pt-6">
+        <x-admin.block class="grow h-full">
+            <h3 class="px-6 pt-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
                 {{ __('Finished games') }}
             </h3>
             @if (1 > $games->where('finished', 1)->count())
-                <div class="flex flex-row w-full justify-between mt-6 bg-dark p-5 rounded-2xl">
+                <div class="flex flex-row w-full mt-6 bg-dark py-10 px-6 rounded-2xl">
                     <b class="leading-none">
                         {{ __('No game is over yet') }}
                     </b>
@@ -47,8 +55,8 @@
             @else
                 @foreach ($games as $game)
                     @if (1 == $game->finished)
-                        <a href="{{ route('game', $game->id) }}" class="grid grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
-                            <b class="leading-none">
+                        <a href="{{ route('game', $game->id) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                            <b class="leading-none text-2xl lg:text-base lg:leading-none">
                                 {{ $game->name }}
                             </b>
                             <div class="flex flex-row">
@@ -68,15 +76,15 @@
             @endif
         </x-admin.block>
     
-        <x-admin.block>
-            <h3 class="px-6 pt-6">
+        <x-admin.block class="grow h-full">
+            <h3 class="px-6 pt-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
                 {{ __('Statistics') }}
             </h3>
             <div class="flex flex-row w-full justify-between mt-6 bg-dark p-5 rounded-2xl">
                 <b class="leading-none">
                     {{ __('Players') }}
                 </b>
-                <p class="leading-none">
+                <p class="leading-none w-3">
                     {{ $players->count() }}
                 </p>
             </div>
@@ -84,20 +92,20 @@
                 <b class="leading-none">
                     {{ __('Played games') }}
                 </b>
-                <p class="leading-none">
+                <p class="leading-none w-3">
                     {{ $games->where('finished', '1')->count() }}
                 </p>
             </div>
         </x-admin.block>
     </div>
 
-    <div class="flex justify-center">
+    <div class="w-full flex justify-center">
         <h2 class="my-10">
             {{ __('Add new game') }}
         </h2>
     </div>
 
-    <form action="{{ route('create') }}" method="POST" class="flex flex-col gap-y-6 w-[40%] mx-auto">
+    <form action="{{ route('create') }}" method="POST" class="flex flex-col gap-y-6 w-full md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%] mx-auto">
         @csrf
 
         <h3 class="text-addictive">
@@ -112,7 +120,7 @@
         <h3 class="text-addictive">
             {{ __('Map coordinates') }}
         </h3>
-        <div class="grid grid-cols-2 gap-x-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <x-admin.input class="bg-bg" placeholder="First coordinates" type="text" name="first_cord" />
             <x-admin.input class="bg-bg" placeholder="Second coordinates" type="text" name="second_cord" />
         </div>
@@ -136,15 +144,15 @@
 
         <div id="added"></div>
         <input id="count" type="number" class="hidden" value="1" name="count"/>
-        <x-elems.button class="bg-bg" value="Add game" />
+        <x-elems.button class="bg-bg py-4" value="Add game" />
 
     </form>
 
-    <div class="flex justify-between w-[22%] my-10 mx-auto">
-        <x-admin.button class="place-self-end hover:text-[#94C843]" onclick="addColumns()">
+    <div class="flex flex-col items-center md:flex-row md:justify-between w-full md:w-[50%] lg:w-[40%] xl:w-[30%] my-10 mx-auto">
+        <x-admin.button class="md:place-self-end my-4 md:my-0 hover:text-green" onclick="addColumns()">
             {{ 'Add columns' }}
         </x-admin.button>
-        <x-admin.button class="place-self-start hover:text-[#D64545]" onclick="removeColumns()">
+        <x-admin.button class="md:place-self-start my-4 md:my-0 hover:text-red" onclick="removeColumns()">
             {{ 'Remove columns' }}
         </x-admin.button>
     </div>

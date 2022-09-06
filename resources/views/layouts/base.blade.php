@@ -10,36 +10,34 @@
 </head>
 
 @if ($message = session()->get('success'))
-    <x-elems.alert class="alert-success">
+    <x-elems.alert class="alert-success w-screen">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        <span class="whitespace-nowrap">{{ $message }}</span>
+        <span class="whitespace-normal sm:whitespace-nowrap">{{ $message }}</span>
     </x-elems.alert>
 @endif
 @if ($message = session()->get('error'))
-    <x-elems.alert class="alert-error">
+    <x-elems.alert class="alert-error w-screen">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        <span class="whitespace-nowrap">{{ $message }}</span>
+        <span class="whitespace-normal sm:whitespace-nowrap">{{ $message }}</span>
     </x-elems.alert>
 @endif
 
-<body class="min-h-screen flex flex-col selection:bg-dark selection:text-main" id="body">
-    <x-page.container>
-        @include('includes.header')
-    </x-page.container>
+<a href="{{ route('index') }}" id="ticket" onfocus="pull()" onblur="pullUp()" class="lg:hidden flex absolute top-52 ease duration-200 left-[-140px] py-6 pl-14 pr-20 z-50 bg-card_bg ring-2 ring-subwhite rounded-2xl">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-main stroke-2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+    </svg>          
+</a>
 
-    <main class="flex items-start">
-        <x-page.container>
-            @yield('content')
-        </x-page.container>
+<body class="min-h-screen container px-6 flex flex-col selection:bg-dark selection:text-main">
+    @include('includes.header')
+
+    <main class="flex flex-col w-full items-start">
+        @yield('content')
     </main>
 
-    <footer>
-        <x-page.container>
-            @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential'))
-                @include('includes.footer')
-            @endunless
-        </x-page.container>
-    </footer>
+    @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential'))
+        @include('includes.footer')
+    @endunless
 </body>
 
 <script src="{{ asset('js/header.js') }}"></script>
