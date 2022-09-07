@@ -29,7 +29,7 @@ class UpdatePlayerRequest extends FormRequest
             'callsign' => ['required', 'alpha', 'max:20'],
             'emailPlayer' => ['required', 'email:rfc,dns'],
             'phone' => ['required', 'max:20'],
-            'team' => ['required'],
+            'team_id' => ['required'],
         ];
     }
 }
