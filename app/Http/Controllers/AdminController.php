@@ -196,7 +196,7 @@ class AdminController extends Controller
     /**
      * Изменяет игровую информацию admin-а
      *
-     * @param App\Http\Request\StoreFormRequest $request
+     * @param App\Http\Request\UpdatePlayerRequest $request
      * @param App\Actions\UpdatePlayerAction $updatePlayer Обновляет игровые данные admin-а
      * @return \Illuminate\Redirect
      */

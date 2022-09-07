@@ -58,7 +58,7 @@
                     <p class="mb-2 sm:mb-0 sm:mr-10">
                         {{ __('Email') }}
                     </p>
-                    <x-admin.input name="email" value="{{ $admin->emailPlayer }}" type="email" class="w-full sm:w-[70%] lg:w-[70%] 2xl:w-[70%] bg-transparent" />
+                    <x-admin.input name="emailPlayer" value="{{ $admin->emailPlayer }}" type="email" class="w-full sm:w-[70%] lg:w-[70%] 2xl:w-[70%] bg-transparent" />
                 </div>
                 <div class="flex flex-col sm:flex-row items-start sm:items-center w-full justify-between">
                     <p class="mb-2 sm:mb-0 sm:mr-10">
