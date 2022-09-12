@@ -88,7 +88,7 @@
             <h3>
                 {{ __('Admin information') }}
             </h3>
-            <form action="{{ route('adminInformation') }}" method="POST" class="flex flex-col mt-10 gap-y-4 sm:gap-y-6 items-center">
+            <form action="{{ route('adminInformation') }}" method="POST" class="flex flex-col mt-10 gap-y-4 sm:gap-y-6 items-center" novalidate>
                 @csrf
                 <div class="flex flex-col sm:flex-row items-start sm:items-center w-full justify-between">
                     <p class="mb-2 sm:mb-0 sm:mr-10">
@@ -100,14 +100,14 @@
                     <p class="mb-2 sm:mb-0 sm:mr-10">
                         {{ __('Password') }}
                     </p>
-                    <x-admin.input name="password" type="password" class="w-full sm:w-[70%] lg:w-[70%] 2xl:w-[70%] bg-transparent" />
+                    <x-admin.input name="passwordNew" type="password" class="w-full sm:w-[70%] lg:w-[70%] 2xl:w-[70%] bg-transparent" />
                 </div>
                 <div class="flex flex-col items-left w-full">
                     <p class="mb-2 sm:hidden">
                         {{ __('Old password') }}
                     </p>
-                    <x-admin.input name="password" type="password" class="w-full bg-transparent sm:hidden" />
-                    <x-admin.input name="password" type="password" placeholder="Old password" class="placeholder:text-subwhite placeholder:text-base placeholder:font-normal placeholder:tracking-wide hidden sm:block w-full bg-transparent" />
+                    <x-admin.input type="password" class="w-full bg-transparent sm:hidden"/>
+                    <x-admin.input name="passwordOld" type="password" placeholder="Old password" class="placeholder:text-subwhite placeholder:text-base placeholder:font-normal placeholder:tracking-wide hidden sm:block w-full bg-transparent"/>
                 </div>
                 <x-elems.button class="py-2 mt-4 sm:mt-0 sm:py-3 w-full" value="Save" />
             </form>

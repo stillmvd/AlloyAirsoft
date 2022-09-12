@@ -13,6 +13,7 @@ use App\Actions\UpdateContactAction;
 use App\Actions\UpdateGameAction;
 use App\Actions\UpdateInfosAction;
 use App\Actions\UpdateLoginAction;
+use App\Actions\UpdatePasswordAction;
 use App\Actions\UpdatePlayerAction;
 use App\Actions\UpdateRulesAction;
 
@@ -209,18 +210,18 @@ class AdminController extends Controller
     }
 
     /**
-     * Обновляет логин
+     * Обновляет пароль
      *
      * @param Illuminate\Http\Request $request
-     * @param App\Actions\UpdateLoginAction $updateLogin Обновляет логин и пароль через старый пароль
+     * @param App\Actions\UpdatePasswordAction $updatePassword Обновляет пароль
      * @return \Illuminate\Redirect
      */
-    public function adminInformation(Request $request, UpdateLoginAction $updateLogin)
+    public function adminInformation(Request $request, UpdatePasswordAction $updatePassword)
     {
-        if($updateLogin->update($request))
+        if($updatePassword->update($request))
         {
             return redirect()->route('credential')->with([
-                'success' => 'Login was changed to ' . $request->login,
+                'success' => 'Password was changed',
             ]);
         }
         else
