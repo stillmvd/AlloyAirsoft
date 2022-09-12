@@ -231,14 +231,13 @@ function initMap() {
             }
           ],
     });
-    let image = 'https://cdn.icon-icons.com/icons2/2104/PNG/32/map_location_icon_129048.png';
+    let image = 'https://cdn.icon-icons.com/icons2/2104/PNG/32/map_location_icon_12904w8.png';
     const contentString =
     "<p>" + document.getElementById('info').innerHTML + "</p>";
 
     let marker = new google.maps.Marker({
         position: new google.maps.LatLng(map_1cord.textContent, map_2cord.textContent),
         map,
-        animation: google.maps.Animation.DROP,
         icon: image,
     });
 
