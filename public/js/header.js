@@ -41,12 +41,10 @@ document.getElementById('blockEmail').addEventListener('click', ()=>{
 
 function pull() {
   let ticket = document.getElementById('ticket');
-  ticket.style.left = 0 + "px";
-  ticket.style.paddingRight = 20 + "px";
+  ticket.style.top = 0 + "px";
 }
 
 function pullUp() {
   let ticket = document.getElementById('ticket');  
-  ticket.style.left = -6 + "%";
-  ticket.style.paddingRight = 20 + "px";
+  ticket.style.top = -50 + "px";
 }

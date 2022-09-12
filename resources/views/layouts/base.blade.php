@@ -22,12 +22,6 @@
     </x-elems.alert>
 @endif
 
-<a href="{{ route('index') }}" id="ticket" onfocus="pull()" onblur="pullUp()" class="lg:hidden flex absolute top-52 ease duration-200 left-[-140px] py-6 pl-14 pr-20 z-50 bg-card_bg ring-2 ring-subwhite rounded-2xl">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-main stroke-2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-    </svg>          
-</a>
-
 <body class="min-h-screen container px-6 flex flex-col selection:bg-dark selection:text-main">
     @include('includes.header')
 

@@ -4,8 +4,8 @@
             
             <h3 class="w-full lg:w-min h-min text-3xl sm:text-5xl lg:text-3xl text-center rounded-2xl ease-out duration-200 whitespace-nowrap bg-bg lg:bg-bg/[.78] p-4 xl:group-hover:bg-bg xl:group-hover:p-6 z-40"> {{ $game->name }} </h3>
             <div class="w-full lg:w-min h-min lg:flex flex-row items-end rounded-2xl ease-out duration-200 hidden bg-bg lg:bg-bg/[.78] p-4 xl:group-hover:bg-bg xl:group-hover:p-6 z-40 lg:place-self-end lg:self-start">
-                <b class="text-white text-3xl font-medium mr-3 leading-none"> {{ date('g:i', strtotime($game->time))}} </b>
-                <p class="text-subwhite font-normal leading-5"> {{ ucfirst(date('a', strtotime($game->time))) }} </p>
+                <b class="text-white select-none text-3xl font-medium mr-3 leading-none"> {{ date('g:i', strtotime($game->time))}} </b>
+                <p class="text-subwhite select-none font-normal leading-5"> {{ ucfirst(date('a', strtotime($game->time))) }} </p>
             </div>
             <p class="w-full xl:w-[80%] rounded-2xl ease-out duration-200 whitespace-pre-line text-justify leading-relaxed lg:text-left sm:whitespace-pre-line bg-bg lg:bg-bg/[.78] p-4 xl:group-hover:bg-bg xl:group-hover:p-6 z-40 lg:place-self-start lg:self-end">{{ $game->info }} </p>
             <h3 class="w-full lg:w-min h-min text-center text-xl sm:text-3xl rounded-2xl ease-out duration-200 whitespace-nowrap bg-bg lg:bg-bg/[.78] p-4 xl:group-hover:bg-bg xl:group-hover:p-6 z-40 lg:place-self-end lg:self-end"> {{ $game->polygon }} </h3>

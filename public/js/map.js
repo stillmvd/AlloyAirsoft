@@ -440,3 +440,5 @@ function removeRulesSquare() {
     rulesSquare.style.right = 0 + 'px';
     rulesSquare.style.bottom = 0 + 'px';
 }
+
+document.getElementById('googleMap').setAttribute('href', 'https://www.google.ru/maps/@'+ map_1cord.textContent +','+ map_2cord.textContent +',17.75z');

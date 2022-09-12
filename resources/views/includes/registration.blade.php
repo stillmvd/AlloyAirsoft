@@ -5,8 +5,8 @@
 </div>
 <x-elems.regform action="{{ route('store_players', $game->id) }}">
     <div class="flex relative">
-        <x-text.label id="name_label" for="name">{{ __('Name') }}</x-text.label>
-        <x-elems.input class="bg-bg" type="text" name="name" id="input_name" value="{{ old('name') }}"/>
+        <x-text.label class="z-10" id="name_label" for="name">{{ __('Name') }}</x-text.label>
+        <x-elems.input class="bg-transparent" type="text" name="name" id="input_name" value="{{ old('name') }}"/>
         @error('name')
             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] left-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -18,8 +18,8 @@
         @enderror
     </div>
     <div class="flex relative flex-col">
-        <x-text.label id="surname_label" for="surname">{{ __('Surname') }}</x-text.label>
-        <x-elems.input class="bg-bg" type="text" name="surname" id="input_surname" value="{{ old('surname') }}"/>
+        <x-text.label class="z-10" id="surname_label" for="surname">{{ __('Surname') }}</x-text.label>
+        <x-elems.input class="bg-transparent" type="text" name="surname" id="input_surname" value="{{ old('surname') }}"/>
         @error('surname')
             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] right-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -31,8 +31,8 @@
         @enderror
     </div>
     <div class="flex relative flex-col">
-        <x-text.label id="callsign_label" for="callsign">{{ __('Call sign') }}</x-text.label>
-        <x-elems.input class="bg-bg" type="text" name="callsign" id="input_callsign" value="{{ old('callsign') }}"/>
+        <x-text.label class="z-10" id="callsign_label" for="callsign">{{ __('Call sign') }}</x-text.label>
+        <x-elems.input class="bg-transparent" type="text" name="callsign" id="input_callsign" value="{{ old('callsign') }}"/>
         @error('callsign')
             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] left-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -44,8 +44,8 @@
         @enderror
     </div>
     <div class="flex relative flex-col">
-        <x-text.label id="email_label" for="emailPlayer">{{ __('Email') }}</x-text.label>
-        <x-elems.input class="bg-bg" type="text" name="emailPlayer" id="input_email" value="{{ old('emailPlayer') }}"/>
+        <x-text.label class="z-10" id="email_label" for="emailPlayer">{{ __('Email') }}</x-text.label>
+        <x-elems.input class="bg-transparent" type="text" name="emailPlayer" id="input_email" value="{{ old('emailPlayer') }}"/>
         @error('emailPlayer')
             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] right-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -57,8 +57,8 @@
         @enderror
     </div>
     <div class="flex relative flex-col">
-        <x-text.label id="phone_label" for="phone">{{ __('Phone') }}</x-text.label>
-        <x-elems.input class="bg-bg" type="text" name="phone" id="input_phone" value="{{ old('phone') }}"/>
+        <x-text.label class="z-10" id="phone_label" for="phone">{{ __('Phone') }}</x-text.label>
+        <x-elems.input class="bg-transparent" type="text" name="phone" id="input_phone" value="{{ old('phone') }}"/>
         @error('phone')
             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] left-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -70,8 +70,8 @@
         @enderror
     </div>
     <div class="flex relative flex-col">
-        <x-text.label id="team_label" for="team">{{ __('Team') }}</x-text.label>
-        <x-elems.select class="bg-bg" name="team" id="input_team" :teams="$teams" :teams_count="$teams_count" value="{{ old('team') }}"/>
+        <x-text.label class="z-40" id="team_label" for="team">{{ __('Team') }}</x-text.label>
+        <x-elems.select class="bg-transparent" name="team" id="input_team" :teams="$teams" :teams_count="$teams_count" value="{{ old('team') }}"/>
         @error('team')
             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] right-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">

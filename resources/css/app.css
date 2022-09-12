@@ -8,10 +8,10 @@
     }
 
     h1 {
-       @apply text-white text-6xl my-14 leading-none;
+       @apply text-white text-6xl my-14 leading-none select-none;
     }
     h2 {
-        @apply text-white text-5xl leading-none;
+        @apply text-white text-5xl leading-none select-none;
     }
     h3 {
         @apply text-white text-3xl leading-none;

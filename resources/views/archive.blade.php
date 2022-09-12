@@ -23,7 +23,7 @@
             {{ __('Nothing here') }}
         </h2>
         <a href="{{ route('index') }}" class="flex flex-row w-full sm:w-[70%] lg:w-[50%] xl:w-[40%] mt-6 whitespace-pre bg-dark/50 p-6 rounded-2xl ease-out duration-100 hover:bg-dark">
-            <p class="leading-none text-2xl md:text-4xl">{{ __('Wanna see our 
+            <p class="leading-none text-2xl md:text-4xl select-none">{{ __('Wanna see our 
 future games?') }}</p>
         </a>
     @endif

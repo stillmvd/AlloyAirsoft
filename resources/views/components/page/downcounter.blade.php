@@ -3,7 +3,7 @@
       <span class="countdown font-normal text-3xl">
         <span id="days" style="--value:100;"></span>
       </span>
-      <p>
+      <p class="select-none">
         {{ __('days') }}
       </p>
     </div>
@@ -11,7 +11,7 @@
       <span class="countdown font-normal text-3xl">
         <span id="hours" style="--value:100;"></span>
       </span>
-      <p>
+      <p class="select-none">
         {{ __('hours') }}
       </p>
     </div>
@@ -19,7 +19,7 @@
       <span class="countdown font-normal text-3xl">
         <span id="min" style="--value:100;"></span>
       </span>
-      <p>
+      <p class="select-none">
         {{ __('min') }}
       </p>
     </div>
@@ -27,7 +27,7 @@
       <span class="countdown font-normal text-3xl">
         <span id="sec" style="--value:100;"></span>
       </span>
-      <p>
+      <p class="select-none">
         {{ __('sec') }}
       </p>
     </div>

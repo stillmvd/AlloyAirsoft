@@ -212,7 +212,7 @@ class AdminController extends Controller
      * Обновляет логин
      *
      * @param Illuminate\Http\Request $request
-     * @param App\Actions\UpdateLoginAction $updateLogin Обновляет логин через старый пароль
+     * @param App\Actions\UpdateLoginAction $updateLogin Обновляет логин и пароль через старый пароль
      * @return \Illuminate\Redirect
      */
     public function adminInformation(Request $request, UpdateLoginAction $updateLogin)

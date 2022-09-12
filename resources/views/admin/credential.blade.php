@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="w-full flex justify-center">
-        <h1 class="text-4xl sm:text-6xl">
+        <h1 class="text-4xl sm:text-6xl text-center md:text-left">
             {{ __('Change your credential') }}
         </h1>
     </div>
 
-    <div class="w-full sm:w-[80%] md:w-[70%] lg:w-[50%] mx-auto justify-center xl:w-full pb-10 grid grid-cols-1 xl:grid-cols-2 xl:grid-rows-2 2xl:grid-cols-3 2xl:grid-rows-1 gap-6">
+    <div class="w-full sm:w-[80%] md:w-[70%] lg:w-[50%] mx-auto justify-center xl:w-full pb-10 grid grid-cols-1 xl:grid-cols-2 xl:grid-rows-1 2xl:grid-cols-3 2xl:grid-rows-1 gap-6">
         <x-admin.block class="p-6 h-min">
             <h3>
                 {{ __('Contact information') }}
@@ -30,7 +30,7 @@
             </form>
         </x-admin.block>
 
-        <x-admin.block class="p-6 h-min xl:h-full row-span-1 xl:row-span-2 2xl:row-span-1">
+        <x-admin.block class="p-6 h-min row-span-1 xl:row-span-3 2xl:row-span-1">
             <h3>
                 {{ __('Player information') }}
             </h3>
@@ -101,6 +101,13 @@
                         {{ __('Password') }}
                     </p>
                     <x-admin.input name="password" type="password" class="w-full sm:w-[70%] lg:w-[70%] 2xl:w-[70%] bg-transparent" />
+                </div>
+                <div class="flex flex-col items-left w-full">
+                    <p class="mb-2 sm:hidden">
+                        {{ __('Old password') }}
+                    </p>
+                    <x-admin.input name="password" type="password" class="w-full bg-transparent sm:hidden" />
+                    <x-admin.input name="password" type="password" placeholder="Old password" class="placeholder:text-subwhite placeholder:text-base placeholder:font-normal placeholder:tracking-wide hidden sm:block w-full bg-transparent" />
                 </div>
                 <x-elems.button class="py-2 mt-4 sm:mt-0 sm:py-3 w-full" value="Save" />
             </form>
