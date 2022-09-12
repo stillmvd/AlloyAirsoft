@@ -113,7 +113,7 @@
     </h1>
   </div>
 
-  <table class="w-5/12 mx-auto bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
+  <table class="w-5/12 mx-auto mb-20 bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
     <thead>
       <tr class="text-white">
           <th class="font-semibold text-left bg-card_bg/75 rounded-tl-xl rounded-bl-xl">Id</th>
