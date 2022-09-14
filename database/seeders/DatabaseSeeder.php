@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'login' => 'Ginze',
-            'password' => Hash::make('Ginze123'),
+            'password' => Hash::make('4{MUSZm4k*QyR%HmQy3{Vcr3T74$O6nk'),
         ]);
 
         // ---------- Games

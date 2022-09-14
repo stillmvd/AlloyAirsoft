@@ -11,11 +11,12 @@ class GetGameInfoAction
 {
     /**
      * Возвращает массив данных об игре для вывода на сайт
-     * @param int $gameId id игры
+     * @param string $gameName Имя игры
      * @return array
      */
-    public function getInfo(int $gameId)
+    public function getInfo(string $gameName)
     {
+        $gameId = Game::where('name', $gameName)->get()[0]->id;
         $rules = Rule::where('game_id', $gameId)->get();
         return [
             'first_cord' => Game::find($gameId)->first_cord,

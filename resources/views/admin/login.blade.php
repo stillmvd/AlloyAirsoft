@@ -13,7 +13,7 @@
         <h2>
             {{ __('Enjoy!') }}
         </h2>
-        <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-y-5">
+        <form action="{{ route('store') }}" method="POST" class="flex flex-col gap-y-5">
             @csrf
             <x-admin.input class="bg-bg autofill:bg-bg" placeholder="Login" type="text" name="login" />
             <x-admin.input class="bg-bg autofill:bg-bg" placeholder="Password" type="password" name="password" />

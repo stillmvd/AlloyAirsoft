@@ -42,12 +42,12 @@ class PagesController extends Controller
      * Возращает страницу самой игры
      *
      * @param App\Actions\GetGameInfoAction $getGameInfo Получает из actiona информацию об игре
-     * @param int $gameId ID игры
+     * @param string $gameName Имя игры
      * @return Illuminate\View\View
      */
-    public function game(GetGameInfoAction $getGameInfo, int $gameId)
+    public function game(GetGameInfoAction $getGameInfo, string $gameName)
     {
-        return view('game', $getGameInfo->getInfo($gameId));
+        return view('game', $getGameInfo->getInfo($gameName));
     }
 
     /**

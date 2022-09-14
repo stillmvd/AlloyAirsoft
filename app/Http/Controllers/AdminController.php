@@ -22,6 +22,7 @@ use App\Http\Requests\StoreFormRequest;
 use App\Http\Requests\UpdatePlayerRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,14 +31,7 @@ class AdminController extends Controller
 {
     public function login()
     {
-        if (auth()->check())
-        {
-            return redirect('admin');
-        }
-        else
-        {
-            return view('admin.login');
-        }
+        return view('admin.login');
     }
 
     /**
