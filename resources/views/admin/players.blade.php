@@ -17,7 +17,8 @@
             <th class="font-semibold text-left bg-card_bg/75">Email</th>
             <th class="font-semibold text-left bg-card_bg/75">Phone</th>
             <th class="font-semibold text-left bg-card_bg/75">Game</th>
-            <th class="font-semibold text-left bg-card_bg/75 rounded-tr-xl rounded-br-xl">Team</th>
+            <th class="font-semibold text-left bg-card_bg/75">Team</th>
+            <th class="font-semibold text-left bg-card_bg/75 rounded-tr-xl rounded-br-xl"> </th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,7 @@
               <td class="font-medium">{{ $players[$i]->phone }}</td>
               <td class="font-medium">{{ $games->where('id', $players[$i]->game_id)->value('name') }}</td>
               <td class="font-medium">{{ $teams->where('id', $players[$i]->team_id)->value('name') }}</td>
+              <td><a href="{{ route('deletePlayer', $players[$i]->id) }}" class="font-medium hover:text-red text-[#979797] text-[15px]">Delete</a></td>
           </tr>
         @endfor
       </tbody>

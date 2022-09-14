@@ -16,4 +16,6 @@ Route::middleware('auth')->group(function () {
     Route::post('credential/contact_information', [AdminController::class, 'contactInformation'])->name('contactInformation');
     Route::post('credential/player_information', [AdminController::class, 'playerInformation'])->name('playerInformation');
     Route::post('credential/admin_information', [AdminController::class, 'adminInformation'])->name('adminInformation');
+
+    Route::get('delete/{id}', [AdminController::class, 'deletePlayer'])->name('deletePlayer');
 });

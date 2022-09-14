@@ -12,6 +12,7 @@ use App\Actions\StorePlayerAction;
 
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
+use App\Models\Game;
 
 /** PagesController содержит основные контроллеры работающие на сайте. */
 class PagesController extends Controller
@@ -63,12 +64,13 @@ class PagesController extends Controller
     public function storePlayers(StoreFormRequest $request, int $gameId, getOldDataOfPlayer $getOldData,
                                   StorePlayerAction $storePlayer, SendEmailAction $sendEmail)
     {
+        $gameName = Game::find($gameId)->name;
         $getOldData->getData($request);
 
         $storePlayer->createPlayerInDB($request, $gameId);
         $sendEmail->sendEmail($request->emailPlayer, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
 
-        return redirect()->route('game', $gameId)->with(
+        return redirect()->route('game', $gameName)->with(
             ['success' => 'You were registered for the game']
         );
     }

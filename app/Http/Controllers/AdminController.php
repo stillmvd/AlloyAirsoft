@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\DeleteAllDataAction;
+use App\Actions\DeletePlayerAction;
 use App\Actions\GetAdminInfoAction;
 use App\Actions\GetAllInfoAction;
 use App\Actions\GetInfoFromEditGameAction;
@@ -29,6 +30,11 @@ use Illuminate\Support\Facades\Hash;
 /** AdminController содержит основные контроллеры работающие в админке. */
 class AdminController extends Controller
 {
+    /**
+     * Входин в аккаунт
+     *
+     * @return view
+     */
     public function login()
     {
         return view('admin.login');
@@ -223,5 +229,12 @@ class AdminController extends Controller
                 'error' => 'Incorrect password for ' . DB::table('users')->where('id', auth()->id())->get()->value('login'),
             ]);
         }
+    }
+
+    public function deletePlayer(int $playerId, DeletePlayerAction $deletePlayer)
+    {
+        return redirect()->route('players')->with([
+            'success' => 'Players "' . $deletePlayer->delete($playerId) . '" was successfully deleted'
+        ]);
     }
 }
