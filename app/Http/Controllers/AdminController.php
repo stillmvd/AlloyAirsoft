@@ -120,8 +120,7 @@ class AdminController extends Controller
      */
     public function edit(int $gameId, GetInfoFromEditGameAction $getInfoFromEditGame)
     {
-        $game = DB::table('games')->where('id', $gameId)->get()->all()[0];
-        return view('admin.edit', $getInfoFromEditGame->getInfo($gameId), compact('game'));
+        return view('admin.edit', $getInfoFromEditGame->getInfo($gameId));
     }
 
     /**
@@ -137,11 +136,11 @@ class AdminController extends Controller
     public function update(Request $request, int $gameId,
                            UpdateGameAction $updateGame, UpdateInfosAction $updateInfos, UpdateRulesAction $updateRules)
     {
-        $game = $updateGame->update($request, $gameId);
+        $updateGame->update($request, $gameId);
         $updateInfos->update($gameId);
         $updateRules->update($request, $request->count, $gameId);
-        return redirect()->route('game', $gameId)->with([
-            'success' => 'The information for "' . $game->name . '" was updated',
+        return redirect()->route('game', $request->name)->with([
+            'success' => 'The information for "' . $request->name . '" was updated',
         ]);
     }
 

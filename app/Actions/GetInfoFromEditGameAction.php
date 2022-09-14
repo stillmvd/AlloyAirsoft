@@ -15,11 +15,16 @@ class GetInfoFromEditGameAction
      */
     public function getInfo(int $gameId)
     {
-        return [
-            'infos' => DB::table('infos')->where('game_id', $gameId)->get()->first(),
-            'rules' => DB::table('rules')->where('game_id', $gameId)->get(),
-            'players' => DB::table('players')->where('game_id', $gameId)->get(),
-            'games' =>  DB::table('games')->where('id', $gameId)->get()->first(),
-        ];
+        if(DB::table('games')->where('id', $gameId)->count() >= 1)
+        {
+            $game = DB::table('games')->where('id', $gameId)->get()->all()[0];
+            return [
+                'infos' => DB::table('infos')->where('game_id', $gameId)->get()->first(),
+                'rules' => DB::table('rules')->where('game_id', $gameId)->get(),
+                'players' => DB::table('players')->where('game_id', $gameId)->get(),
+                'games' =>  DB::table('games')->where('id', $gameId)->get()->first(),
+                'game' => $game,
+            ];
+        }
     }
 }

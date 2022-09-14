@@ -2,7 +2,7 @@ let count = document.getElementsByClassName('block').length
 let text = [],
     title = [],
     blocks = [];
-
+setIdAndNameInput();
 function setIdAndNameInput(){
     let blocks = document.getElementsByClassName('block');
     document.getElementById('count').value = blocks.length;

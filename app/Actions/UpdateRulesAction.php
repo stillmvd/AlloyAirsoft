@@ -19,9 +19,9 @@ class UpdateRulesAction
     {
         if ($request->count <= 1)
         {
-            DB::table('rules')->where('id', $gameId)->update([
-                'title' => $request->input('title'),
-                'text' => $request->input('text'),
+            DB::table('rules')->where('game_id', $gameId)->update([
+                'title' => $request->input('title0'),
+                'text' => $request->input('text0'),
                 'game_id' => $gameId,
             ]);
         }
@@ -33,7 +33,7 @@ class UpdateRulesAction
                 $textRules = $request->input('text' . $i);
                 if (ruleExists($titleRules, $textRules))
                 {
-                    DB::table('rules')->where('id', $gameId)->update([
+                    DB::table('rules')->where('id', $i+1)->update([
                         'title' => $titleRules,
                         'text' => $textRules,
                         'game_id' => $gameId,

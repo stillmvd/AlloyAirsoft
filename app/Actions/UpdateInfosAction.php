@@ -14,7 +14,7 @@ class UpdateInfosAction
      */
     public function update(int $gameId)
     {
-        DB::table('infos')->where('id', $gameId)->update([
+        DB::table('infos')->where('game_id', $gameId)->update([
             'title' => request('title'),
             'text' => request('text'),
             'game_id' => $gameId,
