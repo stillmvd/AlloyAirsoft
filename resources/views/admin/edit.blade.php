@@ -12,9 +12,9 @@
     <p class="hidden" id="second_cord">{{ $game->second_cord }}</p>
 </div>
 <div class="w-full relative mb-20">
-    <a href="{{ route('game', $game->id) }}">
+    <a href="{{ route('game', $game->name) }}">
         <div class="h-[200px] w-full lg:w-7/12 relative group ring-2 mx-auto ring-main rounded-2xl p-6 overflow-hidden z-40">
-            
+
             <h1 class="absolute text-4xl md:text-6xl w-min h-[400px] md:h-[200px] whitespace-nowrap z-50 left-0 right-0 top-[12%] md:top-[6%] mx-auto">
                 {{ $game->name }}
             </h1>
@@ -70,7 +70,7 @@
             </x-elems.textarea>
         </x-admin.textblock>
     @endfor
-    
+
     <div id="added"></div>
     <input id="count" type="number" class="hidden" value="1" name="count"/>
     <x-elems.button class="bg-bg py-4" value="Save" />
