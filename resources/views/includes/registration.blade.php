@@ -71,7 +71,7 @@
     </div>
     <div class="flex relative flex-col">
         <x-text.label class="z-40" id="team_label" for="team">{{ __('Team') }}</x-text.label>
-        <x-elems.select class="bg-transparent" name="team" id="input_team" :teams="$teams" :teams_count="$teams_count" value="{{ old('team') }}"/>
+        <x-elems.select class="bg-bg" name="team" id="input_team" :teams="$teams" :teams_count="$teams_count" value="{{ old('team') }}"/>
         @error('team')
             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] right-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -82,5 +82,5 @@
             </b>
         @enderror
     </div>
-    <x-elems.button value="Play" class="py-4 w-full z-20 bg-bg"/>
+    <x-elems.button value="Play" class="py-4 w-full z-20"/>
 </x-elems.regform>
