@@ -70,7 +70,7 @@ class PagesController extends Controller
         $storePlayer->createPlayerInDB($request, $gameId);
         $sendEmail->sendEmail($request->emailPlayer, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
 
-        return redirect()->route('game', $gameName)->with(
+        return redirect()->route('game', strtolower($gameName))->with(
             ['success' => 'You were registered for the game']
         );
     }
