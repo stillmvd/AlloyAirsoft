@@ -1,25 +1,20 @@
-<header class="w-full pt-12 lg:pt-8 justify-center grid grid-cols-1 md:flex md:grid-cols-3 md:justify-between">
-    <a href="{{ route('index') }}" id="ticket" onfocus="pull()" onblur="pullUp()" class="lg:hidden flex items-center justify-center absolute top-[-50px] ease duration-200 left-0 right-0 mx-auto py-6 z-50 bg-card_bg ring-2 ring-subwhite rounded-br-2xl rounded-bl-2xl">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-main stroke-2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-        </svg>          
-    </a>
+<header class="w-full lg:pt-8 justify-center grid grid-cols-1 md:flex md:grid-cols-3 md:justify-between">
     @guest
         <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <a href="{{ route('index') }}" class="hidden text-[2.5rem] text-white font-normal lg:block">
+            <a href="{{ route('index') }}" class="text-[1.8rem] sm:text-[2.5rem] mb-4 lg:mb-0 col-span-2 lg:col-span-1 w-full lg:w-min bg-card_bg lg:bg-transparent text-white p-6 lg:p-0 whitespace-normal sm:whitespace-nowrap rounded-bl-2xl rounded-br-2xl sm:rounded-2xl sm:my-4 lg:my-0 text-center font-normal">
                 Alloy Airsoft
             </a>
-            <div class="flex flex-row items-center justify-center md:items-start lg:items-center md:justify-start lg:justify-center">
+            <div class="flex flex-row items-center justify-center sm:items-start lg:items-center sm:justify-start lg:justify-center">
                 <div class="flex bg-dark rounded-2xl">
-                    <a href="{{ route('index') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('index') ? 'bg-card_bg/75' : '' }}">
+                    <a href="{{ route('index') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
                         {{ __('Upcoming') }}
                     </a>
-                    <a href="{{ route('archive') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-card_bg {{ Route::is('archive') ? 'bg-card_bg/75' : '' }}">
+                    <a href="{{ route('archive') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : 'bg-card_bg' }}">
                         {{ __('Archive') }}
                     </a>
                 </div>
             </div>
-            <div class="hidden md:flex flex-row items-end place-self-end">
+            <div class="hidden sm:flex flex-row items-end place-self-end">
                 <b class="text-5xl mr-3 font-normal select-none">
                     {{ now()->format('d') }}
                 </b>
@@ -30,8 +25,11 @@
         </div>
     @endguest
     @auth
+
+        {{-- Шапка для маленьких экранов --}}
+
         <div class="flex w-full md:hidden flex-col gap-y-4 justify-center">
-            <a href="{{ route('index') }}" class="hidden text-[2.5rem] text-white font-normal lg:flex">
+            <a href="{{ route('index') }}" class="text-[1.8rem] whitespace-normal sm:text-[2.5rem] bg-card_bg text-white mx-auto p-6 w-full sm:whitespace-nowrap rounded-bl-2xl rounded-br-2xl sm:rounded-2xl sm:mt-4 lg:my-0 text-center font-normal">
                 Alloy Airsoft
             </a>
             @if (Route::is('admin') || Route::is('players'))
@@ -84,19 +82,19 @@
             @endif
         </div>
 
-        {{-- -------------------------------------------------------------------------------------------------------------------------- --}}
+        {{-- Шапка для больших экранов --}}
 
         <div class="hidden w-full md:grid md:grid-cols-2 lg:grid-cols-3 justify-between">
-            <a href="{{ route('index') }}" class="hidden text-[2.5rem] text-white font-normal lg:block">
+            <a href="{{ route('index') }}" class="text-[2.5rem] bg-card_bg text-white md:col-span-2 lg:col-span-1 p-6 lg:p-0 w-full mb-4 lg:mb-0 lg:bg-transparent lg:w-min rounded-2xl whitespace-nowrap sm:mt-4 lg:my-0 text-center font-normal">
                 Alloy Airsoft
             </a>
             <div class="flex flex-row items-center justify-start lg:justify-center">
                 @if (Route::is('admin') || Route::is('players'))
                     <div class="flex w-min bg-card_bg rounded-2xl">
-                        <a href="{{ route('admin') }}" class="w-1/2 lg:w-min text-left whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('admin') ? 'bg-dark' : '' }}">
+                        <a href="{{ route('admin') }}" class="w-1/2 lg:w-min text-left whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('admin') ? 'bg-dark' : 'bg-card_bg' }}">
                             {{ __('Control') }}
                         </a>
-                        <a href="{{ route('players') }}" class="w-1/2 lg:w-min text-right whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('players') ? 'bg-dark' : '' }}">
+                        <a href="{{ route('players') }}" class="w-1/2 lg:w-min text-right whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('players') ? 'bg-dark' : 'bg-card_bg' }}">
                             {{ __('Players') }}
                         </a>
                     </div>
@@ -107,10 +105,10 @@
                 @elseif (Route::is('game'))
                     <div class="flex flex-row items-center justify-center">
                         <div class="flex bg-card_bg rounded-2xl">
-                            <a href="{{ route('edit', $game->id) }}" class="w-min whitespace-nowrap flex items-center px-6 py-3 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : '' }}">
+                            <a href="{{ route('edit', $game->id) }}" class="w-min whitespace-nowrap flex items-center px-6 py-3 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
                                 {{ __('Edit this game') }}
                             </a>
-                            <form action="{{ route('delete', $game->id) }}" method="POST" class="w-min rounded-tr-2xl cursor-pointer rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : '' }}">
+                            <form action="{{ route('delete', $game->id) }}" method="POST" class="w-min rounded-tr-2xl cursor-pointer rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : 'bg-card_bg' }}">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" value="Delete this game" class="cursor-pointer px-6 py-3 text-white text-base font-medium whitespace-nowrap">
@@ -120,10 +118,10 @@
                 @elseif(Route::is('index') || Route::is('archive'))
                     <div class="flex flex-row items-center justify-center">
                         <div class="flex bg-card_bg rounded-2xl">
-                            <a href="{{ route('index') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : '' }}">
+                            <a href="{{ route('index') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
                                 {{ __('Upcoming games') }}
                             </a>
-                            <a href="{{ route('archive') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : '' }}">
+                            <a href="{{ route('archive') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : 'bg-card_bg' }}">
                                 {{ __('Finished games') }}
                             </a>
                         </div>

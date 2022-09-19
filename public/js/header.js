@@ -38,13 +38,3 @@ document.getElementById('blockEmail').addEventListener('click', ()=>{
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
 })
-
-function pull() {
-  let ticket = document.getElementById('ticket');
-  ticket.style.top = 0 + "px";
-}
-
-function pullUp() {
-  let ticket = document.getElementById('ticket');  
-  ticket.style.top = -50 + "px";
-}

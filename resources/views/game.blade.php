@@ -35,7 +35,7 @@
             <x-page.downcounter/>
         @endunless
     </div>
-    <a href="" id="googleMap" class="w-full flex flex-row mt-4 ease-out duration-100 items-center justify-center bg-card_bg/75 hover:bg-dark rounded-box z-10">
+    <a href="" id="googleMap" class="w-full flex flex-row mt-4 ease-out duration-100 items-center justify-center bg-card_bg hover:bg-dark rounded-box z-10">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-main w-6 md:w-8 mr-4 my-4 group-hover:fill-dark">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
         </svg>
@@ -45,16 +45,10 @@
     </a>
 
     <div class="flex flex-col md:flex-row w-full mt-10 md:justify-between relative">
-        <h2 id="info-title" class="mb-10 md:mb-0">
-            {{ __('Info') }}
-        </h2>
+        <h2 id="info-title" class="mb-10 md:mb-0">{{ __('Info') }}</h2>
         <x-page.block tabindex="0" onclick="createInfoSquare()" onblur="removeInfoSquare()" id="infoBlock">
-            <h3 class="collapse-title text-white">
-                {{ $infos->title }}
-            </h3>
-            <p class="collapse-content whitespace-pre-line text-white font-light">
-                {{ $infos->text }}
-            </p>
+            <h3 class="collapse-title text-white">{{ $infos->title }}</h3>
+            <p class="collapse-content whitespace-pre-line text-white font-light">{{ $infos->text }}</p>
         </x-page.block>
         <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-2xl z-0 ease-out duration-500" id="infoSquare"></div>
     </div>
@@ -68,17 +62,10 @@
         <x-page.block tabindex="0" id="rulesBlock" onclick="createRulesSquare()" onblur="removeRulesSquare()">
             @foreach ($rules as $rule)
                 @if ($loop->index < 1)
-                    <h3 class="collapse-title text-white">
-                        {{ $rule->title }}
-                    </h3>
-                    <p class="collapse-title whitespace-pre-line mt-6 text-white font-light">
-                        {{ $rule->text }}
-                    </p>
+                    <h3 class="collapse-title flex flex-col text-white">{{ $rule->title }}<p class="whitespace-pre-line mt-4 text-white font-light">{{ $rule->text }}</p></h3>
                 @else
                 <div>
-                    <h3 class="collapse-content text-white">
-                        {{ $rule->title }}
-                    </h3>
+                    <h3 class="collapse-content text-white">{{ $rule->title }}</h3>
                     <p class="collapse-content whitespace-pre-line text-white font-light">{{ $rule->text }}</p>
                 </div>
                 @endif

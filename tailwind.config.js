@@ -13,7 +13,7 @@ module.exports = {
       'bg' : '#161616',
       'main' : '#37C564',
       'addictive' : '#FADB5F',
-      'card_bg' : '#1B1B1B',
+      'card_bg' : '#1f1f1f',
       'white' : '#DADADA',
       'subwhite' : '#a7a7a7',
       'dark' : '#282828',
