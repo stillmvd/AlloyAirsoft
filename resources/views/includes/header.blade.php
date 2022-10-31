@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="pl-2 flex flex-row items-center">
-            <a id="login" href="" class="whitespace-nowrap pr-2">
+            <a id="login" href="{{ route('login') }}" class="whitespace-nowrap pr-2">
                 Log in
             </a>
             <a href="{{ route('register') }}">
