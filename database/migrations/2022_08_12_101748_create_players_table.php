@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('emailPlayer');
             $table->string('phone');
             $table->foreignId('team_id')->constrained('teams');
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 

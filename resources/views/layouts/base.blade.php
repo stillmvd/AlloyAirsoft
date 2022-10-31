@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @vite('resources/css/app.css')
-    <title>Alloy Airsoft</title>
+    <title>@yield('title','Alloy Airsoft')</title>
 </head>
 
 @if ($message = session()->get('success'))
@@ -29,7 +29,7 @@
         @yield('content')
     </main>
 
-    @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential'))
+    @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential') || Route::is('register'))
         @include('includes.footer')
     @endunless
 </body>

@@ -23,6 +23,14 @@
                 </p>
             </div>
         </div>
+        <div class="pl-2 flex flex-row items-center">
+            <a id="login" href="" class="whitespace-nowrap pr-2">
+                Log in
+            </a>
+            <a href="{{ route('register') }}">
+                Registration
+            </a>
+        </div>
     @endguest
     @auth
 
@@ -100,7 +108,7 @@
                     </div>
                 @elseif (Route::is('credential') || Route::is('edit'))
                     <div class="hidden md:flex flex-row items-center justify-center">
-                        
+
                     </div>
                 @elseif (Route::is('game'))
                     <div class="flex flex-row items-center justify-center">

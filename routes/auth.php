@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('ZcfRdXnzkAtaUwdQSfJxMnMiahitXqrK', [AdminController::class, 'login'])->name('login');
-Route::post('ZcfRdXnzkAtaUwdQSfJxMnMiahitXqrK', [AdminController::class, 'login_store'])->name('store');
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'register_store'])->name('store');
+
 Route::get('logout', [AdminController::class, 'logout'])->name('logout');

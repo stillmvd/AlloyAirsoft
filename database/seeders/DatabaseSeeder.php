@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'login' => 'Ginze',
+            'email' => 'Ginze@mail.ru',
             'password' => Hash::make('4{MUSZm4k*QyR%HmQy3{Vcr3T74$O6nk'),
         ]);
 
@@ -102,6 +102,7 @@ According to our records, you may also be interfered with by our â€œColleaguesâ€
             'emailPlayer' => 'glebka@gmail.com',
             'phone' => '+1-613-555-0137',
             'team_id' => '1001',
+            'user_id' => '1001',
         ]);
     }
 }
