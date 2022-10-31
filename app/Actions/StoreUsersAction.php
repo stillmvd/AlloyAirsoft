@@ -13,6 +13,8 @@ class StoreUsersAction
         DB::table('users')->insert([
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'isActive' => true,
+            'isAdmin' => false,
         ]);
     }
 }

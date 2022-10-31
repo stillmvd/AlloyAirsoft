@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Game;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 if (! function_exists('isExistsDB'))
@@ -71,6 +72,7 @@ if (! function_exists('getAllDataOfTable'))
         return DB::table($nameTable)->get();
     }
 }
+
 if (! function_exists('getCountRecordOfTable'))
 {
     /**
@@ -82,5 +84,22 @@ if (! function_exists('getCountRecordOfTable'))
     function getCountRecordOfTable(string $nameTable)
     {
         return DB::table($nameTable)->get()->count();
+    }
+}
+
+if (! function_exists('userIsAdmin'))
+{
+
+    function userIsAdmin(int $id)
+    {
+        $user = User::find($id);
+        if ($user->isAdmin == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

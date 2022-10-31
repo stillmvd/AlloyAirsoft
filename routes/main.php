@@ -8,3 +8,5 @@ Route::get('archive', [PagesController::class, 'archive'])->name('archive');
 Route::get('game/{name}', [PagesController::class, 'game'])->name('game');
 Route::post('game/{id}', [PagesController::class, 'storePlayers'])->name('store_players');
 Route::post('/', [PagesController::class, 'saveEmail'])->name('save_email');
+
+Route::get('personal_account/{id}', [PagesController::class, 'account'])->middleware('auth')->name('personal_account');

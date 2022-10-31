@@ -25,8 +25,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'email' => 'Ginze@mail.ru',
+            'email' => 'glebka@gmail.com',
             'password' => Hash::make('4{MUSZm4k*QyR%HmQy3{Vcr3T74$O6nk'),
+            'isActive' => true,
+            'isAdmin' => true,
         ]);
 
         // ---------- Games

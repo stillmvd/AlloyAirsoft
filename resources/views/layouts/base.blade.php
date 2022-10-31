@@ -29,7 +29,7 @@
         @yield('content')
     </main>
 
-    @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential') || Route::is('register') || Route::is('login'))
+    @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential') || Route::is('register') || Route::is('login') || Route::is('personal_account'))
         @include('includes.footer')
     @endunless
 </body>

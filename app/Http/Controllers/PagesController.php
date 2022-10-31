@@ -103,4 +103,9 @@ class PagesController extends Controller
             );
         }
     }
+
+    public function account(int $id)
+    {
+        return view('personalAcount');
+    }
 }
