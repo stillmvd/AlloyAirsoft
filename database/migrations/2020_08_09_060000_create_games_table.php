@@ -17,7 +17,8 @@ return new class extends Migration
             $table->text('info');
             $table->time('time');
             $table->string('polygon');
-            $table->string('link');
+            $table->string('linkForIframe');
+            $table->string('linkForGoogle');
 
             $table->string('levels')->default('0');
             $table->string('tags-icon')->default('0');

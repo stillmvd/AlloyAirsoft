@@ -21,7 +21,8 @@ class StoreGameAction
             'info' => $request->input('info'),
             'time' => $request->input('time'),
             'polygon' => $request->input('polygon'),
-            'link' => $request->input('link'),
+            'linkForIframe' => $request->input('linkForIframe'),
+            'linkForGoogle' => $request->input('linkForGoogle'),
             'levels' => $request->input('levels'),
             'finished' => 0,
         ]);;

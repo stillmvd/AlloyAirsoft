@@ -118,9 +118,12 @@
         <x-admin.input class="bg-bg" placeholder="Polygon" type="text" name="polygon" />
 
         <h3 class="text-addictive">
-            {{ __('Link') }}
+            {{ __('Links') }}
         </h3>
-        <x-admin.input class="bg-bg" placeholder="Link" type="text" name="link" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <x-admin.input class="bg-bg" placeholder="Link Map Iframe" type="text" name="linkForIframe" />
+            <x-admin.input class="bg-bg" placeholder="Link Map Google" type="text" name="linkForGoogle" />
+        </div>
 
         <h3 class="text-addictive">
             {{ __('Game information') }}
