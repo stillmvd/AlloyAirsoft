@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,6 +17,15 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $games = DB::table('games')->where('finished', '=', 0)->get();
+            foreach ($games as $game) {
+                $currentDate = date('Y-m-d');
+                if($game->date->lt($currentDate)){
+                    DB::table('games')->where('id', '=', $game->id)->update(['finished' => 1]);
+                }
+            }
+        })->daily();
     }
 
     /**
