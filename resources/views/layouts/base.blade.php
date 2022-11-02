@@ -29,7 +29,7 @@
         @yield('content')
     </main>
 
-    @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential') || Route::is('register') || Route::is('login') || Route::is('personal_account'))
+    @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential') || Route::is('register') || Route::is('login') || Route::is('personal_account') || Route::is('account'))
         @include('includes.footer')
     @endunless
 </body>
@@ -41,6 +41,8 @@
 @elseif (Route::is('admin') || Route::is('edit'))
     <script src="{{ asset('js/map.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
+@elseif (Route::is('account'))
+    <script src="{{ asset('js/input.js') }}"></script>
 @else
     <script src="{{ asset('js/main.js') }}"></script>
 @endif

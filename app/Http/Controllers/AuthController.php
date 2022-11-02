@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register()
+    public function account()
     {
-        return view('auth.register');
+        return view('auth.account');
     }
 
     public function register_store(StoreUsersRequest $request, StoreUsersAction $storeUsers)
@@ -19,12 +19,7 @@ class AuthController extends Controller
         $storeUsers->store($request);
         return redirect()->route('index');
     }
-
-    public function login()
-    {
-        return view('auth.login');
-    }
-
+    
     public function login_store(Request $request)
     {
         $credentials = $request->validate([

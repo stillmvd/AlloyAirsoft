@@ -14,22 +14,19 @@
                     </a>
                 </div>
             </div>
-            <div class="hidden sm:flex flex-row items-end place-self-end">
+            {{-- <div class="hidden sm:flex flex-row items-end place-self-end">
                 <b class="text-5xl mr-3 font-normal select-none">
                     {{ now()->format('d') }}
                 </b>
                 <p class="leading-6 select-none">
                     {{ now()->format('M') }}
                 </p>
+            </div> --}}
+            <div class="hidden sm:flex flex-row items-end place-self-end">
+                <a href="{{ route('account') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-2xl ease-out duration-100 hover:bg-dark {{ Route::is('account') ? 'bg-dark' : 'bg-card_bg' }}">
+                    {{ __('Account') }}
+                </a>
             </div>
-        </div>
-        <div class="pl-2 flex flex-row items-center">
-            <a id="login" href="{{ route('login') }}" class="whitespace-nowrap pr-2">
-                Log in
-            </a>
-            <a href="{{ route('register') }}">
-                Registration
-            </a>
         </div>
     @endguest
     @auth
