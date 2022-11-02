@@ -30,7 +30,7 @@
         <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
     </div>
     <div class="h-[500px] lg:h-[300px] w-full relative group ring-2 ring-main rounded-2xl p-6 grid overflow-hidden z-40">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6937.594848843736!2d-78.6872054249482!3d44.0495167637283!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2sru!4v1667372304868!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[500px] lg:h-[300px] scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d4905.786327575352!2d-78.68967647122082!3d44.04751291773136!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2sru!4v1667374917338!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[660px] -top-10 lg:h-[360px] scale-[1] lg:scale-[1.1] lg:-top-[8%] ease-out duration-[.2s] absolute z-10"></iframe>
         @unless ($game->finished)
             <x-page.downcounter/>
         @endunless
