@@ -92,9 +92,9 @@
                 @csrf
                 <div class="flex flex-col sm:flex-row items-start sm:items-center w-full justify-between">
                     <p class="mb-2 sm:mb-0 sm:mr-10">
-                        {{ __('Login') }}
+                        {{ __('Email') }}
                     </p>
-                    <x-admin.input value="{{ $login }}" name="login" class="text" class="w-full sm:w-[70%] lg:w-[70%] 2xl:w-[70%] bg-transparent" />
+                    <x-admin.input value="{{ $email }}" name="email" class="text" class="w-full sm:w-[70%] lg:w-[70%] 2xl:w-[70%] bg-transparent" />
                 </div>
                 <div class="flex flex-col sm:flex-row items-start sm:items-center w-full justify-between">
                     <p class="mb-2 sm:mb-0 sm:mr-10">

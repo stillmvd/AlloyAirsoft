@@ -226,7 +226,7 @@ class AdminController extends Controller
         else
         {
             return redirect()->route('credential')->with([
-                'error' => 'Incorrect password for ' . DB::table('users')->where('id', auth()->id())->get()->value('login'),
+                'error' => 'Incorrect password for ' . DB::table('users')->where('id', auth()->id())->get()->value('email'),
             ]);
         }
     }
