@@ -30,8 +30,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('games')->insert([
             'name' => 'Woodpecker',
-            'first_cord' => 44.0506173,
-            'second_cord' => -78.6915067,
+            'link' => 'https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6937.594848843736!2d-78.6872054249482!3d44.0495167637283!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2sru!4v1667372304868!5m2!1sru!2sru',
             'polygon' => 'Clarington Woods',
             'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
 Number of enemy teams: unknown

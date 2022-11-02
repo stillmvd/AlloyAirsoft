@@ -22,7 +22,7 @@ class GetAdminInfoAction
             'email' => DB::table('contact')->pluck('email')[0],
             'phone' => DB::table('contact')->pluck('phone')[0],
             'admin' => Player::find(1001),
-            'login' => DB::table('users')->pluck('login')[0],
+            'email' => DB::table('users')->pluck('email')[0],
         ];
     }
 }
