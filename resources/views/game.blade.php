@@ -30,7 +30,7 @@
         <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
     </div>
     <div class="h-[500px] lg:h-[300px] w-full relative group ring-2 ring-main rounded-2xl p-6 grid overflow-hidden z-40">
-        <x-elems.map id="map" />
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6937.594848843736!2d-78.6872054249482!3d44.0495167637283!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2sru!4v1667372304868!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[500px] lg:h-[300px] scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
         @unless ($game->finished)
             <x-page.downcounter/>
         @endunless
@@ -40,7 +40,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
         </svg>
         <p class="leading-none">
-           {{ __('Get to the map') }} 
+           {{ __('Get to the map') }}
         </p>
     </a>
 
@@ -78,5 +78,5 @@
         <x-elems.separator class="mt-10" />
         @include('includes.registration')
     @endunless
-    
+
 @endsection
