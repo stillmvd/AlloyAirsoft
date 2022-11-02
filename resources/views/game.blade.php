@@ -23,14 +23,12 @@
         </div>
     </div>
     <div class="hidden">
-        <p class="hidden" id="first_cord">{{ $first_cord }}</p>
-        <p class="hidden" id="second_cord">{{ $second_cord }}</p>
         <p class="hidden" id="info">{{ $game->name }}</p>
         <p class="hidden" id="countdown">{{ $game->date . ' ' . $game->time }}</p>
         <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
     </div>
     <div class="h-[500px] lg:h-[300px] w-full relative group ring-2 ring-main rounded-2xl p-6 grid overflow-hidden z-40">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6937.594848843736!2d-78.6872054249482!3d44.0495167637283!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2sru!4v1667372304868!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[500px] lg:h-[300px] scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
+        <iframe src="{{ $game->link }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[500px] lg:h-[300px] scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
         @unless ($game->finished)
             <x-page.downcounter/>
         @endunless

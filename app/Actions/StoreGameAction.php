@@ -21,8 +21,7 @@ class StoreGameAction
             'info' => $request->input('info'),
             'time' => $request->input('time'),
             'polygon' => $request->input('polygon'),
-            'first_cord' => $request->input('first_cord'),
-            'second_cord' => $request->input('second_cord'),
+            'link' => $request->input('link'),
             'levels' => $request->input('levels'),
             'finished' => 0,
         ]);;

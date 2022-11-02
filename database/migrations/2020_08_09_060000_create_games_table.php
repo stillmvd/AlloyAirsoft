@@ -17,8 +17,7 @@ return new class extends Migration
             $table->text('info');
             $table->time('time');
             $table->string('polygon');
-            $table->string('first_cord');
-            $table->string('second_cord');
+            $table->string('link');
 
             $table->string('levels')->default('0');
             $table->string('tags-icon')->default('0');

@@ -21,7 +21,7 @@
             @else
                 @foreach ($games as $game)
                     @if (0 == $game->finished)
-                        <a href="{{ route('game', $game->id) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                        <a href="{{ route('game', $game->name) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
                             <b class="leading-none text-2xl lg:text-base lg:leading-none">
                                 {{ $game->name }}
                             </b>
@@ -41,7 +41,7 @@
                 @endforeach
             @endif
         </x-admin.block>
-    
+
         <x-admin.block class="grow h-full">
             <h3 class="px-6 pt-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
                 {{ __('Finished games') }}
@@ -55,7 +55,7 @@
             @else
                 @foreach ($games as $game)
                     @if (1 == $game->finished)
-                        <a href="{{ route('game', $game->id) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                        <a href="{{ route('game', $game->name) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
                             <b class="leading-none text-2xl lg:text-base lg:leading-none">
                                 {{ $game->name }}
                             </b>
@@ -75,7 +75,7 @@
                 @endforeach
             @endif
         </x-admin.block>
-    
+
         <x-admin.block class="grow h-full">
             <h3 class="px-6 pt-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
                 {{ __('Statistics') }}
@@ -118,12 +118,9 @@
         <x-admin.input class="bg-bg" placeholder="Polygon" type="text" name="polygon" />
 
         <h3 class="text-addictive">
-            {{ __('Map coordinates') }}
+            {{ __('Link') }}
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <x-admin.input class="bg-bg" placeholder="First coordinates" type="text" name="first_cord" />
-            <x-admin.input class="bg-bg" placeholder="Second coordinates" type="text" name="second_cord" />
-        </div>
+        <x-admin.input class="bg-bg" placeholder="Link" type="text" name="link" />
 
         <h3 class="text-addictive">
             {{ __('Game information') }}
