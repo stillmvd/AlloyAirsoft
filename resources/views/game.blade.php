@@ -28,7 +28,7 @@
         <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
     </div>
     <div class="h-[500px] lg:h-[300px] w-full relative group ring-2 ring-main rounded-2xl p-6 grid overflow-hidden z-40">
-        <iframe src="{{ $game->link }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[500px] lg:h-[300px] scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
+        <iframe src="{{ $game->link }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[560px] lg:h-[360px] group-hover:scale-[1.2] top-0 lg:-top-10 scale-[1.28] lg:scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
         @unless ($game->finished)
             <x-page.downcounter/>
         @endunless
