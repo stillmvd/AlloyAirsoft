@@ -42,7 +42,7 @@
     <script src="{{ asset('js/map.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
 @elseif (Route::is('account'))
-    <script src="{{ asset('js/input.js') }}"></script>
+    <script src="{{ asset('js/account.js') }}"></script>
 @else
     <script src="{{ asset('js/main.js') }}"></script>
 @endif

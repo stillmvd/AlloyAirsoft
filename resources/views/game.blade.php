@@ -29,9 +29,15 @@
     </div>
     <div class="h-[500px] lg:h-[300px] w-full relative group ring-2 ring-main rounded-2xl p-6 grid overflow-hidden z-40">
         <iframe src="{{ $game->linkForIframe }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[560px] lg:h-[360px] group-hover:scale-[1.2] top-0 lg:-top-10 scale-[1.28] lg:scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
-        @unless ($game->finished)
+        @if ($game->finished)
+            <div class="m-auto grid grid-flow-col gap-5 text-center items-center justify-center auto-cols-max bg-bg/[.78] px-6 py-3 w-full lg:w-min rounded-2xl absolute bottom-0 lg:left-[2%] lg:bottom-[7%] 2xl:bottom-[10%] z-40">
+                <h3>
+                    {{ __('Finished') }}
+                </h3>
+            </div>
+        @else
             <x-page.downcounter/>
-        @endunless
+        @endif
     </div>
     <a href="{{ $game->linkForGoogle }}" id="googleMap" class="w-full flex flex-row mt-4 ease-out duration-100 items-center justify-center bg-card_bg hover:bg-dark rounded-box z-10">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-main w-6 md:w-8 mr-4 my-4 group-hover:fill-dark">
