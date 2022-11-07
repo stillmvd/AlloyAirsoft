@@ -4,19 +4,17 @@
 
 @section('content')
 
-
-
     <div class="mt-20 w-full flex justify-center">
         <div class="flex flex-row justify-between gap-10">
             <div class="relative bg-dark/50 w-[600px] p-6 rounded-2xl ease-out duration-100">
                 <h2>
                     Newbie? Let's registrate
-                </h2>
+        </h2>
                 <form action="{{ route('register_store') }}" method="POST" class="flex -bottom-[230%] flex-col gap-4 mt-10 absolute z-0 w-[80%] left-0 right-0 m-auto bg-card_bg p-6 rounded-2xl">
                     @csrf
                     <div class="flex relative flex-col">
                         <x-text.label class="z-10" id="email_label" for="emailPlayer">{{ __('Email') }}</x-text.label>
-                        <x-elems.input class="bg-transparent h-16" type="text" name="emailPlayer" id="input_email" value="{{ old('emailPlayer') }}"/>
+                        <x-elems.input class="bg-transparent h-16" type="text" name="emailPlayerForReg" id="input_email" value="{{ old('emailPlayer') }}"/>
                         @error('emailPlayer')
                             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] right-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -29,7 +27,7 @@
                     </div>
                     <div class="flex relative flex-col">
                         <x-text.label class="z-10" id="password_label" for="password">{{ __('Password') }}</x-text.label>
-                        <x-elems.input class="bg-transparent h-16" type="text" name="password" id="input_password" value="{{ old('password') }}"/>
+                        <x-elems.input class="bg-transparent h-16" type="password" name="passwordForReg" id="input_password" value="{{ old('password') }}"/>
                         @error('password')
                             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] left-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -50,8 +48,8 @@
                 <form action="{{ route('login_store') }}" method="POST" class="flex -bottom-[230%] flex-col gap-4 mt-10 absolute z-0 w-[80%] left-0 right-0 m-auto bg-card_bg p-6 rounded-2xl">
                     @csrf
                     <div class="flex relative flex-col">
-                        <x-text.label class="z-10" id="email_label" for="emailPlayer">{{ __('Email') }}</x-text.label>
-                        <x-elems.input class="bg-transparent h-16" type="text" name="emailPlayer" id="input_email" value="{{ old('emailPlayer') }}"/>
+                        <x-text.label class="z-10" id="email_label2" for="emailPlayer">{{ __('Email') }}</x-text.label>
+                        <x-elems.input class="bg-transparent h-16" type="text" name="emailPlayerForLog" id="input_email2" value="{{ old('emailPlayer') }}"/>
                         @error('emailPlayer')
                             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] right-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -63,8 +61,8 @@
                         @enderror
                     </div>
                     <div class="flex relative flex-col">
-                        <x-text.label class="z-10" id="password_label" for="password">{{ __('Password') }}</x-text.label>
-                        <x-elems.input class="bg-transparent h-16" type="text" name="password" id="input_password" value="{{ old('password') }}"/>
+                        <x-text.label class="z-10" id="password_label2" for="password">{{ __('Password') }}</x-text.label>
+                        <x-elems.input class="bg-transparent h-16" type="password" name="passwordForLog" id="input_password2" value="{{ old('password') }}"/>
                         @error('password')
                             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] left-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">

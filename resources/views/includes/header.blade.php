@@ -38,12 +38,15 @@
                 Alloy Airsoft
             </a>
             @if(userIsAdmin(Auth::id()))
-                @if (Route::is('admin') || Route::is('players'))
+                @if (Route::is('admin') || Route::is('players') || Route::is('users'))
                     <a href="{{ route('admin') }}" class="w-full whitespace-nowrap px-6 py-4 rounded-2xl ease-out {{ Route::is('admin') ? 'bg-dark' : 'bg-card_bg' }}">
                         {{ __('Control') }}
                     </a>
                     <a href="{{ route('players') }}" class="w-full whitespace-nowrap px-6 py-4 rounded-2xl ease-out {{ Route::is('players') ? 'bg-dark' : 'bg-card_bg' }}">
                         {{ __('Players') }}
+                    </a>
+                    <a href="{{ route('users') }}" class="w-full whitespace-nowrap px-6 py-4 rounded-2xl ease-out {{ Route::is('users') ? 'bg-dark' : 'bg-card_bg' }}">
+                        {{ __('Users') }}
                     </a>
                 @elseif (Route::is('game'))
                     <a href="{{ route('index') }}" class="w-full text-left whitespace-nowrap px-6 py-4 rounded-2xl ease-out {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
@@ -99,13 +102,16 @@
             </a>
             <div class="flex flex-row items-center justify-start lg:justify-center">
                 @if (userIsAdmin(Auth::id()))
-                    @if (Route::is('admin') || Route::is('players'))
+                    @if (Route::is('admin') || Route::is('players') || Route::is('users'))
                         <div class="flex w-min bg-card_bg rounded-2xl">
                             <a href="{{ route('admin') }}" class="w-1/2 lg:w-min text-left whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('admin') ? 'bg-dark' : 'bg-card_bg' }}">
                                 {{ __('Control') }}
                             </a>
-                            <a href="{{ route('players') }}" class="w-1/2 lg:w-min text-right whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('players') ? 'bg-dark' : 'bg-card_bg' }}">
+                            <a href="{{ route('players') }}" class="w-1/2 lg:w-min text-right whitespace-nowrap px-6 py-4 ease-out duration-100 hover:bg-dark {{ Route::is('players') ? 'bg-dark' : 'bg-card_bg' }}">
                                 {{ __('Players') }}
+                            </a>
+                            <a href="{{ route('users') }}" class="w-1/2 lg:w-min text-right whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('users') ? 'bg-dark' : 'bg-card_bg' }}">
+                                {{ __('Users') }}
                             </a>
                         </div>
                     @elseif (Route::is('credential') || Route::is('edit'))

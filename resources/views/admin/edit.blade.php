@@ -7,10 +7,7 @@
     </h1>
 </div>
 
-<div class="hidden boolshit">
-    <p class="hidden" id="first_cord">{{ $game->first_cord }}</p>
-    <p class="hidden" id="second_cord">{{ $game->second_cord }}</p>
-</div>
+<div class="hidden boolshit"></div>
 <div class="w-full relative mb-20">
     <a href="{{ route('game', strtolower($game->name)) }}">
         <div class="h-[200px] w-full lg:w-7/12 relative group ring-2 mx-auto ring-main rounded-2xl p-6 overflow-hidden z-40">
@@ -25,27 +22,27 @@
     </a>
 </div>
 
-<form action="{{ route('update', $games->id) }}" method="POST" class="flex flex-col gap-y-6 w-full md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%] mx-auto">
+<form action="{{ route('update', $game->id) }}" method="POST" class="flex flex-col gap-y-6 w-full md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%] mx-auto">
     @csrf
     @method('put')
 
     <h3 class="text-addictive">
         {{ __('Card information') }}
     </h3>
-    <x-admin.input class="bg-bg" placeholder="Game date" type="text" value="{{ $games->date }}" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
-    <x-admin.input class="bg-bg" placeholder="Game name" type="text" value="{{ $games->name }}" name="name" />
+    <x-admin.input class="bg-bg" placeholder="Game date" type="text" value="{{ $game->date }}" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
+    <x-admin.input class="bg-bg" placeholder="Game name" type="text" value="{{ $game->name }}" name="name" />
     <x-elems.textarea class="bg-bg" placeholder="Game short info" name="info">
-        {{ $games->info }}
+        {{ $game->info }}
     </x-elems.textarea>
-    <x-admin.input class="bg-bg" placeholder="Game time" type="text" value="{{ $games->time }}" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
-    <x-admin.input class="bg-bg" placeholder="Polygon" type="text" value="{{ $games->polygon }}" name="polygon" />
+    <x-admin.input class="bg-bg" placeholder="Game time" type="text" value="{{ $game->time }}" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
+    <x-admin.input class="bg-bg" placeholder="Polygon" type="text" value="{{ $game->polygon }}" name="polygon" />
 
     <h3 class="text-addictive">
-        {{ __('Map coordinates') }}
+        {{ __('Links') }}
     </h3>
-    <div class="grid grid-cols-2 gap-x-6">
-        <x-admin.input class="bg-bg" placeholder="First coordinates" type="text" value="{{ $games->first_cord }}" name="first_cord" />
-        <x-admin.input class="bg-bg" placeholder="Second coordinates" type="text" value="{{ $games->second_cord }}" name="second_cord" />
+<div class="grid grid-cols-1 gap-y-6">
+        <x-admin.input class="bg-bg" placeholder="Link Map Iframe" type="text" name="linkForIframe" value="{{ $game->linkForIframe }}" />
+        <x-admin.input class="bg-bg" placeholder="Link Map Google" type="text" name="linkForGoogle" value="{{ $game->linkForGoogle }}" />
     </div>
 
     <h3 class="text-addictive">
@@ -56,7 +53,7 @@
         <x-elems.textarea class="bg-bg" placeholder="Text" name="text">
             {{ $infos->text }}
         </x-elems.textarea>
-        <x-admin.input type="number" class="bg-bg" placeholder="Levels" value="{{ $games->levels }}" name="levels" />
+        <x-admin.input type="number" class="bg-bg" placeholder="Levels" value="{{ $game->levels }}" name="levels" />
     </x-admin.textblock>
 
     <h3 class="text-addictive">

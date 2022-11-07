@@ -22,7 +22,6 @@ class GetInfoFromEditGameAction
                 'infos' => DB::table('infos')->where('game_id', $gameId)->get()->first(),
                 'rules' => DB::table('rules')->where('game_id', $gameId)->get(),
                 'players' => DB::table('players')->where('game_id', $gameId)->get(),
-                'games' =>  DB::table('games')->where('id', $gameId)->get()->first(),
                 'game' => $game,
             ];
         }

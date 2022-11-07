@@ -8,6 +8,7 @@ Route::middleware('auth')->group(function () {
     Route::get('credential', [AdminController::class, 'credential'])->name('credential');
     Route::post('admin', [AdminController::class, 'create'])->name('create');
     Route::get('admin/players', [AdminController::class, 'players'])->name('players');
+    Route::get('admin/users', [AdminController::class, 'users'])->name('users');
 
     Route::get('game/{id}/edit', [AdminController::class, 'edit'])->name('edit');
     Route::put('game/{id}/edit', [AdminController::class, 'update'])->name('update');
@@ -17,5 +18,6 @@ Route::middleware('auth')->group(function () {
     Route::post('credential/player_information', [AdminController::class, 'playerInformation'])->name('playerInformation');
     Route::post('credential/admin_information', [AdminController::class, 'adminInformation'])->name('adminInformation');
 
-    Route::get('delete/{id}', [AdminController::class, 'deletePlayer'])->name('deletePlayer');
+    Route::get('deleteP/{id}', [AdminController::class, 'deletePlayer'])->name('deletePlayer');
+    Route::get('deleteU/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
 });

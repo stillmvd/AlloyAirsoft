@@ -29,9 +29,9 @@
         @yield('content')
     </main>
 
-    @unless (Route::is('admin') || Route::is('players') || Route::is('edit') || Route::is('credential') || Route::is('register') || Route::is('login') || Route::is('personal_account') || Route::is('account'))
+    @if (Route::is('index') || Route::is('archive'))
         @include('includes.footer')
-    @endunless
+    @endif
 </body>
 
 <script src="{{ asset('js/header.js') }}"></script>

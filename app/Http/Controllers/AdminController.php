@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Actions\DeleteAllDataAction;
 use App\Actions\DeletePlayerAction;
+use App\Actions\DeleteUserAction;
 use App\Actions\GetAdminInfoAction;
 use App\Actions\GetAllInfoAction;
+use App\Actions\GetAllInfoUserAction;
 use App\Actions\GetInfoFromEditGameAction;
 use App\Actions\StoreGameAction;
 use App\Actions\StoreInfosGameAction;
@@ -178,6 +180,11 @@ class AdminController extends Controller
         return view('admin.players', $getAllInfo->get());
     }
 
+    public function users(GetAllInfoUserAction $getAllInfoUser)
+    {
+        return view('admin.users', $getAllInfoUser->get());
+    }
+
     /**
      *  Изменяет контактную информацию admin-а
      *
@@ -235,6 +242,13 @@ class AdminController extends Controller
     {
         return redirect()->route('players')->with([
             'success' => 'Players "' . $deletePlayer->delete($playerId) . '" was successfully deleted'
+        ]);
+    }
+
+    public function deleteUser(int $userId, DeleteUserAction $deleteUser)
+    {
+        return redirect()->route('users')->with([
+            'success' => 'User "' . $deleteUser->delete($userId) . '" was successfully deleted'
         ]);
     }
 }
