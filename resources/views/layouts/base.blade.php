@@ -29,7 +29,7 @@
         @yield('content')
     </main>
 
-    @if (Route::is('index') || Route::is('archive'))
+    @if (Route::is('index') || Route::is('archive') || Route::is('game'))
         @include('includes.footer')
     @endif
 </body>
