@@ -27,7 +27,7 @@
                     </div>
                     <div class="flex relative flex-col">
                         <x-text.label id="password_label_log" class="z-10" for="password">{{ __('Password') }}</x-text.label>
-                        <x-elems.input id="input_password_log" class="bg-transparent h-16" type="text" name="passwordForReg" value="{{ old('password') }}"/>
+                        <x-elems.input id="input_password_log" class="bg-transparent h-16" type="password" name="passwordForReg" value="{{ old('password') }}"/>
                         @error('password')
                             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] left-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -62,7 +62,7 @@
                     </div>
                     <div class="flex relative flex-col">
                         <x-text.label id="password_label_reg" class="z-10" for="password">{{ __('Password') }}</x-text.label>
-                        <x-elems.input id="input_password_reg" class="bg-transparent h-16" type="text" name="passwordForLog" value="{{ old('password') }}"/>
+                        <x-elems.input id="input_password_reg" class="bg-transparent h-16" type="password" name="passwordForLog" value="{{ old('password') }}"/>
                         @error('password')
                             <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] left-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">

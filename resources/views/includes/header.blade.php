@@ -73,8 +73,6 @@
                         {{ __('Finished games') }}
                     </a>
                 @endif
-            @endif
-            @if(userIsAdmin(Auth::id()))
                 @if (Route::is('admin'))
                     <div class="flex w-full justify-between bg-card_bg rounded-2xl">
                         <a href="{{ route('credential') }}" class="w-1/2 whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out {{ Route::is('credential') ? 'bg-dark' : '' }}">
@@ -92,6 +90,31 @@
                     </div>
                 @endif
             @endif
+            @if(!userIsAdmin(Auth::id()))
+                <div class="flex flex-row items-center justify-center sm:items-start lg:items-center lg:justify-center">
+                    <div class="flex bg-dark rounded-2xl">
+                        <a href="{{ route('index') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
+                            {{ __('Upcoming') }}
+                        </a>
+                        <a href="{{ route('archive') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : 'bg-card_bg' }}">
+                            {{ __('Archive') }}
+                        </a>
+                    </div>
+                </div>
+                @if (Route::is('personal_account'))
+                    <div class="flex flex-row items-end place-self-center bg-dark rounded-2xl">
+                        <a href="{{ route('logout') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-2xl ease-out duration-100 bg-card_bg hover:bg-dark">
+                            {{ __('Logout') }}
+                        </a>
+                    </div>
+                @else
+                    <div class="flex flex-row items-end place-self-center bg-dark rounded-2xl">
+                        <a id="login" href="{{ route('personal_account', Auth::id()) }}" class="w-min whitespace-nowrap px-6 py-4 rounded-2xl ease-out duration-100 hover:bg-dark {{ Route::is('personal_account') ? 'bg-dark' : 'bg-card_bg' }}">
+                            {{ __('Profile') }}
+                        </a>
+                    </div>
+                @endif
+            @endif
         </div>
 
         {{-- Шапка для больших экранов --}}
@@ -100,8 +123,8 @@
             <a href="{{ route('index') }}" class="text-[2.5rem] bg-card_bg text-white md:col-span-2 lg:col-span-1 p-6 lg:p-0 w-full mb-4 lg:mb-0 lg:bg-transparent lg:w-min rounded-2xl whitespace-nowrap sm:mt-4 lg:my-0 text-center font-normal">
                 Alloy Airsoft
             </a>
-            <div class="flex flex-row items-center justify-start lg:justify-center">
-                @if (userIsAdmin(Auth::id()))
+            @if (userIsAdmin(Auth::id()))
+                <div class="flex flex-row items-center justify-start lg:justify-center">
                     @if (Route::is('admin') || Route::is('players') || Route::is('users'))
                         <div class="flex w-min bg-card_bg rounded-2xl">
                             <a href="{{ route('admin') }}" class="w-1/2 lg:w-min text-left whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('admin') ? 'bg-dark' : 'bg-card_bg' }}">
@@ -143,10 +166,8 @@
                             </div>
                         </div>
                     @endif
-                @endif
-            </div>
-            <div class="flex flex-row items-center justify-end">
-                @if(userIsAdmin(Auth::id()))
+                </div>
+                <div class="flex flex-row items-center justify-end">
                     @if (Route::is('admin'))
                         <div class="flex bg-card_bg rounded-2xl">
                             <a href="{{ route('credential') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('') ? 'bg-dark' : '' }}">
@@ -163,23 +184,35 @@
                             </a>
                         </div>
                     @endif
-                @endif
-                @if(Auth::user() && !userIsAdmin(Auth::id()))
-                    <a href="{{ route('personal_account', Auth::id()) }}" class="whitespace-nowrap pr-2">
-                    Personal Acount
-                    </a>
-                @elseif (! Auth::user())
-                    <div class="pl-2 flex flex-row items-center">
-                        <a id="login" href="{{ route('login') }}" class="whitespace-nowrap pr-2">
-                            Log in
+                </div>
+            @endif
+            @if(!userIsAdmin(Auth::id()))
+                <div class="flex flex-row items-center justify-center sm:items-start lg:items-center sm:justify-start lg:justify-center">
+                    <div class="flex bg-dark rounded-2xl">
+                        <a href="{{ route('index') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
+                            {{ __('Upcoming') }}
                         </a>
-                        <a href="{{ route('register') }}">
-                            Registration
+                        <a href="{{ route('archive') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : 'bg-card_bg' }}">
+                            {{ __('Archive') }}
+                        </a>
+                    </div>
+                </div>
+                @if (Route::is('personal_account'))
+                    <div class="hidden sm:flex flex-row items-end place-self-end">
+                        <a href="{{ route('logout') }}" class="w-min whitespace-nowrap px-6 py-4 rounded-2xl ease-out duration-100 bg-card_bg hover:bg-dark">
+                            {{ __('Logout') }}
+                        </a>
+                    </div>
+                @else
+                    <div class="hidden sm:flex flex-row items-end place-self-end">
+                        <a id="login" href="{{ route('personal_account', Auth::id()) }}" class="w-min whitespace-nowrap px-6 py-4 rounded-2xl ease-out duration-100 hover:bg-dark {{ Route::is('personal_account') ? 'bg-dark' : 'bg-card_bg' }}">
+                            {{ __('Profile') }}
                         </a>
                     </div>
                 @endif
-            </div>
+            @endif
         </div>
+
     @endauth
 </header>
 <x-elems.separator class="mt-6" />
