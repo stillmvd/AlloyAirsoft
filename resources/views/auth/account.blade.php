@@ -5,12 +5,12 @@
 @section('content')
 
     <div class="mt-20 w-full flex justify-center">
-        <div class="flex flex-row justify-between gap-10">
-            <div class="relative">
-                <h2 class="bg-dark/50 w-[600px] p-6 rounded-2xl ease-out duration-100">
+        <div class="grid grid-cols-1 lg:grid-cols-2 justify-between gap-10">
+            <div class="rounded-full sm:rounded-2xl bg-dark">
+                <h2 class="text-3xl text-center sm:text-left sm:text-5xl p-6 rounded-2xl ease-out duration-100">
                     Newbie? Let's registrate
                 </h2>
-                <form id="regForm" action="{{ route('register_store') }}" method="POST" class="flex -bottom-[230%] flex-col gap-4 mt-10 absolute z-0 w-[80%] left-0 right-0 m-auto bg-card_bg p-6 rounded-2xl">
+                <form id="regForm" action="{{ route('register_store') }}" method="POST" class="flex flex-col gap-4 w-full bg-card_bg p-6 rounded-2xl">
                     @csrf
                     <div class="flex relative flex-col">
                         <x-text.label id="email_label_log" class="z-10" for="emailPlayer">{{ __('Email') }}</x-text.label>
@@ -39,13 +39,13 @@
                         @enderror
                     </div>
                     <x-elems.button value="Registrate" class="mt-6 py-4 w-full z-20"/>
-                </form>
+                </form>     
             </div>
-            <div class="relative bg-dark/50 rounded-2xl hover:bg-dark">
-                <h2 class="w-[600px] p-6 ease-out duration-100">
+            <div class="rounded-full sm:rounded-2xl bg-dark flex flex-col justify-between">
+                <h2 class="text-3xl text-center sm:text-left sm:text-5xl p-6 rounded-2xl ease-out duration-100">
                     Login
                 </h2>
-                <form id="logForm" action="{{ route('login_store') }}" method="POST" class="flex -bottom-[230%] flex-col gap-4 mt-10 absolute z-0 w-[80%] left-0 right-0 m-auto bg-card_bg p-6 rounded-2xl">
+                <form id="logForm" action="{{ route('login_store') }}" method="POST" class="flex flex-col gap-4 w-full bg-card_bg p-6 rounded-2xl">
                     @csrf
                     <div class="flex relative flex-col">
                         <x-text.label id="email_label_reg" class="z-10" for="emailPlayer">{{ __('Email') }}</x-text.label>

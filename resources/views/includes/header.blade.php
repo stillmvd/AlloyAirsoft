@@ -1,10 +1,10 @@
-<header class="w-full lg:pt-8 justify-center grid grid-cols-1 md:flex md:grid-cols-3 md:justify-between">
+<header class="w-full flex lg:pt-8">
     @guest
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div class="w-full flex items-center sm:items-end flex-col sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <a href="{{ route('index') }}" class="text-[1.8rem] sm:text-[2.5rem] mb-4 lg:mb-0 col-span-2 lg:col-span-1 w-full lg:w-min bg-card_bg lg:bg-transparent text-white p-6 lg:p-0 whitespace-normal sm:whitespace-nowrap rounded-bl-2xl rounded-br-2xl sm:rounded-2xl sm:my-4 lg:my-0 text-center font-normal">
                 Alloy Airsoft
             </a>
-            <div class="flex flex-row items-center justify-center sm:items-start lg:items-center sm:justify-start lg:justify-center">
+            <div class="flex flex-row items-center mb-4 sm:mb-0 sm:items-start lg:items-center sm:justify-start lg:justify-center">
                 <div class="flex bg-dark rounded-2xl">
                     <a href="{{ route('index') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
                         {{ __('Upcoming') }}
@@ -14,15 +14,7 @@
                     </a>
                 </div>
             </div>
-            {{-- <div class="hidden sm:flex flex-row items-end place-self-end">
-                <b class="text-5xl mr-3 font-normal select-none">
-                    {{ now()->format('d') }}
-                </b>
-                <p class="leading-6 select-none">
-                    {{ now()->format('M') }}
-                </p>
-            </div> --}}
-            <div class="hidden sm:flex flex-row items-end place-self-end">
+            <div class="flex items-end sm:place-self-end">
                 <a href="{{ route('account') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-2xl ease-out duration-100 hover:bg-dark {{ Route::is('account') ? 'bg-dark' : 'bg-card_bg' }}">
                     {{ __('Account') }}
                 </a>
