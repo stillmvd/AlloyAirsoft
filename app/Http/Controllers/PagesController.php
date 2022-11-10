@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\GetArchiveGamesAction;
 use App\Actions\GetGameInfoAction;
+use App\Actions\GetInfoForAccountAction;
 use App\Actions\getOldDataOfPlayer;
 use App\Actions\GetUpcomingGamesAction;
 use App\Actions\SendEmailAction;
@@ -107,10 +108,8 @@ class PagesController extends Controller
         }
     }
 
-    public function account(int $id)
+    public function account(int $id, GetInfoForAccountAction $getInfoForAccount)
     {
-        $player = Player::find($id);
-        $games = $player->games;
-        return view('personalAcount', compact('games', 'player'));
+        return view('personalAcount', $getInfoForAccount->get($id));
     }
 }

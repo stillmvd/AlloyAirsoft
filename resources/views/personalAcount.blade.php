@@ -17,7 +17,18 @@
                     @endforeach
         </div>
         <div class="w-[100%] rounded-2xl bg-card_bg/50 p-6">
-            <img src="{{ asset('image/Leather.jpg') }}" alt="avatar" class="w-28 h-28 mx-auto rounded-full">
+            <img src="{{ asset(Auth::user()->pathToAvatar) }}" alt="avatar" class="w-28 h-28 mx-auto rounded-full">
+            <form method="POST" action="{{ route('saveAvatar') }}" enctype="multipart/form-data">
+                @csrf
+                <input type="file" title=" " name="avatar" class="block w-full text-sm text-slate-500
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-full file:border-0
+                file:text-sm file:font-semibold
+                file:bg-violet-50 file:text-violet-700
+                hover:file:bg-violet-100
+                "/>
+                <input type="submit" value="Сохранить">
+            </form>
             <div class="bg-dark w-full p-4 rounded-xl mt-10">
                 <b>
                     Email
