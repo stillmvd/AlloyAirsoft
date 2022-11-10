@@ -16,7 +16,7 @@ class User extends Authenticatable
         'password',
         'isActive',
         'isAdmin',
-        'player_id'
+        'player_id',
     ];
 
     public function player()

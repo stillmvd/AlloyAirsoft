@@ -109,9 +109,8 @@ class PagesController extends Controller
 
     public function account(int $id)
     {
-
         $player = Player::find($id);
         $games = $player->games;
-        return view('personalAcount', compact('games', 'players'));
+        return view('personalAcount', compact('games', 'player'));
     }
 }

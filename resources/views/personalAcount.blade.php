@@ -9,13 +9,11 @@
                 Your games
             </h3>
                     @foreach ($games as $game)
-                        @if ($game->id = $player->game_id)
                             <div class="mt-10">
                                 <a href="{{ route('game', $game->name) }}" class="bg-dark/75 hover:bg-dark w-full p-4 rounded-xl mt-4">
                                     {{ $game->name }}
                                 </a>
                             </div>
-                        @endif
                     @endforeach
         </div>
         <div class="w-[100%] rounded-2xl bg-card_bg/50 p-6">
