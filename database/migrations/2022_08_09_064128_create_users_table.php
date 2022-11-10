@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->boolean('isActive');
             $table->boolean('isAdmin');
+            $table->foreignId('player_id')->constrained('players');
         });
     }
 

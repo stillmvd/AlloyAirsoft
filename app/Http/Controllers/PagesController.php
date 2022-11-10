@@ -13,6 +13,7 @@ use App\Actions\StorePlayerAction;
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
 use App\Models\Game;
+use App\Models\Player;
 use Illuminate\Support\Facades\DB;
 
 /** PagesController содержит основные контроллеры работающие на сайте. */
@@ -49,6 +50,7 @@ class PagesController extends Controller
      */
     public function game(GetGameInfoAction $getGameInfo, string $gameName)
     {
+
         return view('game', $getGameInfo->getInfo($gameName));
     }
 
@@ -107,8 +109,9 @@ class PagesController extends Controller
 
     public function account(int $id)
     {
-        $players = DB::table('players')->get();
-        $games = DB::table('games')->get();
+
+        $player = Player::find($id);
+        $games = $player->games;
         return view('personalAcount', compact('games', 'players'));
     }
 }

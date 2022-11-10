@@ -12,14 +12,12 @@ return new class extends Migration
             $table->id()->from(1001);
             $table->timestamps();
 
-            $table->foreignId('game_id')->constrained('games');
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
             $table->string('callsign');
             $table->string('emailPlayer');
             $table->string('phone');
             $table->foreignId('team_id')->constrained('teams');
-            $table->foreignId('user_id')->constrained('users');
         });
     }
 

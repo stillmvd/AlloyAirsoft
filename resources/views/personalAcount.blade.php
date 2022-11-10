@@ -8,8 +8,6 @@
             <h3>
                 Your games
             </h3>
-            @foreach ($players as $player)
-                @if ($player->email = Auth::user()->email)
                     @foreach ($games as $game)
                         @if ($game->id = $player->game_id)
                             <div class="mt-10">
@@ -19,8 +17,6 @@
                             </div>
                         @endif
                     @endforeach
-                @endif
-            @endforeach
         </div>
         <div class="w-[100%] rounded-2xl bg-card_bg/50 p-6">
             <img src="{{ asset('image/Leather.jpg') }}" alt="avatar" class="w-28 h-28 mx-auto rounded-full">
