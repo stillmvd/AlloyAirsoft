@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="mt-20 w-full flex justify-center">
+    <div class="my-20 w-full flex justify-center">
         <div class="grid grid-cols-1 lg:grid-cols-2 justify-between gap-10">
             <div class="rounded-full sm:rounded-2xl bg-dark">
                 <h2 class="text-3xl text-center sm:text-left sm:text-5xl p-6 rounded-2xl ease-out duration-100">
