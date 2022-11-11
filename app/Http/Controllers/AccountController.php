@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\SaveAvatarsAction;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
-    public function saveAvatar(Request $request)
+    public function saveAvatar(Request $request, SaveAvatarsAction $saveAvatars)
     {
-        if ($request->file('avatar') != null)
-        {
-            $path = $request->file('avatar')->storeAs('avatars', Auth::user()->id . '.jpg');
-        }
-
-        DB::table('users')->where('id', Auth::user()->id)->update([
-            'pathToAvatar' => $path,
-        ]);
-
+        $saveAvatars->save($request);
         return redirect()->back();
+    }
+
+    public function changeCredentialForUser(Request $request)
+    {
+        dd($request->all());
+        return 0;
     }
 }
