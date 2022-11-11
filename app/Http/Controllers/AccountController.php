@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\ChangeCredentialForUserAction;
 use App\Actions\SaveAvatarsAction;
+use App\Http\Requests\StoreCredentialForUserRequest;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -13,9 +15,10 @@ class AccountController extends Controller
         return redirect()->back();
     }
 
-    public function changeCredentialForUser(Request $request)
+    public function changeCredentialForUser(StoreCredentialForUserRequest $request,
+                    ChangeCredentialForUserAction $changeCredentialForUser)
     {
-        dd($request->all());
-        return 0;
+        $changeCredentialForUser->change($request);
+        return redirect()->back();
     }
 }
