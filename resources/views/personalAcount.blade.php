@@ -59,13 +59,13 @@
             <form action="{{ route('changeCredentialForUser') }}" method="POST" class="grid grid-rows-4 gap-5">
                 @csrf
                 name
-                <input type="text" name="name">
+                <input type="text" name="name" value="{{ $player->name }}">
                 surname
-                <input type="text" name="surname">
+                <input type="text" name="surname" value="{{ $player->surname }}">
                 callsign
-                <input type="text" name="callsign">
+                <input type="text" name="callsign" value="{{ $player->callsign }}">
                 phone
-                <input type="text" name="phone">
+                <input type="text" name="phone" value="{{ $player->phone }}">
                 <input type="submit" value="Save">
             </form>
         </div>
