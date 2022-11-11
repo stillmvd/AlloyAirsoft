@@ -2,6 +2,7 @@
 namespace App\Actions;
 
 use App\Http\Requests\StoreFormRequest;
+use App\Models\Game;
 use App\Models\Player;
 
 class StorePlayerAction
@@ -15,7 +16,7 @@ class StorePlayerAction
      */
     public function createPlayerInDB(StoreFormRequest $request, int $game_id)
     {
-        Player::create([
+        $player = new Player([
             'created_at' => now(),
             'game_id' => $game_id,
             'name' => $request->name,
@@ -25,5 +26,7 @@ class StorePlayerAction
             'phone' => $request->phone,
             'team_id' =>  $request->team,
         ]);
+        $player->save();
+        Game::find($game_id)->players()->attach($player->id);
     }
 }

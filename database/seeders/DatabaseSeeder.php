@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -17,13 +18,6 @@ class DatabaseSeeder extends Seeder
         DB::table('contact')->insert([
             'email' => 'glebka@gmail.com',
             'phone' => '+1-613-555-0137',
-        ]);
-
-        DB::table('users')->insert([
-            'email' => 'glebka@gmail.com',
-            'password' => Hash::make('4{MUSZm4k*QyR%HmQy3{Vcr3T74$O6nk'),
-            'isActive' => true,
-            'isAdmin' => true,
         ]);
 
         // ---------- Games
@@ -89,17 +83,22 @@ According to our records, you may also be interfered with by our â€œColleaguesâ€
         DB::table('teams')->insert(['name' => 'Bandits']);
 
         // -----------------------------------------------------------------------------------------
-
         DB::table('players')->insert([
             'id' => '1001',
-            'game_id' => '1001',
             'name' => 'Hlib',
             'surname' => 'Fedchenko',
             'callsign' => 'Ginze',
             'emailPlayer' => 'glebka@gmail.com',
             'phone' => '+1-613-555-0137',
             'team_id' => '1001',
-            'user_id' => '1001',
+        ]);
+
+        DB::table('users')->insert([
+            'email' => 'glebka@gmail.com',
+            'password' => Hash::make('4{MUSZm4k*QyR%HmQy3{Vcr3T74$O6nk'),
+            'isActive' => true,
+            'isAdmin' => true,
+            'player_id' => '1001',
         ]);
     }
 }

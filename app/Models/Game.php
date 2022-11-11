@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
@@ -21,8 +20,7 @@ class Game extends Model
         'finished',
     ];
 
-    use HasFactory;
-    public function games() {
-        return $this->belongsToMany(User::class);
+    public function players() {
+        return $this->belongsToMany(Player::class);
     }
 }

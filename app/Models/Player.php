@@ -12,10 +12,13 @@ class Player extends Model
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'id', 'game_id', 'team_id',
+        'id', 'team_id',
         'name', 'surname', 'callsign',
         'emailPlayer', 'phone',
     ];
 
-    use HasFactory;
+    public function games()
+    {
+        return $this->belongsToMany(Game::class);
+    }
 }
