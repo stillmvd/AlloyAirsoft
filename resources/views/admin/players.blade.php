@@ -30,7 +30,7 @@
               <td class="font-medium">{{ $players[$i]->callsign }}</td>
               <td class="font-medium">{{ $players[$i]->emailPlayer }}</td>
               <td class="font-medium">{{ $players[$i]->phone }}</td>
-              <td class="font-medium">{{ $games->where('id', $players[$i]->game_id)->value('name') }}</td>
+              <td class="font-medium">{{ getGamesForPlayer($players[$i]->id) }}</td>
               <td class="font-medium">{{ $teams->where('id', $players[$i]->team_id)->value('name') }}</td>
               <td><a href="{{ route('deletePlayer', $players[$i]->id) }}" class="font-medium hover:text-red text-[#979797] text-[15px]">Delete</a></td>
           </tr>

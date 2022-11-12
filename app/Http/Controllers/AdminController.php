@@ -24,6 +24,7 @@ use App\Http\Requests\StoreContactInformation;
 use App\Http\Requests\StoreFormRequest;
 use App\Http\Requests\UpdatePlayerRequest;
 use App\Models\Contact;
+use App\Models\Player;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

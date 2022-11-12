@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Game;
+use App\Models\Player;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -89,7 +90,6 @@ if (! function_exists('getCountRecordOfTable'))
 
 if (! function_exists('userIsAdmin'))
 {
-
     function userIsAdmin(int $id)
     {
         $user = User::find($id);
@@ -101,5 +101,22 @@ if (! function_exists('userIsAdmin'))
         {
             return false;
         }
+    }
+}
+
+if (! function_exists('getGamesForPlayer'))
+{
+    function getGamesForPlayer(int $id)
+    {
+        $gamesPlayed = Player::find($id)->games;
+        $games = '';
+        for ($i = 0; $i < $gamesPlayed->count(); $i++)
+        {
+            if($gamesPlayed[$i] != NUll)
+            {
+                $games .= $gamesPlayed[$i]->name;
+            }
+        }
+        return $games;
     }
 }

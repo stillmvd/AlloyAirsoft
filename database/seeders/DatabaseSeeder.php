@@ -100,5 +100,20 @@ According to our records, you may also be interfered with by our â€œColleaguesâ€
             'isAdmin' => true,
             'player_id' => '1001',
         ]);
+
+        DB::table('achievements')->insert([
+            'nameAchievement' => 'Actor',
+            'description' => 'Play off a friendly NPC',
+        ]);
+
+        DB::table('achievements')->insert([
+            'nameAchievement' => 'Spy',
+            'description' => 'Pass an optional event',
+        ]);
+
+        DB::table('achievements')->insert([
+            'nameAchievement' => 'Villain',
+            'description' => 'Play off an enemy NPC',
+        ]);
     }
 }
