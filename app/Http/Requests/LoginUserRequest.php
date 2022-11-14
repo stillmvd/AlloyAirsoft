@@ -25,7 +25,7 @@ class LoginUserRequest extends FormRequest
     {
         return [
             'emailPlayerForLog' => ['required', 'email:rfc,dns', 'max:100'],
-            'passwordForLog' => ['required', 'min:8'],
+            'passwordForLog' => ['required'],
         ];
     }
 }
