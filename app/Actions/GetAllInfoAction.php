@@ -16,6 +16,9 @@ class GetAllInfoAction
 
             'emails' => getAllDataOfTable('emails'),
             'emails_count' => getCountRecordOfTable('emails'),
+
+            'achievements' => getAllDataOfTable('achievements'),
+            'achievements_count' => getCountRecordOfTable('achievements'),
         ];
     }
 }

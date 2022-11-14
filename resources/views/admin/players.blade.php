@@ -18,22 +18,41 @@
             <th class="font-semibold text-left bg-card_bg/75">Phone</th>
             <th class="font-semibold text-left bg-card_bg/75">Game</th>
             <th class="font-semibold text-left bg-card_bg/75">Team</th>
+            <th class="font-semibold text-left bg-card_bg/75">Achievements</th>
             <th class="font-semibold text-left bg-card_bg/75 rounded-tr-xl rounded-br-xl"> </th>
         </tr>
       </thead>
       <tbody>
         @for ($i = 0; $i < $players_count; $i++)
-          <tr class="text-[#979797]">
-              <td class="font-medium">{{ $players[$i]->id }}</td>
-              <td class="font-medium">{{ $players[$i]->name }}</td>
-              <td class="font-medium">{{ $players[$i]->surname }}</td>
-              <td class="font-medium">{{ $players[$i]->callsign }}</td>
-              <td class="font-medium">{{ $players[$i]->emailPlayer }}</td>
-              <td class="font-medium">{{ $players[$i]->phone }}</td>
-              <td class="font-medium">{{ getGamesForPlayer($players[$i]->id) }}</td>
-              <td class="font-medium">{{ $teams->where('id', $players[$i]->team_id)->value('name') }}</td>
-              <td><a href="{{ route('deletePlayer', $players[$i]->id) }}" class="font-medium hover:text-red text-[#979797] text-[15px]">Delete</a></td>
-          </tr>
+        <tr class="text-[#979797]">
+            <td class="font-medium">{{ $players[$i]->id }}</td>
+            <td class="font-medium">{{ $players[$i]->name }}</td>
+            <td class="font-medium">{{ $players[$i]->surname }}</td>
+            <td class="font-medium">{{ $players[$i]->callsign }}</td>
+            <td class="font-medium">{{ $players[$i]->emailPlayer }}</td>
+            <td class="font-medium">{{ $players[$i]->phone }}</td>
+            <td class="font-medium">{{ getGamesForPlayer($players[$i]->id) }}</td>
+            <td class="font-medium">{{ $teams->where('id', $players[$i]->team_id)->value('name') }}</td>
+            <td class="font-medium">
+                <div class="dropdown dropdown-hover">
+                    <label tabindex="0" class="btn m-1">Hover</label>
+                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a>
+                            {{ $achievements_count }}
+                            @for ($i = 0; $i < $achievements_count; $i++)
+                                <div class="form-control">
+                                    <label class="cursor-pointer label">
+                                        <span class="label-text">{{ $achievements[$i]->nameAchievement }}</span>
+                                        <input type="checkbox" checked="checked" class="checkbox checkbox-success" />
+                                    </label>
+                                </div>
+                            @endfor
+                        </a></li>
+                    </ul>
+                </div>
+            </td>
+            <td><a href="{{ route('deletePlayer', $players[$i]->id) }}" class="font-medium hover:text-red text-[#979797] text-[15px]">Delete</a></td>
+        </tr>
         @endfor
       </tbody>
     </table>
