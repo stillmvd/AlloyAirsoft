@@ -23,8 +23,10 @@ use App\Actions\UpdateRulesAction;
 use App\Http\Requests\StoreContactInformation;
 use App\Http\Requests\StoreFormRequest;
 use App\Http\Requests\UpdatePlayerRequest;
+use App\Models\Achievement;
 use App\Models\Contact;
 use App\Models\Player;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -251,5 +253,43 @@ class AdminController extends Controller
         return redirect()->route('users')->with([
             'success' => 'User "' . $deleteUser->delete($userId) . '" was successfully deleted'
         ]);
+    }
+
+    public function getAchievements(int $idUser, Request $request)
+    {
+        if ($request->Actor == 'on')
+        {
+            if (DB::table('achievement_player')->where('achievement_id', 1)->where('player_id', $idUser)->count() == 0)
+            {
+                Achievement::find(1)->players()->attach($idUser);
+            }
+        }
+        else
+        {
+            Achievement::find(1)->players()->detach($idUser);
+        }
+        if ($request->Spy == 'on')
+        {
+            if (DB::table('achievement_player')->where('achievement_id', 2)->where('player_id', $idUser)->count() == 0)
+            {
+                Achievement::find(2)->players()->attach($idUser);
+            }
+        }
+        else
+        {
+            Achievement::find(2)->players()->detach($idUser);
+        }
+        if ($request->Villain == 'on')
+        {
+            if (DB::table('achievement_player')->where('achievement_id', 3)->where('player_id', $idUser)->count() == 0)
+            {
+                Achievement::find(3)->players()->attach($idUser);
+            }
+        }
+        else
+        {
+            Achievement::find(3)->players()->detach($idUser);
+        }
+        return redirect()->back();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class GetAllInfoAction
@@ -16,6 +17,9 @@ class GetAllInfoAction
 
             'emails' => getAllDataOfTable('emails'),
             'emails_count' => getCountRecordOfTable('emails'),
+
+            'achievements' => getAllDataOfTable('achievements'),
+            'achievements_count' => getCountRecordOfTable('achievements'),
         ];
     }
 }

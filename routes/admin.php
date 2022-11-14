@@ -20,4 +20,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('deleteP/{id}', [AdminController::class, 'deletePlayer'])->name('deletePlayer');
     Route::get('deleteU/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
+
+    Route::post('getAchievements/{id}', [AdminController::class, 'getAchievements'])->name('getAchievements');
 });
