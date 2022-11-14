@@ -30,4 +30,3 @@ function removeColumns() {
         document.getElementById('count').value = length;
     }
 }
-

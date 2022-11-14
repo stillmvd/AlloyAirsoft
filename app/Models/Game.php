@@ -20,7 +20,8 @@ class Game extends Model
         'finished',
     ];
 
-    public function players() {
+    public function players()
+    {
         return $this->belongsToMany(Player::class);
     }
 }

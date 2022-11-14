@@ -21,4 +21,9 @@ class Player extends Model
     {
         return $this->belongsToMany(Game::class);
     }
+
+    public function achievements()
+    {
+        return $this->belongsToMany(Achievement::class);
+    }
 }

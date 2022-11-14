@@ -23,6 +23,8 @@
         </tr>
       </thead>
       <tbody>
+        <p id="getCountAchievements" class="hidden">{{ $achievements_count }}</p>
+        <p id="getCountPlayers" class="hidden">{{ $players_count }}</p>
         @for ($i = 0; $i < $players_count; $i++)
         <tr class="text-[#979797]">
             <td class="font-medium">{{ $players[$i]->id }}</td>
@@ -35,23 +37,27 @@
             <td class="font-medium">{{ $teams->where('id', $players[$i]->team_id)->value('name') }}</td>
             <td class="font-medium">
                 <div class="dropdown dropdown-hover">
-                    <label tabindex="0" class="btn m-1">Hover</label>
+                    <label tabindex="0" class="btn m-1">Achievements</label>
                     <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>
-                            {{ $achievements_count }}
-                            @for ($i = 0; $i < $achievements_count; $i++)
-                                <div class="form-control">
-                                    <label class="cursor-pointer label">
-                                        <span class="label-text">{{ $achievements[$i]->nameAchievement }}</span>
-                                        <input type="checkbox" checked="checked" class="checkbox checkbox-success" />
-                                    </label>
-                                </div>
+                        <form action="{{ route('getAchievements', $players[$i]->id) }}" method="POST" id="{{ "getAchievements" . $players[$i]->id }}">
+                            @csrf
+                            @for ($y = 0; $y < $achievements_count; $y++)
+                                <li><a>
+                                    <div class="form-control">
+                                        <label class="cursor-pointer label">
+                                            <span class="label-text">{{ $achievements[$y]->nameAchievement }}</span>
+                                            <input id="{{ 'change' . $players[$i]->id . $y }}" name={{ $achievements[$y]->nameAchievement }} type="checkbox" class="checkbox checkbox-success" @checked(hasAch($players[$i]->id, $achievements[$y]->nameAchievement))/>
+                                            {{ dump(hasAch($players[$i]->id, $achievements[$y]->nameAchievement)) }}
+                                        </label>
+                                    </div>
+                                    <input type="submit" value="Submit" class="hidden"/>
+                                </a></li>
                             @endfor
-                        </a></li>
+                        </form>
                     </ul>
                 </div>
             </td>
-            <td><a href="{{ route('deletePlayer', $players[$i]->id) }}" class="font-medium hover:text-red text-[#979797] text-[15px]">Delete</a></td>
+            {{-- <td><a href="{{ route('deletePlayer', $players[$i]->id) }}" class="font-medium hover:text-red text-[#979797] text-[15px]">Delete</a></td> --}}
         </tr>
         @endfor
       </tbody>
