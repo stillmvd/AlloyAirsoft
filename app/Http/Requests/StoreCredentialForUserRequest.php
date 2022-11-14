@@ -26,8 +26,8 @@ class StoreCredentialForUserRequest extends FormRequest
         return [
             'name' => ['alpha', 'max:20'],
             'surname' => ['alpha', 'max:20'],
-            'callsign' => ['alpha', 'max:20'],
-            'phone' => ['max:20', 'unique:players'],
+            'callsign' => ['max:20'],
+            'phone' => ['max:20'],
         ];
     }
 }
