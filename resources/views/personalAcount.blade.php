@@ -151,20 +151,6 @@
                 <x-elems.button value="Save" class="mt-4 py-4 w-full" />
             </form>
         </div>
-        {{-- <div class="w-[100%] rounded-2xl bg-card_bg/50 p-6">
-            <form action="{{ route('changeCredentialForUser') }}" method="POST" class="grid grid-rows-4 gap-5">
-                @csrf
-                name
-                <input type="text" name="name" value="{{ $player->name }}">
-                surname
-                <input type="text" name="surname" value="{{ $player->surname }}">
-                callsign
-                <input type="text" name="callsign" value="{{ $player->callsign }}">
-                phone
-                <input type="text" name="phone" value="{{ $player->phone }}">
-                <input type="submit" value="Save">
-            </form>
-        </div> --}}
     </div>
 
     <div class="hidden sm:grid lg:hidden w-8/9 grid-cols-1 sm:grid-cols-2 gap-10 mx-auto my-20">

@@ -15,6 +15,7 @@ use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
 use App\Models\Game;
 use App\Models\Player;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /** PagesController содержит основные контроллеры работающие на сайте. */
@@ -111,5 +112,16 @@ class PagesController extends Controller
     public function account(int $id, GetInfoForAccountAction $getInfoForAccount)
     {
         return view('personalAcount', $getInfoForAccount->get($id));
+    }
+
+    public function storePlayerWithoutRegistarion(int $id)
+    {
+        $game = Game::find($id);
+        $user = Auth::user();
+        if (DB::table('game_player')->where('game_id', $game->id)->where('player_id', $user->player->id)->count() == 0)
+        {
+            $game->players()->attach($user->id);
+        }
+        return redirect()->route('game', $game->name);
     }
 }

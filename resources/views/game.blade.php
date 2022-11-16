@@ -80,7 +80,14 @@
 
     @unless ($game->finished)
         <x-elems.separator class="mt-10" />
-        @include('includes.registration')
+        @guest
+            @include('includes.registration')
+        @endguest
+        @auth
+        <form action="{{ route('storePlayerWithoutRegistarion', $game->id) }}" method="post">
+            @csrf
+            <x-elems.button value="Play" class="py-4 w-full z-20"/>
+        </form>
+        @endauth
     @endunless
-
 @endsection
