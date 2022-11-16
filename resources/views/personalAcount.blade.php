@@ -4,8 +4,8 @@
  
 @section('content')
     <div class="hidden lg:grid w-full 2xl:w-[90%] grid-cols-1 lg:grid-cols-3 gap-10 mx-auto my-20">
-        <div class="w-full rounded-2xl bg-card_bg/50 p-6">
-            <h3 class="mb-6">
+        <div class="w-full rounded-2xl bg-card_bg/50 px-6 pb-6">
+            <h3 class="my-10">
                 {{ __('Your games') }}
             </h3>
             @foreach ($games as $game)
@@ -72,19 +72,22 @@
                 </p>
             </div>
         </div>
-        <div class="w-full rounded-2xl bg-card_bg/50 p-6">
-            <h3>
+        <div class="w-full rounded-2xl bg-card_bg/50 px-6 pb-6">
+            <h3 class="my-10">
                 {{ __('Your achievements') }}
             </h3>
         </div>
-        <div class="flex col-span-3 w-full rounded-2xl bg-card_bg/50 p-6">
-            <form action="{{ route('changeCredentialForUser') }}" method="POST" class="flex flex-col gap-y-4">
+        <div class="flex col-span-3 flex-col w-full rounded-2xl bg-card_bg/50 px-6 pb-6">
+            <h3 class="my-10 text-center">
+                {{ __('Personal info') }}
+            </h3>
+            <form action="{{ route('changeCredentialForUser') }}" method="POST" class="flex flex-col gap-y-6 w-1/3 mx-auto">
                 @csrf
                 <div class="flex relative flex-col">
-                    <x-text.label id="name_label" class="z-10" for="namePlayer">{{ __('Email') }}</x-text.label>
-                    <x-elems.input id="name_label" class="bg-transparent h-16" type="text" name="namePlayer" value="{{ old('namePlayer') }}"/>
+                    <x-text.label id="label_name" class="z-10" for="namePlayer">{{ __('Name') }}</x-text.label>
+                    <x-elems.input id="input_name" class="bg-transparent h-16" type="text" name="namePlayer" value="{{ $player->name }}"/>
                     @error('namePlayer')
-                        <b class="px-6 py-2 w-min absolute z-20 bottom-[-40%] right-[-10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
+                        <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                 <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
@@ -93,6 +96,46 @@
                         </b>
                     @enderror
                 </div>
+                <div class="flex relative flex-col">
+                    <x-text.label id="label_surname" class="z-10" for="surnamePlayer">{{ __('Surname') }}</x-text.label>
+                    <x-elems.input id="input_surname" class="bg-transparent h-16" type="text" name="surnamePlayer" value="{{ $player->surname }}"/>
+                    @error('surnamePlayer')
+                        <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                            </svg>
+                            {{ $message }}
+                        </b>
+                    @enderror
+                </div>
+                <div class="flex relative flex-col">
+                    <x-text.label id="label_callsign" class="z-10" for="callsignPlayer">{{ __('Callsign') }}</x-text.label>
+                    <x-elems.input id="input_callsign" class="bg-transparent h-16" type="text" name="callsignPlayer" value="{{ $player->callsign }}"/>
+                    @error('callsignPlayer')
+                        <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                            </svg>
+                            {{ $message }}
+                        </b>
+                    @enderror
+                </div>
+                <div class="flex relative flex-col">
+                    <x-text.label id="label_phone" class="z-10" for="phonePlayer">{{ __('Phone') }}</x-text.label>
+                    <x-elems.input id="input_phone" class="bg-transparent h-16" type="text" name="phonePlayer" value="{{ $player->phone }}"/>
+                    @error('phonePlayer')
+                        <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                            </svg>
+                            {{ $message }}
+                        </b>
+                    @enderror
+                </div>
+                <x-elems.button value="Save" class="mt-4 py-4 w-full" />
             </form>
         </div>
         {{-- <div class="w-[100%] rounded-2xl bg-card_bg/50 p-6">

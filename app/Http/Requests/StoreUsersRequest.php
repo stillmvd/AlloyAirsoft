@@ -16,7 +16,7 @@ class StoreUsersRequest extends FormRequest
     {
         return [
             'emailPlayerForReg' => ['required', 'email:rfc,dns', 'unique:users,email'],
-            'passwordForReg' => ['required', 'min:6', 'max:32'],
+            'passwordForReg' => ['required', 'min:8', 'max:32'],
         ];
     }
 }

@@ -24,10 +24,10 @@ class StoreCredentialForUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['alpha', 'max:20'],
-            'surname' => ['alpha', 'max:20'],
-            'callsign' => ['max:20'],
-            'phone' => ['max:20'],
+            'namePlayer' => ['nullable', 'max:20'],
+            'surnamePlayer' => ['nullable', 'max:20'],
+            'callsignPlayer' => ['nullable', 'max:20'],
+            'phonePlayer' => ['nullable', 'max:20'],
         ];
     }
 }

@@ -29,7 +29,7 @@ class AuthController extends Controller
     {
         if (Auth::attempt(['email' => $request->emailPlayerForLog, 'password' => $request->passwordForLog])){
             return redirect()->route('index')->with([
-                'success' => 'login',
+                'success' => "You're in account",
             ]);
         }
         else return redirect()->back();
@@ -39,7 +39,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect()->route('index')->with([
-            'success' => 'logout',
+            'success' => 'You leaved from account',
         ]);
     }
 }
