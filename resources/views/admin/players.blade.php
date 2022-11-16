@@ -46,8 +46,7 @@
                                     <div class="form-control">
                                         <label class="cursor-pointer label">
                                             <span class="label-text">{{ $achievements[$y]->nameAchievement }}</span>
-                                            <input id="{{ 'change' . $players[$i]->id . $y }}" name={{ $achievements[$y]->nameAchievement }} type="checkbox" class="checkbox checkbox-success" @checked(hasAch($players[$i]->id, $achievements[$y]->nameAchievement))/>
-                                            {{ dump(hasAch($players[$i]->id, $achievements[$y]->nameAchievement)) }}
+                                            <input id="{{ 'change' . $players[$i]->id . $y }}" name={{ $achievements[$y]->nameAchievement }} type="checkbox" class="checkbox checkbox-success" @checked(hasAchievement($players[$i]->id, $achievements[$y]->nameAchievement))/>
                                         </label>
                                     </div>
                                     <input type="submit" value="Submit" class="hidden"/>

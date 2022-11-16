@@ -20,6 +20,7 @@ class GetAllInfoAction
 
             'achievements' => getAllDataOfTable('achievements'),
             'achievements_count' => getCountRecordOfTable('achievements'),
+
         ];
     }
 }
