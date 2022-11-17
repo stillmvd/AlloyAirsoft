@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class getOldDataOfPlayer
 {
-    public function getData(Request $request)
+    public function handle(Request $request)
     {
         $request->old('name');
         $request->old('surname');

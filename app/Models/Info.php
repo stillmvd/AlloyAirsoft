@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Info extends Model
@@ -12,5 +11,15 @@ class Info extends Model
         'text',
     ];
 
-    use HasFactory;
+    /**
+     * Возращает инфо игры
+     *
+     * @param int $gameId Id игры
+     *
+     * @return array
+     */
+    public static function getInfosByGameId(int $gameId)
+    {
+        return Info::where('game_id', $gameId)->get()->first();
+    }
 }

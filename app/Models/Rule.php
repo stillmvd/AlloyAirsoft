@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Rule extends Model
@@ -12,5 +11,15 @@ class Rule extends Model
         'text',
     ];
 
-    use HasFactory;
+    /**
+     * Возращает правила игры
+     *
+     * @param int $gameId Id игры
+     *
+     * @return array
+     */
+    public static function getRulesByGameId(int $gameId)
+    {
+        return Rule::where('game_id', $gameId)->get();
+    }
 }
