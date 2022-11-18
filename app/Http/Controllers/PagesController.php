@@ -10,11 +10,11 @@ use App\Actions\GetUpcomingGamesAction;
 use App\Actions\SendEmailAction;
 use App\Actions\StoreEmailAction;
 use App\Actions\StorePlayerAction;
-
+use App\Actions\storePlayerWithoutRegistarionAction;
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
 use App\Models\Game;
-use App\Models\Player;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /** PagesController содержит основные контроллеры работающие на сайте. */
@@ -28,7 +28,7 @@ class PagesController extends Controller
      */
     public function index(GetUpcomingGamesAction $getUpcomingGames)
     {
-        return view('index', $getUpcomingGames->getGames());
+        return view('index', $getUpcomingGames->handle());
     }
 
     /**
@@ -39,7 +39,7 @@ class PagesController extends Controller
      */
     public function archive(GetArchiveGamesAction $getArchiveGames)
     {
-        return view('archive', $getArchiveGames->getGames());
+        return view('archive', $getArchiveGames->handle());
     }
 
     /**
@@ -51,8 +51,20 @@ class PagesController extends Controller
      */
     public function game(GetGameInfoAction $getGameInfo, string $gameName)
     {
+        return view('game', $getGameInfo->handle($gameName));
+    }
 
-        return view('game', $getGameInfo->getInfo($gameName));
+    /**
+     * Возращаем страницу аккаунта пользователя по его id
+     *
+     * @param int $id
+     * @param App\Actions\GetInfoForAccountAction $getInfoForAccount получаем данные игрока
+     *
+     * @return Illuminate\View\View
+     */
+    public function account(int $id, GetInfoForAccountAction $getInfoForAccount)
+    {
+        return view('personalAcount', $getInfoForAccount->handle($id));
     }
 
     /**
@@ -68,11 +80,13 @@ class PagesController extends Controller
     public function storePlayers(StoreFormRequest $request, int $gameId, getOldDataOfPlayer $getOldData,
                                   StorePlayerAction $storePlayer, SendEmailAction $sendEmail)
     {
-        $gameName = Game::find($gameId)->name;
-        $getOldData->getData($request);
+        $gameName = Game::getNameById($gameId);
+        $getOldData->handle($request);
 
-        $storePlayer->createPlayerInDB($request, $gameId);
-        $sendEmail->sendEmail($request->emailPlayer, 'Вы успешно заригистрировались на игру', 'Вы успешно заригистрировались на игру');
+        $storePlayer->handle($request, $gameId);
+        $sendEmail->handle($request->emailPlayer,
+                'Вы успешно заригистрировались на игру',
+                'Вы успешно заригистрировались на игру');
 
         return redirect()->route('game', strtolower($gameName))->with(
             ['success' => 'You were registered for the game']
@@ -99,8 +113,10 @@ class PagesController extends Controller
         }
         else
         {
-            $storeEmail->saveEmail($request->email);
-            $sendEmail->sendEmail($request->email, 'Регистрация на игру', 'Вы успешно зарегистрировались на игру');
+            $storeEmail->handle($request->email);
+            $sendEmail->handle($request->email,
+                    'Регистрация на игру',
+                    'Вы успешно зарегистрировались на игру');
 
             return redirect()->back()->with(
                 ['success' => 'You have been subscribed to the newsletter!']
@@ -108,8 +124,18 @@ class PagesController extends Controller
         }
     }
 
-    public function account(int $id, GetInfoForAccountAction $getInfoForAccount)
+    /**
+     * Регистрирует пользователя на игру если он уже есть как пользователь
+     *
+     * @param int $gameId id игры
+     *
+     * @return Illuminate\Redirect\
+     */
+    public function storePlayerWithoutRegistarion(int $gameId)
     {
-        return view('personalAcount', $getInfoForAccount->get($id));
+        $storePlayer = new storePlayerWithoutRegistarionAction($gameId, Auth::user()->player->id);
+        $storePlayer->handle();
+
+        return redirect()->route('game', strtolower(Game::getNameById($gameId)));
     }
 }

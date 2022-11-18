@@ -8,17 +8,17 @@ use App\Models\Player;
 class StorePlayerAction
 {
     /**
-     * Создает запись в базе данных Players и заносит туда данные из request
+     * Создает запись в базе данных Players и заносит туда данные из request и привязывает игрока к игре
      *
      * @param App\Http\Requests\StoreFormRequest $request
-     * @param int $game_id id игры
+     * @param int $gameId id игры
      * @return void
      */
-    public function createPlayerInDB(StoreFormRequest $request, int $game_id)
+    public function handle(StoreFormRequest $request, int $gameId)
     {
         $player = new Player([
             'created_at' => now(),
-            'game_id' => $game_id,
+            'game_id' => $gameId,
             'name' => $request->name,
             'surname' => $request->surname,
             'callsign' => $request->callsign,
@@ -27,6 +27,7 @@ class StorePlayerAction
             'team_id' =>  $request->team,
         ]);
         $player->save();
-        Game::find($game_id)->players()->attach($player->id);
+
+        Game::attach($gameId, $player->id);
     }
 }

@@ -121,18 +121,18 @@ if (! function_exists('getGamesForPlayer'))
     }
 }
 
-if (! function_exists('hasAch'))
+if (! function_exists('hasAchievement'))
 {
-    function hasAch(int $id, string $name)
+    function hasAchievement(int $id, string $name)
     {
-        if (Player::find($id)->achievements->contains($name))
+        for ($i = 0; $i < count(Player::find($id)->achievements); $i++)
         {
-            return true;
+            if (Player::find($id)->achievements[$i]->nameAchievement == $name)
+            {
+                return true;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 }
 

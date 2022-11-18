@@ -39,7 +39,7 @@
                         @enderror
                     </div>
                     <x-elems.button value="Registrate" class="mt-6 py-4 w-full z-20"/>
-                </form>     
+                </form>
             </div>
             <div class="rounded-full sm:rounded-2xl bg-dark flex flex-col justify-between">
                 <h2 class="text-3xl text-center sm:text-left sm:text-5xl p-6 rounded-2xl ease-out duration-100">

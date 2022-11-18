@@ -8,14 +8,26 @@ use Illuminate\Support\Facades\DB;
 
 class GetInfoForAccountAction
 {
-    public function get(int $id)
+    /**
+     * Возращаем данные пользователя
+     *
+     * @param int $id
+     *
+     * @return array
+     */
+    public function handle(int $id)
     {
         $player = Player::find($id);
+
+        $achievements = $player->achievements;
         $games = $player->games;
-        return [
+
+        $data = [
             'player' => $player,
             'games' => $games,
-            'achievements' => DB::table('achievement_player')->where('player_id', Auth::id())->get(),
+            'achievements' => $achievements,
         ];
+
+        return $data;
     }
 }

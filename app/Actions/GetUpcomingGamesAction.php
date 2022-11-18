@@ -1,6 +1,7 @@
 <?php
 namespace App\Actions;
 
+use App\Models\Game;
 use Illuminate\Support\Facades\DB;
 
 class GetUpcomingGamesAction
@@ -10,13 +11,15 @@ class GetUpcomingGamesAction
      *
      * @return array
      */
-    public function getGames()
+    public function handle()
     {
-        return [
-            'games' => DB::table('games')->where('finished', '=', '0')->get(),
-            'number' => DB::table('games')->get()->count(),
+        $data = [
+            'games' => Game::getUpcomingGames(),
+            'games_count' => Game::getCountGames(),
             'phone' => DB::table('contact')->pluck('phone')[0],
             'email' => DB::table('contact')->pluck('email')[0],
         ];
+
+        return $data;
     }
 }

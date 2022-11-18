@@ -4,6 +4,7 @@ namespace App\Actions;
 use App\Models\Game;
 use App\Models\Info;
 use App\Models\Rule;
+use App\Models\Team;
 
 use Illuminate\Support\Facades\DB;
 
@@ -11,27 +12,30 @@ class GetGameInfoAction
 {
     /**
      * Возвращает массив данных об игре для вывода на сайт
+     *
      * @param string $gameName Имя игры
+     *
      * @return array
      */
-    public function getInfo(string $gameName)
+    public function handle(string $gameName)
     {
-        if(Game::where('name', $gameName)->count() >= 1)
+        if(Game::hasGame($gameName))
         {
-            $gameId = Game::where('name', $gameName)->get()[0]->id;
-            $rules = Rule::where('game_id', $gameId)->get();
-            return [
-                'first_cord' => Game::find($gameId)->first_cord,
-                'second_cord' => Game::find($gameId)->second_cord,
-                'infos' => Info::where('game_id', $gameId)->first(),
-                'rules' => $rules,
-                'amount' => $rules->count(),
+            $gameId = Game::getIdByName($gameName);
+
+            $data = [
                 'game' => Game::find($gameId),
-                'teams' => DB::table('teams')->get(),
-                'teams_count' => DB::table('teams')->count(),
+
+                'infos' => Info::getInfosByGameId($gameId),
+                'rules' => Rule::getRulesByGameId($gameId),
+                'teams' => Team::getTeams(),
+                'teams_count' => Team::getCountTeams(),
+
                 'phone' => DB::table('contact')->pluck('phone')[0],
                 'email' => DB::table('contact')->pluck('email')[0],
             ];
+
+            return $data;
         }
     }
 }

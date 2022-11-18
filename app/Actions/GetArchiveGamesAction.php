@@ -1,6 +1,8 @@
 <?php
 namespace App\Actions;
 
+use App\Models\Game;
+use App\Models\Team;
 use Illuminate\Support\Facades\DB;
 
 class GetArchiveGamesAction
@@ -10,14 +12,18 @@ class GetArchiveGamesAction
      *
      * @return array
      */
-    public function getGames()
+    public function handle()
     {
-        return [
-            'teams' => DB::table('teams')->get(),
-            'number' => DB::table('games')->get()->count(),
-            'games' => DB::table('games')->where('finished', 1)->get(),
+        $data = [
+            'teams' => Team::getTeams(),
+
+            'games' => Game::getFinishedGames(),
+            'games_count' => Game::getCountGames(),
+
             'phone' => DB::table('contact')->pluck('phone')[0],
             'email' => DB::table('contact')->pluck('email')[0],
         ];
+
+        return $data;
     }
 }

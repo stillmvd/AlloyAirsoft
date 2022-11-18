@@ -4,7 +4,7 @@
     @if ($games->count() > 0)
         @foreach ($games as $game)
             <div class="hidden boolshit">
-                <p class="hidden" id="map-counter">{{ $number }}</p>
+                <p class="hidden" id="map-counter">{{ $games_count}}</p>
             </div>
             <div class="w-full flex flex-row items-end justify-center my-9">
                 <b class="text-5xl mr-3 font-normal select-none">

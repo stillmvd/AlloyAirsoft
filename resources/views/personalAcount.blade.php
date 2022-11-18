@@ -1,7 +1,7 @@
 @extends('layouts.base')
- 
+
 @section('title', 'Personal Acount')
- 
+
 @section('content')
     <div class="hidden lg:grid w-full 2xl:w-[90%] grid-cols-1 lg:grid-cols-3 gap-10 mx-auto my-20">
         <div class="w-full rounded-2xl bg-card_bg/50 px-6 pb-6">
@@ -82,28 +82,19 @@
             <h3 class="my-10">
                 {{ __('Your achievements') }}
             </h3>
-            @if ($achievements->isNotEmpty())
-                @foreach ($achievements as $achievement)
-                    <div>
-                        <b>
-                            {{ $achievement->name }}
-                        </b>
-                        <p>
-
-                        </p>
-                    </div>
-                @endforeach
-            @else
-                @if ($games->isNotEmpty())
+            @for ($i = 0; $i < count($achievements); $i++)
+                <div class="flex flex-row items-center">
+                    <b class="mr-4">
+                        {{ $achievements[$i]->nameAchievement }}
+                    </b>
+                    @if($achievements[$i]->pathToachievement != NULL)
+                        <img src="{{ asset($achievements[$i]->pathToachievement) }}" alt="{{ "achievement " . $achievements[$i]->nameAchievement }}">
+                    @endif
                     <p>
-                        {{ __("You haven't got achievements yet") }}
+                        {{ $achievements[$i]->description }}
                     </p>
-                @else
-                    <p>
-                        {{ __('No games - no achievements =)') }}
-                    </p>
-                @endif
-            @endif
+                </div>
+            @endfor
         </div>
         <div class="flex col-span-3 flex-col w-full rounded-2xl bg-card_bg/50 px-6 pb-6">
             <h3 class="my-10 text-center">
@@ -166,20 +157,6 @@
                 <x-elems.button value="Save" class="mt-4 py-4 w-full" />
             </form>
         </div>
-        {{-- <div class="w-[100%] rounded-2xl bg-card_bg/50 p-6">
-            <form action="{{ route('changeCredentialForUser') }}" method="POST" class="grid grid-rows-4 gap-5">
-                @csrf
-                name
-                <input type="text" name="name" value="{{ $player->name }}">
-                surname
-                <input type="text" name="surname" value="{{ $player->surname }}">
-                callsign
-                <input type="text" name="callsign" value="{{ $player->callsign }}">
-                phone
-                <input type="text" name="phone" value="{{ $player->phone }}">
-                <input type="submit" value="Save">
-            </form>
-        </div> --}}
     </div>
 
     <div class="hidden sm:grid lg:hidden w-8/9 grid-cols-1 sm:grid-cols-2 gap-10 mx-auto my-20">
@@ -222,7 +199,7 @@
                         <a href="" class="block bg-dark/75 group-hover:bg-[#292929] hover:scale-110 duration-100 ease-out rounded-xl">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="0.6" stroke="white" class="h-full w-14 scale-[56%] duration-150 ease-out">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                            </svg>                                  
+                            </svg>
                         </a>
                         <a href="{{ route('game', $game->name) }}" class="block w-full px-6 py-5 text-center bg-card_bg group-hover:bg-[#222222] duration-100 ease-out">
                             {{ $game->name }}

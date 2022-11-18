@@ -25,7 +25,7 @@
     <div class="hidden">
         <p class="hidden" id="info">{{ $game->name }}</p>
         <p class="hidden" id="countdown">{{ $game->date . ' ' . $game->time }}</p>
-        <p class="hidden" id="rules-count">{{ $rules->count() }}</p>
+        <p class="hidden" id="rules-count">{{ count($rules) }}</p>
     </div>
     <div class="h-[500px] lg:h-[300px] w-full relative group ring-2 ring-main rounded-2xl p-6 grid overflow-hidden z-40">
         <iframe src="{{ $game->linkForIframe }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[560px] lg:h-[360px] group-hover:scale-[1.2] top-0 lg:-top-10 scale-[1.28] lg:scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
@@ -80,7 +80,14 @@
 
     @unless ($game->finished)
         <x-elems.separator class="mt-10" />
-        @include('includes.registration')
+        @guest
+            @include('includes.registration')
+        @endguest
+        @auth
+        <form action="{{ route('storePlayerWithoutRegistarion', $game->id) }}" method="post">
+            @csrf
+            <x-elems.button value="Play" class="py-4 w-full z-20"/>
+        </form>
+        @endauth
     @endunless
-
 @endsection

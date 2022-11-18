@@ -44,7 +44,7 @@
     <script src="{{ asset('js/map.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
 @elseif (Route::is('account'))
-    <script src="{{ asset('js/account.js') }}"></script>
+    <script src="{{ asset('js/labelForAccount.js') }}"></script>
 @elseif (Route::is('personal_account'))
     <script src="{{ asset('js/main.js') }}"></script>
 @endif
