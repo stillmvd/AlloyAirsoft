@@ -3,6 +3,8 @@
 namespace App\Actions;
 
 use App\Models\Player;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class GetInfoForAccountAction
 {
@@ -13,6 +15,7 @@ class GetInfoForAccountAction
         return [
             'player' => $player,
             'games' => $games,
+            'achievements' => DB::table('achievement_player')->where('player_id', Auth::id())->get(),
         ];
     }
 }
