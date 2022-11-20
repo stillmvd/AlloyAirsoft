@@ -14,7 +14,7 @@
                     @csrf
                     <div class="flex relative flex-col">
                         <x-text.label id="label_email_log" class="z-10" for="emailPlayerForReg">{{ __('Email') }}</x-text.label>
-                        <x-elems.input id="input_email_log" class="bg-transparent h-16" type="text" name="emailPlayerForReg" value="{{ old('emailPlayerForReg') }}"/>
+                        <x-elems.input id="input_email_log" class="bg-transparent h-[66px]" type="text" name="emailPlayerForReg" value="{{ old('emailPlayerForReg') }}"/>
                         @error('emailPlayerForReg')
                             <b class="px-6 py-2 w-min absolute z-30 -bottom-[40%] -right-[10%] rounded-2xl bg-dark text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="flex relative flex-col">
                         <x-text.label id="label_password_log" class="z-10" for="passwordForReg">{{ __('Password') }}</x-text.label>
-                        <x-elems.input id="input_password_log" class="bg-transparent h-16" type="password" name="passwordForReg" value="{{ old('passwordForReg') }}"/>
+                        <x-elems.input id="input_password_log" class="bg-transparent h-[66px]" type="password" name="passwordForReg" value="{{ old('passwordForReg') }}"/>
                         @error('passwordForReg')
                             <b class="px-6 py-2 w-min absolute z-30 -bottom-[40%] -right-[10%] rounded-2xl bg-dark text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -49,7 +49,7 @@
                     @csrf
                     <div class="flex relative flex-col">
                         <x-text.label id="label_email_reg" class="z-10" for="emailPlayerForLog">{{ __('Email') }}</x-text.label>
-                        <x-elems.input id="input_email_reg" class="bg-transparent h-16" type="text" name="emailPlayerForLog" value="{{ old('emailPlayerForLog') }}"/>
+                        <x-elems.input id="input_email_reg" class="bg-transparent h-[66px]" type="text" name="emailPlayerForLog" value="{{ old('emailPlayerForLog') }}"/>
                         @error('emailPlayerForLog')
                             <b class="px-6 py-2 w-min absolute z-30 -bottom-[40%] -right-[10%] rounded-2xl bg-dark text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -62,7 +62,7 @@
                     </div>
                     <div class="flex relative flex-col">
                         <x-text.label id="label_password_reg" class="z-10" for="passwordForLog">{{ __('Password') }}</x-text.label>
-                        <x-elems.input id="input_password_reg" class="bg-transparent h-16" type="password" name="passwordForLog" value="{{ old('passwordForLog') }}"/>
+                        <x-elems.input id="input_password_reg" class="bg-transparent h-[66px]" type="password" name="passwordForLog" value="{{ old('passwordForLog') }}"/>
                         @error('passwordForLog')
                             <b class="px-6 py-2 w-min absolute z-30 -bottom-[40%] -right-[10%] rounded-2xl bg-dark text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">

@@ -32,6 +32,7 @@ Number of enemy teams: unknown
 Amount of locals on the territory: unknown',
             'date' => '2022.10.06',
             'time' => '10:30:00',
+            'finished' => '1',
         ]);
 
         DB::table('infos')->insert([
@@ -92,8 +93,9 @@ According to our records, you may also be interfered with by our â€œColleaguesâ€
             'phone' => '+1-613-555-0137',
             'team_id' => '1001',
         ]);
-
+        
         DB::table('users')->insert([
+            'created_at' => '2022-08-06 18:15:54',
             'email' => 'glebka@gmail.com',
             'password' => Hash::make('4{MUSZm4k*QyR%HmQy3{Vcr3T74$O6nk'),
             'isActive' => true,
@@ -105,7 +107,7 @@ According to our records, you may also be interfered with by our â€œColleaguesâ€
             'nameAchievement' => 'Actor',
             'description' => 'Play off a friendly NPC',
         ]);
-
+        
         DB::table('achievements')->insert([
             'nameAchievement' => 'Spy',
             'description' => 'Pass an optional event',

@@ -16,7 +16,7 @@ module.exports = {
       'addictive' : '#FADB5F',
       'card_bg' : '#1f1f1f',
       'white' : '#DADADA',
-      'subwhite' : '#a7a7a7',
+      'subwhite' : '#979797',
       'dark' : '#282828',
       'red' : '#C53737',
       'green' : '#3F9142',

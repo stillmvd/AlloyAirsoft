@@ -13,8 +13,8 @@
                 {{ __('Upcoming games') }}
             </h3>
             @if (1 > $games->where('finished', 0)->count())
-                <div class="flex flex-row w-full mt-6 bg-dark py-10 px-6 rounded-2xl">
-                    <b class="leading-none">
+                <div class="flex flex-row w-full mt-6 bg-dark/50 py-10 px-6 rounded-2xl">
+                    <b class="leading-none select-none">
                         {{ __('There are no games here') }}
                     </b>
                 </div>
@@ -22,18 +22,18 @@
                 @foreach ($games as $game)
                     @if (0 == $game->finished)
                         <a href="{{ route('game', $game->name) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
-                            <b class="leading-none text-2xl lg:text-base lg:leading-none">
+                            <b class="leading-none text-2xl lg:text-base lg:leading-none select-none">
                                 {{ $game->name }}
                             </b>
                             <div class="flex flex-row">
-                                <b class="mr-3 leading-none">
-                                    {{ $players->where('game_id', $game->id)->count() }}
+                                <b class="mr-3 leading-none select-none">
+                                    {{ $game_players->where('game_id', $game->id)->count() }}
                                 </b>
-                                <p class="leading-none">
+                                <p class="leading-none select-none">
                                     {{ __('players') }}
                                 </p>
                             </div>
-                            <b class="leading-none">
+                            <b class="leading-none select-none">
                                 {{ $game->date }}
                             </b>
                         </a>
@@ -47,8 +47,8 @@
                 {{ __('Finished games') }}
             </h3>
             @if (1 > $games->where('finished', 1)->count())
-                <div class="flex flex-row w-full mt-6 bg-dark py-10 px-6 rounded-2xl">
-                    <b class="leading-none">
+                <div class="flex flex-row w-full mt-6 bg-dark/50 py-10 px-6 rounded-2xl">
+                    <b class="leading-none select-none">
                         {{ __('No game is over yet') }}
                     </b>
                 </div>
@@ -80,16 +80,16 @@
             <h3 class="px-6 pt-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
                 {{ __('Statistics') }}
             </h3>
-            <div class="flex flex-row w-full justify-between mt-6 bg-dark p-5 rounded-2xl">
-                <b class="leading-none">
+            <a href="{{ route('players') }}" class="flex flex-row w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                <b class="leading-none select-none">
                     {{ __('Players') }}
                 </b>
                 <p class="leading-none w-3">
                     {{ $players->count() }}
                 </p>
-            </div>
-            <div class="flex flex-row w-full justify-between mt-3 bg-dark p-5 rounded-2xl">
-                <b class="leading-none">
+            </a>
+            <div class="flex flex-row w-full justify-between mt-3 bg-dark/50 p-5 rounded-2xl">
+                <b class="leading-none select-none">
                     {{ __('Played games') }}
                 </b>
                 <p class="leading-none w-3">

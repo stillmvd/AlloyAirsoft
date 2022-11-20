@@ -16,6 +16,7 @@ class GetAdminInfoAction
         return [
             'games' => DB::table('games')->get(),
             'players' => DB::table('players')->get(),
+            'game_players' => DB::table('game_player')->get(),
             'teams' => DB::table('teams')->get(),
             'teams_count' => DB::table('teams')->count(),
             'users' => DB::table('users')->get(),

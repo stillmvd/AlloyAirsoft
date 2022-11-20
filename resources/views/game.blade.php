@@ -79,15 +79,19 @@
     </div>
 
     @unless ($game->finished)
-        <x-elems.separator class="mt-10" />
         @guest
+            <x-elems.separator class="mt-10" />
             @include('includes.registration')
-        @endguest
-        @auth
-        <form action="{{ route('storePlayerWithoutRegistarion', $game->id) }}" method="post">
-            @csrf
-            <x-elems.button value="Play" class="py-4 w-full z-20"/>
-        </form>
+            @endguest
+            @auth
+            @if (userIsAdmin(Auth::id()))
+            @else
+                <x-elems.separator class="mt-10" />
+                <form action="{{ route('storePlayerWithoutRegistarion', $game->id) }}" method="post" class="mt-10 w-[30%] mx-auto">
+                    @csrf
+                    <x-elems.button value="Play" class="py-4 w-full z-20"/>
+                </form>
+            @endif
         @endauth
     @endunless
 @endsection
