@@ -14,7 +14,7 @@ class StoreInfosGameAction
      * @param int $gameId id игры
      * @return void
      */
-    public function saveInfos(Request $request, int $gameId)
+    public function handle(Request $request, int $gameId)
     {
         DB::table('infos')->insert([
             'title' => $request->input('title'),

@@ -15,7 +15,7 @@ class StoreRulesGameAction
      * @param int $gameId Id Игры
      * @return void
      */
-    public function saveRules(Request $request, int $count, int $gameId)
+    public function handle(Request $request, int $count, int $gameId)
     {
         if ($count <= 1)
         {

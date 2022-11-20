@@ -2,6 +2,8 @@
 
 namespace App\Actions;
 
+use App\Models\Game;
+use App\Models\Player;
 use Illuminate\Support\Facades\DB;
 
 class GetInfoFromEditGameAction
@@ -13,17 +15,20 @@ class GetInfoFromEditGameAction
      * @param int $gameId id игры
      * @return array
      */
-    public function getInfo(int $gameId)
+    public function handle(int $gameId)
     {
-        if(DB::table('games')->where('id', $gameId)->count() >= 1)
+        if(Game::where('id', $gameId)->count() >= 1)
         {
-            $game = DB::table('games')->where('id', $gameId)->get()->all()[0];
-            return [
+            $game = Game::where('id', $gameId)->get()->all()[0];
+
+            $data = [
                 'infos' => DB::table('infos')->where('game_id', $gameId)->get()->first(),
                 'rules' => DB::table('rules')->where('game_id', $gameId)->get(),
-                'players' => DB::table('players')->where('game_id', $gameId)->get(),
+                'players' => Player::where('game_id', $gameId)->get(),
                 'game' => $game,
             ];
+
+            return $data;
         }
     }
 }

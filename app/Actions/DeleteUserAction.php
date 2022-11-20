@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class DeleteUserAction
@@ -12,11 +13,12 @@ class DeleteUserAction
      * @param int $user Id Пользователя
      * @return string
      */
-    public function delete(int $user){
-        if(DB::table('users')->where('id', $user)->count() >= 1)
+    public function handle(int $user)
+    {
+        if (User::where('id', $user)->count() >= 1)
         {
-            $id = DB::table('users')->where('id', $user)->get()[0]->id;
-            DB::table('users')->where('id', $user)->delete();
+            $id = User::where('id', $user)->get()[0]->id;
+            User::where('id', $user)->delete();
             return $id;
         }
     }

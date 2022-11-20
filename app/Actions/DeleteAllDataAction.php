@@ -2,6 +2,8 @@
 
 namespace App\Actions;
 
+use App\Models\Game;
+use App\Models\Player;
 use Illuminate\Support\Facades\DB;
 
 class DeleteAllDataAction
@@ -12,11 +14,11 @@ class DeleteAllDataAction
      * @param int gameId
      * @return void
      */
-    public function delete(int $gameId)
+    public function handle(int $gameId)
     {
         DB::table('infos')->where('game_id', $gameId)->delete();
         DB::table('rules')->where('game_id', $gameId)->delete();
-        DB::table('players')->where('game_id', $gameId)->delete();
-        DB::table('games')->where('id', $gameId)->delete();
+        Player::where('game_id', $gameId)->delete();
+        Game::where('id', $gameId)->delete();
     }
 }

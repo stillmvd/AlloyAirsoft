@@ -15,7 +15,7 @@ class UpdateRulesAction
      * @param int $gameId id игры
      * @return void
      */
-    public function update(Request $request, int $count, int $gameId)
+    public function handle(Request $request, int $count, int $gameId)
     {
         if ($request->count <= 1)
         {
