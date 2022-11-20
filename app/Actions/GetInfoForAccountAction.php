@@ -3,6 +3,8 @@
 namespace App\Actions;
 
 use App\Models\Player;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class GetInfoForAccountAction
 {
