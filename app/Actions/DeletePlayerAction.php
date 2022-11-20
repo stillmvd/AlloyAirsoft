@@ -2,7 +2,7 @@
 
 namespace App\Actions;
 
-use Illuminate\Support\Facades\DB;
+use App\Models\Player;
 
 class DeletePlayerAction
 {
@@ -12,11 +12,11 @@ class DeletePlayerAction
      * @param int $palyerId Id Игрока
      * @return string
      */
-    public function delete(int $palyerId){
-        if(DB::table('players')->where('id', $palyerId)->count() >= 1)
+    public function handle(int $palyerId){
+        if(Player::where('id', $palyerId)->count() >= 1)
         {
-            $name = DB::table('players')->where('id', $palyerId)->get()[0]->name;
-            DB::table('players')->where('id', $palyerId)->delete();
+            $name = Player::where('id', $palyerId)->get()[0]->name;
+            Player::where('id', $palyerId)->delete();
             return $name;
         }
     }

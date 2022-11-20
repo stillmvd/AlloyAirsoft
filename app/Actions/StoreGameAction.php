@@ -13,7 +13,7 @@ class StoreGameAction
      * @param Illuminate\Http\Request $request
      * @return object
      */
-    public function saveGame(Request $request)
+    public function handle(Request $request)
     {
         return Game::create([
             'date' => $request->input('date'),

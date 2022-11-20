@@ -1,7 +1,10 @@
 <?php
 namespace App\Actions;
 
+use App\Models\Game;
 use App\Models\Player;
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class GetAdminInfoAction
@@ -11,9 +14,9 @@ class GetAdminInfoAction
      *
      * @return array
      */
-    public function getInfo()
+    public function handle()
     {
-        return [
+        $data = [
             'games' => DB::table('games')->get(),
             'players' => DB::table('players')->get(),
             'game_players' => DB::table('game_player')->get(),
@@ -23,7 +26,9 @@ class GetAdminInfoAction
             'email' => DB::table('contact')->pluck('email')[0],
             'phone' => DB::table('contact')->pluck('phone')[0],
             'admin' => Player::find(1001),
-            'email' => DB::table('users')->pluck('email')[0],
+            'email' => User::pluck('email')[0],
         ];
+
+        return $data;
     }
 }

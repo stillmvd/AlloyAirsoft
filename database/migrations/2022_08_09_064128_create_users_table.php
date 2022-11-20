@@ -17,7 +17,8 @@ return new class extends Migration
 
             $table->boolean('isActive');
             $table->boolean('isAdmin');
-            $table->foreignId('player_id')->constrained('players');
+            $table->unsignedBigInteger('player_id')->nullable();
+            $table->foreign('player_id')->references('id')->on('players');
             $table->string('pathToAvatar')->nullable();
         });
     }

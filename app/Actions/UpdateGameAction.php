@@ -3,8 +3,6 @@
 namespace App\Actions;
 
 use App\Models\Game;
-use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
 
 class UpdateGameAction
@@ -16,9 +14,11 @@ class UpdateGameAction
      * @param int $gameId id игры
      * @return object
      */
-    public function update(Request $request, int $gameId){
+    public function handle(Request $request, int $gameId)
+    {
         $game = Game::find($gameId);
-        DB::table('games')->where('id', $game->id)->update([
+
+        Game::where('id', $game->id)->update([
             'date' => $request->input('date'),
             'name' => $request->input('name'),
             'info' => request('info'),
@@ -29,6 +29,7 @@ class UpdateGameAction
             'levels' => $request->input('levels'),
             'finished' => 0,
         ]);
+
         return $game;
     }
 }
