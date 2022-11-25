@@ -11,11 +11,12 @@ use App\Actions\SendEmailAction;
 use App\Actions\StoreEmailAction;
 use App\Actions\StorePlayerAction;
 use App\Actions\storePlayerWithoutRegistarionAction;
+
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
+
 use App\Models\Game;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 /** PagesController содержит основные контроллеры работающие на сайте. */
 class PagesController extends Controller
