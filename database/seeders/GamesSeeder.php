@@ -21,6 +21,7 @@ Number of enemy teams: unknown
 Amount of locals on the territory: unknown',
             'date' => '2022.10.06',
             'time' => '10:30:00',
+            'finished' => '1',
         ]);
 
         DB::table('infos')->insert([

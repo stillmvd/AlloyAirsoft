@@ -11,15 +11,15 @@
       <thead>
         <tr class="text-white">
             <th class="font-semibold text-left bg-card_bg/75 rounded-tl-xl rounded-bl-xl">Id</th>
-            <th class="font-semibold text-left bg-card_bg/75">Name</th>
-            <th class="font-semibold text-left bg-card_bg/75">Surname</th>
-            <th class="font-semibold text-left bg-card_bg/75">Callsign</th>
-            <th class="font-semibold text-left bg-card_bg/75">Email</th>
-            <th class="font-semibold text-left bg-card_bg/75">Phone</th>
-            <th class="font-semibold text-left bg-card_bg/75">Game</th>
-            <th class="font-semibold text-left bg-card_bg/75">Team</th>
-            <th class="font-semibold text-left bg-card_bg/75">Achievements</th>
-            <th class="font-semibold text-left bg-card_bg/75 rounded-tr-xl rounded-br-xl"> </th>
+            <th class="font-semibold text-left bg-card_bg/75">{{ __('Name') }}</th>
+            <th class="font-semibold text-left bg-card_bg/75">{{ __('Surname') }}</th>
+            <th class="font-semibold text-left bg-card_bg/75">{{ __('Callsign') }}</th>
+            <th class="font-semibold text-left bg-card_bg/75">{{ __('Email') }}</th>
+            <th class="font-semibold text-left bg-card_bg/75">{{ __('Phone') }}</th>
+            <th class="font-semibold text-left bg-card_bg/75">{{ __('Game') }}</th>
+            <th class="font-semibold text-left bg-card_bg/75">{{ __('Team') }}</th>
+            <th class="font-semibold text-left bg-card_bg/75">{{ __('Achievements') }}</th>
+            <th class="font-semibold text-left bg-card_bg/75 rounded-tr-xl rounded-br-xl"></th>
         </tr>
       </thead>
       <tbody>
@@ -27,39 +27,43 @@
         <p id="getCountPlayers" class="hidden">{{ $players_count }}</p>
         @for ($i = 0; $i < $players_count; $i++)
         <tr class="text-[#979797]">
-            <td class="font-medium">{{ $players[$i]->id }}</td>
-            <td class="font-medium">{{ $players[$i]->name }}</td>
-            <td class="font-medium">{{ $players[$i]->surname }}</td>
-            <td class="font-medium">{{ $players[$i]->callsign }}</td>
-            <td class="font-medium">{{ $players[$i]->emailPlayer }}</td>
-            <td class="font-medium">{{ $players[$i]->phone }}</td>
-            <td class="font-medium">{{ getGamesForPlayer($players[$i]->id) }}</td>
-            <td class="font-medium">{{ $teams->where('id', $players[$i]->team_id)->value('name') }}</td>
-            <td class="font-medium">
-                <div class="dropdown dropdown-hover ">
-                    <label tabindex="0" class="btn m-1 bg-card_bg/75 boeder-0">Achievements</label>
-                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-dark rounded-box w-52">
-                        <form action="{{ route('getAchievements', $players[$i]->id) }}" method="POST" id="{{ "getAchievements" . $players[$i]->id }}">
-                            @csrf
-                            @for ($y = 0; $y < $achievements_count; $y++)
-                                <li><a>
-                                    <div class="form-control">
-                                        <label class="cursor-pointer label">
-                                            <span class="label-text text-[#979797] font-medium">{{ $achievements[$y]->nameAchievement }}</span>
-                                            <input id="{{ 'change' . $players[$i]->id . $y }}"
-                                            name={{ $achievements[$y]->nameAchievement }}
-                                            type="checkbox" class="checkbox checkbox-success"
-                                            @checked(hasAchievement($players[$i]->id, $achievements[$y]->nameAchievement))/>
-                                        </label>
-                                    </div>
-                                    <input type="submit" value="Submit" class="hidden"/>
-                                </a></li>
-                            @endfor
-                        </form>
-                    </ul>
-                </div>
-            </td>
-            <td><a href="{{ route('deletePlayer', $players[$i]->id) }}" class="font-medium hover:text-red text-[#979797] text-[15px]">Delete</a></td>
+          <td class="font-medium">{{ $players[$i]->id }}</td>
+          <td class="font-medium">{{ $players[$i]->name }}</td>
+          <td class="font-medium">{{ $players[$i]->surname }}</td>
+          <td class="font-medium">{{ $players[$i]->callsign }}</td>
+          <td class="font-medium">{{ $players[$i]->emailPlayer }}</td>
+          <td class="font-medium">{{ $players[$i]->phone }}</td>
+          <td class="font-medium">{{ getGamesForPlayer($players[$i]->id) }}</td>
+          <td class="font-medium">{{ $teams->where('id', $players[$i]->team_id)->value('name') }}</td>
+          <td class="font-medium">
+              <div class="dropdown dropdown-hover">
+                  <label tabindex="0" class="bg-card_bg/75 px-4 py-2 rounded-xl cursor-pointer ease-out duration-100 hover:bg-card_bg border-0">{{ __('Achievements') }}</label>
+                  <ul tabindex="0" class="dropdown-content p-2 mt-1 bg-card_bg rounded-box w-full">
+                      <form action="{{ route('getAchievements', $players[$i]->id) }}" method="POST" id="{{ "getAchievements" . $players[$i]->id }}">
+                          @csrf
+                          @for ($y = 0; $y < $achievements_count; $y++)
+                              <li><a>
+                                  <div class="form-control">
+                                      <label class="cursor-pointer label">
+                                          <span class="label-text text-subwhite font-medium">{{ $achievements[$y]->nameAchievement }}</span>
+                                          <input id="{{ 'change' . $players[$i]->id . $y }}"
+                                          name={{ $achievements[$y]->nameAchievement }}
+                                          type="checkbox" class="checkbox"
+                                          @checked(hasAchievement($players[$i]->id, $achievements[$y]->nameAchievement))/>
+                                      </label>
+                                  </div>
+                                  <input type="submit" value="Submit" class="hidden"/>
+                              </a></li>
+                          @endfor
+                      </form>
+                  </ul>
+              </div>
+          </td>
+          <td>
+            <a href="{{ route('deletePlayer', $players[$i]->id) }}" class="hover:text-red text-subwhite font-medium tracking-wide ease-out duration-100">
+              {{ __('Delete') }}
+            </a>
+          </td>
         </tr>
         @endfor
       </tbody>
