@@ -5,12 +5,18 @@ namespace App\Actions;
 use App\Http\Requests\StoreUsersRequest;
 use App\Models\Player;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StoreUsersAction
 {
-    public function store(StoreUsersRequest $request)
+    /**
+     * Сохраняет пользователя и создает игрока без данных, соединяя их в бд
+     *
+     * @param App\Http\Request\StoreUsersRequest $request Провалидированные данные для регистрации
+     *
+     * @return object Созданный юзер
+     */
+    public function handle(StoreUsersRequest $request)
     {
         $player = new Player([
             'emailPlayer' => $request->emailPlayerForReg,
