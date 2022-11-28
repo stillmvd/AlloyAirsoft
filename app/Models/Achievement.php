@@ -15,4 +15,10 @@ class Achievement extends Model
     {
         return $this->belongsToMany(Player::class);
     }
+
+    public function test()
+    {
+        return 'test';
+    }
+
 }
