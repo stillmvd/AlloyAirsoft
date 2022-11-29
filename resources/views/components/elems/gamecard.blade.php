@@ -7,6 +7,9 @@
                 <b class="text-white select-none text-3xl font-medium mr-3 leading-none"> {{ date('g:i', strtotime($game->time))}} </b>
                 <p class="text-subwhite select-none font-normal leading-5"> {{ ucfirst(date('a', strtotime($game->time))) }} </p>
             </div>
+            <p>
+                {{ __('test branch') }}
+            </p>
             <p class="w-full xl:w-[78%] rounded-2xl duration-200 whitespace-pre-line text-justify leading-relaxed lg:text-left sm:whitespace-pre-line bg-bg lg:bg-bg/[.78] p-3 xl:group-hover:bg-bg xl:group-hover:p-5 z-40 lg:place-self-start lg:self-end">{{ $game->info }} </p>
             <h3 class="w-full lg:w-min h-min text-center text-xl sm:text-3xl rounded-2xl duration-200 whitespace-nowrap bg-bg lg:bg-bg/[.78] p-3 xl:group-hover:bg-bg xl:group-hover:p-5 z-40 lg:place-self-end lg:self-end"> {{ $game->polygon }} </h3>
 
