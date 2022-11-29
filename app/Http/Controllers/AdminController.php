@@ -22,10 +22,9 @@ use App\Actions\UpdateRulesAction;
 
 use App\Http\Requests\StoreContactInformation;
 use App\Http\Requests\UpdatePlayerRequest;
-use App\Models\Achievement;
+
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 /** AdminController содержит основные контроллеры работающие в админке. */
 class AdminController extends Controller

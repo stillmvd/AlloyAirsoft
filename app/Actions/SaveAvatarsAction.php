@@ -2,20 +2,27 @@
 
 namespace App\Actions;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class SaveAvatarsAction
 {
-    public function save(Request $request)
+    /**
+     * Сохраняет в базе данных путь к аватару в storage
+     *
+     * @param Request $request
+     *
+     * @return void
+     */
+    public function handle(Request $request)
     {
         if ($request->file('avatar') != null)
         {
             $path = $request->file('avatar')->storeAs('avatars', Auth::user()->id . '.jpg');
         }
 
-        DB::table('users')->where('id', Auth::user()->id)->update([
+        User::find(Auth::user()->id)->update([
             'pathToAvatar' => $path,
         ]);
     }
