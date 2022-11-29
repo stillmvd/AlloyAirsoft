@@ -7,10 +7,10 @@
                 <p class="hidden" id="map-counter">{{ $games_count }}</p>
             </div>
             <div class="w-full flex flex-row items-end justify-center my-9">
-                <b class="text-5xl mr-3 font-normal">
+                <b class="text-5xl mr-3 font-normal select-none">
                     {{ date('d', strtotime($game->date)) }}
                 </b>
-                <p class="leading-6">
+                <p class="leading-6 select-none">
                     {{ date('M', strtotime($game->date)) }}
                 </p>
             </div>
