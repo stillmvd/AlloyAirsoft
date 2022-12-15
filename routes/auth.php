@@ -3,7 +3,8 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('account', [AuthController::class, 'account'])->name('account');
+Route::get('login', [AuthController::class, 'account'])->name('login');
+Route::get('registration', [AuthController::class, 'register'])->name('register');
 
 Route::post('register', [AuthController::class, 'register_store'])->name('register_store');
 

@@ -23,11 +23,11 @@
 @endif
 
 <body class="min-h-screen container px-6 flex flex-col selection:bg-dark selection:text-main">
-    @include('includes.header')
+    @unless (Route::is('login') || Route::is('register'))
+        @include('includes.header')
+    @endunless
 
-    <main class="flex flex-col w-full items-start">
-        @yield('content')
-    </main>
+    @yield('content')
 
     @if (Route::is('index') || Route::is('archive') || Route::is('game'))
         @include('includes.footer')
@@ -43,8 +43,10 @@
 @elseif (Route::is('admin') || Route::is('edit') )
     <script src="{{ asset('js/map.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
-@elseif (Route::is('account'))
-    <script src="{{ asset('js/labelForAccount.js') }}"></script>
+@elseif (Route::is('login'))
+    <script src="{{ asset('js/labelForLogin.js') }}"></script>
+@elseif (Route::is('register'))
+    <script src="{{ asset('js/labelForRegister.js') }}"></script>
 @elseif (Route::is('personal_account'))
     <script src="{{ asset('js/main.js') }}"></script>
 @endif
