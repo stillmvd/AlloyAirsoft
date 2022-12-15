@@ -10,13 +10,23 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     /**
-     * Возращает страничку логина и регистрации
+     * Возращает страничку логина
      *
      * @return \Illuminate\View\View
      */
     public function account()
     {
         return view('auth.account');
+    }
+
+    /**
+     * Возращает страничку логина
+     *
+     * @return \Illuminate\View\View
+     */
+    public function register()
+    {
+        return view('auth.registration');
     }
 
     /**

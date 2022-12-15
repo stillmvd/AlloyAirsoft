@@ -188,3 +188,21 @@ if (localStorage.getItem('userTheme') == 'dark') {
     moon.classList.remove('swap-off');
     sun.classList.remove('swap-on');
 }
+
+document.getElementById('blockPhone').addEventListener('click', ()=>{
+    var range = document.createRange();
+    range.selectNode(document.getElementById("phone"));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+})
+
+document.getElementById('blockEmail').addEventListener('click', ()=>{
+    var range = document.createRange();
+    range.selectNode(document.getElementById("email"));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+})
