@@ -4,11 +4,11 @@
 
 @section('content')
     <main class="flex flex-col w-full items-start h-full grow justify-center">
-        <div class="w-[32%] rounded-xl bg-card_bg p-10 mx-auto">
+        <div class="min-w-min rounded-xl bg-card_bg px-6 sm:px-20 py-10 mx-auto">
             <h2 class="w-min mx-auto">
                 {{ __('Welcome') }}
             </h2>
-            <p class="mx-auto w-min whitespace-nowrap mt-3">
+            <p class="mx-auto w-full text-center lg:text-left lg:w-min lg:whitespace-nowrap mt-3">
                 {{ __('Sign up to continue with AlloyAirsoft ') }}
             </p>
             <form action="{{ route('register_store') }}" method="POST" class="flex flex-col gap-4 w-full my-8">
@@ -41,11 +41,11 @@
                 </div>
                 <x-elems.button value="Registrate" class="py-3 mt-3 w-full" tabindex="3" />
             </form>
-            <div class="flex flex-row items-center mx-auto w-min">
+            <div class="flex flex-col items-center mx-auto w-min">
                 <p class="whitespace-nowrap">
                     {{ __("Already have an account?") }}
                 </p>
-                <a href="{{ route('login') }}" class="ml-4 whitespace-nowrap" tabindex="4">
+                <a href="{{ route('login') }}" class="mt-3 whitespace-nowrap" tabindex="4">
                     {{ __("Log in") }}
                 </a>
             </div>
