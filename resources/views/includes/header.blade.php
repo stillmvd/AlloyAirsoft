@@ -1,4 +1,4 @@
-<header class="w-full flex lg:pt-8">
+<header class="w-full flex flex-col lg:pt-8">
     @guest
         <div class="w-full flex items-center sm:items-end flex-col sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <a href="{{ route('index') }}" class="text-[1.8rem] sm:text-[2.5rem] mb-4 lg:mb-0 col-span-2 lg:col-span-1 w-full lg:w-min bg-card_bg lg:bg-transparent text-white p-6 lg:p-0 whitespace-normal sm:whitespace-nowrap rounded-bl-2xl rounded-br-2xl sm:rounded-2xl sm:my-4 lg:my-0 text-center font-normal">
@@ -213,5 +213,5 @@
         </div>
 
     @endauth
+    <x-elems.separator class="mt-6" />
 </header>
-<x-elems.separator class="mt-6" />
