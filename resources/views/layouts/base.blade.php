@@ -22,7 +22,7 @@
     </x-elems.alert>
 @endif
 
-<body class="min-h-screen container px-6 flex flex-col selection:bg-dark selection:text-main">
+<body class="min-h-screen container px-6 flex flex-col justify-between selection:bg-dark selection:text-main">
     @unless (Route::is('login') || Route::is('register'))
         @include('includes.header')
     @endunless
