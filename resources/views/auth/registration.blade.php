@@ -4,7 +4,7 @@
 
 @section('content')
     <main class="flex flex-col w-full items-start h-full grow justify-center">
-        <div class="min-w-min rounded-xl bg-card_bg px-6 sm:px-20 py-10 mx-auto">
+        <div class="min-w-min 2xl:w-[30%] rounded-xl bg-card_bg px-4 py-10 sm:p-10 mx-auto">
             <h2 class="w-min mx-auto">
                 {{ __('Welcome') }}
             </h2>
