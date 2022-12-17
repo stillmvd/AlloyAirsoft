@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\GetArchiveGamesAction;
-use App\Actions\GetGameInfoAction;
-use App\Actions\GetInfoForAccountAction;
-use App\Actions\getOldDataOfPlayer;
-use App\Actions\GetUpcomingGamesAction;
-use App\Actions\SendEmailAction;
-use App\Actions\StoreEmailAction;
-use App\Actions\StorePlayerAction;
-use App\Actions\storePlayerWithoutRegistarionAction;
+
+use App\Actions\UserActions\GetInfoForAccountAction;
+
+use App\Actions\MainActions\GetArchiveGamesAction;
+use App\Actions\MainActions\GetGameInfoAction;
+use App\Actions\MainActions\GetUpcomingGamesAction;
+use App\Actions\MainActions\SendEmailAction;
+use App\Actions\MainActions\StoreEmailAction;
+
+use App\Actions\MainActions\getOldDataOfPlayer;
+use App\Actions\PlayerActions\StorePlayerAction;
+use App\Actions\PlayerActions\storePlayerWithoutRegistarionAction;
 
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;

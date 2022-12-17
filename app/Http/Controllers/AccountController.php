@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\ChangeCredentialForUserAction;
-use App\Actions\DeleteUserAvatarAction;
-use App\Actions\SaveAvatarsAction;
+use App\Actions\UserActions\ChangeCredentialForUserAction;
+use App\Actions\UserActions\DeleteUserAvatarAction;
+use App\Actions\UserActions\SaveAvatarsAction;
 
 use App\Http\Requests\StoreCredentialForUserRequest;
 
@@ -16,7 +16,7 @@ class AccountController extends Controller
      * Description
      *
      * @param Request $request
-     * @param App\Actions\SaveAvatarsAction $saveAvatars Сохраняет аватарку юзера
+     * @param App\Actions\UserActions\SaveAvatarsAction $saveAvatars Сохраняет аватарку юзера
      *
      * @return Illuminate\Redirect\
      */
@@ -30,7 +30,7 @@ class AccountController extends Controller
      * Удаляет аватар
      *
      * @param int $id id юзера
-     * @param App\Actions\DeleteUserAvatarAction $deleteUserAvatar
+     * @param App\Actions\UserActions\DeleteUserAvatarAction $deleteUserAvatar
      *
      * @return Illuminate\Redirect\
      */
@@ -44,7 +44,7 @@ class AccountController extends Controller
      * Description
      *
      * @param StoreCredentialForUserRequest $request Провалидированные данные
-     * @param App\Actions\ChangeCredentialForUserAction $changeCredentialForUser Обновляет данные плеера
+     * @param App\Actions\UserActions\ChangeCredentialForUserAction $changeCredentialForUser Обновляет данные плеера
      *
      * @return Illuminate\Redirect\
      */
