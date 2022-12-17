@@ -1,46 +1,44 @@
-let phone = 320,
-    tablet = 640,
-    tabletXL = 768,
-    laptop = 1024,
-    desktop = 1280,
-    desktopXL = 1536;
 let openRulesBlock = true;
 let openInfoBlock = true;
 let body = document.getElementById("body");
-checkInputWithValidation()
+checkInputWithValidation();
 
 function upLabel(labelName) {
-    let label = document.getElementById(labelName);
-    label.style.top = '-18px';
-    label.style.fontSize = '12px';
+    if (document.getElementById(labelName) !== null) {
+        let label = document.getElementById(labelName);
+        label.style.top = '-18px';
+        label.style.fontSize = '12px';
+    }
 }
 
 function downLabel(labelName) {
-    let label = document.getElementById(labelName);
-    label.style.top = '0px';
-    label.style.fontSize = '16px';
+    if (document.getElementById(labelName) !== null) {
+        let label = document.getElementById(labelName);
+        label.style.top = '0px';
+        label.style.fontSize = '16px';
+    }
 }
 
-document.getElementById('input_name').addEventListener('focus', function() {
+document.getElementById('input_name')?.addEventListener('focus', function() {
     upLabel('name_label');
 });
-document.getElementById('input_surname').addEventListener('focus', function() {
+document.getElementById('input_surname')?.addEventListener('focus', function() {
     upLabel('surname_label');
 });
-document.getElementById('input_callsign').addEventListener('focus', function() {
+document.getElementById('input_callsign')?.addEventListener('focus', function() {
     upLabel('callsign_label');
 });
-document.getElementById('input_email').addEventListener('focus', function() {
+document.getElementById('input_email')?.addEventListener('focus', function() {
     upLabel('email_label');
 });
-document.getElementById('input_phone').addEventListener('focus', function() {
+document.getElementById('input_phone')?.addEventListener('focus', function() {
     upLabel('phone_label');
 });
-document.getElementById('input_team').addEventListener('focus', function() {
+document.getElementById('input_team')?.addEventListener('focus', function() {
     upLabel('team_label');
 });
 
-document.getElementById('input_name').addEventListener('blur', function() {
+document.getElementById('input_name')?.addEventListener('blur', function() {
     downLabel('name_label');
     if (document.getElementById('input_name').value != '') {
         upLabel('name_label');
@@ -48,7 +46,7 @@ document.getElementById('input_name').addEventListener('blur', function() {
         downLabel('name_label');
     }
 });
-document.getElementById('input_surname').addEventListener('blur', function() {
+document.getElementById('input_surname')?.addEventListener('blur', function() {
     downLabel('surname_label');
     if (document.getElementById('input_surname').value != '') {
         upLabel('surname_label');
@@ -56,7 +54,7 @@ document.getElementById('input_surname').addEventListener('blur', function() {
         downLabel('surname_label');
     }
 });
-document.getElementById('input_callsign').addEventListener('blur', function() {
+document.getElementById('input_callsign')?.addEventListener('blur', function() {
     downLabel('callsign_label');
     if (document.getElementById('input_callsign').value != '') {
         upLabel('callsign_label');
@@ -64,7 +62,7 @@ document.getElementById('input_callsign').addEventListener('blur', function() {
         downLabel('callsign_label');
     }
 });
-document.getElementById('input_email').addEventListener('blur', function() {
+document.getElementById('input_email')?.addEventListener('blur', function() {
     downLabel('email_label');
     if (document.getElementById('input_email').value != '') {
         upLabel('email_label');
@@ -72,7 +70,7 @@ document.getElementById('input_email').addEventListener('blur', function() {
         downLabel('email_label');
     }
 });
-document.getElementById('input_phone').addEventListener('blur', function() {
+document.getElementById('input_phone')?.addEventListener('blur', function() {
     downLabel('phone_label');
     if (document.getElementById('input_phone').value != '') {
         upLabel('phone_label');
@@ -80,7 +78,7 @@ document.getElementById('input_phone').addEventListener('blur', function() {
         downLabel('phone_label');
     }
 });
-document.getElementById('input_team').addEventListener('blur', function() {
+document.getElementById('input_team')?.addEventListener('blur', function() {
     downLabel('team_label');
     if (document.getElementById('input_team').value != '') {
         upLabel('team_label');
@@ -90,64 +88,67 @@ document.getElementById('input_team').addEventListener('blur', function() {
 });
 
 function checkInputWithValidation(){
-    if (document.getElementById('input_name').value != '') {
+    if (document.getElementById('input_name')?.value != '') {
         upLabel('name_label');
     } else {
         downLabel('name_label');
     }
-    if (document.getElementById('input_surname').value != '') {
+    if (document.getElementById('input_surname')?.value != '') {
         upLabel('surname_label');
     } else {
         downLabel('surname_label');
     }
-    if (document.getElementById('input_callsign').value != '') {
+    if (document.getElementById('input_callsign')?.value != '') {
         upLabel('callsign_label');
     } else {
         downLabel('callsign_label');
     }
     downLabel('email_label');
-    if (document.getElementById('input_email').value != '') {
+    if (document.getElementById('input_email')?.value != '') {
         upLabel('email_label');
     } else {
         downLabel('email_label');
     }
-    if (document.getElementById('input_phone').value != '') {
+    if (document.getElementById('input_phone')?.value != '') {
         upLabel('phone_label');
     } else {
         downLabel('phone_label');
     }
     downLabel('team_label');
-    if (document.getElementById('input_team').value != '') {
+    if (document.getElementById('input_team')?.value != '') {
         upLabel('team_label');
     } else {
         downLabel('team_label');
     }
 }
 
-var countDownDate = new Date(document.getElementById('countdown').textContent).getTime();
-var x = setInterval(function() {
-    var now = new Date().getTime();
+if (document.getElementById('countdown') !== null)
+{
+    var countDownDate = new Date(document.getElementById('countdown')?.textContent).getTime();
+    var x = setInterval(function() {
+        var now = new Date().getTime();
 
-    var distance = countDownDate - now;
+        var distance = countDownDate - now;
 
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById('days').setAttribute('style', ('--value:' + days));
-    document.getElementById('hours').setAttribute('style', ('--value:' + hours));
-    document.getElementById('min').setAttribute('style', ('--value:' + minutes));
-    document.getElementById('sec').setAttribute('style', ('--value:' + seconds));
+        document.getElementById('days')?.setAttribute('style', ('--value:' + days));
+        document.getElementById('hours')?.setAttribute('style', ('--value:' + hours));
+        document.getElementById('min')?.setAttribute('style', ('--value:' + minutes));
+        document.getElementById('sec')?.setAttribute('style', ('--value:' + seconds));
 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById('days').setAttribute('style', ('--value:' + 0));
-        document.getElementById('hours').setAttribute('style', ('--value:' + 0));
-        document.getElementById('min').setAttribute('style', ('--value:' + 0));
-        document.getElementById('sec').setAttribute('style', ('--value:' + 0));
-    }
-}, 1000);
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById('days')?.setAttribute('style', ('--value:' + 0));
+            document.getElementById('hours')?.setAttribute('style', ('--value:' + 0));
+            document.getElementById('min')?.setAttribute('style', ('--value:' + 0));
+            document.getElementById('sec')?.setAttribute('style', ('--value:' + 0));
+        }
+    }, 1000);
+}
 
 function createInfoSquare() {
     setTimeout(() => {
