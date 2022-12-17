@@ -3,11 +3,15 @@
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PagesController::class, 'index'])->name('index');
-Route::get('archive', [PagesController::class, 'archive'])->name('archive');
-Route::get('game/{name}', [PagesController::class, 'game'])->name('game');
-Route::post('game/saveReg/{id}', [PagesController::class, 'storePlayers'])->name('store_players');
-Route::post('game/save/{id}', [PagesController::class, 'storePlayerWithoutRegistarion'])->name('storePlayerWithoutRegistarion');
-Route::post('/', [PagesController::class, 'saveEmail'])->name('save_email');
+Route::controller(PagesController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('archive', 'archive')->name('archive');
+    Route::get('game/{name}', 'game')->name('game')->where(['name' => '[a-z]+']);
+    Route::post('game/saveReg/{id}', 'storePlayers')->name('store_players')->where(['id' => '[0-9]+']);
+    Route::post('game/save/{id}', 'storePlayerWithoutRegistarion')->name('storePlayerWithoutRegistarion')
+                                                                ->where(['id' => '[0-9]+']);
+    Route::post('/', 'saveEmail')->name('save_email');
 
-Route::get('personal_account/{id}', [PagesController::class, 'account'])->middleware('auth')->name('personal_account');
+    Route::get('personal_account/{id}', 'account')->middleware('auth')->name('personal_account');
+});
+
