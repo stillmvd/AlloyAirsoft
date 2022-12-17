@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Models\Player;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,7 @@ class GetInfoForAccountAction
      */
     public function handle(int $id)
     {
-        $player = Player::find($id);
+        $player = Player::find(User::find($id)->player->id);
 
         $achievements = $player->achievements;
         $games = $player->games;

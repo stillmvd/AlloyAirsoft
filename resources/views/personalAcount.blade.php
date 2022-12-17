@@ -236,4 +236,11 @@
             </h3>
         </div>
     </div>
+    <div class="hidden lg:grid w-full 2xl:w-[90%] grid-cols-1 lg:grid-cols-3 gap-10 mx-auto my-20">
+        <div class="w-full rounded-2xl bg-card_bg/50 px-6 pb-6">
+            <a href="{{ route('createTeam', ['id' => Auth::user()->id ]) }}">
+                {{ __('Create team') }}
+            </a>
+        </div>
+    </div>
 @endsection
