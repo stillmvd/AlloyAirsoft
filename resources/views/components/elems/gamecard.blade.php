@@ -1,6 +1,6 @@
 <div class="relative w-full">
     <a href="{{ route('game', strtolower($game->name)) }}">
-        <div id="gamecard" class="h-full lg:h-min flex flex-col lg:flex-row lg:justify-between relative group ring-2 ring-main rounded-2xl duration-200 p-2 overflow-hidden z-40">
+        <div id="gamecard" class="h-full lg:h-[300px] flex flex-col lg:flex-row lg:justify-between relative group rounded-2xl duration-200 p-2 overflow-hidden z-40">
             <h3 class="w-full lg:w-min h-min text-3xl sm:text-5xl lg:text-3xl text-center rounded-2xl duration-200 whitespace-nowrap bg-bg lg:bg-bg/[.78] p-3 xl:group-hover:bg-bg z-40"> {{ $game->name }} </h3>
             <h3 class="w-full lg:w-min h-min text-center text-xl sm:text-3xl rounded-2xl duration-200 whitespace-nowrap bg-bg lg:bg-bg/[.78] p-3 xl:group-hover:bg-bg z-40 lg:place-self-end lg:self-end"> {{ $game->polygon }} </h3>
 

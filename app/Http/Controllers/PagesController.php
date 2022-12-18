@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Actions\UserActions\GetInfoForAccountAction;
 
 use App\Actions\MainActions\GetArchiveGamesAction;
@@ -27,12 +26,12 @@ class PagesController extends Controller
     /**
      * Возвращает главную страницу сайта
      *
-     * @param App\Actions\GetUpcomingGamesAction $getUpcomingGames Получает из actiona игры которые не завершились
+     * @param App\Actions\GetGamesAction $getGames Получает из actiona игры которые не завершились
      * @return \Illuminate\View\View
      */
-    public function index(GetUpcomingGamesAction $getUpcomingGames)
+    public function index(GetGamesAction $getGames)
     {
-        return view('index', $getUpcomingGames->handle());
+        return view('index', $getGames->handle());
     }
 
     /**

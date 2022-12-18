@@ -7,7 +7,7 @@
             <div class="flex flex-row items-center mb-4 sm:mb-0 sm:items-start lg:items-center sm:justify-start lg:justify-center">
                 <div class="flex bg-dark rounded-2xl">
                     <a href="{{ route('index') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
-                        {{ __('Upcoming') }}
+                        {{ __('Games') }}
                     </a>
                     <a href="{{ route('archive') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : 'bg-card_bg' }}">
                         {{ __('Archive') }}
@@ -93,7 +93,7 @@
                 <div class="flex flex-row items-center justify-center sm:items-start lg:items-center lg:justify-center">
                     <div class="flex bg-dark rounded-2xl">
                         <a href="{{ route('index') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
-                            {{ __('Upcoming') }}
+                            {{ __('Games') }}
                         </a>
                         <a href="{{ route('archive') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : 'bg-card_bg' }}">
                             {{ __('Archive') }}
@@ -189,7 +189,7 @@
                 <div class="flex flex-row items-center justify-center sm:items-start lg:items-center sm:justify-start lg:justify-center">
                     <div class="flex bg-dark rounded-2xl">
                         <a href="{{ route('index') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tl-2xl rounded-bl-2xl ease-out duration-100 hover:bg-dark {{ Route::is('index') ? 'bg-dark' : 'bg-card_bg' }}">
-                            {{ __('Upcoming') }}
+                            {{ __('Games') }}
                         </a>
                         <a href="{{ route('archive') }}" class="w-min select-none whitespace-nowrap px-6 py-4 rounded-tr-2xl rounded-br-2xl ease-out duration-100 hover:bg-dark {{ Route::is('archive') ? 'bg-dark' : 'bg-card_bg' }}">
                             {{ __('Archive') }}
