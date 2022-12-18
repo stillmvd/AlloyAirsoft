@@ -4,17 +4,17 @@ namespace App\Actions;
 use App\Models\Game;
 use Illuminate\Support\Facades\DB;
 
-class GetUpcomingGamesAction
+class GetGamesAction
 {
     /**
-     * Возвращает из базы данных игры которые не завершены
+     * Возвращает из базы данных все игры
      *
      * @return array
      */
     public function handle()
     {
         $data = [
-            'games' => Game::getUpcomingGames(),
+            'games' => Game::getGames(),
             'games_count' => Game::getCountGames(),
             'phone' => DB::table('contact')->pluck('phone')[0],
             'email' => DB::table('contact')->pluck('email')[0],

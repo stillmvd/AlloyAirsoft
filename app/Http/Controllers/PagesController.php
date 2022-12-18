@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Actions\GetArchiveGamesAction;
 use App\Actions\GetGameInfoAction;
+use App\Actions\GetGamesAction;
 use App\Actions\GetInfoForAccountAction;
 use App\Actions\getOldDataOfPlayer;
-use App\Actions\GetUpcomingGamesAction;
 use App\Actions\SendEmailAction;
 use App\Actions\StoreEmailAction;
 use App\Actions\StorePlayerAction;
@@ -24,12 +24,12 @@ class PagesController extends Controller
     /**
      * Возвращает главную страницу сайта
      *
-     * @param App\Actions\GetUpcomingGamesAction $getUpcomingGames Получает из actiona игры которые не завершились
+     * @param App\Actions\GetGamesAction $getGames Получает из actiona игры которые не завершились
      * @return \Illuminate\View\View
      */
-    public function index(GetUpcomingGamesAction $getUpcomingGames)
+    public function index(GetGamesAction $getGames)
     {
-        return view('index', $getUpcomingGames->handle());
+        return view('index', $getGames->handle());
     }
 
     /**

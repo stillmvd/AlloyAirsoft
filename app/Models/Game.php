@@ -26,23 +26,13 @@ class Game extends Model
     }
 
     /**
-     * Возращает не завершенные игры
+     * Возращает незавершенные игры
      *
      * @return array
      */
-    public static function getUpcomingGames()
+    public static function getGames()
     {
-        return Game::where('finished', '0')->get();
-    }
-
-    /**
-     * Возращает количество игр
-     *
-     * @return int
-     */
-    public static function getCountGames()
-    {
-        return Game::get()->count();
+        return Game::get();
     }
 
     /**
@@ -53,6 +43,16 @@ class Game extends Model
     public static function getFinishedGames()
     {
         return Game::where('finished', '1')->get();
+    }
+
+    /**
+     * Возращает количество игр
+     *
+     * @return int
+     */
+    public static function getCountGames()
+    {
+        return Game::get()->count();
     }
 
     /**
