@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\StoreUsersAction;
+use App\Actions\UserActions\StoreUsersAction;
+
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUsersRequest;
+
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller

@@ -2,23 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\DeleteAllDataAction;
-use App\Actions\DeletePlayerAction;
-use App\Actions\DeleteUserAction;
-use App\Actions\GetAchievementsAction;
-use App\Actions\GetAdminInfoAction;
-use App\Actions\GetAllInfoAction;
-use App\Actions\GetAllInfoUserAction;
-use App\Actions\GetInfoFromEditGameAction;
-use App\Actions\StoreGameAction;
-use App\Actions\StoreInfosGameAction;
-use App\Actions\StoreRulesGameAction;
-use App\Actions\UpdateContactAction;
-use App\Actions\UpdateGameAction;
-use App\Actions\UpdateInfosAction;
-use App\Actions\UpdatePasswordAction;
-use App\Actions\UpdatePlayerAction;
-use App\Actions\UpdateRulesAction;
+use App\Actions\MainActions\DeleteAllDataAction;
+use App\Actions\MainActions\GetAllInfoAction;
+
+use App\Actions\AdminActions\UpdateContactAction;
+use App\Actions\AdminActions\StoreRulesGameAction;
+use App\Actions\AdminActions\StoreInfosGameAction;
+use App\Actions\AdminActions\StoreGameAction;
+use App\Actions\AdminActions\GetInfoFromEditGameAction;
+use App\Actions\AdminActions\UpdateGameAction;
+use App\Actions\AdminActions\UpdateInfosAction;
+use App\Actions\AdminActions\UpdatePasswordAction;
+use App\Actions\AdminActions\UpdateRulesAction;
+use App\Actions\AdminActions\GetAdminInfoAction;
+
+use App\Actions\UserActions\GetAllInfoUserAction;
+use App\Actions\UserActions\DeleteUserAction;
+
+use App\Actions\PlayerActions\GetAchievementsAction;
+use App\Actions\PlayerActions\DeletePlayerAction;
+use App\Actions\PlayerActions\UpdatePlayerAction;
 
 use App\Http\Requests\StoreContactInformation;
 use App\Http\Requests\UpdatePlayerRequest;
