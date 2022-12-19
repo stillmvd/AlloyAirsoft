@@ -28,26 +28,24 @@
             <p class="hidden" id="countdown">{{ $game->date . ' ' . $game->time }}</p>
             <p class="hidden" id="rules-count">{{ count($rules) }}</p>
         </div>
-        <div class="h-[500px] lg:h-[300px] w-full relative group ring-2 ring-main rounded-2xl p-6 grid overflow-hidden z-40">
+        <div class="h-[500px] lg:h-[300px] w-full flex justify-between relative group ring-2 ring-main rounded-2xl p-5 overflow-hidden z-40">
             <iframe src="{{ $game->linkForIframe }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[560px] lg:h-[360px] group-hover:scale-[1.2] top-0 lg:-top-10 scale-[1.28] lg:scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
             @if ($game->finished)
-                <div class="m-auto grid grid-flow-col gap-5 text-center items-center justify-center auto-cols-max bg-bg/[.78] px-6 py-3 w-full lg:w-min rounded-2xl absolute bottom-0 lg:left-[2%] lg:bottom-[7%] 2xl:bottom-[10%] z-40">
-                    <h3>
-                        {{ __('Finished') }}
-                    </h3>
-                </div>
+                <h3 class="z-40 place-self-start self-end bg-card_bg rounded-2xl px-6 py-3">
+                    {{ __('Finished') }}
+                </h3>
             @else
                 <x-page.downcounter/>
             @endif
+            <a href="{{ $game->linkForGoogle }}" target="_blank" id="googleMap" class="w-min flex flex-row ease-out duration-100 bg-card_bg hover:bg-dark rounded-2xl items-center py-2 px-4 z-40 place-self-end self-end">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-main w-6 md:w-8 mr-4 group-hover:fill-dark">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+                </svg>
+                <p class="leading-none whitespace-nowrap">
+                   {{ __('Get to the map') }}
+                </p>
+            </a>
         </div>
-        <a href="{{ $game->linkForGoogle }}" id="googleMap" class="w-full flex flex-row mt-4 ease-out duration-100 items-center justify-center bg-card_bg hover:bg-dark rounded-box z-10">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-main w-6 md:w-8 mr-4 my-4 group-hover:fill-dark">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-            </svg>
-            <p class="leading-none">
-               {{ __('Get to the map') }}
-            </p>
-        </a>
     
         <div class="flex flex-col md:flex-row w-full mt-10 md:justify-between relative">
             <h2 id="info-title" class="mb-10 md:mb-0">{{ __('Info') }}</h2>
