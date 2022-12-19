@@ -2,6 +2,7 @@
 
 use App\Models\Game;
 use App\Models\Player;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -131,6 +132,19 @@ if (! function_exists('hasAchievement'))
             {
                 return true;
             }
+        }
+        return false;
+    }
+}
+
+if (! function_exists('leaderTeam'))
+{
+    function leaderTeam($id)
+    {
+        $teams = Team::getTeams();
+        for ($i = 0; $i < count($teams); $i++)
+        {
+            if($id === (int)$teams[$i]->leader_id) return true;
         }
         return false;
     }

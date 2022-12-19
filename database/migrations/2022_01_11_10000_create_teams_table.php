@@ -11,7 +11,10 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id()->from(1001);
+            $table->timestamps();
             $table->string('name');
+            $table->text('description')->nullable();
+            $table->unsignedBigInteger('leader_id')->nullable();
         });
     }
 

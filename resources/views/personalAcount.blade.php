@@ -3,7 +3,7 @@
 @section('title', 'Personal Acount')
 
 @section('content')
-    <main class="grow"> 
+    <main class="grow">
         <div class="hidden lg:grid w-full 2xl:w-[90%] grid-cols-1 lg:grid-cols-3 gap-10 mx-auto my-20">
             <div class="w-full rounded-2xl bg-card_bg/50 px-6 pb-6">
                 <h3 class="my-10">
@@ -176,7 +176,7 @@
                 </form>
             </div>
         </div>
-    
+
         <div class="hidden sm:grid lg:hidden w-8/9 grid-cols-1 sm:grid-cols-2 gap-10 mx-auto my-20">
             <div class="w-[100%] col-span-2 rounded-2xl bg-card_bg/50 p-6">
                 @if (Auth::user()->pathToAvatar != NULL)
@@ -237,5 +237,14 @@
                 </h3>
             </div>
         </div>
+        @unless (leaderTeam(Auth::user()->id))
+            <a href="{{ route('createTeam', ['id' => Auth::user()->id ]) }}">
+                Create team
+            </a>
+        @else
+            <h3>
+                {{ __('Your team: ' . $team[0]->name) }}
+            </h3>
+        @endunless
     </main>
 @endsection

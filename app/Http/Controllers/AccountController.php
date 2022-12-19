@@ -7,7 +7,8 @@ use App\Actions\UserActions\DeleteUserAvatarAction;
 use App\Actions\UserActions\SaveAvatarsAction;
 
 use App\Http\Requests\StoreCredentialForUserRequest;
-
+use App\Http\Requests\StoreTeamRequest;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -53,5 +54,23 @@ class AccountController extends Controller
     {
         $changeCredentialForUser->handle($request);
         return redirect()->back();
+    }
+
+    public function createTeam()
+    {
+        return view('account.createTeam');
+    }
+
+    public function storeTeam(StoreTeamRequest $request, int $id)
+    {
+        Team::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'leader_id' => $id,
+        ]);
+
+        return redirect()->route('personal_account', ['id' => $id])->with([
+            'succsess' => $request->name,
+        ]);
     }
 }
