@@ -1,5 +1,5 @@
 <?php
-namespace App\Actions;
+namespace App\Actions\MainActions;
 
 use App\Models\Game;
 use Illuminate\Support\Facades\DB;

@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Actions\UserActions\GetInfoForAccountAction;
 
-use App\Actions\GetGamesAction;
 use App\Actions\MainActions\GetArchiveGamesAction;
 use App\Actions\MainActions\GetGameInfoAction;
+use App\Actions\MainActions\GetGamesAction;
 use App\Actions\MainActions\GetUpcomingGamesAction;
 use App\Actions\MainActions\SendEmailAction;
 use App\Actions\MainActions\StoreEmailAction;
