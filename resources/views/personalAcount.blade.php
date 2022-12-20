@@ -5,10 +5,9 @@
 @section('content')
     <main class="grow">
         <div class="hidden lg:grid w-full 2xl:w-[90%] grid-cols-1 lg:grid-cols-3 gap-10 mx-auto my-20">
-            <div class="w-full rounded-2xl bg-card_bg/50 px-6 pb-6">
-                <h3 class="my-10">
-                    {{ __('Your games') }}
-                </h3>
+{{-- user games block --}}
+            <div class="w-full rounded-xl bg-card_bg/75 px-6 pb-6">
+                <h3 class="my-10">{{ __('Your games') }}</h3>
                 @if ($games->isNotEmpty())
                     @foreach ($games as $game)
                         <div class="mt-10 flex flex-row">
@@ -28,12 +27,11 @@
                         </div>
                     @endforeach
                 @else
-                    <p>
-                        {{ __("You haven't played with us yet") }}
-                    </p>
+                    <p>{{ __("You haven't played with us yet") }}</p>
                 @endif
             </div>
-            <div class="w-[100%] rounded-2xl bg-card_bg/50 px-6 pb-6">
+{{-- avatar and data block --}}
+            <div class="w-[100%] rounded-xl bg-card_bg/75 px-6 pb-6">
                 <div class="w-full flex flex-row items-center justify-center gap-x-10 my-10">
                     @if (Auth::user()->pathToAvatar != NULL)
                         <img src="{{ asset(Auth::user()->pathToAvatar) }}" alt="avatar" class="w-28 h-28 rounded-full select-none">
@@ -68,26 +66,17 @@
                     </div>
                 </form>
                 <div class="bg-dark w-full p-4 rounded-xl">
-                    <b>
-                        {{ __('Email') }}
-                    </b>
-                    <p>
-                        {{ Auth::user()->email }}
-                    </p>
+                    <b>{{ __('Email') }}</b>
+                    <p>{{ Auth::user()->email }}</p>
                 </div>
                 <div class="bg-dark w-full p-4 rounded-xl mt-4">
-                    <b>
-                        {{ __('Registered') }}
-                    </b>
-                    <p>
-                        {{ Auth::user()->created_at->format('d.m.Y') }}
-                    </p>
+                    <b>{{ __('Registered') }}</b>
+                    <p>{{ Auth::user()->created_at->format('d.m.Y') }}</p>
                 </div>
             </div>
-            <div class="w-full rounded-2xl bg-card_bg/50 px-6 pb-6">
-                <h3 class="my-10">
-                    {{ __('Your achievements') }}
-                </h3>
+{{-- achievements block --}}
+            <div class="w-full rounded-xl bg-card_bg/75 px-6 pb-6">
+                <h3 class="my-10">{{ __('Your achievements') }}</h3>
                 @if ($achievements->isNotEmpty())
                     @for ($i = 0; $i < count($achievements); $i++)
                         <div class="grid grid-cols-3 mb-2">
@@ -104,25 +93,20 @@
                     @endfor
                 @else
                     @if ($games->isNotEmpty())
-                        <p>
-                            {{ __("You haven't got achievements yet") }}
-                        </p>
+                        <p>{{ __("You haven't got achievements yet") }}</p>
                     @else
-                        <p>
-                            {{ __('No games - no achievements =)') }}
-                        </p>
+                        <p>{{ __('No games - no achievements') }}</p>
                     @endif
                 @endif
             </div>
-            <div class="flex col-span-3 flex-col w-full rounded-2xl bg-card_bg/50 px-6 pb-10">
-                <h3 class="my-10 text-center">
-                    {{ __('Personal info') }}
-                </h3>
-                <form action="{{ route('changeCredentialForUser') }}" method="POST" class="flex flex-col gap-y-6 w-1/3 mx-auto">
+{{-- edit personal info block --}}
+            <div class="flex flex-col rounded-xl bg-card_bg/75 px-6 pb-10 col-span-2">
+                <h3 class="my-10 text-center">{{ __('Personal info') }}</h3>
+                <form action="{{ route('changeCredentialForUser') }}" method="POST" class="flex flex-col gap-y-6 w-2/4 mx-auto">
                     @csrf
                     <div class="flex relative flex-col">
                         <x-text.label id="label_name" class="z-10" for="namePlayer">{{ __('Name') }}</x-text.label>
-                        <x-elems.input id="input_name" class="bg-transparent h-[66px]" type="text" name="namePlayer" value="{{ $player->name }}"/>
+                        <x-elems.input id="input_name" class="bg-transparent h-16" type="text" name="namePlayer" value="{{ $player->name }}"/>
                         @error('namePlayer')
                             <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -135,7 +119,7 @@
                     </div>
                     <div class="flex relative flex-col">
                         <x-text.label id="label_surname" class="z-10" for="surnamePlayer">{{ __('Surname') }}</x-text.label>
-                        <x-elems.input id="input_surname" class="bg-transparent h-[66px]" type="text" name="surnamePlayer" value="{{ $player->surname }}"/>
+                        <x-elems.input id="input_surname" class="bg-transparent h-16" type="text" name="surnamePlayer" value="{{ $player->surname }}"/>
                         @error('surnamePlayer')
                             <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -148,7 +132,7 @@
                     </div>
                     <div class="flex relative flex-col">
                         <x-text.label id="label_callsign" class="z-10" for="callsignPlayer">{{ __('Callsign') }}</x-text.label>
-                        <x-elems.input id="input_callsign" class="bg-transparent h-[66px]" type="text" name="callsignPlayer" value="{{ $player->callsign }}"/>
+                        <x-elems.input id="input_callsign" class="bg-transparent h-16" type="text" name="callsignPlayer" value="{{ $player->callsign }}"/>
                         @error('callsignPlayer')
                             <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -161,7 +145,7 @@
                     </div>
                     <div class="flex relative flex-col">
                         <x-text.label id="label_phone" class="z-10" for="phonePlayer">{{ __('Phone') }}</x-text.label>
-                        <x-elems.input id="input_phone" class="bg-transparent h-[66px]" type="text" name="phonePlayer" value="{{ $player->phone }}"/>
+                        <x-elems.input id="input_phone" class="bg-transparent h-16" type="text" name="phonePlayer" value="{{ $player->phone }}"/>
                         @error('phonePlayer')
                             <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
@@ -172,13 +156,54 @@
                             </b>
                         @enderror
                     </div>
-                    <x-elems.button value="Save" class="mt-4 py-4 w-full" />
+                    <x-elems.button value="Save" class="mt-4 py-2 w-full" />
                 </form>
+            </div>
+{{-- creating team block --}}
+            <div class="flex flex-col rounded-xl bg-card_bg/75 px-6 pb-10 col-span-1">
+                @unless (leaderTeam(Auth::user()->id))
+                    <h3 class="my-10 text-center">{{ __('Create team') }}</h3>
+                    <form action="{{ route('storeTeam', ['id' => Auth::user()->id ]) }}" method="post" class="flex flex-col justify-between h-full grow">
+                        @csrf
+                        <div class="flex flex-col gap-y-6">
+                            <div class="flex relative flex-col">
+                                <x-text.label id="label_teamName" class="z-10" for="teamName">{{ __('Team name') }}</x-text.label>
+                                <x-elems.input id="input_teamName" class="bg-transparent h-16" type="text" name="teamName" />
+                                @error('teamName')
+                                    <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                        </svg>
+                                        {{ $message }}
+                                    </b>
+                                @enderror
+                            </div>
+                            <div class="flex relative flex-col">
+                                <textarea name="teamDescription" id="input_description" cols="30" rows="8" placeholder="Team description" class="w-full box-border text-white text-[1.1rem] resize-none bg-transparent pt-8 pb-3 px-5 lg:pt-4 lg:pb-0 h-full font-medium rounded-2xl ring-2 placeholder:text-subwhite placeholder:text-base placeholder:font-normal ring-subwhite focus:outline-none z-20"></textarea>
+                                @error('teamDescription')
+                                    <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                        </svg>
+                                        {{ $message }}
+                                    </b>
+                                @enderror
+                            </div>
+                        </div>
+                        <x-elems.button value="Create" class="mt-4 py-2 w-full" />
+                    </form>
+                @else
+                    <h3>
+                        {{ __('Your team: ' . $team[0]->name) }}
+                    </h3>
+                @endunless
             </div>
         </div>
 
         <div class="hidden sm:grid lg:hidden w-8/9 grid-cols-1 sm:grid-cols-2 gap-10 mx-auto my-20">
-            <div class="w-[100%] col-span-2 rounded-2xl bg-card_bg/50 p-6">
+            <div class="w-[100%] col-span-2 rounded-xl bg-card_bg/75 p-6">
                 @if (Auth::user()->pathToAvatar != NULL)
                     <img src="{{ asset(Auth::user()->pathToAvatar) }}" alt="avatar" class="w-28 h-28 mx-auto rounded-full">
                 @else
@@ -191,26 +216,16 @@
                     <input class="" type="submit" value="Сохранить">
                 </form>
                 <div class="bg-dark w-full p-4 rounded-xl mt-10">
-                    <b>
-                        {{ __('Email') }}
-                    </b>
-                    <p>
-                        {{ Auth::user()->email }}
-                    </p>
+                    <b>{{ __('Email') }}</b>
+                    <p>{{ Auth::user()->email }}</p>
                 </div>
                 <div class="bg-dark w-full p-4 rounded-xl mt-4">
-                    <b>
-                        {{ __('Registered') }}
-                    </b>
-                    <p>
-                        {{ Auth::user()->created_at }}
-                    </p>
+                    <b>{{ __('Registered') }}</b>
+                    <p>{{ Auth::user()->created_at }}</p>
                 </div>
             </div>
-            <div class="w-full rounded-2xl bg-card_bg/50 p-6">
-                <h3 class="mb-6">
-                    {{ __('Your games') }}
-                </h3>
+            <div class="w-full rounded-xl bg-card_bg/75 p-6">
+                <h3 class="mb-6">{{ __('Your games') }}</h3>
                 @foreach ($games as $game)
                     @if ($game->id = $player->game_id)
                         <div class="rounded-xl flex flex-row justify-between group bg-card_bg hover:bg-[#222222] duration-100 ease-out">
@@ -231,20 +246,9 @@
                     @endif
                 @endforeach
             </div>
-            <div class="w-full rounded-2xl bg-card_bg/50 p-6">
-                <h3>
-                    {{ __('Your achievements') }}
-                </h3>
+            <div class="w-full rounded-xl bg-card_bg/75 p-6">
+                <h3>{{ __('Your achievements') }}</h3>
             </div>
         </div>
-        @unless (leaderTeam(Auth::user()->id))
-            <a href="{{ route('createTeam', ['id' => Auth::user()->id ]) }}">
-                Create team
-            </a>
-        @else
-            <h3>
-                {{ __('Your team: ' . $team[0]->name) }}
-            </h3>
-        @endunless
     </main>
 @endsection
