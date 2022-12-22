@@ -3,6 +3,7 @@ namespace App\Actions\MainActions;
 
 use App\Models\Game;
 use App\Models\Info;
+use App\Models\Price;
 use App\Models\Rule;
 use App\Models\Team;
 
@@ -28,6 +29,7 @@ class GetGameInfoAction
 
                 'infos' => Info::getInfosByGameId($gameId),
                 'rules' => Rule::getRulesByGameId($gameId),
+                'prices' => Price::getPriceFromIdGame($gameId),
                 'teams' => Team::getTeams(),
                 'teams_count' => Team::getCountTeams(),
 

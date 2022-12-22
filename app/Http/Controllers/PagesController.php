@@ -7,11 +7,11 @@ use App\Actions\UserActions\GetInfoForAccountAction;
 use App\Actions\MainActions\GetArchiveGamesAction;
 use App\Actions\MainActions\GetGameInfoAction;
 use App\Actions\MainActions\GetGamesAction;
-use App\Actions\MainActions\GetUpcomingGamesAction;
 use App\Actions\MainActions\SendEmailAction;
 use App\Actions\MainActions\StoreEmailAction;
 
 use App\Actions\MainActions\getOldDataOfPlayer;
+use App\Actions\PlayerActions\SetPriceForPlayerAction;
 use App\Actions\PlayerActions\StorePlayerAction;
 use App\Actions\PlayerActions\storePlayerWithoutRegistarionAction;
 
@@ -19,6 +19,7 @@ use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
 
 use App\Models\Game;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /** PagesController содержит основные контроллеры работающие на сайте. */
@@ -56,6 +57,12 @@ class PagesController extends Controller
     public function game(GetGameInfoAction $getGameInfo, string $gameName)
     {
         return view('game', $getGameInfo->handle($gameName));
+    }
+
+    public function storePrice(string $gameName, Request $request, SetPriceForPlayerAction $setPriceForPlayer)
+    {
+        $setPriceForPlayer->handle($request, $gameName);
+        return redirect()->route('game', $gameName);
     }
 
     /**
