@@ -1,6 +1,7 @@
-<input required {{ $attributes->class([
-    'w-full box-border text-white text-[1.1rem] px-5 py-3 font-medium rounded-xl ring-2 ring-subwhite placeholder:text-[#595959] placeholder:text-base
-     focus:outline-none out-of-range:ring-red placeholder:select-none'
+<input {{ $attributes->class([
+    'w-full box-border text-white text-[1.1rem] bg-transparent px-5 h-14 font-medium rounded-xl ring-2 ring-subwhite
+    focus:outline-none z-20 placeholder:text-subwhite placeholder:text-base placeholder:font-normal'
 ])->merge([
-
+    'autocapitalize' => 'none',
+    'spellcheck' => 'false',
 ]) }}>
