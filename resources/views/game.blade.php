@@ -48,6 +48,13 @@
         </div>
 
     {{-- prices section --}}
+    @if(Auth::user()->player->price != NULL)
+        @if (fillPlayer())
+            <h2 id="prices-title" class="flex m-auto">{{ __('You are already registered for the game') }}</h2>
+        @else
+            <h2 id="prices-title" class="flex m-auto">{{ __('Вы не заполнили данные') }}</h2>
+        @endif
+    @else
         <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
             <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
             <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
@@ -84,6 +91,7 @@
             </div>
         </div>
         <x-elems.separator class="my-10" />
+    @endif
 
 {{-- info section --}}
         <div class="flex flex-col md:flex-row w-full mt-10 md:justify-between relative">

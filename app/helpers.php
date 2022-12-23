@@ -4,6 +4,8 @@ use App\Models\Game;
 use App\Models\Player;
 use App\Models\Team;
 use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 if (! function_exists('isExistsDB'))
@@ -147,6 +149,25 @@ if (! function_exists('leaderTeam'))
             if($id === (int)$teams[$i]->leader_id) return true;
         }
         return false;
+    }
+}
+
+if (! function_exists('fillPlayer'))
+{
+    function fillPlayer()
+    {
+        $player = Auth::user()->player;
+
+        if (
+            $player->name != NULL &&
+            $player->surname != NULL &&
+            $player->callsign != NULL &&
+            $player->phone != NULL
+        )
+        {
+            return true;
+        }
+        else return false;
     }
 }
 
