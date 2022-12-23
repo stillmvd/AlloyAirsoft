@@ -1,20 +1,16 @@
 @extends('layouts.base')
 
 @section('content')
-    <main class="grow"> 
-        <div class="w-full flex justify-center">
-            <h1 class="text-4xl sm:text-6xl">
-                {{ __('Admin panel') }}
-            </h1>
-        </div>
-    
+    <main class="grow mt-12"> 
         <div class="w-full grid grid-cols-1 grid-rows-3 lg:grid-cols-2 xl:grid-cols-3 lg:grid-rows-1 gap-6">
-            <x-admin.block class="lg:col-span-2 xl:col-span-1 grow h-full">
-                <h3 class="px-6 pt-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
-                    {{ __('Upcoming games') }}
+
+{{-- nearby events card --}}
+            <x-admin.block class="lg:col-span-2 xl:col-span-1 grow h-full px-6 pb-6">
+                <h3 class="my-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
+                    {{ __('Nearby events') }}
                 </h3>
                 @if (1 > $games->where('finished', 0)->count())
-                    <div class="flex flex-row w-full mt-6 bg-dark/50 py-10 px-6 rounded-2xl">
+                    <div class="flex flex-row w-full mt-6 bg-dark/50 py-10 px-6 rounded-xl">
                         <b class="leading-none select-none">
                             {{ __('There are no games here') }}
                         </b>
@@ -22,7 +18,7 @@
                 @else
                     @foreach ($games as $game)
                         @if (0 == $game->finished)
-                            <a href="{{ route('game', $game->name) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                            <a href="{{ route('game', strtolower($game->name)) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-xl ease-out duration-100 hover:bg-dark">
                                 <b class="leading-none text-2xl lg:text-base lg:leading-none select-none">
                                     {{ $game->name }}
                                 </b>
@@ -43,12 +39,13 @@
                 @endif
             </x-admin.block>
     
-            <x-admin.block class="grow h-full">
-                <h3 class="px-6 pt-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
-                    {{ __('Finished games') }}
+{{-- finished events card --}}
+            <x-admin.block class="grow h-full px-6 pb-6">
+                <h3 class="my-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
+                    {{ __('Finished events') }}
                 </h3>
                 @if (1 > $games->where('finished', 1)->count())
-                    <div class="flex flex-row w-full mt-6 bg-dark/50 py-10 px-6 rounded-2xl">
+                    <div class="flex flex-row w-full mt-6 bg-dark/50 py-10 px-6 rounded-xl">
                         <b class="leading-none select-none">
                             {{ __('No game is over yet') }}
                         </b>
@@ -56,7 +53,7 @@
                 @else
                     @foreach ($games as $game)
                         @if (1 == $game->finished)
-                            <a href="{{ route('game', strtolower($game->name)) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                            <a href="{{ route('game', strtolower($game->name)) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-xl ease-out duration-100 hover:bg-dark">
                                 <b class="leading-none text-2xl lg:text-base lg:leading-none">
                                     {{ $game->name }}
                                 </b>
@@ -77,11 +74,20 @@
                 @endif
             </x-admin.block>
     
-            <x-admin.block class="grow h-full">
-                <h3 class="px-6 pt-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
+{{-- statistics card --}}
+            <x-admin.block class="grow h-full px-6 pb-6">
+                <h3 class="my-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
                     {{ __('Statistics') }}
                 </h3>
-                <a href="{{ route('players') }}" class="flex flex-row w-full justify-between mt-6 bg-dark/50 p-5 rounded-2xl ease-out duration-100 hover:bg-dark">
+                <div class="flex flex-row w-full justify-between bg-dark/50 p-5 rounded-xl">
+                    <b class="leading-none select-none">
+                        {{ __('Users') }}
+                    </b>
+                    <p class="leading-none w-3">
+                        {{ $users->count() }}
+                    </p>
+                </div>
+                <a href="{{ route('players') }}" class="flex flex-row w-full justify-between mt-3 bg-dark/50 p-5 rounded-xl ease-out duration-100 hover:bg-dark">
                     <b class="leading-none select-none">
                         {{ __('Players') }}
                     </b>
@@ -89,9 +95,9 @@
                         {{ $players->count() }}
                     </p>
                 </a>
-                <div class="flex flex-row w-full justify-between mt-3 bg-dark/50 p-5 rounded-2xl">
+                <div class="flex flex-row w-full justify-between mt-3 bg-dark/50 p-5 rounded-xl">
                     <b class="leading-none select-none">
-                        {{ __('Played games') }}
+                        {{ __('Finished events') }}
                     </b>
                     <p class="leading-none w-3">
                         {{ $games->where('finished', '1')->count() }}
@@ -101,61 +107,98 @@
         </div>
     
         <div class="w-full flex justify-center">
-            <h2 class="my-10">
+            <h2 class="mt-20 mb-10">
                 {{ __('Add new game') }}
             </h2>
         </div>
     
-        <form action="{{ route('create') }}" method="POST" class="flex flex-col gap-y-6 w-full md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%] mx-auto">
+        <form action="{{ route('create') }}" method="POST" class="flex flex-col xl:grid grid-cols-1 md:grid-cols-3 gap-6 w-full mx-auto">
             @csrf
-    
-            <h3 class="text-addictive">
-                {{ __('Card information') }}
-            </h3>
-            <x-admin.input class="bg-bg" placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
-            <x-admin.input class="bg-bg" placeholder="Game name" type="text" name="name" />
-            <x-elems.textarea class="bg-bg" placeholder="Game short info" name="info" />
-            <x-admin.input class="bg-bg" placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
-            <x-admin.input class="bg-bg" placeholder="Polygon" type="text" name="polygon" />
-    
-            <h3 class="text-addictive">
-                {{ __('Links') }}
-            </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <x-admin.input class="bg-bg" placeholder="Link Map Iframe" type="text" name="linkForIframe" />
-                <x-admin.input class="bg-bg" placeholder="Link Map Google" type="text" name="linkForGoogle" />
+
+{{-- card information --}}
+            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col gap-y-6 w-full md:w-2/3 xl:w-full mx-auto">
+                <h3 class="text-addictive my-6">
+                    {{ __('Card information') }}
+                </h3>
+                <x-admin.input placeholder="Game name" type="text" name="name" />
+                <x-admin.input placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
+                <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
+                <x-admin.input placeholder="Polygon" type="text" name="polygon" />
             </div>
     
-            <h3 class="text-addictive">
-                {{ __('Game information') }}
-            </h3>
-            <x-admin.textblock>
-                <x-admin.input class="bg-bg" placeholder="Title" type="text" name="title" />
-                <x-elems.textarea class="bg-bg" placeholder="Text" name="text" />
-                <x-admin.input min="1" max="3" type="number" class="bg-bg" placeholder="Levels" name="levels" />
-            </x-admin.textblock>
+{{-- map links --}}
+            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col gap-y-6 w-full md:w-2/3 xl:w-full mx-auto">
+                <h3 class="text-addictive my-6">
+                    {{ __('Links') }}
+                </h3>
+                <x-admin.input placeholder="Link Map Iframe" type="text" name="linkForIframe" />
+                <x-admin.input placeholder="Link Map Google" type="text" name="linkForGoogle" />
+            </div>
     
-            <h3 class="text-addictive">
-                {{ __('Game rules') }}
-            </h3>
-            <x-admin.textblock class="block">
-                <x-admin.input class="bg-bg" placeholder="Title" type="text" name="title" />
-                <x-elems.textarea class="bg-bg" placeholder="Text" name="text" />
-            </x-admin.textblock>
+{{-- game information --}}
+            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col gap-y-6 w-full md:w-2/3 xl:w-full mx-auto">
+                <h3 class="text-addictive my-6">
+                    {{ __('Game information') }}
+                </h3>
+                <x-admin.input min="1" max="3" type="number" placeholder="Levels" name="levels" />
+                <x-admin.input placeholder="Title" type="text" name="title" />
+                <x-elems.textarea placeholder="Text" name="text" />
+            </div>
     
-            <div id="added"></div>
-            <input id="count" type="number" class="hidden" value="1" name="count"/>
-            <x-elems.button class="bg-bg py-4" value="Add game" />
-    
+{{-- game prices --}}
+            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col justify-between w-full md:w-2/3 xl:w-full mx-auto">
+                <div>
+                    <h3 class="text-addictive my-6">
+                        {{ __('Game prices') }}
+                    </h3>
+                    <div class="flex flex-col gap-y-6">
+                        <h3>{{ __('Main price:') }}</h3>
+                        <x-admin.input placeholder="Price" type="number" name="mainPrice" />
+                        <h3>{{ __('Additional prices:') }}</h3>
+                        <div class="flex flex-col gap-y-6 pricesBlock">
+                            <x-admin.input placeholder="Service name" type="text" name="serviceName" />
+                            <x-admin.input placeholder="Price" type="number" name="servicePrice" />
+                        </div>
+                        <div id="pricesAdded" class="hidden"></div>
+                        <input id="pricesCount" type="number" class="hidden" value="1" name="pricesCount"/>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center md:flex-row md:justify-between w-full mt-6 mx-auto">
+                    <div class="md:place-self-end hover:text-green flex items-center justify-center text-subwhite text-base font-medium cursor-pointer rounded-xl hover:bg-dark/50 duration-100 ease-out bg-dark py-3 w-44 xl:w-40" onclick="addPriceColumns()">
+                        {{ 'Add' }}
+                    </div>
+                    <div class="md:place-self-start my-4 md:my-0 hover:text-red flex items-center justify-center text-subwhite text-base font-medium cursor-pointer rounded-xl hover:bg-dark/50 duration-100 ease-out bg-dark py-3 w-44 xl:w-40" onclick="removePriceColumns()">
+                        {{ 'Remove' }}
+                    </div>
+                </div>
+            </div>
+
+{{-- game rules --}}
+            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col justify-between gap-y-6 w-full md:w-2/3 xl:w-full mx-auto md:col-span-2">
+                <div>
+                    <h3 class="text-addictive my-6">
+                        {{ __('Game rules') }}
+                    </h3>
+                    <div class="flex flex-col gap-y-6 rulesBlock">
+                        <x-admin.input placeholder="Title" type="text" name="title" />
+                        <x-elems.textarea placeholder="Text" name="text" />
+                    </div>
+                </div>
+                <div id="rulesAdded" class="hidden"></div>
+                <input id="rulesCount" type="number" class="hidden" value="1" name="rulesCount"/>
+                <div class="flex flex-col items-center md:flex-row md:justify-between w-full mx-auto">
+                    <div class="md:place-self-end hover:text-green flex items-center justify-center text-subwhite text-base font-medium cursor-pointer rounded-xl hover:bg-dark/50 duration-100 ease-out bg-dark py-3 w-44 xl:w-40" onclick="addRulesColumns()">
+                        {{ 'Add' }}
+                    </div>
+                    <div class="md:place-self-start my-4 md:my-0 hover:text-red flex items-center justify-center text-subwhite text-base font-medium cursor-pointer rounded-xl hover:bg-dark/50 duration-100 ease-out bg-dark py-3 w-44 xl:w-40" onclick="removeRulesColumns()">
+                        {{ 'Remove' }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-span-3 py-4 mb-10 flex justify-center">
+                <x-elems.button class="py-3" value="Create" />
+            </div>
         </form>
-    
-        <div class="flex flex-col items-center md:flex-row md:justify-between w-full md:w-[50%] lg:w-[40%] xl:w-[30%] my-10 mx-auto">
-            <x-admin.button class="md:place-self-end my-4 md:my-0 hover:text-green" onclick="addColumns()">
-                {{ 'Add columns' }}
-            </x-admin.button>
-            <x-admin.button class="md:place-self-start my-4 md:my-0 hover:text-red" onclick="removeColumns()">
-                {{ 'Remove columns' }}
-            </x-admin.button>
-        </div>
     </main>
 @endsection
