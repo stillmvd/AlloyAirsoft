@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-    <main class="grow"> 
+    <main class="grow">
 
 {{-- information about the game --}}
         <div class="w-full grid gap-6 grid-cols-1 grid-rows-3 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-9">
@@ -46,7 +46,45 @@
                 <p class="leading-none whitespace-nowrap">{{ __('Get to the map') }}</p>
             </a>
         </div>
-    
+
+    {{-- prices section --}}
+        <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
+            <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
+            <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
+                <form action="{{ route('storePrice', strtolower($game->name)) }}" method="post">
+                    @csrf
+                    <div>
+                        <div class="flex flex-row items-center mb-4">
+                        <h3>{{ __('Total price:') }}</h3>
+                        <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2">100$</h3>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <input type="checkbox" checked disabled name="pass" id="pass" />
+                        <label class="label cursor-pointer w-min" for="pass">
+                            <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
+                            <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
+                        </label>
+                    </div>
+                    @foreach ($prices as $price)
+                        <div class="flex flex-row items-center">
+                            <input type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
+                            <label class="label cursor-pointer w-min" for="{{ $price->name }}">
+                                <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">
+                                    {{ $price->name }}
+                                </span>
+                                <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">
+                                    {{ $price->price . '$' }}
+                                </span>
+                            </label>
+                        </div>
+                        @endforeach
+                    </div>
+                    <x-elems.button class="py-2 px-10" value="Play" />
+                </form>
+            </div>
+        </div>
+        <x-elems.separator class="my-10" />
+
 {{-- info section --}}
         <div class="flex flex-col md:flex-row w-full mt-10 md:justify-between relative">
             <h2 id="info-title" class="mb-10 md:mb-0">{{ __('Info') }}</h2>
@@ -56,7 +94,7 @@
             </x-page.block>
             <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-xl z-0 ease-out duration-500" id="infoSquare"></div>
         </div>
-    
+
 {{-- rules section --}}
         <x-elems.separator class="my-10" />
         <div class="flex flex-col md:flex-row w-full md:justify-between relative">
@@ -75,47 +113,5 @@
             </x-page.block>
             <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-xl z-0 ease-out duration-500" id="rulesSquare"></div>
         </div>
-
-{{-- prices section --}}
-        @unless ($game->finished)
-            <x-elems.separator class="my-10" />
-            <div class="flex flex-col md:flex-row w-full md:justify-between relative">
-                <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
-                <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
-                    <div>
-                        <div class="flex flex-row items-center mb-4">
-                            <h3>{{ __('Total price:') }}</h3>
-                            <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2">100$</h3>
-                        </div>
-                        <div class="flex flex-row items-center">
-                            <input type="checkbox" checked disabled name="pass" id="pass" />
-                            <label class="label cursor-pointer w-min" for="pass">
-                                <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span> 
-                                <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span> 
-                            </label>
-                        </div>
-                        <div class="flex flex-row items-center">
-                            <input type="checkbox" name="gear" id="gear" />
-                            <label class="label cursor-pointer w-min" for="gear">
-                                <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Gear</span> 
-                                <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">20$</span>
-                            </label>
-                        </div>
-                        <div class="flex flex-row items-center">
-                            <input type="checkbox" name="gun" id="gun" />
-                            <label class="label cursor-pointer w-min" for="gun">
-                                <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Gun</span> 
-                                <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">40$</span>
-                            </label>
-                        </div>
-                    </div>
-                    <x-elems.button class="py-2 px-10" value="Play" />
-                </div>
-            </div>
-        @endunless
-    
-        @unless ($game->finished)
-
-        @endunless
     </main>
 @endsection
