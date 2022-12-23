@@ -9,7 +9,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('image/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('image/favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('image/favicon/site.webmanifest') }}">
-    @vite('resources/css/app.css')
+    {{-- tailwindcss --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- style css --}}
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <title>@yield('title','Alloy Airsoft')</title>
 </head>
 
