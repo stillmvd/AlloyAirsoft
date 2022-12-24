@@ -26,7 +26,7 @@ class Game extends Model
         'finished',
     ];
 
-    public function players(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function players()
     {
         return $this->belongsToMany(Player::class);
     }
@@ -34,9 +34,9 @@ class Game extends Model
     /**
      * Возращает незавершенные игры
      *
-     * @return array
+     *
      */
-    public static function getGames(): array
+    public static function getGames()
     {
         return self::get();
     }
@@ -44,9 +44,8 @@ class Game extends Model
     /**
      * Возращает завершенные игры
      *
-     * @return array
      */
-    public static function getFinishedGames(): array
+    public static function getFinishedGames()
     {
         return self::where('finished', '1')->get();
     }

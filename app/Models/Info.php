@@ -14,14 +14,7 @@ class Info extends Model
         'text',
     ];
 
-    /**
-     * Возращает инфо игры
-     *
-     * @param int $gameId Id игры
-     *
-     * @return array
-     */
-    public static function getInfosByGameId(int $gameId): array
+    public static function getInfosByGameId(int $gameId)
     {
         return self::where('game_id', $gameId)->get()->first();
     }

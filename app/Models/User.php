@@ -25,7 +25,7 @@ class User extends Authenticatable
         'player_id',
     ];
 
-    public function player(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function player()
     {
         return $this->belongsTo(Player::class);
     }

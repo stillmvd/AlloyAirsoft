@@ -14,7 +14,7 @@ class Achievement extends Model
         'nameAchievement', 'description', 'pathToachievement',
     ];
 
-    public function players(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function players()
     {
         return $this->belongsToMany(Player::class);
     }

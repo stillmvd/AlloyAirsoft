@@ -23,12 +23,12 @@ class Player extends Model
     ];
 
 
-    public function games(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function games()
     {
         return $this->belongsToMany(Game::class);
     }
 
-    public function achievements(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function achievements()
     {
         return $this->belongsToMany(Achievement::class);
     }

@@ -19,9 +19,8 @@ class Rule extends Model
      *
      * @param int $gameId Id игры
      *
-     * @return array
      */
-    public static function getRulesByGameId(int $gameId): array
+    public static function getRulesByGameId(int $gameId)
     {
         return self::where('game_id', $gameId)->get();
     }

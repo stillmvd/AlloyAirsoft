@@ -18,9 +18,8 @@ class Team extends Model
     /**
      * Возращает команды на игру
      *
-     * @return array
      */
-    public static function getTeams(): array
+    public static function getTeams()
     {
         return self::get();
     }
