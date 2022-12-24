@@ -154,8 +154,8 @@
                     <div class="flex flex-col gap-y-6">
                         <h3>{{ __('Prices:') }}</h3>
                         <div class="flex flex-col gap-y-6 pricesBlock">
-                            <x-admin.input placeholder="Service name" type="text" name="serviceName" />
-                            <x-admin.input placeholder="Price" type="number" name="servicePrice" />
+                            <x-admin.input placeholder="Service name" type="text" name="pricesTitle" />
+                            <x-admin.input placeholder="Price" type="number" name="pricesText" />
                         </div>
                         <div id="pricesAdded" class="hidden"></div>
                         <input id="pricesCount" type="number" class="hidden" value="1" name="pricesCount"/>

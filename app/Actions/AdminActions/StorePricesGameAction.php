@@ -20,8 +20,8 @@ class StorePricesGameAction
         if ($count <= 1)
         {
             DB::table('prices')->insert([
-                'name' => $request->input('mainPrice'),
-                'price' => $request->input('serviceName'),
+                'name' => $request->input('pricesTitle0'),
+                'price' => $request->input('pricesText0'),
                 'game_id' => $gameId,
             ]);
         }
@@ -29,8 +29,8 @@ class StorePricesGameAction
         {
             for($i = 0; $i < $count; $i++)
             {
-                $titlePrices = $request->input('mainPrice' . $i);
-                $textPrices = $request->input('serviceName' . $i);
+                $titlePrices = $request->input('pricesTitle' . $i);
+                $textPrices = $request->input('pricesText' . $i);
                 if (priceExists($titlePrices, $textPrices))
                 {
                     DB::table('prices')->insert([

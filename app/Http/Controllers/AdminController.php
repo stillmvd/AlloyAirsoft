@@ -32,11 +32,7 @@ use Illuminate\Http\Request;
 /** AdminController содержит основные контроллеры работающие в админке. */
 class AdminController extends Controller
 {
-    /**
-     * Входит в аккаунт
-     *
-     * @return view
-     */
+
     public function login()
     {
         return view('admin.login');
@@ -46,7 +42,7 @@ class AdminController extends Controller
      * Login для админа
      *
      * @param Request $request
-     * @return \Illuminate\View\View Возвращает главную страничку админки
+     * @return \Illuminate\Http\RedirectResponse Возвращает главную страничку админки
      */
     public function login_store(Request $request)
     {
