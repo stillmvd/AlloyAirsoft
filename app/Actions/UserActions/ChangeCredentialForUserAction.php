@@ -13,15 +13,15 @@ class ChangeCredentialForUserAction
      *
      * @param StoreCredentialForUserRequest $request
      *
-     * @return
+     * @return void
      */
-    public function handle(StoreCredentialForUserRequest $request)
+    public function handle(StoreCredentialForUserRequest $request): void
     {
         Player::find(Auth::user()->player_id)->update([
-            'name' => $request->namePlayer,
-            'surname' => $request->surnamePlayer,
-            'callsign' => $request->callsignPlayer,
-            'phone' => $request->phonePlayer,
+            'name' => $request->input('namePlayer'),
+            'surname' => $request->input('surnamePlayer'),
+            'callsign' => $request->input('callsignPlayer'),
+            'phone' => $request->input('phonePlayer'),
         ]);
     }
 }

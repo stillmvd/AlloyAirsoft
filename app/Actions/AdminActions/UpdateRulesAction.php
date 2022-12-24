@@ -15,9 +15,9 @@ class UpdateRulesAction
      * @param int $gameId id игры
      * @return void
      */
-    public function handle(Request $request, int $count, int $gameId)
+    public function handle(Request $request, int $count, int $gameId): void
     {
-        if ($request->count <= 1)
+        if ($request->input('rulesCount') <= 1)
         {
             DB::table('rules')->where('game_id', $gameId)->update([
                 'title' => $request->input('title0'),

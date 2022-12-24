@@ -10,11 +10,11 @@ class StoreInfosGameAction
     /**
      * Сохраняет в базу infos данные info для game c gameId
      *
-     * @param Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $gameId id игры
      * @return void
      */
-    public function handle(Request $request, int $gameId)
+    public function handle(Request $request, int $gameId): void
     {
         DB::table('infos')->insert([
             'title' => $request->input('title'),

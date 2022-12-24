@@ -15,7 +15,7 @@ class SaveAvatarsAction
      *
      * @return void
      */
-    public function handle(Request $request)
+    public function handle(Request $request): void
     {
         if ($request->file('avatar') != null)
         {

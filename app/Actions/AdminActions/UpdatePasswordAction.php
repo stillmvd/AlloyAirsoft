@@ -10,17 +10,18 @@ class UpdatePasswordAction
     /**
      * Обновляет пароль админа
      *
-     * @param Illuminate\Http\Request $request
-     * @return void
+     * @param Request $request
+     * @return bool
      */
-    public function update(Request $request)
+    public function update(Request $request): bool
     {
-        if(Hash::check($request->passwordOld, DB::table('users')->pluck('password')[0]))
+        if(Hash::check($request->input('passwordOld'), DB::table('users')->pluck('password')[0]))
         {
             DB::table('users')->update([
-               'password' => Hash::make($request->passwordNew),
+               'password' => Hash::make($request->input('passwordNew')),
             ]);
             return true;
         }
+        return false;
     }
 }

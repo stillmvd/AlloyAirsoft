@@ -12,26 +12,24 @@ class StoreUsersAction
     /**
      * Сохраняет пользователя и создает игрока без данных, соединяя их в бд
      *
-     * @param App\Http\Request\StoreUsersRequest $request Провалидированные данные для регистрации
+     * @param StoreUsersRequest $request Провалидированные данные для регистрации
      *
      * @return object Созданный юзер
      */
-    public function handle(StoreUsersRequest $request)
+    public function handle(StoreUsersRequest $request): object
     {
         $player = new Player([
-            'emailPlayer' => $request->emailPlayerForReg,
+            'emailPlayer' => $request->input('emailPlayerForReg'),
             'team_id' => '1002',
         ]);
         $player->save();
 
-        $user = User::create([
-            'email' => $request->emailPlayerForReg,
-            'password' => Hash::make($request->passwordForReg),
+        return User::create([
+            'email' => $request->input('emailPlayerForReg'),
+            'password' => Hash::make($request->input('passwordForReg')),
             'isActive' => true,
             'isAdmin' => false,
             'player_id' => $player->id,
         ]);
-
-        return $user;
     }
 }

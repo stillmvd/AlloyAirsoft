@@ -15,20 +15,18 @@ class GetInfoForAccountAction
      *
      * @return array
      */
-    public function handle(int $id)
+    public function handle(int $id): array
     {
         $player = Player::find(User::find($id)->player->id);
 
         $achievements = $player->achievements;
         $games = $player->games;
 
-        $data = [
+        return [
             'player' => $player,
             'games' => $games,
             'achievements' => $achievements,
             'team' => Team::where('leader_id', $id)->get(),
         ];
-
-        return $data;
     }
 }

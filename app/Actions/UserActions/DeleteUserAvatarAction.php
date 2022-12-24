@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class DeleteUserAvatarAction
 {
-    public function handle(int $id)
+    public function handle(int $id): void
     {
         $path = User::find($id)->pathToAvatar;
         User::find($id)->update(['pathToAvatar' => NULL]);

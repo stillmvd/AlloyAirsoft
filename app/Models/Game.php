@@ -5,6 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @method static where(string $string, int $gameId)
+ * @method static create(array $array)
+ * @method static find(int $gameId)
+ * @method static getUpcomingGames()
+ * @method static get()
+ */
 class Game extends Model
 {
     protected $fillable = [
@@ -19,7 +26,7 @@ class Game extends Model
         'finished',
     ];
 
-    public function players()
+    public function players(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Player::class);
     }
@@ -29,7 +36,7 @@ class Game extends Model
      *
      * @return array
      */
-    public static function getGames()
+    public static function getGames(): array
     {
         return self::get();
     }
@@ -39,7 +46,7 @@ class Game extends Model
      *
      * @return array
      */
-    public static function getFinishedGames()
+    public static function getFinishedGames(): array
     {
         return self::where('finished', '1')->get();
     }
@@ -49,7 +56,7 @@ class Game extends Model
      *
      * @return int
      */
-    public static function getCountGames()
+    public static function getCountGames(): int
     {
         return self::get()->count();
     }
@@ -61,7 +68,7 @@ class Game extends Model
      *
      * @return int
      */
-    public static function getIdByName(string $gameName)
+    public static function getIdByName(string $gameName): int
     {
         return self::where('name', $gameName)->get()[0]->id;
     }
@@ -72,7 +79,7 @@ class Game extends Model
      * @param  string $gameName
      * @return bool
      */
-    public static function hasGame(string $gameName)
+    public static function hasGame(string $gameName): bool
     {
         if (self::where('name', $gameName)->count() >= 1)
         {
@@ -91,7 +98,7 @@ class Game extends Model
      *
      * @return string
      */
-    public static function getNameById(int $gameId)
+    public static function getNameById(int $gameId): string
     {
         return self::find($gameId)->name;
     }
@@ -104,7 +111,7 @@ class Game extends Model
      *
      * @return void
      */
-    public static function attach(int $gameId, int $playerId)
+    public static function attach(int $gameId, int $playerId): void
     {
         if (DB::table('game_player')->where('player_id', $playerId)
             ->where('game_id', $gameId)->count() <= 0)

@@ -27,13 +27,19 @@ use App\Http\Requests\StoreContactInformation;
 use App\Http\Requests\UpdatePlayerRequest;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /** AdminController содержит основные контроллеры работающие в админке. */
 class AdminController extends Controller
 {
-
-    public function login()
+    /**
+     * Логин
+     *
+     * @return View
+     */
+    public function login() : View
     {
         return view('admin.login');
     }
@@ -42,9 +48,9 @@ class AdminController extends Controller
      * Login для админа
      *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse Возвращает главную страничку админки
+     * @return RedirectResponse Возвращает главную страничку админки
      */
-    public function login_store(Request $request)
+    public function login_store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'login' => 'required',
@@ -59,9 +65,9 @@ class AdminController extends Controller
     /**
      * Выхдит из админки
      *
-     * @return \Illuminate\Redirect Редирект на главную страничку
+     * @return RedirectResponse Редирект на главную страничку
      */
-    public function logout()
+    public function logout(): RedirectResponse
     {
         auth()->logout();
         return redirect()->route('index');
@@ -70,11 +76,11 @@ class AdminController extends Controller
     /**
      * Отображает главную страничку админки
      *
-     * @param App\Actions\getAdminInfoAction $getAdminInfo Получает информацию для админки
+     * @param GetAdminInfoAction $getAdminInfo Получает информацию для админки
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function index(GetAdminInfoAction $getAdminInfo)
+    public function index(GetAdminInfoAction $getAdminInfo): View
     {
         return view('admin.index', $getAdminInfo->handle());
     }
@@ -82,11 +88,11 @@ class AdminController extends Controller
     /**
      * Отображает страницу изменения данных
      *
-     * @param App\Actions\getAdminInfoAction $getAdminInfo Получает информацию для админки
+     * @param GetAdminInfoAction $getAdminInfo Получает информацию для админки
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function credential(GetAdminInfoAction $getAdminInfo)
+    public function credential(GetAdminInfoAction $getAdminInfo): View
     {
         return view('admin.credential', $getAdminInfo->handle());
     }
@@ -95,20 +101,20 @@ class AdminController extends Controller
      * Создает игру
      *
      * @param Request $request
-     * @param App\Actions\StoreGameAction $storeGame Сохраняет игру в базе данных данными из request-a
-     * @param App\Actions\StoreInfosGameAction $storeInfosGame Сохраняет информацию об игре в базе данных данными из request-a
-     * @param App\Actions\StoreRulesGameAction $storeRulesGame Сохраняет правила игры в базе данных данными из request-a
-     *
-     * @return \Illuminate\Redirect
+     * @param StoreGameAction $storeGame Сохраняет игру в базе данных данными из request-a
+     * @param StoreInfosGameAction $storeInfosGame Сохраняет информацию об игре в базе данных данными из request-a
+     * @param StoreRulesGameAction $storeRulesGame Сохраняет правила игры в базе данных данными из request-a
+     * @param StorePricesGameAction $storePricesGame
+     * @return RedirectResponse
      */
      public function create(Request $request, StoreGameAction $storeGame,
                             StoreInfosGameAction $storeInfosGame, StoreRulesGameAction $storeRulesGame,
-                            StorePricesGameAction $storePricesGame)
-    {
+                            StorePricesGameAction $storePricesGame): RedirectResponse
+     {
         $game = $storeGame->handle($request);
         $storeInfosGame->handle($request, $game->id);
-        $storeRulesGame->handle($request, $request->rulesCount, $game->id);
-        $storePricesGame->handle($request, $request->pricesCount, $game->id);
+        $storeRulesGame->handle($request, $request->input('rulesCount'), $game->id);
+        $storePricesGame->handle($request, $request->input('pricesCount'), $game->id);
         return redirect()->route('index')->with([
             'success' => 'The game "' . $game->name . '" was successfully created',
         ]);
@@ -117,12 +123,12 @@ class AdminController extends Controller
     /**
      * Возращает страничку редактирования игры
      *
-     * @param  int $gameId ID игры
-     * @param  App\Actions\GetInfoFromEditGameAction $getInfoFromEditGame Получает данные игры для их редактирования
+     * @param int $gameId ID игры
+     * @param GetInfoFromEditGameAction $getInfoFromEditGame Получает данные игры для их редактирования
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function edit(int $gameId, GetInfoFromEditGameAction $getInfoFromEditGame)
+    public function edit(int $gameId, GetInfoFromEditGameAction $getInfoFromEditGame): View
     {
         return view('admin.edit', $getInfoFromEditGame->handle($gameId));
     }
@@ -132,20 +138,20 @@ class AdminController extends Controller
      *
      * @param Request $request
      * @param int $gameId ID игры
-     * @param App\Actions\UpdateGameAction $updateGame Обновляет игру в базе данных
-     * @param App\Actions\UpdateInfosAction $updateInfos Обновляет информацию об игре в базе данных
-     * @param App\Actions\UpdateRulesAction $updateRules Обновляет правила игры в базе данных
+     * @param UpdateGameAction $updateGame Обновляет игру в базе данных
+     * @param UpdateInfosAction $updateInfos Обновляет информацию об игре в базе данных
+     * @param UpdateRulesAction $updateRules Обновляет правила игры в базе данных
      *
-     * @return \Illuminate\Redirect
+     * @return RedirectResponse
      */
     public function update(Request $request, int $gameId,
-                           UpdateGameAction $updateGame, UpdateInfosAction $updateInfos, UpdateRulesAction $updateRules)
+                           UpdateGameAction $updateGame, UpdateInfosAction $updateInfos, UpdateRulesAction $updateRules): RedirectResponse
     {
         $updateGame->handle($request, $gameId);
         $updateInfos->handle($gameId);
-        $updateRules->handle($request, $request->count, $gameId);
-        return redirect()->route('game', $request->name)->with([
-            'success' => 'The information for "' . $request->name . '" was updated',
+        $updateRules->handle($request, $request->input('count'), $gameId);
+        return redirect()->route('game', $request->input('name'))->with([
+            'success' => 'The information for "' . $request->input('name') . '" was updated',
         ]);
     }
 
@@ -153,11 +159,11 @@ class AdminController extends Controller
      * Удаляет игру
      *
      * @param int $gameId ID игры
-     * @param App\Acions\DeleteAllDataAction $deleteAllData Удаляет данные об игре
+     * @param DeleteAllDataAction $deleteAllData Удаляет данные об игре
      *
-     * @return \Illuminate\Redirect
+     * @return RedirectResponse
      */
-    public function delete(int $gameId, DeleteAllDataAction $deleteAllData)
+    public function delete(int $gameId, DeleteAllDataAction $deleteAllData) : RedirectResponse
     {
         $gameName = getNameGame($gameId);
         $deleteAllData->handle($gameId);
@@ -170,11 +176,11 @@ class AdminController extends Controller
     /**
      * Возращает страничку players
      *
-     * @param App\Acions\GetAllInfoAction $getAllInfo Получает все данные из базы данных
+     * @param GetAllInfoAction $getAllInfo Получает все данные из базы данных
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function players(GetAllInfoAction $getAllInfo)
+    public function players(GetAllInfoAction $getAllInfo): View
     {
         return view('admin.players', $getAllInfo->get());
     }
@@ -182,11 +188,11 @@ class AdminController extends Controller
     /**
      * Возращает страничку users
      *
-     * @param App\Acions\GetAllInfoUserAction $getAllInfoUser Получает все данные из базы данных о юзере
+     * @param GetAllInfoUserAction $getAllInfoUser Получает все данные из базы данных о юзере
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function users(GetAllInfoUserAction $getAllInfoUser)
+    public function users(GetAllInfoUserAction $getAllInfoUser): View
     {
         return view('admin.users', $getAllInfoUser->handle());
     }
@@ -194,12 +200,12 @@ class AdminController extends Controller
     /**
      *  Изменяет контактную информацию admin-а
      *
-     * @param App\Http\Request\StoreContactInformation $request
-     * @param App\Actions\UpdateContactAction $updateContact Обновляет контактные данные
+     * @param StoreContactInformation $request
+     * @param UpdateContactAction $updateContact Обновляет контактные данные
      *
-     * @return \Illuminate\Redirect
+     * @return RedirectResponse
      */
-    public function contactInformation(StoreContactInformation $request, UpdateContactAction $updateContact)
+    public function contactInformation(StoreContactInformation $request, UpdateContactAction $updateContact): RedirectResponse
     {
         $updateContact->update($request);
         return redirect()->route('credential')->with([
@@ -210,12 +216,12 @@ class AdminController extends Controller
     /**
      * Изменяет игровую информацию admin-а
      *
-     * @param App\Http\Request\UpdatePlayerRequest $request
-     * @param App\Actions\UpdatePlayerAction $updatePlayer Обновляет игровые данные admin-а
+     * @param UpdatePlayerRequest $request
+     * @param UpdatePlayerAction $updatePlayer Обновляет игровые данные admin-а
      *
-     * @return \Illuminate\Redirect
+     * @return RedirectResponse
      */
-    public function playerInformation(UpdatePlayerRequest $request, UpdatePlayerAction $updatePlayer)
+    public function playerInformation(UpdatePlayerRequest $request, UpdatePlayerAction $updatePlayer): RedirectResponse
     {
         $updatePlayer->handle($request);
         return redirect()->route('credential')->with([
@@ -226,12 +232,12 @@ class AdminController extends Controller
     /**
      * Обновляет пароль
      *
-     * @param Illuminate\Http\Request $request
-     * @param App\Actions\UpdatePasswordAction $updatePassword Обновляет пароль
+     * @param Request $request
+     * @param UpdatePasswordAction $updatePassword Обновляет пароль
      *
-     * @return \Illuminate\Redirect
+     * @return RedirectResponse
      */
-    public function adminInformation(Request $request, UpdatePasswordAction $updatePassword)
+    public function adminInformation(Request $request, UpdatePasswordAction $updatePassword): RedirectResponse
     {
         if ($updatePassword->update($request)) return redirect()->route('credential')->with([
                 'success' => 'Password was changed',
@@ -245,25 +251,26 @@ class AdminController extends Controller
      * Удаляет playera по id
      *
      * @param int $playerId id playera
-     * @param App\Actions\DeletePlayerAction $deletePlayer Удаляет игрока по id из базы данных players
+     * @param DeletePlayerAction $deletePlayer Удаляет игрока по id из базы данных players
      *
-     * @return \Illuminate\Redirect
+     * @return RedirectResponse
      */
-    public function deletePlayer(int $playerId, DeletePlayerAction $deletePlayer)
+    public function deletePlayer(int $playerId, DeletePlayerAction $deletePlayer): RedirectResponse
     {
         return redirect()->route('players')->with([
             'success' => 'Players "' . $deletePlayer->handle($playerId) . '" was successfully deleted'
         ]);
     }
+
     /**
      * Удаляет Usera по id
      *
-     * @param int $playerId id Usera
-     * @param App\Actions\DeleteUserAction $deleteUser Удаляет юзера по id из базы данных users
+     * @param int $userId
+     * @param DeleteUserAction $deleteUser Удаляет юзера по id из базы данных users
      *
-     * @return \Illuminate\Redirect
+     * @return RedirectResponse
      */
-    public function deleteUser(int $userId, DeleteUserAction $deleteUser)
+    public function deleteUser(int $userId, DeleteUserAction $deleteUser): RedirectResponse
     {
         return redirect()->route('users')->with([
             'success' => 'User "' . $deleteUser->handle($userId) . '" was successfully deleted'
@@ -274,12 +281,12 @@ class AdminController extends Controller
      * Добавляет и убирает очивки у игроков
      *
      * @param int $idPlayer id игрока
-     * @param Illuminate\Http\Request $request
-     * @param App\Actions\GetAchievementsAction $getAchievements Добавляет и убирает очивки
+     * @param Request $request
+     * @param GetAchievementsAction $getAchievements Добавляет и убирает очивки
      *
-     * @return \Illuminate\Redirect
+     * @return RedirectResponse
      */
-    public function getAchievements(int $idPlayer, Request $request, GetAchievementsAction $getAchievements)
+    public function getAchievements(int $idPlayer, Request $request, GetAchievementsAction $getAchievements): RedirectResponse
     {
         $getAchievements->handle($request, $idPlayer);
         return redirect()->back();

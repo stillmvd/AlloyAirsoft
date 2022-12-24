@@ -11,15 +11,13 @@ class GetGamesAction
      *
      * @return array
      */
-    public function handle()
+    public function handle(): array
     {
-        $data = [
+        return [
             'games' => Game::getGames(),
             'games_count' => Game::getCountGames(),
             'phone' => DB::table('contact')->pluck('phone')[0],
             'email' => DB::table('contact')->pluck('email')[0],
         ];
-
-        return $data;
     }
 }

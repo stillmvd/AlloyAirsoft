@@ -12,13 +12,14 @@ class DeleteUserAction
      * @param int $user Id Пользователя
      * @return string
      */
-    public function handle(int $user)
+    public function handle(int $user): string
     {
         if (User::where('id', $user)->count() >= 1)
         {
-            $id = User::where('id', $user)->get()[0]->id;
+            $userName = User::where('id', $user)->get()[0]->name;
             User::where('id', $user)->delete();
-            return $id;
+            return $userName;
         }
+        return '';
     }
 }

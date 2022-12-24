@@ -7,16 +7,18 @@ use App\Actions\UserActions\StoreUsersAction;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUsersRequest;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class AuthController extends Controller
 {
     /**
      * Возращает страничку логина
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function account()
+    public function account(): View
     {
         return view('auth.account');
     }
@@ -24,9 +26,9 @@ class AuthController extends Controller
     /**
      * Возращает страничку логина
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function register()
+    public function register(): View
     {
         return view('auth.registration');
     }
@@ -34,12 +36,12 @@ class AuthController extends Controller
     /**
      * Регистрация
      *
-     * @param App\Http\Request\StoreUsersRequest $request
-     * @param App\Actions\StoreUsersAction $storeUsers Создает и сохраняет юзера
+     * @param StoreUsersRequest $request
+     * @param StoreUsersAction $storeUsers Создает и сохраняет юзера
      *
-     * @return Illuminate\Redirect\
+     * @return RedirectResponse
      */
-    public function register_store(StoreUsersRequest $request, StoreUsersAction $storeUsers)
+    public function register_store(StoreUsersRequest $request, StoreUsersAction $storeUsers): RedirectResponse
     {
         $user = $storeUsers->handle($request);
 
@@ -55,11 +57,11 @@ class AuthController extends Controller
      *
      * @param LoginUserRequest $request
      *
-     * @return Illuminate\Redirect\
+     * @return RedirectResponse
      */
-    public function login_store(LoginUserRequest $request)
+    public function login_store(LoginUserRequest $request): RedirectResponse
     {
-        if (Auth::attempt(['email' => $request->emailPlayerForLog, 'password' => $request->passwordForLog]))
+        if (Auth::attempt(['email' => $request->input('emailPlayerForLog'), 'password' => $request->input('passwordForLog')]))
             return redirect()->route('index')->with([
                 'success' => "You're in account",
             ]);
@@ -69,9 +71,9 @@ class AuthController extends Controller
     /**
      * Выход из аккаунта
      *
-     * @return Illuminate\Redirect\
+     * @return RedirectResponse
      */
-    public function logout()
+    public function logout(): RedirectResponse
     {
         Auth::logout();
         return redirect()->route('index')->with([

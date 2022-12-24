@@ -10,10 +10,10 @@ class StoreGameAction
     /**
      * Заносит данные в таблиу games
      *
-     * @param Illuminate\Http\Request $request
+     * @param Request $request
      * @return object
      */
-    public function handle(Request $request)
+    public function handle(Request $request): object
     {
         return Game::create([
             'date' => $request->input('date'),
@@ -23,6 +23,6 @@ class StoreGameAction
             'linkForIframe' => $request->input('linkForIframe'),
             'linkForGoogle' => $request->input('linkForGoogle'),
             'finished' => 0,
-        ]);;
+        ]);
     }
 }

@@ -10,14 +10,14 @@ class UpdateContactAction
     /**
      * Обнавляет в базе данных contact email и phone
      *
-     * @param App\Http\Request\StoreContactInformation $request
+     * @param StoreContactInformation $request
      * @return void
      */
-    public function update(StoreContactInformation $request)
+    public function update(StoreContactInformation $request): void
     {
         DB::table('contact')->update([
-            'email' => $request->email,
-            'phone' => $request->phone,
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
         ]);
     }
 }

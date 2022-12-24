@@ -11,18 +11,18 @@ class UpdatePlayerAction
     /**
      * Обновляет
      *
-     * @param App\Http\Request\UpdatePlayerRequest $request
-     * @return
+     * @param UpdatePlayerRequest $request
+     * @return void
      */
-    public function handle(UpdatePlayerRequest $request)
+    public function handle(UpdatePlayerRequest $request): void
     {
         Player::find(1001)->update([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'callsign' => $request->callsign,
-            'emailPlayer' => $request->emailPlayer,
-            'phone' => $request->phone,
-            'team_id' => $request->team_id,
+            'name' => $request->input('name'),
+            'surname' => $request->input('surname'),
+            'callsign' => $request->input('callsign'),
+            'emailPlayer' => $request->input('emailPlayer'),
+            'phone' => $request->input('phone'),
+            'team_id' => $request->input('team_id'),
         ]);
     }
 }

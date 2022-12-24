@@ -11,7 +11,7 @@ class StoreEmailAction
      * @param string $email
      * @return void
      */
-    public function handle(string $email)
+    public function handle(string $email): void
     {
         DB::table('emails')->insert([
             'email' => $email,

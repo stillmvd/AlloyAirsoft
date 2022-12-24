@@ -11,15 +11,13 @@ class GetUpcomingGamesAction
      *
      * @return array
      */
-    public function handle()
+    public function handle(): array
     {
-        $data = [
+        return [
             'games' => Game::getUpcomingGames(),
             'games_count' => Game::getCountGames(),
             'phone' => DB::table('contact')->pluck('phone')[0],
             'email' => DB::table('contact')->pluck('email')[0],
         ];
-
-        return $data;
     }
 }

@@ -11,10 +11,10 @@ class DeleteAllDataAction
     /**
      * Удаляет game infos rules из базы данных
      *
-     * @param int gameId
+     * @param int $gameId
      * @return void
      */
-    public function handle(int $gameId)
+    public function handle(int $gameId): void
     {
         DB::table('infos')->where('game_id', $gameId)->delete();
         DB::table('rules')->where('game_id', $gameId)->delete();

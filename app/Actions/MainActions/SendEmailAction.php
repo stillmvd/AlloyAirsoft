@@ -14,7 +14,7 @@ class SendEmailAction
      * @param string $message Сообщение письма
      * @return void
      */
-    public function handle(string $email, string $title, string $message)
+    public function handle(string $email, string $title, string $message): void
     {
         Mail::to($email)->send(new Mailing([
             'title' => $title,

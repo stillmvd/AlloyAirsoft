@@ -12,7 +12,7 @@ class UpdateInfosAction
      * @param int $gameId id игры
      * @return void
      */
-    public function handle(int $gameId)
+    public function handle(int $gameId): void
     {
         DB::table('infos')->where('game_id', $gameId)->update([
             'title' => request('title'),

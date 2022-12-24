@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $string, int $gameId)
+ */
 class Info extends Model
 {
     protected $fillable = [
@@ -18,8 +21,8 @@ class Info extends Model
      *
      * @return array
      */
-    public static function getInfosByGameId(int $gameId)
+    public static function getInfosByGameId(int $gameId): array
     {
-        return Info::where('game_id', $gameId)->get()->first();
+        return self::where('game_id', $gameId)->get()->first();
     }
 }

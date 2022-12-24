@@ -6,16 +6,14 @@ use App\Models\User;
 
 class GetAllInfoUserAction
 {
-    public function handle()
+    public function handle(): array
     {
-        $data = [
+        return [
             'users' => User::all(),
             'users_count' => getCountRecordOfTable('users'),
 
             'emails' => getAllDataOfTable('emails'),
             'emails_count' => getCountRecordOfTable('emails'),
         ];
-
-        return $data;
     }
 }

@@ -4,7 +4,8 @@ namespace App\Actions\MainActions;
 
 class GetAllInfoAction
 {
-    public function get(){
+    public function get(): array
+    {
         return [
             'teams' => getAllDataOfTable('teams'),
             'games' => getAllDataOfTable('games'),

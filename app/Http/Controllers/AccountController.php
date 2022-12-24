@@ -9,7 +9,10 @@ use App\Actions\UserActions\SaveAvatarsAction;
 use App\Http\Requests\StoreCredentialForUserRequest;
 use App\Http\Requests\StoreTeamRequest;
 use App\Models\Team;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+
 
 class AccountController extends Controller
 {
@@ -17,11 +20,11 @@ class AccountController extends Controller
      * Description
      *
      * @param Request $request
-     * @param App\Actions\UserActions\SaveAvatarsAction $saveAvatars Сохраняет аватарку юзера
+     * @param SaveAvatarsAction $saveAvatars Сохраняет аватарку юзера
      *
-     * @return Illuminate\Redirect\
+     * @return RedirectResponse
      */
-    public function saveAvatar(Request $request, SaveAvatarsAction $saveAvatars)
+    public function saveAvatar(Request $request, SaveAvatarsAction $saveAvatars): RedirectResponse
     {
         $saveAvatars->handle($request);
         return redirect()->back();
@@ -31,11 +34,11 @@ class AccountController extends Controller
      * Удаляет аватар
      *
      * @param int $id id юзера
-     * @param App\Actions\UserActions\DeleteUserAvatarAction $deleteUserAvatar
+     * @param DeleteUserAvatarAction $deleteUserAvatar
      *
-     * @return Illuminate\Redirect\
+     * @return RedirectResponse
      */
-    public function deleteAvatar(int $id, DeleteUserAvatarAction $deleteUserAvatar)
+    public function deleteAvatar(int $id, DeleteUserAvatarAction $deleteUserAvatar) : RedirectResponse
     {
         $deleteUserAvatar->handle($id);
         return redirect()->back();
@@ -45,32 +48,32 @@ class AccountController extends Controller
      * Description
      *
      * @param StoreCredentialForUserRequest $request Провалидированные данные
-     * @param App\Actions\UserActions\ChangeCredentialForUserAction $changeCredentialForUser Обновляет данные плеера
+     * @param ChangeCredentialForUserAction $changeCredentialForUser Обновляет данные плеера
      *
-     * @return Illuminate\Redirect\
+     * @return RedirectResponse
      */
     public function changeCredentialForUser(StoreCredentialForUserRequest $request,
-                    ChangeCredentialForUserAction $changeCredentialForUser)
+                    ChangeCredentialForUserAction $changeCredentialForUser) : RedirectResponse
     {
         $changeCredentialForUser->handle($request);
         return redirect()->back();
     }
 
-    public function createTeam()
+    public function createTeam() : View
     {
         return view('account.createTeam');
     }
 
-    public function storeTeam(StoreTeamRequest $request, int $id)
+    public function storeTeam(StoreTeamRequest $request, int $id): RedirectResponse
     {
         Team::create([
-            'name' => $request->name,
-            'description' => $request->description,
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
             'leader_id' => $id,
         ]);
 
         return redirect()->route('personal_account', ['id' => $id])->with([
-            'succsess' => $request->name,
+            'success' => $request->input('name'),
         ]);
     }
 }

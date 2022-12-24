@@ -10,7 +10,7 @@ class StorePlayerAction
     /**
      * Создает запись в базе данных Players и заносит туда данные из request и привязывает игрока к игре
      *
-     * @param App\Http\Requests\StoreFormRequest $request
+     * @param StoreFormRequest $request
      * @param int $gameId id игры
      * @return void
      */
@@ -19,12 +19,12 @@ class StorePlayerAction
         $player = new Player([
             'created_at' => now(),
             'game_id' => $gameId,
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'callsign' => $request->callsign,
-            'emailPlayer' => $request->emailPlayer,
-            'phone' => $request->phone,
-            'team_id' =>  $request->team,
+            'name' => $request->input('name'),
+            'surname' => $request->input('surname'),
+            'callsign' => $request->input('callsign'),
+            'emailPlayer' => $request->input('emailPlayer'),
+            'phone' => $request->input('phone'),
+            'team_id' =>  $request->input('team_id'),
         ]);
         $player->save();
 

@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $string, int $id)
+ * @method static create(array $array)
+ * @method static get()
+ */
 class Team extends Model
 {
     use HasFactory;
@@ -15,18 +20,18 @@ class Team extends Model
      *
      * @return array
      */
-    public static function getTeams()
+    public static function getTeams(): array
     {
-        return Team::get();
+        return self::get();
     }
 
     /**
      * Возращает количество команд
      *
-     * @return
+     * @return mixed
      */
     public static function getCountTeams()
     {
-        return Team::get()->count();
+        return self::get()->count();
     }
 }

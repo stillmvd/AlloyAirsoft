@@ -16,9 +16,9 @@ class GetAchievementsAction
      *
      * @return void
      */
-    public function handle(Request $request, int $idPlayer)
+    public function handle(Request $request, int $idPlayer): void
     {
-        if ($request->Actor == 'on')
+        if ($request->input('Actor') == 'on')
         {
             if (DB::table('achievement_player')->where('achievement_id', 1)->where('player_id', $idPlayer)->count() == 0)
             {
@@ -29,7 +29,7 @@ class GetAchievementsAction
         {
             Achievement::find(1)->players()->detach($idPlayer);
         }
-        if ($request->Spy == 'on')
+        if ($request->input('Spy') == 'on')
         {
             if (DB::table('achievement_player')->where('achievement_id', 2)->where('player_id', $idPlayer)->count() == 0)
             {
@@ -40,7 +40,7 @@ class GetAchievementsAction
         {
             Achievement::find(2)->players()->detach($idPlayer);
         }
-        if ($request->Villain == 'on')
+        if ($request->input('Villain') == 'on')
         {
             if (DB::table('achievement_player')->where('achievement_id', 3)->where('player_id', $idPlayer)->count() == 0)
             {

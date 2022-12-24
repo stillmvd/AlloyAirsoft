@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $string, int $gameId)
+ */
 class Rule extends Model
 {
     protected $fillable = [
@@ -18,8 +21,8 @@ class Rule extends Model
      *
      * @return array
      */
-    public static function getRulesByGameId(int $gameId)
+    public static function getRulesByGameId(int $gameId): array
     {
-        return Rule::where('game_id', $gameId)->get();
+        return self::where('game_id', $gameId)->get();
     }
 }

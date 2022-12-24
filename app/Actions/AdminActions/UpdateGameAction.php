@@ -14,7 +14,7 @@ class UpdateGameAction
      * @param int $gameId id игры
      * @return object
      */
-    public function handle(Request $request, int $gameId)
+    public function handle(Request $request, int $gameId): object
     {
         $game = Game::find($gameId);
 

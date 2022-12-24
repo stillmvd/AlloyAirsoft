@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @method static find(int $int)
+ * @method static where(string $string, int $gameId)
+ *
+ */
 class Player extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -17,12 +22,13 @@ class Player extends Model
         'emailPlayer', 'phone', 'price'
     ];
 
-    public function games()
+
+    public function games(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Game::class);
     }
 
-    public function achievements()
+    public function achievements(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Achievement::class);
     }

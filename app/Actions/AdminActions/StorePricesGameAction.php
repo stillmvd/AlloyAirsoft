@@ -10,12 +10,12 @@ class StorePricesGameAction
     /**
      * Сохраняет прайсы в prices для game c gameId
      *
-     * @param Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $count Количество правил
      * @param int $gameId Id Игры
      * @return void
      */
-    public function handle(Request $request, int $count, int $gameId)
+    public function handle(Request $request, int $count, int $gameId): void
     {
         if ($count <= 1)
         {

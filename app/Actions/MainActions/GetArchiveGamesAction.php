@@ -12,9 +12,9 @@ class GetArchiveGamesAction
      *
      * @return array
      */
-    public function handle()
+    public function handle(): array
     {
-        $data = [
+        return [
             'teams' => Team::getTeams(),
 
             'games' => Game::getFinishedGames(),
@@ -23,7 +23,5 @@ class GetArchiveGamesAction
             'phone' => DB::table('contact')->pluck('phone')[0],
             'email' => DB::table('contact')->pluck('email')[0],
         ];
-
-        return $data;
     }
 }

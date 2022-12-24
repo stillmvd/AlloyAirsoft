@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SetPriceForPlayerAction
 {
-    public function handle(Request $request, string $gameName)
+    public function handle(Request $request, string $gameName): void
     {
         $user = Auth::user();
         $player = Player::find($user->player_id);

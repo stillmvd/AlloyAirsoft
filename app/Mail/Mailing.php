@@ -11,6 +11,8 @@ class Mailing extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $email;
+
     /**
      * Create a new message instance.
      *
@@ -26,7 +28,7 @@ class Mailing extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): static
     {
         return $this->subject($this->email['title'])
                 ->view('mails.index')->with(['text' => $this->email['message']]);

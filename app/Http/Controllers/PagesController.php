@@ -13,14 +13,17 @@ use App\Actions\MainActions\StoreEmailAction;
 use App\Actions\MainActions\getOldDataOfPlayer;
 use App\Actions\PlayerActions\SetPriceForPlayerAction;
 use App\Actions\PlayerActions\StorePlayerAction;
-use App\Actions\PlayerActions\storePlayerWithoutRegistarionAction;
+use App\Actions\PlayerActions\StorePlayerWithoutRegistrationAction;
 
+use App\Http\Controllers\Illuminate\Redirect\Редиректим;
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
 
 use App\Models\Game;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 /** PagesController содержит основные контроллеры работающие на сайте. */
 class PagesController extends Controller
@@ -28,10 +31,10 @@ class PagesController extends Controller
     /**
      * Возвращает главную страницу сайта
      *
-     * @param App\Actions\GetGamesAction $getGames Получает из actiona игры которые не завершились
-     * @return \Illuminate\View\View
+     * @param GetGamesAction $getGames Получает из actiona игры которые не завершились
+     * @return View
      */
-    public function index(GetGamesAction $getGames)
+    public function index(GetGamesAction $getGames): View
     {
         return view('index', $getGames->handle());
     }
@@ -39,10 +42,10 @@ class PagesController extends Controller
     /**
      * Возвращает страницу архивных игр
      *
-     * @param App\Actions\GetArchiveGamesAction $getArchiveGames Получает из actiona игры которые завершились
-     * @return \Illuminate\View\View
+     * @param GetArchiveGamesAction $getArchiveGames Получает из actiona игры которые завершились
+     * @return View
      */
-    public function archive(GetArchiveGamesAction $getArchiveGames)
+    public function archive(GetArchiveGamesAction $getArchiveGames): View
     {
         return view('archive', $getArchiveGames->handle());
     }
@@ -50,16 +53,16 @@ class PagesController extends Controller
     /**
      * Возращает страницу самой игры
      *
-     * @param App\Actions\GetGameInfoAction $getGameInfo Получает из actiona информацию об игре
+     * @param GetGameInfoAction $getGameInfo Получает из actiona информацию об игре
      * @param string $gameName Имя игры
-     * @return Illuminate\View\View
+     * @return View
      */
-    public function game(GetGameInfoAction $getGameInfo, string $gameName)
+    public function game(GetGameInfoAction $getGameInfo, string $gameName) : View
     {
         return view('game', $getGameInfo->handle($gameName));
     }
 
-    public function storePrice(string $gameName, Request $request, SetPriceForPlayerAction $setPriceForPlayer)
+    public function storePrice(string $gameName, Request $request, SetPriceForPlayerAction $setPriceForPlayer): RedirectResponse
     {
         $setPriceForPlayer->handle($request, $gameName);
         return redirect()->route('game', $gameName);
@@ -69,11 +72,11 @@ class PagesController extends Controller
      * Возращаем страницу аккаунта пользователя по его id
      *
      * @param int $id
-     * @param App\Actions\GetInfoForAccountAction $getInfoForAccount получаем данные игрока
+     * @param GetInfoForAccountAction $getInfoForAccount получаем данные игрока
      *
-     * @return Illuminate\View\View
+     * @return View
      */
-    public function account(int $id, GetInfoForAccountAction $getInfoForAccount)
+    public function account(int $id, GetInfoForAccountAction $getInfoForAccount): View
     {
         return view('personalAcount', $getInfoForAccount->handle($id));
     }
@@ -81,21 +84,21 @@ class PagesController extends Controller
     /**
      * Сохраняет информацию об игроке и отправляет информацию о игре ему на почту
      *
-     * @param  App\Http\Request\StoreFormRequest $request Получает данные об игроке после валидации из request-а
-     * @param  int $gameId ID игры в которой игрок зарегистрировался
-     * @param  App\Actions\getOldDataOfPlayer $getOldData При неправильном заполнении полей получаем значения из предыдущего запроса
-     * @param  App\Actions\StorePlayerAction $storePlayer Сохраняем игрока
-     * @param  App\Actions\SendEmailAction $sendEmail Отправляем ему сообщение об успешной регистрации
-     * @return Illuminate\Redirect\ Редиректим на страницу игры
+     * @param StoreFormRequest $request Получает данные об игроке после валидации из request-а
+     * @param int $gameId ID игры в которой игрок зарегистрировался
+     * @param getOldDataOfPlayer $getOldData При неправильном заполнении полей получаем значения из предыдущего запроса
+     * @param StorePlayerAction $storePlayer Сохраняем игрока
+     * @param SendEmailAction $sendEmail Отправляем ему сообщение об успешной регистрации
+     * @return RedirectResponse на страницу игры
      */
     public function storePlayers(StoreFormRequest $request, int $gameId, getOldDataOfPlayer $getOldData,
-                                  StorePlayerAction $storePlayer, SendEmailAction $sendEmail)
+                                  StorePlayerAction $storePlayer, SendEmailAction $sendEmail): RedirectResponse
     {
         $gameName = Game::getNameById($gameId);
         $getOldData->handle($request);
 
         $storePlayer->handle($request, $gameId);
-        $sendEmail->handle($request->emailPlayer,
+        $sendEmail->handle($request->input('emailPlayer'),
                 'Вы успешно заригистрировались на игру',
                 'Вы успешно заригистрировались на игру');
 
@@ -107,16 +110,16 @@ class PagesController extends Controller
     /**
      * Сохраняем email для рассылки
      *
-     * @param  App\Http\Requset\StoreEmailRequest $request Получаем email для рассылки
-     * @param  App\Actions\StoreEmailAction $storeEmail Сохраняем email
-     * @param  App\Actions\SendEmailAction $sendEmail Отправляем сообщение
-     * @return Illuminate\Redirect\ Редиректим на главную страницу
+     * @param StoreEmailRequest $request Получаем email для рассылки
+     * @param StoreEmailAction $storeEmail Сохраняем email
+     * @param SendEmailAction $sendEmail Отправляем сообщение
+     * @return RedirectResponse на главную страницу
      */
     public function saveEmail(StoreEmailRequest $request,
-                              StoreEmailAction $storeEmail, SendEmailAction $sendEmail)
+                              StoreEmailAction $storeEmail, SendEmailAction $sendEmail): RedirectResponse
     {
         $request->old('email');
-        if(isExistsDB($request->email))
+        if(isExistsDB($request->input('email')))
         {
             return redirect()->back()->with(
                 ['error' => 'You have already subscribed to the newsletter!']
@@ -124,8 +127,8 @@ class PagesController extends Controller
         }
         else
         {
-            $storeEmail->handle($request->email);
-            $sendEmail->handle($request->email,
+            $storeEmail->handle($request->input('email'));
+            $sendEmail->handle($request->input('email'),
                     'Регистрация на игру',
                     'Вы успешно зарегистрировались на игру');
 
@@ -135,18 +138,4 @@ class PagesController extends Controller
         }
     }
 
-    /**
-     * Регистрирует пользователя на игру если он уже есть как пользователь
-     *
-     * @param int $gameId id игры
-     *
-     * @return Illuminate\Redirect\
-     */
-    public function storePlayerWithoutRegistarion(int $gameId)
-    {
-        $storePlayer = new storePlayerWithoutRegistarionAction($gameId, Auth::user()->player->id);
-        $storePlayer->handle();
-
-        return redirect()->route('game', strtolower(Game::getNameById($gameId)));
-    }
 }
