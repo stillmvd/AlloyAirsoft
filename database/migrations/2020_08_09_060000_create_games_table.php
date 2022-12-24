@@ -14,7 +14,6 @@ return new class extends Migration
 
             $table->date('date');
             $table->string('name');
-            $table->text('info');
             $table->time('time');
             $table->string('polygon');
             $table->string('linkForIframe');

@@ -16,9 +16,6 @@ class GamesSeeder extends Seeder
             'linkForIframe' => 'https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6937.744505265537!2d-78.69070815757044!3d44.04823907288548!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2sru!4v1667375703830!5m2!1sru!2sru',
             'linkForGoogle' => 'https://goo.gl/maps/xgxFBDFYjZ8Dvi4ZA',
             'polygon' => 'Clarington Woods',
-            'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
-Number of enemy teams: unknown
-Amount of locals on the territory: unknown',
             'date' => '2022.10.06',
             'time' => '10:30:00',
             'finished' => '1',
@@ -74,9 +71,7 @@ According to our records, you may also be interfered with by our â€œColleaguesâ€
             'linkForIframe' => 'https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6937.744505265537!2d-78.69070815757044!3d44.04823907288548!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2sru!4v1667375703830!5m2!1sru!2sru',
             'linkForGoogle' => 'https://goo.gl/maps/xgxFBDFYjZ8Dvi4ZA',
             'polygon' => 'Warington Cloods',
-            'info' => 'A 24 hours mission to find and identify signal marks on the enemy territory with small fire team.
-Number of enemy teams: unknown
-Amount of locals on the territory: unknown',
+
             'date' => '2022.12.25',
             'time' => '14:00:00',
         ]);

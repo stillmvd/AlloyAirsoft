@@ -48,7 +48,7 @@
         </div>
 
     {{-- prices section --}}
-    @if(Auth::user() != NULL)
+    @if(Auth::user() != NULL && !Auth::user()->isAdmin)
         @if(Auth::user()->player->price != NULL || Auth::user()->isAdmin)
             @if (fillPlayer() || Auth::user()->isAdmin)
                 <h2 id="prices-title" class="flex m-auto">{{ __('You are already registered for the game') }}</h2>
@@ -93,6 +93,7 @@
             </div>
             <x-elems.separator class="my-10" />
         @endif
+        
     @endif
 
 

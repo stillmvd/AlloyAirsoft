@@ -10,8 +10,6 @@ class Game extends Model
     protected $fillable = [
         'date',
         'name',
-        'info',
-        'info',
         'polygon',
         'linkForIframe',
         'linkForGoogle',

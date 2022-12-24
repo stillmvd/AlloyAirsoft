@@ -110,7 +110,7 @@ class AdminController extends Controller
     {
         $game = $storeGame->handle($request);
         $storeInfosGame->handle($request, $game->id);
-        $storeRulesGame->handle($request, $request->count, $game->id);
+        $storeRulesGame->handle($request, $request->rulesCount, $game->id);
         return redirect()->route('index')->with([
             'success' => 'The game "' . $game->name . '" was successfully created',
         ]);
