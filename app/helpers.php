@@ -156,7 +156,7 @@ if (! function_exists('fillPlayer'))
 {
     function fillPlayer()
     {
-        $player = Auth::user()->player;
+        $player = Auth::user()->player === NULL ? NULL : Auth::user()->player;
 
         if (
             $player->name != NULL &&
