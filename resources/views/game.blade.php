@@ -50,65 +50,82 @@
         </div>
 
 {{-- prices section --}}
-
-        {{-- user in account, not admin --}}
-        @if(Auth::user() != NULL && ! Auth::user()->isAdmin)
-            {{-- if user has his personal data filled --}}
-            @if (fillPlayer())
-                <h2 id="prices-title" class="flex m-auto">{{ __('Вы не заполнили данные') }}</h2>
-                {{-- if user has selected price --}}
-                @if(Auth::user()->player->price != NULL)
-                    <h2 id="prices-title" class="flex m-auto">{{ __('You are already registered for the game') }}</h2>
+        {{-- Проверяем что пользователь вошел --}}
+        @if(Auth::user() != NULL)
+            {{-- Если пользователь не админ --}}
+            @if(!Auth::user()->isAdmin)
+                {{-- Если пользователь заполнил данные --}}
+                @if (fillPlayer())
+                    {{-- Если он уже выбрал цену --}}
+                    @if(Auth::user()->player->price != NULL)
+                        <h2 id="prices-title" class="flex m-auto">{{ __('You are already registered for the game') }}</h2>
+                    {{-- Если не выбрал --}}
+                    @else
+                        <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
+                            <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
+                            <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
+                                <form action="{{ route('storePrice', strtolower($game->name)) }}" method="post">
+                                    @csrf
+                                    <div>
+                                        <div class="flex flex-row items-center mb-4">
+                                        <h3>{{ __('Total price:') }}</h3>
+                                        <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2">100$</h3>
+                                    </div>
+                                    <div class="flex flex-row items-center">
+                                        <input type="checkbox" checked disabled name="pass" id="pass" />
+                                        <label class="label cursor-pointer w-min" for="pass">
+                                            <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
+                                            <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
+                                        </label>
+                                    </div>
+                                    @foreach ($prices as $price)
+                                        <div class="flex flex-row items-center">
+                                            <input type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
+                                            <label class="label cursor-pointer w-min" for="{{ $price->name }}">
+                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">
+                                                    {{ $price->name }}
+                                                </span>
+                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">
+                                                    {{ $price->price . '$' }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                    </div>
+                                    <x-elems.button class="py-2 px-10" value="Play" />
+                                </form>
+                            </div>
+                        </div>
+                        <x-elems.separator class="my-10" />
+                    @endif
+                {{-- Если не заполнил данные --}}
                 @else
-                    
-                @endif
-            @else
-                <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
-                    <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
-                    <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
-                        <form action="{{ route('storePrice', strtolower($game->name)) }}" method="post">
-                            @csrf
-                            <div>
-                                <div class="flex flex-row items-center mb-4">
-                                <h3>{{ __('Total price:') }}</h3>
-                                <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2">100$</h3>
-                            </div>
-                            <div class="flex flex-row items-center">
-                                <input type="checkbox" checked disabled name="pass" id="pass" />
-                                <label class="label cursor-pointer w-min" for="pass">
-                                    <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
-                                    <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
-                                </label>
-                            </div>
-                            @foreach ($prices as $price)
-                                <div class="flex flex-row items-center">
-                                    <input type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
-                                    <label class="label cursor-pointer w-min" for="{{ $price->name }}">
-                                        <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">
-                                            {{ $price->name }}
-                                        </span>
-                                        <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">
-                                            {{ $price->price . '$' }}
-                                        </span>
-                                    </label>
-                                </div>
-                            @endforeach
-                            </div>
-                            <x-elems.button class="py-2 px-10" value="Play" />
-                        </form>
+                    <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
+                        <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
+                        <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
+                            <h2 id="prices-title" class="flex m-auto">{{ __('Вы не заполнили данные') }}</h2>
+                        </div>
                     </div>
-                </div>
-                <x-elems.separator class="my-10" />
+                @endif
+            {{-- Если юзер админ --}}
+            @else
+                @if (Auth::user()->isAdmin)
+                    <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
+                        <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
+                        <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
+                            <h2 id="prices-title" class="flex m-auto">{{ __('Админ') }}</h2>
+                        </div>
+                    </div>
+                @endif
             @endif
+        {{-- Если пользователь не вошел --}}
         @else
-            @if (Auth::user()->isAdmin)
             <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
                 <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
                 <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
-
+                    <h2 id="prices-title" class="flex m-auto">{{ __('Юзер без логина') }}</h2>
                 </div>
             </div>
-            @endif
         @endif
 
 {{-- info section --}}
