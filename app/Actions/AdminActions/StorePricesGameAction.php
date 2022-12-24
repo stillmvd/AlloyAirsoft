@@ -5,10 +5,10 @@ namespace App\Actions\AdminActions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class StoreRulesGameAction
+class StorePricesGameAction
 {
     /**
-     * Сохраняет правила в rules для game c gameId
+     * Сохраняет прайсы в prices для game c gameId
      *
      * @param Illuminate\Http\Request $request
      * @param int $count Количество правил
@@ -19,9 +19,9 @@ class StoreRulesGameAction
     {
         if ($count <= 1)
         {
-            DB::table('rules')->insert([
-                'title' => $request->input('rulesTitle'),
-                'text' => $request->input('rulesText'),
+            DB::table('prices')->insert([
+                'name' => $request->input('mainPrice'),
+                'price' => $request->input('serviceName'),
                 'game_id' => $gameId,
             ]);
         }
@@ -29,13 +29,13 @@ class StoreRulesGameAction
         {
             for($i = 0; $i < $count; $i++)
             {
-                $titleRules = $request->input('rulesTitle' . $i);
-                $textRules = $request->input('rulesText' . $i);
-                if (ruleExists($titleRules, $textRules))
+                $titlePrices = $request->input('mainPrice' . $i);
+                $textPrices = $request->input('serviceName' . $i);
+                if (priceExists($titlePrices, $textPrices))
                 {
-                    DB::table('rules')->insert([
-                        'title' => $titleRules,
-                        'text' => $textRules,
+                    DB::table('prices')->insert([
+                        'name' => $titlePrices,
+                        'price' => $textPrices,
                         'game_id' => $gameId,
                     ]);
                 }

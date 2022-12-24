@@ -15,7 +15,7 @@ use App\Actions\AdminActions\UpdateInfosAction;
 use App\Actions\AdminActions\UpdatePasswordAction;
 use App\Actions\AdminActions\UpdateRulesAction;
 use App\Actions\AdminActions\GetAdminInfoAction;
-
+use App\Actions\AdminActions\StorePricesGameAction;
 use App\Actions\UserActions\GetAllInfoUserAction;
 use App\Actions\UserActions\DeleteUserAction;
 
@@ -106,11 +106,13 @@ class AdminController extends Controller
      * @return \Illuminate\Redirect
      */
      public function create(Request $request, StoreGameAction $storeGame,
-                            StoreInfosGameAction $storeInfosGame, StoreRulesGameAction $storeRulesGame)
+                            StoreInfosGameAction $storeInfosGame, StoreRulesGameAction $storeRulesGame,
+                            StorePricesGameAction $storePricesGame)
     {
         $game = $storeGame->handle($request);
         $storeInfosGame->handle($request, $game->id);
         $storeRulesGame->handle($request, $request->rulesCount, $game->id);
+        $storePricesGame->handle($request, $request->pricesCount, $game->id);
         return redirect()->route('index')->with([
             'success' => 'The game "' . $game->name . '" was successfully created',
         ]);

@@ -39,7 +39,28 @@ if (! function_exists('ruleExists'))
      */
     function ruleExists(string $title, string $text)
     {
-        if($title != null || $text != null)
+        if($title != NULL || $text != NULL)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+if (! function_exists('priceExists'))
+{
+    /**
+     * Проверяет существует ли price
+     *
+     * @param string $title Заголовок правила
+     * @param string $text Текст правила
+     * @return bool
+     */
+    function priceExists(string $title, int $price)
+    {
+        if($title != NULL || $price != NULL)
         {
             return true;
         }
