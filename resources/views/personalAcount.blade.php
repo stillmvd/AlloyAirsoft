@@ -5,6 +5,7 @@
 @section('content')
     <main class="grow">
         <div class="hidden lg:grid w-full 2xl:w-[90%] grid-cols-1 lg:grid-cols-3 gap-10 mx-auto my-20">
+
 {{-- user games block --}}
             <div class="w-full rounded-xl bg-card_bg/75 px-6 pb-6">
                 <h3 class="my-10">{{ __('Your games') }}</h3>
@@ -30,6 +31,7 @@
                     <p>{{ __("You haven't played with us yet") }}</p>
                 @endif
             </div>
+
 {{-- avatar and data block --}}
             <div class="w-[100%] rounded-xl bg-card_bg/75 px-6 pb-6">
                 <div class="w-full flex flex-row items-center justify-center gap-x-10 my-10">
@@ -74,6 +76,7 @@
                     <p>{{ Auth::user()->created_at->format('d.m.Y') }}</p>
                 </div>
             </div>
+
 {{-- achievements block --}}
             <div class="w-full rounded-xl bg-card_bg/75 px-6 pb-6">
                 <h3 class="my-10">{{ __('Your achievements') }}</h3>
@@ -99,7 +102,8 @@
                     @endif
                 @endif
             </div>
-{{-- edit personal info block --}}
+
+{{-- edit personal details block --}}
             <div class="flex flex-col rounded-xl bg-card_bg/75 px-6 pb-10 col-span-2">
                 <h3 class="my-10 text-center">{{ __('Personal info') }}</h3>
                 <form action="{{ route('changeCredentialForUser') }}" method="POST" class="flex flex-col gap-y-6 w-2/4 mx-auto">
@@ -159,6 +163,7 @@
                     <x-elems.button value="Save" class="mt-4 py-2 w-full" />
                 </form>
             </div>
+
 {{-- creating team block --}}
             <div class="flex flex-col rounded-xl bg-card_bg/75 px-6 pb-10 col-span-1">
                 @unless (leaderTeam(Auth::user()->id))
@@ -167,7 +172,7 @@
                         @csrf
                         <div class="flex flex-col gap-y-6">
                             <div class="flex relative flex-col">
-                                <x-text.label id="label_teamName" class="z-10" for="teamName">{{ __('Team name') }}</x-text.label>
+                                <x-text.label id="label_teamName" class="z-10 w-auto" for="teamName">{{ __('Team name') }}</x-text.label>
                                 <x-elems.input id="input_teamName" class="bg-transparent h-16" type="text" name="teamName" />
                                 @error('teamName')
                                     <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
@@ -180,7 +185,7 @@
                                 @enderror
                             </div>
                             <div class="flex relative flex-col">
-                                <textarea name="teamDescription" id="input_description" cols="30" rows="8" placeholder="Team description" class="w-full box-border text-white text-[1.1rem] resize-none bg-transparent pt-8 pb-3 px-5 lg:pt-4 lg:pb-0 h-full font-medium rounded-2xl ring-2 placeholder:text-subwhite placeholder:text-base placeholder:font-normal ring-subwhite focus:outline-none z-20"></textarea>
+                                <textarea name="teamDescription" id="input_description" cols="30" rows="8" placeholder="Team description" class="w-full box-border text-white text-[1.1rem] resize-none bg-transparent pt-8 pb-3 px-5 lg:pt-4 lg:pb-0 h-full font-medium rounded-xl ring-2 placeholder:text-subwhite placeholder:text-base placeholder:font-normal ring-subwhite focus:outline-none z-20"></textarea>
                                 @error('teamDescription')
                                     <b class="px-6 py-2 w-min absolute z-20 -bottom-[40%] -right-[10%] rounded-2xl bg-card_bg text-red font-medium flex flex-row items-center whitespace-nowrap">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="#C53737" class="w-6 mr-4" viewBox="0 0 16 16">

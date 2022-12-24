@@ -26,4 +26,14 @@
     p {
         @apply text-subwhite text-base font-normal tracking-wide;
     }
+
+    input {
+        @apply bg-transparent box-border text-white text-[1.1rem] font-medium rounded-xl h-14 px-5 ring-2 ring-subwhite focus:outline-none placeholder:select-none;
+    }
+    label {
+        @apply text-subwhite font-normal cursor-pointer w-min capitalize select-none;
+    }
+    fieldset {
+        @apply flex flex-col gap-y-1;
+    }
 }

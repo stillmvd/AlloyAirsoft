@@ -58,7 +58,20 @@
                 @if (fillPlayer())
                     {{-- Если он уже выбрал цену --}}
                     @if(Auth::user()->player->price != NULL)
-                        <h2 id="prices-title" class="flex m-auto">{{ __('You are already registered for the game') }}</h2>
+                        <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
+                            <div class="grid grid-cols-2 gap-x-48 justify-between w-full px-6 pb-6 bg-card_bg/75 rounded-xl">
+                                <h2 class="col-span-2 my-8">{{ __('Check your game ticket') }}</h2>
+                                <div class="bg-dark/75 rounded-xl p-6 flex flex-row">
+                                    <b class="text-subwhite text-2xl">{{ __('Your team:') }}</b>
+                                    <h3 class="ml-3">{{ DB::table('teams')->where('id', Auth::user()->player->team_id)->get()->value('name') }}</h3>
+                                </div>
+                                <div class="bg-dark/75 rounded-xl p-6 flex flex-row">
+                                    <b class="text-subwhite text-2xl">{{ __('Cost of your ticket:') }}</b>
+                                    <h3 class="ml-3">{{ Auth::user()->player->price }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                            <x-elems.separator class="my-10" />
                     {{-- Если не выбрал --}}
                     @else
                         <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
@@ -69,7 +82,7 @@
                                     <div class="">
                                         <div class="flex flex-col gap-y-6 sm:gap-y-0 sm:flex-row items-center mb-4">
                                             <h3>{{ __('Total price:') }}</h3>
-                                            <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2">100$</h3>
+                                            <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2 select-none">100$</h3>
                                         </div>
                                         <div class="flex flex-row items-center">
                                             <input type="checkbox" checked disabled name="pass" id="pass" />
@@ -105,9 +118,69 @@
                     <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
                         <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
                         <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
-                            <h2 id="prices-title" class="flex m-auto">{{ __('Вы не заполнили данные') }}</h2>
+                            <div class="flex w-full sm:justify-between flex-col sm:flex-row">
+                                @csrf
+                                <div class="">
+                                    <div class="flex flex-col gap-y-6 sm:gap-y-0 sm:flex-row items-center mb-4">
+                                        <h3>{{ __('Total price:') }}</h3>
+                                        <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2 select-none">100$</h3>
+                                    </div>
+                                    <div class="flex flex-row items-center">
+                                        <input type="checkbox" checked disabled name="pass" id="pass" />
+                                        <label class="label cursor-pointer w-min" for="pass">
+                                            <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
+                                            <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
+                                        </label>
+                                    </div>
+                                    @foreach ($prices as $price)
+                                        <div class="flex flex-row items-center">
+                                            <input type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
+                                            <label class="label cursor-pointer w-min" for="{{ $price->name }}">
+                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">
+                                                    {{ $price->name }}
+                                                </span>
+                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">
+                                                    {{ $price->price . '$' }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+{{-- modal windows with personal details --}}
+                                <div class="w-full sm:w-min flex items-end">
+                                    <label for="my-modal-3" class="py-1 sm:whitespace-nowrap px-10 w-full flex justify-center mt-3 sm:mt-0 text-white text-[1.7rem] font-semibold rounded-xl ring-main ring-2 cursor-pointer ease-out duration-200 hover:bg-main hover:text-dark">{{ __('Play') }}</label>
+                                    <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+                                    <div class="modal modal-bottom sm:modal-middle">
+                                        <div class="modal-box bg-bg relative">
+                                            <label for="my-modal-3" class="rounded-full flex items-center justify-center w-8 h-8 bg-dark text-white absolute right-4 top-4">✕</label>
+                                            <h3 class="select-none">Please, fill your personal missing details</h3>
+                                            <form action="{{ route('changeCredentialForUser') }}" method="POST" class="flex flex-col gap-y-4 my-6">
+                                                @csrf
+                                                <fieldset>
+                                                    <label for="name">{{ __('name') }}</label>
+                                                    <input type="text" id="name" name="namePlayer" value="{{ Auth::user()->player->name }}">
+                                                </fieldset>
+                                                <fieldset>
+                                                    <label for="surname">{{ __('surname') }}</label>
+                                                    <input type="text" id="surname" name="surnamePlayer" value="{{ Auth::user()->player->surname }}">
+                                                </fieldset>
+                                                <fieldset>
+                                                    <label for="callsign">{{ __('callsign') }}</label>
+                                                    <input type="text" id="callsign" name="callsignPlayer" value="{{ Auth::user()->player->callsign }}">
+                                                </fieldset>
+                                                <fieldset>
+                                                    <label for="phone">{{ __('phone') }}</label>
+                                                    <input type="text" id="phone" name="phonePlayer" value="{{ Auth::user()->player->phone }}">
+                                                </fieldset>
+                                                <x-elems.button value="Save" class="mx-auto mt-6" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <x-elems.separator class="my-10" />
                 @endif
             {{-- Если юзер админ --}}
             @else
@@ -125,9 +198,41 @@
             <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
                 <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
                 <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
-                    <h2 id="prices-title" class="flex m-auto">{{ __('Юзер без логина') }}</h2>
+                    <form action="{{ route('storePrice', strtolower($game->name)) }}" method="post" class="flex w-full sm:justify-between flex-col sm:flex-row">
+                        @csrf
+                        <div class="">
+                            <div class="flex flex-col gap-y-6 sm:gap-y-0 sm:flex-row items-center mb-4">
+                                <h3>{{ __('Total price:') }}</h3>
+                                <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2 select-none">100$</h3>
+                            </div>
+                            <div class="flex flex-row items-center">
+                                <input type="checkbox" checked disabled name="pass" id="pass" />
+                                <label class="label cursor-pointer w-min" for="pass">
+                                    <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
+                                    <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
+                                </label>
+                            </div>
+                            @foreach ($prices as $price)
+                                <div class="flex flex-row items-center">
+                                    <input type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
+                                    <label class="label cursor-pointer w-min" for="{{ $price->name }}">
+                                        <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">
+                                            {{ $price->name }}
+                                        </span>
+                                        <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">
+                                            {{ $price->price . '$' }}
+                                        </span>
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="w-full sm:w-min flex items-end">
+                            <a href="{{ route('login') }}" class="py-3 sm:whitespace-nowrap px-10 w-full mt-3 sm:mt-0 text-white text-[1.7rem] font-semibold rounded-xl ring-main ring-2 cursor-pointer ease-out duration-200 hover:bg-main hover:text-dark">{{ __('Login to play') }}</a>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <x-elems.separator class="my-10" />
         @endif
 
 {{-- info section --}}

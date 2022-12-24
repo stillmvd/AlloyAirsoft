@@ -30,7 +30,7 @@ class SetPriceForPlayerAction
         }
 
         $player->update([
-            'price' => $playerPriceFinale . '$ - ' . $gameName,
+            'price' => $playerPriceFinale . '$',
         ]);
 
         Game::attach(Game::getIdByName($gameName), $player->id);
