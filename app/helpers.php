@@ -54,11 +54,9 @@ if (! function_exists('priceExists'))
     /**
      * Проверяет существует ли price
      *
-     * @param string $title Заголовок правила
-     * @param string $text Текст правила
      * @return bool
      */
-    function priceExists(string $title, int $price)
+    function priceExists($title, $price)
     {
         if($title != NULL || $price != NULL)
         {
