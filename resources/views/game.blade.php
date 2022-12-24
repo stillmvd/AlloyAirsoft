@@ -64,35 +64,37 @@
                         <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
                             <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
                             <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
-                                <form action="{{ route('storePrice', strtolower($game->name)) }}" method="post">
+                                <form action="{{ route('storePrice', strtolower($game->name)) }}" method="post" class="flex w-full sm:justify-between flex-col sm:flex-row">
                                     @csrf
-                                    <div>
-                                        <div class="flex flex-row items-center mb-4">
-                                        <h3>{{ __('Total price:') }}</h3>
-                                        <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2">100$</h3>
-                                    </div>
-                                    <div class="flex flex-row items-center">
-                                        <input type="checkbox" checked disabled name="pass" id="pass" />
-                                        <label class="label cursor-pointer w-min" for="pass">
-                                            <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
-                                            <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
-                                        </label>
-                                    </div>
-                                    @foreach ($prices as $price)
+                                    <div class="">
+                                        <div class="flex flex-col gap-y-6 sm:gap-y-0 sm:flex-row items-center mb-4">
+                                            <h3>{{ __('Total price:') }}</h3>
+                                            <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2">100$</h3>
+                                        </div>
                                         <div class="flex flex-row items-center">
-                                            <input type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
-                                            <label class="label cursor-pointer w-min" for="{{ $price->name }}">
-                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">
-                                                    {{ $price->name }}
-                                                </span>
-                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">
-                                                    {{ $price->price . '$' }}
-                                                </span>
+                                            <input type="checkbox" checked disabled name="pass" id="pass" />
+                                            <label class="label cursor-pointer w-min" for="pass">
+                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
+                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
                                             </label>
                                         </div>
-                                    @endforeach
+                                        @foreach ($prices as $price)
+                                            <div class="flex flex-row items-center">
+                                                <input type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
+                                                <label class="label cursor-pointer w-min" for="{{ $price->name }}">
+                                                    <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">
+                                                        {{ $price->name }}
+                                                    </span>
+                                                    <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">
+                                                        {{ $price->price . '$' }}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                    <x-elems.button class="py-2 px-10" value="Play" />
+                                    <div class="w-full sm:w-min flex items-end">
+                                        <x-elems.button class="py-1 px-10 w-full mt-3 sm:mt-0" value="Play" />
+                                    </div>
                                 </form>
                             </div>
                         </div>
