@@ -15,7 +15,7 @@ class PricesSeeder extends Seeder
             'game_id' => '1002',
         ]);
         DB::table('prices')->insert([
-            'name' => 'Geer',
+            'name' => 'Gear',
             'price' => '20',
             'game_id' => '1002',
         ]);
