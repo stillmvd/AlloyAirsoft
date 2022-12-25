@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Game extends Model
 {
     protected $fillable = [
         'date',
         'name',
-        'info',
-        'info',
         'polygon',
         'linkForIframe',
         'linkForGoogle',
@@ -32,7 +31,7 @@ class Game extends Model
      */
     public static function getGames()
     {
-        return Game::get();
+        return self::get();
     }
 
     /**
@@ -42,7 +41,7 @@ class Game extends Model
      */
     public static function getFinishedGames()
     {
-        return Game::where('finished', '1')->get();
+        return self::where('finished', '1')->get();
     }
 
     /**
@@ -52,7 +51,7 @@ class Game extends Model
      */
     public static function getCountGames()
     {
-        return Game::get()->count();
+        return self::get()->count();
     }
 
     /**
@@ -64,7 +63,7 @@ class Game extends Model
      */
     public static function getIdByName(string $gameName)
     {
-        return Game::where('name', $gameName)->get()[0]->id;
+        return self::where('name', $gameName)->get()[0]->id;
     }
 
     /**
@@ -75,7 +74,7 @@ class Game extends Model
      */
     public static function hasGame(string $gameName)
     {
-        if (Game::where('name', $gameName)->count() >= 1)
+        if (self::where('name', $gameName)->count() >= 1)
         {
             return true;
         }
@@ -94,7 +93,7 @@ class Game extends Model
      */
     public static function getNameById(int $gameId)
     {
-        return Game::find($gameId)->name;
+        return self::find($gameId)->name;
     }
 
     /**
@@ -107,6 +106,10 @@ class Game extends Model
      */
     public static function attach(int $gameId, int $playerId)
     {
-        Game::find($gameId)->players()->attach($playerId);
+        if (DB::table('game_player')->where('player_id', $playerId)
+            ->where('game_id', $gameId)->count() <= 0)
+        {
+            self::find($gameId)->players()->attach($playerId);
+        }
     }
 }

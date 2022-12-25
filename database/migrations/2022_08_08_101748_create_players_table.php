@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('callsign')->nullable();
             $table->string('emailPlayer');
             $table->string('phone')->nullable();
+            $table->string('price')->nullable();
             $table->foreignId('team_id')->constrained('teams');
         });
     }
