@@ -149,7 +149,7 @@ if (document.getElementById('countdown') !== null)
         }
     }, 1000);
 }
-
+createInfoSquare();
 function createInfoSquare() {
     setTimeout(() => {
         let infoSquare = document.getElementById('infoSquare');
@@ -172,7 +172,7 @@ function removeInfoSquare() {
     infoSquare.style.right = 0 + 'px';
     infoSquare.style.bottom = 0 + 'px';
 }
-
+createRulesSquare();
 function createRulesSquare() {
     setTimeout(() => {
         let rulesSquare = document.getElementById('rulesSquare');
