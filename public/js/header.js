@@ -20,21 +20,3 @@ function closeMenu() {
       menu.style.borderRadius = '9999px';
     }, 400);
 }
-
-document.getElementById('blockPhone').addEventListener('click', ()=>{
-    var range = document.createRange();
-    range.selectNode(document.getElementById("phone"));
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-})
-
-document.getElementById('blockEmail').addEventListener('click', ()=>{
-    var range = document.createRange();
-    range.selectNode(document.getElementById("email"));
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-})

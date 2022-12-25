@@ -60,6 +60,18 @@ document.getElementById('input_phone').addEventListener('blur', function() {
     }
 });
 
+document.getElementById('input_teamName').addEventListener('focus', function() {
+    upLabel('label_teamName');
+});
+document.getElementById('input_teamName').addEventListener('blur', function() {
+    downLabel('label_teamName');
+    if (document.getElementById('input_teamName').value != '') {
+        upLabel('label_teamName');
+    } else {
+        downLabel('label_teamName');
+    }
+});
+
 function checkInputWithValidation() {
     downLabel('input_name');
     if (document.getElementById('input_name').value != '') {
@@ -84,6 +96,12 @@ function checkInputWithValidation() {
         upLabel('label_phone');
     } else {
         downLabel('label_phone');
+    }
+    downLabel('input_teamName');
+    if (document.getElementById('input_teamName').value != '') {
+        upLabel('label_teamName');
+    } else {
+        downLabel('label_teamName');
     }
 }
 
@@ -188,3 +206,21 @@ if (localStorage.getItem('userTheme') == 'dark') {
     moon.classList.remove('swap-off');
     sun.classList.remove('swap-on');
 }
+
+document.getElementById('blockPhone').addEventListener('click', ()=>{
+    var range = document.createRange();
+    range.selectNode(document.getElementById("phone"));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+})
+
+document.getElementById('blockEmail').addEventListener('click', ()=>{
+    var range = document.createRange();
+    range.selectNode(document.getElementById("email"));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+})

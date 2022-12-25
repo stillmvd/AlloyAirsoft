@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\ChangeCredentialForUserAction;
-use App\Actions\DeleteUserAvatarAction;
-use App\Actions\SaveAvatarsAction;
+use App\Actions\UserActions\ChangeCredentialForUserAction;
+use App\Actions\UserActions\DeleteUserAvatarAction;
+use App\Actions\UserActions\SaveAvatarsAction;
 
 use App\Http\Requests\StoreCredentialForUserRequest;
-
+use App\Http\Requests\StoreTeamRequest;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -16,7 +17,7 @@ class AccountController extends Controller
      * Description
      *
      * @param Request $request
-     * @param App\Actions\SaveAvatarsAction $saveAvatars Сохраняет аватарку юзера
+     * @param App\Actions\UserActions\SaveAvatarsAction $saveAvatars Сохраняет аватарку юзера
      *
      * @return Illuminate\Redirect\
      */
@@ -30,7 +31,7 @@ class AccountController extends Controller
      * Удаляет аватар
      *
      * @param int $id id юзера
-     * @param App\Actions\DeleteUserAvatarAction $deleteUserAvatar
+     * @param App\Actions\UserActions\DeleteUserAvatarAction $deleteUserAvatar
      *
      * @return Illuminate\Redirect\
      */
@@ -44,7 +45,7 @@ class AccountController extends Controller
      * Description
      *
      * @param StoreCredentialForUserRequest $request Провалидированные данные
-     * @param App\Actions\ChangeCredentialForUserAction $changeCredentialForUser Обновляет данные плеера
+     * @param App\Actions\UserActions\ChangeCredentialForUserAction $changeCredentialForUser Обновляет данные плеера
      *
      * @return Illuminate\Redirect\
      */
@@ -53,5 +54,23 @@ class AccountController extends Controller
     {
         $changeCredentialForUser->handle($request);
         return redirect()->back();
+    }
+
+    public function createTeam()
+    {
+        return view('account.createTeam');
+    }
+
+    public function storeTeam(StoreTeamRequest $request, int $id)
+    {
+        Team::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'leader_id' => $id,
+        ]);
+
+        return redirect()->route('personal_account', ['id' => $id])->with([
+            'succsess' => $request->name,
+        ]);
     }
 }

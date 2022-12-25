@@ -2,7 +2,10 @@
 
 use App\Models\Game;
 use App\Models\Player;
+use App\Models\Team;
 use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 if (! function_exists('isExistsDB'))
@@ -36,7 +39,26 @@ if (! function_exists('ruleExists'))
      */
     function ruleExists(string $title, string $text)
     {
-        if($title != null || $text != null)
+        if($title != NULL || $text != NULL)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+if (! function_exists('priceExists'))
+{
+    /**
+     * Проверяет существует ли price
+     *
+     * @return bool
+     */
+    function priceExists($title, $price)
+    {
+        if($title != NULL || $price != NULL)
         {
             return true;
         }
@@ -133,6 +155,38 @@ if (! function_exists('hasAchievement'))
             }
         }
         return false;
+    }
+}
+
+if (! function_exists('leaderTeam'))
+{
+    function leaderTeam($id)
+    {
+        $teams = Team::getTeams();
+        for ($i = 0; $i < count($teams); $i++)
+        {
+            if($id === (int)$teams[$i]->leader_id) return true;
+        }
+        return false;
+    }
+}
+
+if (! function_exists('fillPlayer'))
+{
+    function fillPlayer()
+    {
+        $player = Auth::user()->player === NULL ? NULL : Auth::user()->player;
+
+        if (
+            $player->name != NULL &&
+            $player->surname != NULL &&
+            $player->callsign != NULL &&
+            $player->phone != NULL
+        )
+        {
+            return true;
+        }
+        else return false;
     }
 }
 

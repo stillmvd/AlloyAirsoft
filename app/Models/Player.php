@@ -14,7 +14,7 @@ class Player extends Model
     protected $fillable = [
         'id', 'team_id',
         'name', 'surname', 'callsign',
-        'emailPlayer', 'phone',
+        'emailPlayer', 'phone', 'price'
     ];
 
     public function games()

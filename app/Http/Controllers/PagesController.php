@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\GetArchiveGamesAction;
-use App\Actions\GetGameInfoAction;
-use App\Actions\GetInfoForAccountAction;
-use App\Actions\getOldDataOfPlayer;
-use App\Actions\GetUpcomingGamesAction;
-use App\Actions\SendEmailAction;
-use App\Actions\StoreEmailAction;
-use App\Actions\StorePlayerAction;
-use App\Actions\storePlayerWithoutRegistarionAction;
+use App\Actions\UserActions\GetInfoForAccountAction;
+
+use App\Actions\MainActions\GetArchiveGamesAction;
+use App\Actions\MainActions\GetGameInfoAction;
+use App\Actions\MainActions\GetGamesAction;
+use App\Actions\MainActions\SendEmailAction;
+use App\Actions\MainActions\StoreEmailAction;
+
+use App\Actions\MainActions\getOldDataOfPlayer;
+use App\Actions\PlayerActions\SetPriceForPlayerAction;
+use App\Actions\PlayerActions\StorePlayerAction;
+use App\Actions\PlayerActions\storePlayerWithoutRegistarionAction;
 
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreFormRequest;
 
 use App\Models\Game;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /** PagesController содержит основные контроллеры работающие на сайте. */
@@ -24,12 +28,12 @@ class PagesController extends Controller
     /**
      * Возвращает главную страницу сайта
      *
-     * @param App\Actions\GetUpcomingGamesAction $getUpcomingGames Получает из actiona игры которые не завершились
+     * @param App\Actions\GetGamesAction $getGames Получает из actiona игры которые не завершились
      * @return \Illuminate\View\View
      */
-    public function index(GetUpcomingGamesAction $getUpcomingGames)
+    public function index(GetGamesAction $getGames)
     {
-        return view('index', $getUpcomingGames->handle());
+        return view('index', $getGames->handle());
     }
 
     /**
@@ -53,6 +57,12 @@ class PagesController extends Controller
     public function game(GetGameInfoAction $getGameInfo, string $gameName)
     {
         return view('game', $getGameInfo->handle($gameName));
+    }
+
+    public function storePrice(string $gameName, Request $request, SetPriceForPlayerAction $setPriceForPlayer)
+    {
+        $setPriceForPlayer->handle($request, $gameName);
+        return redirect()->route('game', $gameName);
     }
 
     /**

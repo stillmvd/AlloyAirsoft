@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('image/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('image/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('image/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('image/favicon/site.webmanifest') }}">
     @vite('resources/css/app.css')
     <title>@yield('title','Alloy Airsoft')</title>
 </head>
@@ -22,12 +26,12 @@
     </x-elems.alert>
 @endif
 
-<body class="min-h-screen container px-6 flex flex-col selection:bg-dark selection:text-main">
-    @include('includes.header')
+<body class="min-h-screen container px-6 flex flex-col justify-between selection:bg-dark selection:text-main">
+    @unless (Route::is('login') || Route::is('register'))
+        @include('includes.header')
+    @endunless
 
-    <main class="flex flex-col w-full items-start">
-        @yield('content')
-    </main>
+    @yield('content')
 
     @if (Route::is('index') || Route::is('archive') || Route::is('game'))
         @include('includes.footer')
@@ -37,14 +41,16 @@
 <script src="{{ asset('js/header.js') }}"></script>
 
 @if (Route::is('game'))
-    <script src="{{ asset('js/map.js') }}"></script>
+    <script src="{{ asset('js/game.js') }}"></script>
 @elseif (Route::is('players'))
     <script src="{{ asset('js/getAchievements.js') }}"></script>
 @elseif (Route::is('admin') || Route::is('edit') )
     <script src="{{ asset('js/map.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
-@elseif (Route::is('account'))
-    <script src="{{ asset('js/labelForAccount.js') }}"></script>
+@elseif (Route::is('login'))
+    <script src="{{ asset('js/labelForLogin.js') }}"></script>
+@elseif (Route::is('register'))
+    <script src="{{ asset('js/labelForRegister.js') }}"></script>
 @elseif (Route::is('personal_account'))
     <script src="{{ asset('js/main.js') }}"></script>
 @endif
