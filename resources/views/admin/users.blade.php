@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-  <main class="grow"> 
+  <main class="grow">
     <div class="w-full flex justify-center">
       <h1 class="text-4xl sm:text-6xl">
         {{ __('All users') }}
@@ -24,7 +24,11 @@
           @for ($i = 0; $i < $users_count; $i++)
             <tr class="text-subwhite">
                 <td class="font-medium">{{ $users[$i]->id }}</td>
-                <td class="font-medium">{{ $users[$i]->created_at->format('d.m.Y') }}</td>
+                @if ($users[$i]->created_at !== NULL)
+                    <td class="font-medium">{{ $users[$i]->created_at->format('d.m.Y') }}</td>
+                @else
+                    <td class="font-medium"></td>
+                @endif
                 <td>
                   @if ($users[$i]->pathToAvatar != NULL)
                     <img src="{{ asset($users[$i]->pathToAvatar) }}" alt="avatar" class="w-14 rounded-full select-none">
@@ -47,7 +51,7 @@
         </tbody>
       </table>
     </div>
-  
+
     <div class="hidden w-full sm:flex lg:hidden">
       <table class="w-full bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
         <thead>
@@ -70,7 +74,7 @@
         </tbody>
       </table>
     </div>
-  
+
     <div class="flex w-full sm:hidden">
       <table class="w-full bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
         <thead>
@@ -89,14 +93,14 @@
         </tbody>
       </table>
     </div>
-  
-  
+
+
     <div class="w-full flex justify-center">
       <h1 class="text-4xl sm:text-6xl">
         {{ __('Subscribers') }}
       </h1>
     </div>
-  
+
     <table class="w-5/12 mx-auto mb-20 bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
       <thead>
         <tr class="text-white">
