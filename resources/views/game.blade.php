@@ -213,8 +213,8 @@
                                 </label>
                             </div>
                             @foreach ($prices as $price)
-                                <div class="flex flex-row items-center">
-                                    <input type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
+                                <div class="flex flex-row w-min items-center tooltip tooltip-right" data-tip="login to choose options">
+                                    <input disabled type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
                                     <label class="label cursor-pointer w-min" for="{{ $price->name }}">
                                         <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">
                                             {{ $price->name }}
