@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./www/public:/var/www/html/public
+      - ./log/nginx:/var/log/nginx
+    ports:
+      - '8000:80'
+    container_name: nginx
+
+  php-fpm:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - ./www:/var/www/html
+      - ./log/php:/var/log/php
+      - ./docker/php/php.ini:/etc/php/php.ini
+    container_name: php
+
+  mysql:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - ./database:/var/lib/mysql
+      - ./log/mysql:/var/log/mysql
+    environment:
+      MYSQL_DATABASE: alloy
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '8101:3306'
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    container_name: mysql
+
+  npm:
+    image: node:18.13.0
+    working_dir: /var/www/html
+    entrypoint: ["npm"]
+    container_name: npm
+    volumes:
+      - ./www:/var/www/html
