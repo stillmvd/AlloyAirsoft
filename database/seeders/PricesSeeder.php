@@ -10,14 +10,22 @@ class PricesSeeder extends Seeder
     public function run()
     {
         DB::table('prices')->insert([
-            'name' => 'Gun',
+            'name' => 'Game pass',
+            'price' => '60',
+            'game_id' => '1002',
+        ]);
+
+        DB::table('prices')->insert([
+            'name' => 'Festival pass + food',
             'price' => '40',
             'game_id' => '1002',
         ]);
+
         DB::table('prices')->insert([
-            'name' => 'Gear',
-            'price' => '20',
+            'name' => 'Rent',
+            'price' => '30',
             'game_id' => '1002',
         ]);
+
     }
 }
