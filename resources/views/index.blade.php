@@ -10,7 +10,7 @@
                 @foreach ($games as $game)
                     @if ($game->finished == 0)
                         <div class="hidden">
-                            <p id="map-counter">{{ $games_count }}</p>
+                            <p id="map-counter">{{ gamesCount }}</p>
                         </div>
                         <x-elems.gamecard :loop=$loop :game=$game />
                     @endif

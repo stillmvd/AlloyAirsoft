@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Main;
 
+use App\Models\Player;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 

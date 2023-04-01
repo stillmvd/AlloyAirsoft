@@ -2,7 +2,7 @@
 
 namespace App\Actions\PlayerActions;
 
-use App\Models\Game;
+use App\Models\Main\Game;
 use Illuminate\Support\Facades\DB;
 
 class storePlayerWithoutRegistarionAction

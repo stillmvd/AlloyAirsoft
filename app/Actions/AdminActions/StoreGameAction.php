@@ -1,8 +1,7 @@
 <?php
 namespace App\Actions\AdminActions;
 
-use App\Models\Game;
-
+use App\Models\Main\Game;
 use Illuminate\Http\Request;
 
 class StoreGameAction

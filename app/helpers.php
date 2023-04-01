@@ -1,10 +1,9 @@
 <?php
 
-use App\Models\Game;
+use App\Models\Main\Game;
 use App\Models\Player;
 use App\Models\Team;
 use App\Models\User;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 

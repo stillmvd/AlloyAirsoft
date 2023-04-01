@@ -95,7 +95,7 @@ As always - sign yourself up if you want to join the trip, pack yourself however
             'text' => '- After signing in to the game on the field, you aren’t obliged to do anything. You will have many activities and interactions where only you choose what you want to do;
 - Due to amount of fields and activities in the game, some rules may be changed. Players will be warned about any changes before entering any field;
 - Some actions or decisions players make may have the aftermath, good or bad;
-- After sunset, you MUST use a tracer or flash unit, no matter whether you using NVG or NO after entering the main field;',
+- After sunset, you MUST use a tracer or flash unit, no matter whether you using NVG or NO after entering the Main field;',
             'game_id' => '1002',
         ]);
         DB::table('rules')->insert([

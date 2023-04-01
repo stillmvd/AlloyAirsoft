@@ -52,7 +52,7 @@
 @elseif (Route::is('register'))
     <script src="{{ asset('js/labelForRegister.js') }}"></script>
 @elseif (Route::is('personal_account'))
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/Main.js') }}"></script>
 @endif
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5BMgYqx4r4s70XywuwblM-k1qi2ErGA0&callback=initMap"></script>

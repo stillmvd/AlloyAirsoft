@@ -2,7 +2,7 @@
 namespace App\Actions\PlayerActions;
 
 use App\Http\Requests\StoreFormRequest;
-use App\Models\Game;
+use App\Models\Main\Game;
 use App\Models\Player;
 
 class StorePlayerAction

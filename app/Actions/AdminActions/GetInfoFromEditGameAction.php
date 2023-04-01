@@ -2,7 +2,7 @@
 
 namespace App\Actions\AdminActions;
 
-use App\Models\Game;
+use App\Models\Main\Game;
 use App\Models\Player;
 use Illuminate\Support\Facades\DB;
 

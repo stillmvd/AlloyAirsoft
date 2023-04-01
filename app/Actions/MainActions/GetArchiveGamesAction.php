@@ -1,7 +1,7 @@
 <?php
 namespace App\Actions\MainActions;
 
-use App\Models\Game;
+use App\Models\Main\Game;
 use App\Models\Team;
 use Illuminate\Support\Facades\DB;
 

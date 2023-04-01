@@ -1,12 +1,11 @@
 <?php
 namespace App\Actions\MainActions;
 
-use App\Models\Game;
 use App\Models\Info;
+use App\Models\Main\Game;
 use App\Models\Price;
 use App\Models\Rule;
 use App\Models\Team;
-
 use Illuminate\Support\Facades\DB;
 
 class GetGameInfoAction
