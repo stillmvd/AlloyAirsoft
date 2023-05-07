@@ -24,32 +24,17 @@ class Game extends Model
         return $this->belongsToMany(Player::class);
     }
 
-    /**
-     * Возращает незавершенные игры
-     *
-     * @return array
-     */
     public static function getGames()
     {
         return self::get();
     }
 
-    /**
-     * Возращает завершенные игры
-     *
-     * @return array
-     */
     public static function getFinishedGames()
     {
         return self::where('finished', '1')->get();
     }
 
-    /**
-     * Возращает количество игр
-     *
-     * @return int
-     */
-    public static function getCountGames()
+    public static function getCountGames(): int
     {
         return self::get()->count();
     }

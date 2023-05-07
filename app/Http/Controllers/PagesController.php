@@ -25,23 +25,6 @@ use Illuminate\Support\Facades\Auth;
 /** PagesController содержит основные контроллеры работающие на сайте. */
 class PagesController extends Controller
 {
-    /**
-     * Возвращает главную страницу сайта
-     *
-     * @param App\Actions\GetGamesAction $getGames Получает из actiona игры которые не завершились
-     * @return \Illuminate\View\View
-     */
-    public function index(GetGamesAction $getGames)
-    {
-        return view('index', $getGames->handle());
-    }
-
-    /**
-     * Возвращает страницу архивных игр
-     *
-     * @param App\Actions\GetArchiveGamesAction $getArchiveGames Получает из actiona игры которые завершились
-     * @return \Illuminate\View\View
-     */
     public function archive(GetArchiveGamesAction $getArchiveGames)
     {
         return view('archive', $getArchiveGames->handle());
