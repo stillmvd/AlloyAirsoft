@@ -14,23 +14,10 @@ class SetPriceForPlayerAction
     {
         $user = Auth::user();
         $player = Player::find($user->player_id);
-        $pricesForGame = Price::getPriceFromIdGame(Game::getIdByName($gameName));
         $playerPriceSelected = $request->all();
-        $playerPriceFinale = 100;
-
-        foreach ($pricesForGame as $pricesSelected)
-        {
-            if (array_key_exists($pricesSelected->name, $playerPriceSelected))
-            {
-                if ($playerPriceSelected[$pricesSelected->name] === 'on')
-                {
-                    $playerPriceFinale += $pricesSelected->price;
-                }
-            }
-        }
 
         $player->update([
-            'price' => $playerPriceFinale . '$',
+            'price' => $playerPriceSelected['price'] . '$',
         ]);
 
         Game::attach(Game::getIdByName($gameName), $player->id);

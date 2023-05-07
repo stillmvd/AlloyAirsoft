@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('linkForIframe');
             $table->string('linkForGoogle');
 
-            // $table->string('levels')->default('0');
-            // $table->string('tags-icon')->default('0');
             $table->boolean('finished')->default(0);
         });
     }

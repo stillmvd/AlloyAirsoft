@@ -15,7 +15,7 @@ class StorePricesGameAction
      * @param int $gameId Id Игры
      * @return void
      */
-    public function handle(Request $request, int $count, int $gameId)
+    public function handle(Request $request, int $count, int $gameId): void
     {
         if ($count <= 1)
         {

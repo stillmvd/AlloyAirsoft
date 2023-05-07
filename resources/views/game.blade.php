@@ -82,14 +82,7 @@
                                     <div class="">
                                         <div class="flex flex-col gap-y-6 sm:gap-y-0 sm:flex-row items-center mb-4">
                                             <h3>{{ __('Total price:') }}</h3>
-                                            <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2 select-none">100$</h3>
-                                        </div>
-                                        <div class="flex flex-row items-center">
-                                            <input type="checkbox" checked disabled name="pass" id="pass" />
-                                            <label class="label cursor-pointer w-min" for="pass">
-                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
-                                                <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
-                                            </label>
+                                            <h3 id="finalyPrice" class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2 select-none">0$</h3>
                                         </div>
                                         @foreach ($prices as $price)
                                             <div class="flex flex-row items-center">
@@ -104,6 +97,7 @@
                                                 </label>
                                             </div>
                                         @endforeach
+                                        <input id="price" class="hidden" type="text" name="price" value="" />
                                     </div>
                                     <div class="w-full sm:w-min flex items-end">
                                         <x-elems.button class="py-1 px-10 w-full mt-3 sm:mt-0" value="Play" />
@@ -123,14 +117,7 @@
                                 <div class="">
                                     <div class="flex flex-col gap-y-6 sm:gap-y-0 sm:flex-row items-center mb-4">
                                         <h3>{{ __('Total price:') }}</h3>
-                                        <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2 select-none">100$</h3>
-                                    </div>
-                                    <div class="flex flex-row items-center">
-                                        <input type="checkbox" checked disabled name="pass" id="pass" />
-                                        <label class="label cursor-pointer w-min" for="pass">
-                                            <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
-                                            <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
-                                        </label>
+                                        <h3 id="finalyPrice" class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2 select-none">0$</h3>
                                     </div>
                                     @foreach ($prices as $price)
                                         <div class="flex flex-row items-center">
@@ -203,14 +190,7 @@
                         <div class="">
                             <div class="flex flex-col gap-y-6 sm:gap-y-0 sm:flex-row items-center mb-4">
                                 <h3>{{ __('Total price:') }}</h3>
-                                <h3 class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2 select-none">100$</h3>
-                            </div>
-                            <div class="flex flex-row items-center">
-                                <input type="checkbox" checked disabled name="pass" id="pass" />
-                                <label class="label cursor-pointer w-min" for="pass">
-                                    <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">Pass for the game</span>
-                                    <span class="label-text whitespace-nowrap leading-none ml-2 text-white text-base">100$</span>
-                                </label>
+                                <h3 id="finalyPrice" class="flex items-center font-semibold leading-none tracking-wide bg-[#419253] p-2 rounded-xl ml-2 select-none">0$</h3>
                             </div>
                             @foreach ($prices as $price)
                                 <div class="flex flex-row w-min items-center tooltip tooltip-right" data-tip="login to choose options">
@@ -239,8 +219,8 @@
         <div class="flex flex-col md:flex-row w-full mt-10 md:justify-between relative">
             <h2 id="info-title" class="mb-10 md:mb-0">{{ __('Info') }}</h2>
             <x-page.block tabindex="0" onclick="createInfoSquare()" onblur="removeInfoSquare()" id="infoBlock">
-                <h3 class="collapse-title text-white">{{ $infos->title }}</h3>
-                <p class="collapse-content whitespace-pre-line text-white font-light">{{ $infos->text }}</p>
+                <h3 class="p-4 text-white">{{ $infos->title }}</h3>
+                <p class="p-4 whitespace-pre-line text-white font-light">{{ $infos->text }}</p>
             </x-page.block>
             <div class="bg-main absolute right-0 bottom-0 w-0 h-0 rounded-xl z-0 ease-out duration-500" id="infoSquare"></div>
         </div>
@@ -252,11 +232,11 @@
             <x-page.block tabindex="0" id="rulesBlock" onclick="createRulesSquare()" onblur="removeRulesSquare()">
                 @foreach ($rules as $rule)
                     @if ($loop->index < 1)
-                        <h3 class="collapse-title flex flex-col text-white">{{ $rule->title }}<p class="whitespace-pre-line mt-4 text-white font-light">{{ $rule->text }}</p></h3>
+                        <h3 class="p-4 flex flex-col text-white">{{ $rule->title }}<p class="whitespace-pre-line mt-4 text-white font-light">{{ $rule->text }}</p></h3>
                     @else
                     <div>
-                        <h3 class="collapse-content text-white">{{ $rule->title }}</h3>
-                        <p class="collapse-content whitespace-pre-line text-white font-light">{{ $rule->text }}</p>
+                        <h3 class="p-4 text-white">{{ $rule->title }}</h3>
+                        <p class="p-4 whitespace-pre-line text-white font-light">{{ $rule->text }}</p>
                     </div>
                     @endif
                 @endforeach

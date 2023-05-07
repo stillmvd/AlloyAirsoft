@@ -24,7 +24,7 @@ class GetGameInfoAction
         {
             $gameId = Game::getIdByName($gameName);
 
-            $data = [
+            return [
                 'game' => Game::find($gameId),
 
                 'infos' => Info::getInfosByGameId($gameId),
@@ -36,8 +36,7 @@ class GetGameInfoAction
                 'phone' => DB::table('contact')->pluck('phone')[0],
                 'email' => DB::table('contact')->pluck('email')[0],
             ];
-
-            return $data;
         }
+        return [];
     }
 }

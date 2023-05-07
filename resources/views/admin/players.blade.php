@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-  <main class="grow"> 
+  <main class="grow">
     <div class="w-full flex justify-center">
       <h1 class="text-4xl sm:text-6xl">
         {{ __('All players') }}
@@ -20,6 +20,7 @@
               <th class="font-semibold text-left bg-card_bg/75">{{ __('Game') }}</th>
               <th class="font-semibold text-left bg-card_bg/75">{{ __('Team') }}</th>
               <th class="font-semibold text-left bg-card_bg/75">{{ __('Achievements') }}</th>
+              <th class="font-semibold text-left bg-card_bg/75">{{ __('Price') }}</th>
               <th class="font-semibold text-left bg-card_bg/75 rounded-tr-xl rounded-br-xl"></th>
           </tr>
         </thead>
@@ -60,6 +61,7 @@
                     </ul>
                 </div>
             </td>
+            <td class="font-medium">{{ $players[$i]->price }}</td>
             <td>
               <a href="{{ route('deletePlayer', $players[$i]->id) }}" class="hover:text-red text-subwhite font-medium tracking-wide ease-out duration-100">
                 {{ __('Delete') }}
@@ -70,7 +72,7 @@
         </tbody>
       </table>
     </div>
-  
+
     <div class="hidden w-full lg:flex xl:hidden">
       <table class="w-full bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
         <thead>
@@ -97,7 +99,7 @@
         </tbody>
       </table>
     </div>
-  
+
     <div class="hidden w-full sm:flex lg:hidden">
       <table class="w-full bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
         <thead>
@@ -120,7 +122,7 @@
         </tbody>
       </table>
     </div>
-  
+
     <div class="flex w-full sm:hidden">
       <table class="w-full bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
         <thead>
@@ -139,14 +141,14 @@
         </tbody>
       </table>
     </div>
-  
-  
+
+
     <div class="w-full flex justify-center">
       <h1 class="text-4xl sm:text-6xl">
         {{ __('Subscribers') }}
       </h1>
     </div>
-  
+
     <table class="w-5/12 mx-auto mb-20 bg-dark rounded-xl border-collapse table-auto" cellpadding="15%">
       <thead>
         <tr class="text-white">
