@@ -77,7 +77,7 @@
                         <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
                             <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
                             <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
-                                <form action="{{ route('storePrice', strtolower($game->name)) }}" method="post" class="flex w-full sm:justify-between flex-col sm:flex-row">
+                                <form action="{{ route('registerPlayerInGame', strtolower($game->name)) }}" method="post" class="flex w-full sm:justify-between flex-col sm:flex-row">
                                     @csrf
                                     <div class="">
                                         <div class="flex flex-col gap-y-6 sm:gap-y-0 sm:flex-row items-center mb-4">
@@ -86,7 +86,7 @@
                                         </div>
                                         @foreach ($prices as $price)
                                             <div class="flex flex-row items-center">
-                                                <input type="checkbox" name="{{ $price->name }}" id="{{ $price->name }}" />
+                                                <input type="checkbox" name="{{ $loop->iteration }}" id="{{ $price->name }}" value="{{ $price->name }}"/>
                                                 <label class="label cursor-pointer w-min" for="{{ $price->name }}">
                                                     <span class="label-text whitespace-nowrap leading-none ml-2 text-subwhite text-base">
                                                         {{ $price->name }}
@@ -97,7 +97,6 @@
                                                 </label>
                                             </div>
                                         @endforeach
-                                        <input id="price" class="hidden" type="text" name="price" value="" />
                                     </div>
                                     <div class="w-full sm:w-min flex items-end">
                                         <x-elems.button class="py-1 px-10 w-full mt-3 sm:mt-0" value="Play" />
@@ -185,7 +184,7 @@
             <div class="mt-10 flex flex-col md:flex-row w-full md:justify-between relative">
                 <h2 id="prices-title" class="mb-10 md:mb-0">{{ __('Prices') }}</h2>
                 <div class="flex flex-row justify-between w-full md:w-[70%] xl:w-[60%] p-4 bg-card_bg/75 rounded-xl">
-                    <form action="{{ route('storePrice', strtolower($game->name)) }}" method="post" class="flex w-full sm:justify-between flex-col sm:flex-row">
+                    <form action="{{ route('registerPlayerInGame', strtolower($game->name)) }}" method="post" class="flex w-full sm:justify-between flex-col sm:flex-row">
                         @csrf
                         <div class="">
                             <div class="flex flex-col gap-y-6 sm:gap-y-0 sm:flex-row items-center mb-4">

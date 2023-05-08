@@ -37,6 +37,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(function (){
                     require_once base_path('routes/main.php');
                     require_once base_path('routes/auth.php');
+                    require_once base_path('routes/account.php');
                 });
         });
     }

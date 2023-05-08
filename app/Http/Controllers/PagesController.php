@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Actions\UserActions\GetInfoForAccountAction;
 
 use App\Actions\MainActions\GetArchiveGamesAction;
-use App\Actions\MainActions\GetGameInfoAction;
-use App\Actions\MainActions\GetGamesAction;
 use App\Actions\MainActions\SendEmailAction;
 use App\Actions\MainActions\StoreEmailAction;
 
@@ -28,18 +26,6 @@ class PagesController extends Controller
     public function archive(GetArchiveGamesAction $getArchiveGames)
     {
         return view('archive', $getArchiveGames->handle());
-    }
-
-    /**
-     * Возращает страницу самой игры
-     *
-     * @param App\Actions\GetGameInfoAction $getGameInfo Получает из actiona информацию об игре
-     * @param string $gameName Имя игры
-     * @return Illuminate\View\View
-     */
-    public function game(GetGameInfoAction $getGameInfo, string $gameName)
-    {
-        return view('game', $getGameInfo->handle($gameName));
     }
 
     public function storePrice(string $gameName, Request $request, SetPriceForPlayerAction $setPriceForPlayer)

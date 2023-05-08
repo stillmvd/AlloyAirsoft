@@ -36,7 +36,7 @@ final class GameReader
             $gameId = Game::getIdByName($name);
             $contactsConfig = $this->configService->getConfig(ConfigPaths::CONTACTS, 'contacts');
 
-            $tmp = [
+            return [
                 'game' => Game::find($gameId),
 
                 'infos' => $this->infoDb->getInfosByGameId($gameId)[0],
@@ -48,8 +48,6 @@ final class GameReader
                 'phone' => $contactsConfig['phone'],
                 'email' => $contactsConfig['email'],
             ];
-
-            return $tmp;
         }
         return [];
     }
