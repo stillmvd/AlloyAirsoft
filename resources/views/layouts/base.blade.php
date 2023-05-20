@@ -56,4 +56,5 @@
 @endif
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5BMgYqx4r4s70XywuwblM-k1qi2ErGA0&callback=initMap"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </html>

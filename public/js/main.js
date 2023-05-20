@@ -1,226 +1,159 @@
-checkInputWithValidation();
-
-function upLabel(labelName) {
-    let label = document.getElementById(labelName);
-    label.style.top = '-18px';
-    label.style.fontSize = '12px';
-}
-
-function downLabel(labelName) {
-    let label = document.getElementById(labelName);
-    label.style.top = '0px';
-    label.style.fontSize = '16px';
-}
-
-document.getElementById('input_name').addEventListener('focus', function() {
-    upLabel('label_name');
-});
-document.getElementById('input_name').addEventListener('blur', function() {
-    downLabel('label_name');
-    if (document.getElementById('input_name').value != '') {
+$(function() {
+    var inputName = $('#input_name');
+    var inputSurname = $('#input_surname');
+    var inputCallsign = $('#input_callsign');
+    var inputPhone = $('#input_phone');
+    var inputTeamName = $('#input_teamName');
+    var toggle = $('#toggle');
+    var page = $('html');
+    var moon = $('#moon');
+    var sun = $('#sun');
+    var count = 0;
+  
+    function upLabel(labelName) {
+      $('#' + labelName).css({
+        'top': '-18px',
+        'font-size': '12px'
+      });
+    }
+  
+    function downLabel(labelName) {
+      $('#' + labelName).css({
+        'top': '0px',
+        'font-size': '16px'
+      });
+    }
+  
+    function checkInputWithValidation() {
+      downLabel('input_name');
+      if (inputName.val() != '') {
         upLabel('label_name');
-    } else {
+      } else {
         downLabel('label_name');
-    }
-});
-
-document.getElementById('input_surname').addEventListener('focus', function() {
-    upLabel('label_surname');
-});
-document.getElementById('input_surname').addEventListener('blur', function() {
-    downLabel('label_surname');
-    if (document.getElementById('input_surname').value != '') {
+      }
+  
+      downLabel('input_surname');
+      if (inputSurname.val() != '') {
         upLabel('label_surname');
-    } else {
+      } else {
         downLabel('label_surname');
-    }
-});
-
-document.getElementById('input_callsign').addEventListener('focus', function() {
-    upLabel('label_callsign');
-});
-document.getElementById('input_callsign').addEventListener('blur', function() {
-    downLabel('label_callsign');
-    if (document.getElementById('input_callsign').value != '') {
+      }
+  
+      downLabel('input_callsign');
+      if (inputCallsign.val() != '') {
         upLabel('label_callsign');
-    } else {
+      } else {
         downLabel('label_callsign');
-    }
-});
-
-document.getElementById('input_phone').addEventListener('focus', function() {
-    upLabel('label_phone');
-});
-document.getElementById('input_phone').addEventListener('blur', function() {
-    downLabel('label_phone');
-    if (document.getElementById('input_phone').value != '') {
+      }
+  
+      downLabel('input_phone');
+      if (inputPhone.val() != '') {
         upLabel('label_phone');
-    } else {
+      } else {
         downLabel('label_phone');
-    }
-});
-
-document.getElementById('input_teamName').addEventListener('focus', function() {
-    upLabel('label_teamName');
-});
-document.getElementById('input_teamName').addEventListener('blur', function() {
-    downLabel('label_teamName');
-    if (document.getElementById('input_teamName').value != '') {
+      }
+  
+      downLabel('input_teamName');
+      if (inputTeamName.val() != '') {
         upLabel('label_teamName');
-    } else {
+      } else {
         downLabel('label_teamName');
+      }
     }
-});
-
-function checkInputWithValidation() {
-    downLabel('input_name');
-    if (document.getElementById('input_name').value != '') {
-        upLabel('label_name');
-    } else {
-        downLabel('label_name');
+  
+    inputName.on('focus blur', function() {
+      upLabel('label_name');
+      downLabel('label_name');
+    });
+  
+    inputSurname.on('focus blur', function() {
+      upLabel('label_surname');
+      downLabel('label_surname');
+    });
+  
+    inputCallsign.on('focus blur', function() {
+      upLabel('label_callsign');
+      downLabel('label_callsign');
+    });
+  
+    inputPhone.on('focus blur', function() {
+      upLabel('label_phone');
+      downLabel('label_phone');
+    });
+  
+    inputTeamName.on('focus blur', function() {
+      upLabel('label_teamName');
+      downLabel('label_teamName');
+    });
+  
+    checkInputWithValidation();
+  
+    function findFile() {
+      $('#hiddenFile').trigger('click');
     }
-    downLabel('input_surname');
-    if (document.getElementById('input_surname').value != '') {
-        upLabel('label_surname');
-    } else {
-        downLabel('label_surname');
+  
+    var input = $('#hiddenFile');
+  
+    input.on('input', function() {
+      $('#avatarForm').trigger('submit');
+    });
+  
+    function deleteFile() {
+      $('#deleteForm').trigger('submit');
     }
-    downLabel('input_callsign');
-    if (document.getElementById('input_callsign').value != '') {
-        upLabel('label_callsign');
-    } else {
-        downLabel('label_callsign');
-    }
-    downLabel('input_phone');
-    if (document.getElementById('input_phone').value != '') {
-        upLabel('label_phone');
-    } else {
-        downLabel('label_phone');
-    }
-    downLabel('input_teamName');
-    if (document.getElementById('input_teamName').value != '') {
-        upLabel('label_teamName');
-    } else {
-        downLabel('label_teamName');
-    }
-}
-
-function findFile() {
-    document.getElementById('hiddenFile').click();
-}
-
-var input = document.getElementById('hiddenFile');
-
-input.oninput = function () {
-    document.forms["avatarForm"].submit();
-};
-
-function deleteFile() {
-    document.forms["deleteForm"].submit();
-}
-
-function onResponse(d) {
-    eval('var obj = ' + d + ';');
-    if (obj.success != 1) {
-        alert('Ошибка!\nФайл ' + obj.filename + " не загружен - "+obj.myres);
-        return;
-    } else {
+  
+    function onResponse(d) {
+      var obj = jQueryStatic.parseJSON(d);
+      if (obj.success != 1) {
+        alert('Ошибка!\nФайл ' + obj.filename + " не загружен - " + obj.myres);
+      } else {
         alert('Файл загружен');
-    };
-}
+      }
+    }
 
-let toggle = document.getElementById('toggle');
-let page = document.documentElement;
-let moon = document.getElementById('moon');
-let sun = document.getElementById('sun');
-let count = 0;//Счетчик для смены темы
-// Меняют общую тему сайта
-
-/**
- * Устанавливает темную тему для сайта
- *
- * @returns {void}
- */
-function setDark() {
-    localStorage.setItem('userTheme', 'dark');
-    page.classList.add('dark');
-    page.classList.remove('light');
-    toggle.classList.add('dark');
-    toggle.classList.remove('light');
-}
-
-/**
- * Устанавливает свтелую тему для сайта
- *
- * @returns {void}
- */
-function setLight() {
-    localStorage.setItem('userTheme', 'light');
-    page.classList.remove('dark');
-    page.classList.add('light');
-    toggle.classList.remove('dark');
-    toggle.classList.add('light');
-}
-
-/**
- * Меняет тему сайта
- *
- * @returns {void}
- */
-function switchMode() {
-    count++;
-    if (count % 2 != 0){
+    function setTheme(theme) {
+        localStorage.setItem('userTheme', theme);
+        page.toggleClass('dark', theme === 'dark').toggleClass('light', theme === 'light');
+        toggle.toggleClass('dark', theme === 'dark').toggleClass('light', theme === 'light');
+        moon.toggleClass('swap-on', theme === 'light').toggleClass('swap-off', theme === 'dark');
+        sun.toggleClass('swap-on', theme === 'dark').toggleClass('swap-off', theme === 'light');
+    }
+      
+    function switchMode() {
+      count++;
+      if (count % 2 !== 0) {
         localStorage.setItem('switch', 'off');
-        if (! toggle.classList.contains('dark')) {
-            setDark();
-        } else {
-            setLight()
-        }
+        toggle.hasClass('dark') ? setLight() : setDark();
+      }
     }
-}
-
-if (localStorage.getItem('switch') == 'on') {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches == true) {
-        localStorage.setItem('userTheme', 'dark');
+      
+    let userTheme = localStorage.getItem('userTheme');
+    let prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+    if (localStorage.getItem('switch') === 'on') {
+      userTheme = prefersDark ? 'dark' : 'light';
+    } else if (userTheme === null) {
+      userTheme = prefersDark ? 'dark' : 'light';
     }
-}
-
-if (localStorage.getItem('userTheme') == null) {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches == true) {
-        localStorage.setItem('userTheme', 'dark');
-    } else {
-        localStorage.setItem('userTheme', 'light');
-    }
-}
-
-if (localStorage.getItem('userTheme') == 'dark') {
-    setDark();
-    moon.classList.remove('swap-on');
-    sun.classList.remove('swap-off');
-    moon.classList.add('swap-off');
-    sun.classList.add('swap-on');
-} else {
-    setLight();
-    moon.classList.add('swap-on');
-    sun.classList.add('swap-off');
-    moon.classList.remove('swap-off');
-    sun.classList.remove('swap-on');
-}
-
-document.getElementById('blockPhone').addEventListener('click', ()=>{
-    var range = document.createRange();
-    range.selectNode(document.getElementById("phone"));
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-})
-
-document.getElementById('blockEmail').addEventListener('click', ()=>{
-    var range = document.createRange();
-    range.selectNode(document.getElementById("email"));
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-})
+      
+    setTheme(userTheme);
+      
+    $('#blockPhone').on('click', function() {
+        var range = document.createRange();
+        range.selectNode(document.getElementById('phone'));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        Document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+    });
+      
+    $('#blockEmail').on('click', function() {
+        var range = document.createRange();
+        range.selectNode(document.getElementById('email'));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        Document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+    });      
+});
+  

@@ -1,302 +1,159 @@
-let openRulesBlock = true;
-let openInfoBlock = true;
-let body = document.getElementById("body");
-checkInputWithValidation();
+$document.ready(() => {
+    let openRulesBlock = true;
+    let openInfoBlock = true;
+    let body = $('body');
+    const inputFields = ['#input_name', '#input_surname', '#input_callsign', '#input_email', '#input_phone', '#input_team'];
+    checkInputWithValidation();
 
-function upLabel(labelName) {
-    if (document.getElementById(labelName) !== null) {
-        let label = document.getElementById(labelName);
-        label.style.top = '-18px';
-        label.style.fontSize = '12px';
-    }
-}
+    const upLabel = (labelName) => {
+        $(`#${labelName}`).css({
+            'top': '-18px',
+            'fontSize': '12px'
+        });
+    };
 
-function downLabel(labelName) {
-    if (document.getElementById(labelName) !== null) {
-        let label = document.getElementById(labelName);
-        label.style.top = '0px';
-        label.style.fontSize = '16px';
-    }
-}
+    const downLabel = (labelName) => {
+        $(`#${labelName}`).css({
+            'top': '0px',
+            'fontSize': '16px'
+        });
+    };
 
-document.getElementById('input_name')?.addEventListener('focus', function() {
-    upLabel('name_label');
-});
-document.getElementById('input_surname')?.addEventListener('focus', function() {
-    upLabel('surname_label');
-});
-document.getElementById('input_callsign')?.addEventListener('focus', function() {
-    upLabel('callsign_label');
-});
-document.getElementById('input_email')?.addEventListener('focus', function() {
-    upLabel('email_label');
-});
-document.getElementById('input_phone')?.addEventListener('focus', function() {
-    upLabel('phone_label');
-});
-document.getElementById('input_team')?.addEventListener('focus', function() {
-    upLabel('team_label');
-});
+    inputFields.forEach((field) => {
+        $(field).on('focus', () => {
+            upLabel(`${field.slice(1)}_label`);
+        });
+    
+        $(field).on('blur', () => {
+            downLabel(`${field.slice(1)}_label`);
+            $(field).val() !== '' ? upLabel(`${field.slice(1)}_label`) : downLabel(`${field.slice(1)}_label`);
+        });
+    });
 
-document.getElementById('input_name')?.addEventListener('blur', function() {
-    downLabel('name_label');
-    if (document.getElementById('input_name').value != '') {
-        upLabel('name_label');
-    } else {
-        downLabel('name_label');
+    function checkInputWithValidation() {
+        inputFields.forEach((field) => {
+            $(field).val() !== '' ? upLabel(`${field.slice(1)}_label`) : downLabel(`${field.slice(1)}_label`);
+        });
     }
-});
-document.getElementById('input_surname')?.addEventListener('blur', function() {
-    downLabel('surname_label');
-    if (document.getElementById('input_surname').value != '') {
-        upLabel('surname_label');
-    } else {
-        downLabel('surname_label');
-    }
-});
-document.getElementById('input_callsign')?.addEventListener('blur', function() {
-    downLabel('callsign_label');
-    if (document.getElementById('input_callsign').value != '') {
-        upLabel('callsign_label');
-    } else {
-        downLabel('callsign_label');
-    }
-});
-document.getElementById('input_email')?.addEventListener('blur', function() {
-    downLabel('email_label');
-    if (document.getElementById('input_email').value != '') {
-        upLabel('email_label');
-    } else {
-        downLabel('email_label');
-    }
-});
-document.getElementById('input_phone')?.addEventListener('blur', function() {
-    downLabel('phone_label');
-    if (document.getElementById('input_phone').value != '') {
-        upLabel('phone_label');
-    } else {
-        downLabel('phone_label');
-    }
-});
-document.getElementById('input_team')?.addEventListener('blur', function() {
-    downLabel('team_label');
-    if (document.getElementById('input_team').value != '') {
-        upLabel('team_label');
-    } else {
-        downLabel('team_label');
-    }
-});
 
-function checkInputWithValidation(){
-    if (document.getElementById('input_name')?.value != '') {
-        upLabel('name_label');
-    } else {
-        downLabel('name_label');
-    }
-    if (document.getElementById('input_surname')?.value != '') {
-        upLabel('surname_label');
-    } else {
-        downLabel('surname_label');
-    }
-    if (document.getElementById('input_callsign')?.value != '') {
-        upLabel('callsign_label');
-    } else {
-        downLabel('callsign_label');
-    }
-    downLabel('email_label');
-    if (document.getElementById('input_email')?.value != '') {
-        upLabel('email_label');
-    } else {
-        downLabel('email_label');
-    }
-    if (document.getElementById('input_phone')?.value != '') {
-        upLabel('phone_label');
-    } else {
-        downLabel('phone_label');
-    }
-    downLabel('team_label');
-    if (document.getElementById('input_team')?.value != '') {
-        upLabel('team_label');
-    } else {
-        downLabel('team_label');
-    }
-}
+    const countDownElement = $('#countdown');
+    if (countDownElement.length) {
+    const countDownDate = new Date(countDownElement.text()).getTime();
+    const daysElement = $('#days');
+    const hoursElement = $('#hours');
+    const minutesElement = $('#min');
+    const secondsElement = $('#sec');
 
-if (document.getElementById('countdown') !== null)
-{
-    var countDownDate = new Date(document.getElementById('countdown')?.textContent).getTime();
-    var x = setInterval(function() {
-        var now = new Date().getTime();
+    const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
 
-        var distance = countDownDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById('days')?.setAttribute('style', ('--value:' + days));
-        document.getElementById('hours')?.setAttribute('style', ('--value:' + hours));
-        document.getElementById('min')?.setAttribute('style', ('--value:' + minutes));
-        document.getElementById('sec')?.setAttribute('style', ('--value:' + seconds));
+        daysElement?.css('--value', days);
+        hoursElement?.css('--value', hours);
+        minutesElement?.css('--value', minutes);
+        secondsElement?.css('--value', seconds);
 
         if (distance < 0) {
-            clearInterval(x);
-            document.getElementById('days')?.setAttribute('style', ('--value:' + 0));
-            document.getElementById('hours')?.setAttribute('style', ('--value:' + 0));
-            document.getElementById('min')?.setAttribute('style', ('--value:' + 0));
-            document.getElementById('sec')?.setAttribute('style', ('--value:' + 0));
+            clearInterval(interval);
+            daysElement?.css('--value', 0);
+            hoursElement?.css('--value', 0);
+            minutesElement?.css('--value', 0);
+            secondsElement?.css('--value', 0);
         }
-    }, 1000);
-}
-createInfoSquare();
-function createInfoSquare() {
-    setTimeout(() => {
-        let infoSquare = document.getElementById('infoSquare');
-        let infoBlockHeight = document.getElementById('infoBlock').clientHeight;
-        let infoBlockWidth = document.getElementById('infoBlock').clientWidth;
-        infoSquare.classList.add('duration-500');
-        infoSquare.style.height = infoBlockHeight + 'px';
-        infoSquare.style.width = infoBlockWidth + 'px';
-        infoSquare.style.opacity = 70 + '%';
-        infoSquare.style.right = -20 + 'px';
-        infoSquare.style.bottom = -20 + 'px';
-    }, 100);
-}
-function removeInfoSquare() {
-    let infoSquare = document.getElementById('infoSquare');
-    infoSquare.classList.remove('duration-500');
-    infoSquare.style.height = 0 + 'px';
-    infoSquare.style.width = 0 + 'px';
-    infoSquare.style.opacity = 0 + '%';
-    infoSquare.style.right = 0 + 'px';
-    infoSquare.style.bottom = 0 + 'px';
-}
-createRulesSquare();
-function createRulesSquare() {
-    setTimeout(() => {
-        let rulesSquare = document.getElementById('rulesSquare');
-        let rulesBlockHeight = document.getElementById('rulesBlock').clientHeight;
-        let rulesBlockWidth = document.getElementById('rulesBlock').clientWidth;
-        rulesSquare.classList.add('duration-500');
-        rulesSquare.style.height = rulesBlockHeight + 'px';
-        rulesSquare.style.width = rulesBlockWidth + 'px';
-        rulesSquare.style.opacity = 70 + '%';
-        rulesSquare.style.right = -20 + 'px';
-        rulesSquare.style.bottom = -20 + 'px';
-    }, 150);
-}
-function removeRulesSquare() {
-    let rulesSquare = document.getElementById('rulesSquare');
-    rulesSquare.classList.remove('duration-500');
-    rulesSquare.style.height = 0 + 'px';
-    rulesSquare.style.width = 0 + 'px';
-    rulesSquare.style.opacity = 0 + '%';
-    rulesSquare.style.right = 0 + 'px';
-    rulesSquare.style.bottom = 0 + 'px';
-}
+    };
 
-document.getElementById('Game pass').addEventListener('change', () => {
-    if (document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '130$';
-        document.getElementById('price').value = 130;
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
     }
-    else if (document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '60$';
-        document.getElementById('price').value = 60;
-    }
-    else if (!document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '40$';
-        document.getElementById('price').value = 40;
-    }
-    else if (!document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '30$';
-        document.getElementById('price').value = 30;
-    }
-    else if (document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '100$';
-        document.getElementById('price').value = 100;
-    }
-    else if (!document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '70$';
-        document.getElementById('price').value = 70;
-    }
-    else if (document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '90$';
-        document.getElementById('price').value = 90;
-    }
-    else if (!document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '0$';
-        document.getElementById('price').value = 0;
-    }
-});
 
-document.getElementById('Festival pass + food').addEventListener('change', () => {
-    if (document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '130$';
-        document.getElementById('price').value = 130;
-    }
-    else if (document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '60$';
-        document.getElementById('price').value = 60;
-    }
-    else if (!document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '40$';
-        document.getElementById('price').value = 40;
-    }
-    else if (!document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '30$';
-        document.getElementById('price').value = 30;
-    }
-    else if (document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '100$';
-        document.getElementById('price').value = 100;
-    }
-    else if (!document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '70$';
-        document.getElementById('price').value = 70;
-    }
-    else if (document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '90$';
-        document.getElementById('price').value = 90;
-    }
-    else if (!document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '0$';
-        document.getElementById('price').value = 0;
-    }
-});
+    const animateSquare = (square, block) => {
+        setTimeout(() => {
+            square.addClass('duration-500');
+            square.css({
+                'height': block.height() + 'px',
+                'width': block.width() + 'px',
+                'opacity': '.7',
+                'right': '-20px',
+                'bottom': '-20px'
+            });
+        }, 100);
+    };
+    
+    const removeSquare = (square) => {
+        square.removeClass('duration-500');
+        square.css({
+            'height': '0px',
+            'width': '0px',
+            'opacity': '0',
+            'right': '0px',
+            'bottom': '0px'
+        });
+    };
+    
+    const createInfoSquare = () => {
+        const infoSquare = $('#infoSquare');
+        const infoBlock = $('#infoBlock');
+        animateSquare(infoSquare, infoBlock);
+    };
+    
+    const removeInfoSquare = () => {
+        const infoSquare = $('#infoSquare');
+        removeSquare(infoSquare);
+    };
+    
+    const createRulesSquare = () => {
+        const rulesSquare = $('#rulesSquare');
+        const rulesBlock = $('#rulesBlock');
+        animateSquare(rulesSquare, rulesBlock);
+    };
+    
+    const removeRulesSquare = () => {
+        const rulesSquare = $('#rulesSquare');
+        removeSquare(rulesSquare);
+    };
+    
+    createInfoSquare();
+    createRulesSquare();   
 
-document.getElementById('Rent').addEventListener('change', () => {
-    if (document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '130$';
-        document.getElementById('price').value = 130;
+    const festivalPassFoodCheckbox = $('#Festival pass + food');
+    const gamePassCheckbox = $('#Game pass');
+    const rentCheckbox = $('#Rent');
+    const finalPrice = $('#finalyPrice');
+    const priceInput = $('#price');
+
+    function updatePrice() {
+        const gamePassChecked = gamePassCheckbox.is(':checked');
+        const festivalPassChecked = festivalPassFoodCheckbox.is(':checked');
+        const rentChecked = rentCheckbox.is(':checked');
+
+        let price = 0;
+
+        if (gamePassChecked && festivalPassChecked && rentChecked) {
+            price = 130;
+        } else if (gamePassChecked && !festivalPassChecked && !rentChecked) {
+            price = 60;
+        } else if (!gamePassChecked && festivalPassChecked && !rentChecked) {
+            price = 40;
+        } else if (!gamePassChecked && !festivalPassChecked && rentChecked) {
+            price = 30;
+        } else if (gamePassChecked && festivalPassChecked && !rentChecked) {
+            price = 100;
+        } else if (!gamePassChecked && festivalPassChecked && rentChecked) {
+            price = 70;
+        } else if (gamePassChecked && !festivalPassChecked && rentChecked) {
+            price = 90;
+        }
+
+        finalPrice.text(`${price}$`);
+        priceInput.val(price);
     }
-    else if (document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '60$';
-        document.getElementById('price').value = 60;
-    }
-    else if (!document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '40$';
-        document.getElementById('price').value = 40;
-    }
-    else if (!document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '30$';
-        document.getElementById('price').value = 30;
-    }
-    else if (document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '100$';
-        document.getElementById('price').value = 100;
-    }
-    else if (!document.getElementById('Game pass').checked && document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '70$';
-        document.getElementById('price').value = 70;
-    }
-    else if (document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '90$';
-        document.getElementById('price').value = 90;
-    }
-    else if (!document.getElementById('Game pass').checked && !document.getElementById('Festival pass + food').checked && !document.getElementById('Rent').checked) {
-        document.getElementById('finalyPrice').innerText = '0$';
-        document.getElementById('price').value = 0;
-    }
-});
+
+    festivalPassFoodCheckbox.on('change', updatePrice);
+    gamePassCheckbox.on('change', updatePrice);
+    rentCheckbox.on('change', updatePrice);
+})

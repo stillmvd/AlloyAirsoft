@@ -1,64 +1,64 @@
-checkInputWithValidation();
-
-function upLabel(labelName) {
-    let label = document.getElementById(labelName);
-    label.style.top = '-18px';
-    label.style.fontSize = '12px';
-}
-
-function downLabel(labelName) {
-    let label = document.getElementById(labelName);
-    label.style.top = '0px';
-    label.style.fontSize = '16px';
-}
-
-function showForm(cardName) {
-    let card = document.getElementById(cardName);
-    card.style.top = '-18px';
-    card.style.fontSize = '12px';
-}
-
-function hideForm(cardName) {
-    let card = document.getElementById(cardName);
-    card.style.top = '0px';
-    card.style.fontSize = '16px';
-}
-
-document.getElementById('input_email_log').addEventListener('focus', function() {
-    upLabel('label_email_log');
-});
-document.getElementById('input_password_log').addEventListener('focus', function() {
-    upLabel('label_password_log');
-});
-
-document.getElementById('input_email_log').addEventListener('blur', function() {
-    downLabel('label_email_log');
-    if (document.getElementById('input_email_log').value != '') {
-        upLabel('label_email_log');
-    } else {
-        downLabel('label_email_log');
+$document.ready(() => {
+$(function() {
+    checkInputWithValidation();
+  
+    function upLabel(labelName) {
+      $('#' + labelName).css({
+        'top': '-18px',
+        'font-size': '12px'
+      });
     }
-});
-document.getElementById('input_password_log').addEventListener('blur', function() {
-    downLabel('label_password_log');
-    if (document.getElementById('input_password_log').value != '') {
-        upLabel('label_password_log');
-    } else {
-        downLabel('label_password_log');
+  
+    function downLabel(labelName) {
+      $('#' + labelName).css({
+        'top': '0px',
+        'font-size': '16px'
+      });
     }
-});
-
-function checkInputWithValidation(){
-    downLabel('label_email_log');
-    if (document.getElementById('input_email_log').value != '') {
-        upLabel('label_email_log');
-    } else {
-        downLabel('label_email_log');
+  
+    function showForm(cardName) {
+      $('#' + cardName).css({
+        'top': '-18px',
+        'font-size': '12px'
+      });
     }
-    if (document.getElementById('input_password_log').value != '') {
-        upLabel('label_password_log');
-    } else {
-        downLabel('label_password_log');
+  
+    function hideForm(cardName) {
+      $('#' + cardName).css({
+        'top': '0px',
+        'font-size': '16px'
+      });
     }
-}
-
+  
+    $('#input_email_log').on('focus', function() {
+      upLabel('label_email_log');
+    });
+  
+    $('#input_password_log').on('focus', function() {
+      upLabel('label_password_log');
+    });
+  
+    $('#input_email_log').on('blur', function() {
+      const inputElement = $(this);
+      const labelName = inputElement.attr('id').replace('input_', 'label_');
+      inputElement.val() !== '' ? upLabel(labelName) : downLabel(labelName);
+    });
+  
+    $('#input_password_log').on('blur', function() {
+      const inputElement = $(this);
+      const labelName = inputElement.attr('id').replace('input_', 'label_');
+      inputElement.val() !== '' ? upLabel(labelName) : downLabel(labelName);
+    });
+  
+    function checkInputWithValidation() {
+      const inputEmailLog = $('#input_email_log');
+      const inputPasswordLog = $('#input_password_log');
+  
+      downLabel('label_email_log');
+      inputEmailLog.val() !== '' ? upLabel('label_email_log') : downLabel('label_email_log');
+  
+      downLabel('label_password_log');
+      inputPasswordLog.val() !== '' ? upLabel('label_password_log') : downLabel('label_password_log');
+    }
+  });
+})

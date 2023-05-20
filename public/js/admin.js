@@ -1,67 +1,82 @@
-// rules column mechanism
-let rulesCount = document.getElementsByClassName('rulesBlock').length;
-let rulesTitle = [],
-    rulesText = [],
-    rulesBlocks = [];
-setRuleIdAndNameInput();
-function setRuleIdAndNameInput(){
-    let rulesBlocks = document.getElementsByClassName('rulesBlock');
-    document.getElementById('rulesCount').value = rulesBlocks.length;
-    for (let i = 0; i < rulesBlocks.length; i++){
-        rulesBlocks[i].setAttribute('id', ('rulesBlock'+i));
-        rulesBlocks[i].childNodes[1].name = 'rulesTitle' + i;
-        rulesBlocks[i].childNodes[3].name = 'rulesText' + i;
-    };
-}
+//Waiting for the document to be fully loaded before executing the code inside the function 
+$document.ready(() => {
+    // rules column mechanism
+    let rulesCount = $('.rulesBlock').length;
+   
+    //The function sets the ID and name attributes of elements within a set of rules blocks
+    const setRuleIdAndNameInput = () =>{
+        $('.rulesBlock').each((idx, element) => {
+            let $element = $(element);
+            $element.attr('id', 'rulesBlock' + idx);
+            $element.children().eq(1).attr('name', 'rulesTitle' + idx);
+            $element.children().eq(3).attr('name', 'rulesText' + idx);
+        });
+        $('#rulesCount').val(rulesCount);
+    }
 
-function addRulesColumns() {
-    let rulesBlock = document.getElementsByClassName('rulesBlock')[0];
-    let rulesAdded = document.getElementById('rulesAdded');
-    rulesAdded.insertAdjacentHTML('beforebegin', rulesBlock.outerHTML);
+    //Function adds a copy of a rules block before the "rulesAdded" element and sets the ID and 
+    //name attributes of the input fields
+    const addRulesColumns = () =>{
+        let rulesBlock = $('.rulesBlock').first().clone();
+        $('#rulesAdded').before(rulesBlock);
+        setRuleIdAndNameInput();
+    }
+    
+    // The function removes the last column of a set of rules blocks and updates the count of remaining blocks
+    // Returns nothing (undefined) when the length of the rulesBlock is less than or equal to 1  
+    const removeRulesColumns = () =>{
+        let rulesBlock = $('.rulesBlock');
+        if (rulesBlock.length <= 1){
+            return;                              //! Return undefined?
+        }
+        else{
+            rulesBlock.last().remove();
+            rulesCount = rulesBlock.length;
+            $('#rulesCount').val(rulesCount);
+        }
+    }
+
+    // prices column mechanism
+    let pricesCount = $('.pricesBlock').length;
+
+    //Function sets the ID and name attributes for a group of price blocks in a page
+    const setPriceIdAndNameInput = () =>{
+        $('.pricesBlock').each((idx, element) => {
+            let $element = $(element);
+            $element.attr('id', 'pricesBlock' + idx);
+            $element.children().eq(1).attr('name', 'pricesTitle' + idx);
+            $element.children().eq(3).attr('name', 'pricesText' + idx);
+        });
+        $('#pricesCount').val(pricesCount);           
+    }
+
+    //The function adds a price column to a block of prices and sets the input ID and name.
+    const addPriceColumns = () =>{
+        let pricesBlock = $('.pricesBlock').first().clone();
+        $('#pricesAdded').before(pricesBlock);
+        setPriceIdAndNameInput();
+    }
+
+    //The function removes the last price column from a block of prices and updates the count of prices.
+    //If the length of the pricesBlock is less than or equal to 1, nothing is returned.
+    //Otherwise, the last pricesBlock is removed and the updated length is returned.
+    const removePriceColumns = () =>{
+        let pricesBlock = $('.pricesBlock');
+        if (pricesBlock.length <= 1){
+            return;                         //! Return undefined?
+        }
+        else{
+            pricesBlock.last().remove();
+            pricesCount = pricesBlock.length;
+            $('#pricesCount').val(pricesCount);
+        }
+    }
+
     setRuleIdAndNameInput();
-}
-
-function removeRulesColumns() {
-    let length = document.getElementsByClassName('rulesBlock').length;
-    if (length <= 1){
-
-    } else {
-        let rulesBlock = document.getElementById('rulesBlock' + (length-1));
-        rulesBlock.remove();
-        document.getElementById('rulesCount').value = length;
-    }
-}
-
-// prices column mechanism
-let pricesCount = document.getElementsByClassName('pricesBlock').length;
-let pricesTitle = [],
-    pricesText = [],
-    pricesBlocks = [];
-setPriceIdAndNameInput();
-function setPriceIdAndNameInput(){
-    let pricesBlocks = document.getElementsByClassName('pricesBlock');
-    document.getElementById('pricesCount').value = pricesBlocks.length;
-    for (let i = 0; i < pricesBlocks.length; i++){
-        pricesBlocks[i].setAttribute('id', ('pricesBlock'+i));
-        pricesBlocks[i].childNodes[1].name = 'pricesTitle' + i;
-        pricesBlocks[i].childNodes[3].name = 'pricesText' + i;
-    };
-}
-
-function addPriceColumns() {
-    let pricesBlock = document.getElementsByClassName('pricesBlock')[0];
-    let pricesAdded = document.getElementById('pricesAdded');
-    pricesAdded.insertAdjacentHTML('beforebegin', pricesBlock.outerHTML);
     setPriceIdAndNameInput();
-}
 
-function removePriceColumns() {
-    let length = document.getElementsByClassName('pricesBlock').length;
-    if (length <= 1){
-
-    } else {
-        let pricesBlock = document.getElementById('pricesBlock' + (length-1));
-        pricesBlock.remove();
-        document.getElementById('pricesCount').value = length;
-    }
-}
+    // $('#addRulesBtn').on('click', addRulesColumns);
+    // $('#removeRulesBtn').on('click', removeRulesColumns);
+    // $('#addPriceBtn').on('click', addPriceColumns);
+    // $('#removePriceBtn').on('click', removePriceColumns);
+})
