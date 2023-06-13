@@ -27,7 +27,7 @@
 @endif
 
 <body class="min-h-screen container px-6 flex flex-col justify-between selection:bg-dark selection:text-main">
-    @unless (Route::is('login') || Route::is('register'))
+    @unless (Route::is('login') || Route::is('registration'))
         @include('includes.header')
     @endunless
 
@@ -49,7 +49,7 @@
     <script src="{{ asset('js/admin.js') }}"></script>
 @elseif (Route::is('login'))
     <script src="{{ asset('js/labelForLogin.js') }}"></script>
-@elseif (Route::is('register'))
+@elseif (Route::is('registration'))
     <script src="{{ asset('js/labelForRegister.js') }}"></script>
 @elseif (Route::is('personal_account'))
     <script src="{{ asset('js/main.js') }}"></script>

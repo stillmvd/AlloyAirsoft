@@ -45,7 +45,7 @@
                 <p class="whitespace-nowrap">
                     {{ __("Don't have an account?") }}
                 </p>
-                <a href="{{ route('register') }}" class="mt-3 whitespace-nowrap" tabindex="4">
+                <a href="{{ route('registration') }}" class="mt-3 whitespace-nowrap" tabindex="4">
                     {{ __("Sign up") }}
                 </a>
             </div>

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Actions\UserActions\StoreUsersAction;
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\StoreUsersRequest;
-
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -18,20 +17,20 @@ class AuthController extends Controller
      *
      * @return View
      */
-    public function account(): View
-    {
-        return view('auth.account');
-    }
-
-    /**
-     * Возращает страничку регистрации
-     *
-     * @return View
-     */
-    public function register(): View
-    {
-        return view('auth.registration');
-    }
+//    public function account(): View
+//    {
+//        return view('auth.account');
+//    }
+//
+//    /**
+//     * Возращает страничку регистрации
+//     *
+//     * @return View
+//     */
+//    public function register(): View
+//    {
+//        return view('auth.registration');
+//    }
 
     /**
      * Регистрация
