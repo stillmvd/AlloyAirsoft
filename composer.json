@@ -10,8 +10,6 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "schulzefelix/laravel-data-transfer-object": "*",
-        "spatie/data-transfer-object": "*",
         "spatie/laravel-view-models": "^1.5"
     },
     "require-dev": {
