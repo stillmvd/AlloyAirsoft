@@ -18,7 +18,7 @@ class PlayerDb implements IPlayerDb
             'emailPlayer' => $dto->userDto->email,
             'phone' => $dto->number,
             'price' => null,
-            'team_id' => null,
+            'team_id' => 1002,
         ]);
     }
 

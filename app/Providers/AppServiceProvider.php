@@ -8,7 +8,9 @@ use App\Modules\Game\Db\IPriceDb;
 use App\Modules\Game\Db\IRuleDb;
 use App\Modules\Game\Db\PriceDb;
 use App\Modules\Game\Db\RuleDb;
+use App\Modules\Player\Db\IPlayerDb;
 use App\Modules\Player\Db\IPlayerPriceDb;
+use App\Modules\Player\Db\PlayerDb;
 use App\Modules\Player\Db\PlayerPriceDb;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IPriceDb::class, PriceDb::class);
         $this->app->bind(IRuleDb::class, RuleDb::class);
         $this->app->bind(IPlayerPriceDb::class, PlayerPriceDb::class);
+        $this->app->bind(IPlayerDb::class, PlayerDb::class);
     }
 
     /**

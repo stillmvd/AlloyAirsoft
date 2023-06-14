@@ -38,7 +38,9 @@ class RegisterController extends Controller
     {
         $userDto = $this->requestTransformer->requestToSaveUser($request);
         $this->saveUserWithRegistrationAction->handle($userDto);
-        return redirect()->route('index')->with([
+        return redirect()
+            ->route('index')
+            ->with([
             'success' => 'You have been successfully registered'
         ]);
     }

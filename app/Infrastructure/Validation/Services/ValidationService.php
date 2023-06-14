@@ -13,7 +13,7 @@ final class ValidationService
      */
     public function validate(array $notValidData, array $rules, array $attributes): RedirectResponse|array
     {
-        $messages = include('app/Infrastructure/Validation/messages.php');
+        $messages = include(dirname(__DIR__, 4) .'/app/Infrastructure/Validation/messages.php');
         $validator = Validator::make($notValidData, $rules, $messages, $attributes);
         $validatedData = $validator->validate();
 

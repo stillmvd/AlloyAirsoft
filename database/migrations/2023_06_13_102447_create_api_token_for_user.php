@@ -23,18 +23,14 @@ return new class extends Migration
     {
         Schema::table('users', function ($table) {
             $table->string('api_token', 80)->after('password')
-                ->unique()
-                ->nullable()
-                ->default(null);
+                ->unique();
         });
     }
 
     private function createIpForUser()
     {
         Schema::table('users', function ($table) {
-            $table->string('ip_address', 80)->after('api_token')
-                ->nullable()
-                ->default(null);
+            $table->string('ip_address', 80)->after('api_token');
         });
     }
 
