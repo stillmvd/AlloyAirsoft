@@ -22,4 +22,9 @@ class PlayerDb implements IPlayerDb
         ]);
     }
 
+    public function getById(int $id): array
+    {
+        return DB::table(self::TABLE)->where('id', $id)->get()->first();
+    }
+
 }

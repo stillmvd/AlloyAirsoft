@@ -7,6 +7,7 @@ use App\Modules\Auth\Actions\SaveUserWithRegistrationAction;
 use App\Modules\Auth\Request\RequestTransformer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -33,16 +34,18 @@ class RegisterController extends Controller
 
     /**
      * @throws ValidationException
+     * Route ('/registration/save', method='POST')
      */
     public function save(Request $request): RedirectResponse
     {
         $userDto = $this->requestTransformer->requestToSaveUser($request);
-        $this->saveUserWithRegistrationAction->handle($userDto);
-        return redirect()
-            ->route('index')
-            ->with([
+        $token = $this->saveUserWithRegistrationAction->handle($userDto);
+        return redirect()->route('personal_account')->with(
+            [
+            'api_token' => $token,
             'success' => 'You have been successfully registered'
-        ]);
+            ]
+        );
     }
 
 }

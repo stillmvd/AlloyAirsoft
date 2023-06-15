@@ -34,4 +34,10 @@ final class RequestTransformer
         );
     }
 
+    public function requestToCheckLogin(Request $request): array
+    {
+        $data = $request->all();
+        return $this->validatorBuilder->validateToCheckLogin($data);
+    }
+
 }

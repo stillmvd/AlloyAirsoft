@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Main\ArchiveController;
 use App\Http\Controllers\Main\GameController;
@@ -24,24 +26,44 @@ Route::controller(ArchiveController::class)->group(function () {
     Route::get('/archive', 'index')->name('archive');
 });
 
-Route::controller(LkController::class)->middleware('auth')->middleware('auth:api')->group(function () {
+Route::controller(LkController::class)->middleware(['auth'])->group(function () {
    Route::get('personal_account', 'index')->name('personal_account');
 });
 
 Route::controller(RegisterController::class)->group(function () {
    Route::get('registration', 'index')->name('registration');
    Route::post('registration/save', 'save')->name('register_store');
-   Route::post('login', 'login_store')->name('login_store');
 });
 
-
+Route::controller(LoginController::class)->group(function () {
+   Route::get('login', 'index')->name('login');
+   Route::post('login/check', 'check')->name('login_check');
+});
 
 Route::controller(AuthController::class)->group(function () {
-//    Route::get('login', 'account')->name('login');
-//    Route::get('registration', 'register')->name('register');
-//    Route::post('register', 'register_store')->name('register_store');
-//    Route::post('login', 'login_store')->name('login_store');
     Route::get('logout', 'logout')->name('logout');
+});
+
+Route::middleware('auth')->controller(AdminController::class)->group(function () {
+    Route::get('admin', 'index')->name('admin');
+    Route::get('credential', 'credential')->name('credential');
+    Route::post('admin', 'create')->name('create');
+    Route::get('admin/players', 'players')->name('players');
+    Route::get('admin/users', 'users')->name('users');
+
+    Route::get('game/{id}/edit', 'edit')->name('edit')->where(['id' => '[0-9]+']);
+    Route::put('game/{id}/edit', 'update')->name('update')->where(['id' => '[0-9]+']);
+    Route::delete('game/{id}/delete', 'delete')->name('delete')->where(['id' => '[0-9]+']);
+
+    Route::post('credential/contact_information', 'contactInformation')->name('contactInformation');
+    Route::post('credential/player_information', 'playerInformation')->name('playerInformation');
+    Route::post('credential/admin_information', 'adminInformation')->name('adminInformation');
+
+    Route::get('deleteP/{id}', 'deletePlayer')->name('deletePlayer')->where(['id' => '[0-9]+']);
+    Route::get('deleteU/{id}', 'deleteUser')->name('deleteUser')->where(['id' => '[0-9]+']);
+
+    Route::post('getAchievements/{id}', 'getAchievements')->name('getAchievements')
+        ->where(['id' => '[0-9]+']);
 });
 
 
@@ -52,6 +74,6 @@ Route::controller(PagesController::class)->group(function () {
                                                                 ->where(['id' => '[0-9]+']);
     Route::post('/', 'saveEmail')->name('save_email');
 
-    Route::get('personal_account/{id}', 'account')->middleware('auth')->name('personal_account');
+//    Route::get('personal_account/{id}', 'account')->middleware('auth')->name('personal_account');
 });
 

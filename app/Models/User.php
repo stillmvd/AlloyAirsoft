@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Modules\Auth\Dto\SaveUserDto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
@@ -31,7 +30,7 @@ class User extends Authenticatable
         return $this->belongsTo(Player::class);
     }
 
-    public function createUser(SaveUserDto $dto, int $playerId)
+    public function createUser(SaveUserDto $dto, int $playerId): array
     {
         $token = hash('sha256', Str::random(80));
 
@@ -49,8 +48,17 @@ class User extends Authenticatable
         ]);
         $user->save();
 
-        return $user;
+        return [$user, $token];
     }
 
+    public function getUserByToken(string $token)
+    {
+        return self::where('api_token', $token)->get()->first();
+    }
+
+    public function getPlayerId(): int
+    {
+        return self::player()->id;
+    }
 
 }

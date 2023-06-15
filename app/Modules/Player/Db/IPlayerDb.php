@@ -9,4 +9,6 @@ interface IPlayerDb
     const TABLE = 'players';
 
     public function createPlayer(SaveUserDto $dto): int;
+
+    public function getById(int $id): array;
 }

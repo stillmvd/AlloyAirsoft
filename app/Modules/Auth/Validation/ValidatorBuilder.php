@@ -45,4 +45,23 @@ final class ValidatorBuilder
 
         return $this->validationService->validate($data, $rules, $labels);
     }
+
+    public function validateToCheckLogin(array $data): array
+    {
+        $rules = [
+            'emailPlayerForLog' => 'required|email:rfc,dns',
+            'passwordForLog' => [
+                'required',
+                'min:6',
+                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+            ]
+        ];
+
+        $labels = [
+            'emailPlayerForLog' => 'Email',
+            'passwordForReg' => 'Password',
+        ];
+
+        return $this->validationService->validate($data, $rules, $labels);
+    }
 }
