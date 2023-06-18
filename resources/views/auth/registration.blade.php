@@ -97,9 +97,9 @@
                 <p class="whitespace-nowrap">
                     {{ __("Already have an account?") }}
                 </p>
-{{--                <a href="{{ route('login') }}" class="mt-3 whitespace-nowrap" tabindex="4">--}}
-{{--                    {{ __("Log in") }}--}}
-{{--                </a>--}}
+                <a href="{{ route('login') }}" class="mt-3 whitespace-nowrap" tabindex="4">
+                    {{ __("Log in") }}
+                </a>
             </div>
         </div>
     </main>

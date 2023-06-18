@@ -20,6 +20,7 @@ class RegisterController extends Controller
         RequestTransformer $requestTransformer,
         SaveUserWithRegistrationAction $saveUserWithRegistrationAction
     ) {
+//        $this->middleware('auth:api', ['except' => ['save']]);
         $this->requestTransformer = $requestTransformer;
         $this->saveUserWithRegistrationAction = $saveUserWithRegistrationAction;
     }
@@ -39,13 +40,9 @@ class RegisterController extends Controller
     public function save(Request $request): RedirectResponse
     {
         $userDto = $this->requestTransformer->requestToSaveUser($request);
-        $token = $this->saveUserWithRegistrationAction->handle($userDto);
-        return redirect()->route('personal_account')->with(
-            [
-            'api_token' => $token,
-            'success' => 'You have been successfully registered'
-            ]
-        );
+        $this->saveUserWithRegistrationAction->handle($userDto);
+        return redirect()->route('personal_account')
+            ->with(['success' => 'You have been successfully registered']);
     }
 
 }

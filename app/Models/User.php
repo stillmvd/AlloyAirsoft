@@ -9,20 +9,24 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'id',
         'email',
-        'password',
         'isActive',
         'isAdmin',
+        'password',
         'player_id',
-        'api_token',
         'ip_address',
+    ];
+
+    protected $hidden = [
+        'remember_token',
     ];
 
     public function player()
@@ -48,7 +52,7 @@ class User extends Authenticatable
         ]);
         $user->save();
 
-        return [$user, $token];
+        return $user;
     }
 
     public function getUserByToken(string $token)
@@ -61,4 +65,17 @@ class User extends Authenticatable
         return self::player()->id;
     }
 
+    // Получите идентификатор, который будет храниться в утверждении субъекта JWT
+    // Грубо говоря возращает токен авторизации
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    //возвращает массив "ключ-значение", содержащий все пользовательские
+    // утверждения, которые должны быть добавлены в JWT.
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Modules\Auth\Actions\CheckLoginAction;
 use App\Modules\Auth\Request\RequestTransformer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class LoginController
+class LoginController extends Controller
 {
     private RequestTransformer $requestTransformer;
     private CheckLoginAction $checkLoginAction;
@@ -17,6 +18,7 @@ class LoginController
         RequestTransformer $requestTransformer,
         CheckLoginAction $checkLoginAction
     ) {
+//        $this->middleware('auth:api', ['except' => ['check']]);
         $this->requestTransformer = $requestTransformer;
         $this->checkLoginAction = $checkLoginAction;
     }
@@ -32,7 +34,7 @@ class LoginController
     public function check(Request $request): RedirectResponse
     {
         $dataForAuth = $this->requestTransformer->requestToCheckLogin($request);
-        return $this->checkLoginAction->handle($dataForAuth, $request);
+        return $this->checkLoginAction->handle($dataForAuth);
     }
 
 }

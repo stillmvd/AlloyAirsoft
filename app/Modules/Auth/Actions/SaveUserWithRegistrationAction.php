@@ -19,12 +19,11 @@ final class SaveUserWithRegistrationAction
         $this->playerDb = $playerDb;
     }
 
-    public function handle(SaveUserDto $dto): string
+    public function handle(SaveUserDto $dto): void
     {
         $idCreatedPlayer = $this->playerDb->createPlayer($dto);
-        [$user, $token] = $this->userModel->createUser($dto, $idCreatedPlayer);
+        $user = $this->userModel->createUser($dto, $idCreatedPlayer);
         Auth::login($user);
-        return $token;
     }
 
 }
