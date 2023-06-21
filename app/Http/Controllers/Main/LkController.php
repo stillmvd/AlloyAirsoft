@@ -19,11 +19,11 @@ class LkController extends Controller
     /*
      * Route('/personal_account', method="GET")
      */
-    public function index(Request $request)
+    public function index(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        //to do ВОТ ЭТОТ КРИНЖ НАДО ПЕРЕПИСАТЬ))))
-        $token = $request->user()->attributesToArray()['api_token'];
-        $dataView = $this->lkReader->getDataForLk($token);
+        $tmp2 =
+        $tmp = $request->session();
+        $dataView = $this->lkReader->getDataForLk($user);
         return view('personalAcount', $dataView);
     }
 

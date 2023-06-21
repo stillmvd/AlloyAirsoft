@@ -11,7 +11,7 @@
             <p class="mx-auto w-full text-center lg:text-left lg:w-min lg:whitespace-nowrap mt-3">
                 {{ __('Log in to continue with AlloyAirsoft') }}
             </p>
-            <form action="{{ route('login_check') }}" method="POST" class="flex flex-col gap-4 w-full my-8">
+            <form action="{{ route('check') }}" method="POST" class="flex flex-col gap-4 w-full my-8">
                 @csrf
                 <div class="flex relative flex-col">
                     <x-text.label id="label_email_log" class="z-10" for="emailPlayerForLog">{{ __('Email') }}</x-text.label>

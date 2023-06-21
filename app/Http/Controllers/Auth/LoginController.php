@@ -3,26 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Auth\Actions\CheckLoginAction;
-use App\Modules\Auth\Request\RequestTransformer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
-    private RequestTransformer $requestTransformer;
-    private CheckLoginAction $checkLoginAction;
-
-    public function __construct(
-        RequestTransformer $requestTransformer,
-        CheckLoginAction $checkLoginAction
-    ) {
-//        $this->middleware('auth:api', ['except' => ['check']]);
-        $this->requestTransformer = $requestTransformer;
-        $this->checkLoginAction = $checkLoginAction;
-    }
-
     /*
      * Route('login', method='GET')
      */
@@ -33,8 +20,19 @@ class LoginController extends Controller
 
     public function check(Request $request): RedirectResponse
     {
-        $dataForAuth = $this->requestTransformer->requestToCheckLogin($request);
-        return $this->checkLoginAction->handle($dataForAuth);
+        $apiurl = env('APP_URL') . '/login_check';
+
+        $response = Http::post($apiurl, [
+            'emailPlayerForLog' => $request->input('emailPlayerForLog'),
+            'passwordForLog' => $request->input('passwordForLog'),
+        ]);
+
+
+        if ($response->ok()) {
+            $result = $response->json();
+        } else {
+
+        }
     }
 
 }

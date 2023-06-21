@@ -5,6 +5,7 @@ use App\Models\Player;
 use App\Models\Team;
 use App\Models\User;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -205,4 +206,19 @@ if (! function_exists('getIp')) {
         }
         return request()->ip();
     }
+}
+
+if (! function_exists('createNewToken')) {
+
+    function createNewToken($token, bool $isJson = false): \Illuminate\Http\RedirectResponse|JsonResponse
+    {
+        $data = [
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => auth()->user()
+        ];
+        return $isJson ? response()->json($data) : redirect()->route('personal_account')->with($data);
+    }
+
 }

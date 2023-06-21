@@ -26,22 +26,17 @@ Route::controller(ArchiveController::class)->group(function () {
     Route::get('/archive', 'index')->name('archive');
 });
 
-Route::controller(LkController::class)->middleware(['auth'])->group(function () {
+Route::controller(LkController::class)->group(function () {
    Route::get('personal_account', 'index')->name('personal_account');
 });
 
 Route::controller(RegisterController::class)->group(function () {
    Route::get('registration', 'index')->name('registration');
-   Route::post('registration/save', 'save')->name('register_store');
 });
 
 Route::controller(LoginController::class)->group(function () {
    Route::get('login', 'index')->name('login');
-   Route::post('login/check', 'check')->name('login_check');
-});
-
-Route::controller(AuthController::class)->group(function () {
-    Route::get('logout', 'logout')->name('logout');
+   Route::post('login/check', 'check')->name('check');
 });
 
 Route::middleware('auth')->controller(AdminController::class)->group(function () {

@@ -2,36 +2,21 @@
 
 namespace App\Modules\Auth\Actions;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 
 final class CheckLoginAction
 {
-    public function handle(array $data): RedirectResponse
+    public function handle(array $data): JsonResponse|RedirectResponse
     {
-        if ($token = Auth::attempt([
-                'email' => $data['emailPlayerForLog'],
-                'password' => $data['passwordForLog']
-            ])) {
-
-            return redirect()->route('index')
-                ->with(json_encode([
-                    'success' => "You're in account",
-                    'access_token' => $token,
-                    'token_type' => 'bearer',
-                    'expires_in' => auth()->factory()->getTTL() * 60,
-                    'user' => auth()->user()
-                ]));
-        } else {
-            return redirect()->back()->with([
-                'error' => "There is no account with such data",
-            ]);
+        if (! $token = Auth::attempt([
+            'email' => $data['emailPlayerForLog'],
+            'password' => $data['passwordForLog']
+        ])) {
+            return response()->json(['error' => "There is no account with such data"], 401);
         }
+        return createNewToken($token);
     }
 
-//        'access_token' => $token,
-//        'token_type' => 'bearer',
-//        'expires_in' => auth()->factory()->getTTL() * 60,
-//        'user' => auth()->user()
 }

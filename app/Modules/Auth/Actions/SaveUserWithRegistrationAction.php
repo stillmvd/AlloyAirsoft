@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Modules\Auth\Dto\SaveUserDto;
 use App\Modules\Player\Db\IPlayerDb;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 final class SaveUserWithRegistrationAction
 {
@@ -19,11 +18,11 @@ final class SaveUserWithRegistrationAction
         $this->playerDb = $playerDb;
     }
 
-    public function handle(SaveUserDto $dto): void
+    public function handle(SaveUserDto $dto): array
     {
         $idCreatedPlayer = $this->playerDb->createPlayer($dto);
         $user = $this->userModel->createUser($dto, $idCreatedPlayer);
-        Auth::login($user);
+        return $user;
     }
 
 }

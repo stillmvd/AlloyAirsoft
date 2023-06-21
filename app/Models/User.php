@@ -36,14 +36,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function createUser(SaveUserDto $dto, int $playerId): array
     {
-        $token = hash('sha256', Str::random(80));
-
         $user = self::create([
             'created_at' => now(),
             'updated_at' => now(),
             'email' => $dto->userDto->email,
             'password' => Hash::make($dto->userDto->password),
-            'api_token' => $token,
+            'api_token' => 'test',
             'ip_address' => getIp(),
             'isActive' => true,
             'isAdmin' => false,
@@ -53,11 +51,6 @@ class User extends Authenticatable implements JWTSubject
         $user->save();
 
         return $user;
-    }
-
-    public function getUserByToken(string $token)
-    {
-        return self::where('api_token', $token)->get()->first();
     }
 
     public function getPlayerId(): int

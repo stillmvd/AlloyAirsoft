@@ -17,19 +17,22 @@ final class LkReader
         $this->userModel = $userModel;
     }
 
-    public function getDataForLk(string $token): array
+    public function getDataForLk($user): array
     {
-        $user = $this->userModel->getUserByToken($token);
-        $player = Player::find($user->player->id);
-
-        $achievements = $player->achievements;
-        $games = $player->games;
-
+//        $user = $this->userModel->getUserByToken($token);
+//        $player = Player::find($user->player->id);
+//
+//        $achievements = $player->achievements;
+//        $games = $player->games;
+//
+//        return [
+//            'player' => $player,
+//            'games' => $games,
+//            'achievements' => $achievements,
+//            'team' => Team::where('leader_id', $player->id)->get(),
+//        ];
         return [
-            'player' => $player,
-            'games' => $games,
-            'achievements' => $achievements,
-            'team' => Team::where('leader_id', $player->id)->get(),
+            'user' => $user
         ];
     }
 
