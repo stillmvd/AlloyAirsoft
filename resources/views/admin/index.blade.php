@@ -112,19 +112,31 @@
             </h2>
         </div>
 
-        <form action="{{ route('create') }}" method="POST" class="flex flex-col xl:grid grid-cols-1 md:grid-cols-3 gap-6 w-full mx-auto">
+        <form action="{{ route('create') }}" method="POST" class="flex flex-col">
             @csrf
+            <x-admin.input placeholder="Game name" type="text" name="name" />
+            <x-admin.input placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
+            <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
+            <x-admin.input placeholder="Polygon" type="text" name="polygon" />
+            <div id="game-card"></div>
+            <div id="gamecard" class="h-full lg:h-[300px] flex flex-col lg:flex-row lg:justify-between relative group rounded-xl duration-200 p-2 overflow-hidden z-40">
+                <h3 class="w-full lg:w-min h-min text-3xl sm:text-5xl lg:text-3xl text-center rounded-xl duration-200 whitespace-nowrap bg-bg lg:bg-bg/[.78] p-3 xl:group-hover:bg-bg z-40"></h3>
+                <h3 class="w-full lg:w-min h-min text-center text-xl sm:text-3xl rounded-xl duration-200 whitespace-nowrap bg-bg lg:bg-bg/[.78] p-3 xl:group-hover:bg-bg z-40 lg:place-self-end lg:self-end"></h3>
+
+                <div class="w-full h-full lg:h-[300px] bg-bg/50 backdrop-blur-[3px] absolute left-0 top-0 ease-out duration-200 xl:group-hover:backdrop-blur-0 xl:group-hover:bg-transparent z-30"></div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6937.744505265537!2d-78.69070815757044!3d44.04823907288548!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2sru!4v1667375703830!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[560px] lg:h-[360px] group-hover:scale-[1.2] top-0 lg:-top-10 scale-[1.28] lg:scale-[1.1] ease-out duration-[.2s] absolute z-10"></iframe>
+            </div>
 
 {{-- card information --}}
-            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col gap-y-6 w-full md:w-2/3 xl:w-full mx-auto">
-                <h3 class="text-addictive my-6">
-                    {{ __('Card information') }}
-                </h3>
-                <x-admin.input placeholder="Game name" type="text" name="name" />
-                <x-admin.input placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
-                <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
-                <x-admin.input placeholder="Polygon" type="text" name="polygon" />
-            </div>
+{{--            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col gap-y-6 w-full md:w-2/3 xl:w-full mx-auto">--}}
+{{--                <h3 class="text-addictive my-6">--}}
+{{--                    {{ __('Card information') }}--}}
+{{--                </h3>--}}
+{{--                <x-admin.input placeholder="Game name" type="text" name="name" />--}}
+{{--                <x-admin.input placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />--}}
+{{--                <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />--}}
+{{--                <x-admin.input placeholder="Polygon" type="text" name="polygon" />--}}
+{{--            </div>--}}
 
 {{-- map links --}}
             <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col gap-y-6 w-full md:w-2/3 xl:w-full mx-auto">
@@ -199,4 +211,5 @@
             </div>
         </form>
     </main>
+    @vite('resources/js/Admin/CreateGame/js-react/index.jsx')
 @endsection
