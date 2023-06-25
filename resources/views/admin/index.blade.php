@@ -9,32 +9,30 @@
                 <h3 class="my-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
                     {{ __('Nearby events') }}
                 </h3>
-                @if (1 > $games->where('finished', 0)->count())
+                @if (count($nearbyEventsData) === 0)
                     <div class="flex flex-row w-full mt-6 bg-dark/50 py-10 px-6 rounded-xl">
                         <b class="leading-none select-none">
                             {{ __('There are no games here') }}
                         </b>
                     </div>
                 @else
-                    @foreach ($games as $game)
-                        @if (0 == $game->finished)
-                            <a href="{{ route('game', strtolower($game->name)) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-xl ease-out duration-100 hover:bg-dark">
-                                <b class="leading-none text-2xl lg:text-base lg:leading-none select-none">
-                                    {{ $game->name }}
+                    @foreach ($nearbyEventsData as $event)
+                        <a href="{{ route('game', strtolower($event->game_name)) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-xl ease-out duration-100 hover:bg-dark">
+                            <b class="leading-none text-2xl lg:text-base lg:leading-none select-none">
+                                {{ $event->game_name }}
+                            </b>
+                            <div class="flex flex-row">
+                                <b class="mr-3 leading-none select-none">
+                                    {{ $event->count_player }}
                                 </b>
-                                <div class="flex flex-row">
-                                    <b class="mr-3 leading-none select-none">
-                                        {{ $game_players->where('game_id', $game->id)->count() }}
-                                    </b>
-                                    <p class="leading-none select-none">
-                                        {{ __('players') }}
-                                    </p>
-                                </div>
-                                <b class="leading-none select-none">
-                                    {{ $game->date }}
-                                </b>
-                            </a>
-                        @endif
+                                <p class="leading-none select-none">
+                                    {{ __('players') }}
+                                </p>
+                            </div>
+                            <b class="leading-none select-none">
+                                {{ $event->game_date }}
+                            </b>
+                        </a>
                     @endforeach
                 @endif
             </x-admin.block>
@@ -44,32 +42,30 @@
                 <h3 class="my-6 text-2xl font-semibold lg:font-medium lg:text-3xl">
                     {{ __('Finished events') }}
                 </h3>
-                @if (1 > $games->where('finished', 1)->count())
+                @if (count($finishedEventsData) === 0)
                     <div class="flex flex-row w-full mt-6 bg-dark/50 py-10 px-6 rounded-xl">
                         <b class="leading-none select-none">
                             {{ __('No game is over yet') }}
                         </b>
                     </div>
                 @else
-                    @foreach ($games as $game)
-                        @if (1 == $game->finished)
-                            <a href="{{ route('game', strtolower($game->name)) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-xl ease-out duration-100 hover:bg-dark">
-                                <b class="leading-none text-2xl lg:text-base lg:leading-none">
-                                    {{ $game->name }}
+                    @foreach ($finishedEventsData as $event)
+                        <a href="{{ route('game', strtolower($event->game_name)) }}" class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 w-full justify-between mt-6 bg-dark/50 p-5 rounded-xl ease-out duration-100 hover:bg-dark">
+                            <b class="leading-none text-2xl lg:text-base lg:leading-none">
+                                {{ $event->game_name }}
+                            </b>
+                            <div class="flex flex-row">
+                                <b class="mr-3 leading-none">
+                                    {{ $event->count_player }}
                                 </b>
-                                <div class="flex flex-row">
-                                    <b class="mr-3 leading-none">
-                                        {{ $players->where('id', $game->id)->count() }}
-                                    </b>
-                                    <p class="leading-none">
-                                        {{ __('players') }}
-                                    </p>
-                                </div>
-                                <b class="leading-none">
-                                    {{ $game->date }}
-                                </b>
-                            </a>
-                        @endif
+                                <p class="leading-none">
+                                    {{ __('players') }}
+                                </p>
+                            </div>
+                            <b class="leading-none">
+                                {{ $event->game_date }}
+                            </b>
+                        </a>
                     @endforeach
                 @endif
             </x-admin.block>
@@ -84,7 +80,7 @@
                         {{ __('Users') }}
                     </b>
                     <p class="leading-none w-3">
-                        {{ $users->count() }}
+                        {{ $statistic->count_users }}
                     </p>
                 </div>
                 <a href="{{ route('players') }}" class="flex flex-row w-full justify-between mt-3 bg-dark/50 p-5 rounded-xl ease-out duration-100 hover:bg-dark">
@@ -92,7 +88,7 @@
                         {{ __('Players') }}
                     </b>
                     <p class="leading-none w-3">
-                        {{ $players->count() }}
+                        {{ $statistic->count_players }}
                     </p>
                 </a>
                 <div class="flex flex-row w-full justify-between mt-3 bg-dark/50 p-5 rounded-xl">
@@ -100,7 +96,7 @@
                         {{ __('Finished events') }}
                     </b>
                     <p class="leading-none w-3">
-                        {{ $games->where('finished', '1')->count() }}
+                        {{ $statistic->count_finished_games }}
                     </p>
                 </div>
             </x-admin.block>

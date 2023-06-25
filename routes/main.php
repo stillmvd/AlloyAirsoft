@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminMainPageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\LoginController;
@@ -44,8 +45,11 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('logout', 'logout')->name('logout');
 });
 
-Route::middleware('auth')->controller(AdminController::class)->group(function () {
+Route::controller(AdminMainPageController::class)->group(function () {
     Route::get('admin', 'index')->name('admin');
+});
+
+Route::middleware('auth')->controller(AdminController::class)->group(function () {
     Route::get('credential', 'credential')->name('credential');
     Route::post('admin', 'create')->name('create');
     Route::get('admin/players', 'players')->name('players');

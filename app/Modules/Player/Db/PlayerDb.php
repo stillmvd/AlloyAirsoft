@@ -24,7 +24,17 @@ class PlayerDb implements IPlayerDb
 
     public function getById(int $id): array
     {
-        return DB::table(self::TABLE)->where('id', $id)->get()->first();
+        return DB::table(self::TABLE)
+            ->where('id', $id)
+            ->get()
+            ->first();
+    }
+
+    public function getCountPlayers(): int
+    {
+        return DB::table(self::TABLE)
+            ->get()
+            ->count();
     }
 
 }

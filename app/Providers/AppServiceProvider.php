@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Modules\Game\Db\GameDb;
+use App\Modules\Game\Db\GamePlayersDb;
+use App\Modules\Game\Db\IGameDb;
+use App\Modules\Game\Db\IGamePlayersDb;
 use App\Modules\Game\Db\IInfoDb;
 use App\Modules\Game\Db\InfoDb;
 use App\Modules\Game\Db\IPriceDb;
@@ -28,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IRuleDb::class, RuleDb::class);
         $this->app->bind(IPlayerPriceDb::class, PlayerPriceDb::class);
         $this->app->bind(IPlayerDb::class, PlayerDb::class);
+        $this->app->bind(IGameDb::class, GameDb::class);
+        $this->app->bind(IGamePlayersDb::class, GamePlayersDb::class);
     }
 
     /**

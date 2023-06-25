@@ -51,14 +51,27 @@ class User extends Authenticatable
         return [$user, $token];
     }
 
-    public function getUserByToken(string $token)
+    public function getUserByToken(string $token): self
     {
-        return self::where('api_token', $token)->get()->first();
+        return self::where('api_token', $token)
+            ->get()
+            ->first();
+    }
+
+    public function setTokenById(int $id, string $token): void
+    {
+        self::where('id', $id)
+            ->update(['api_token' => $token]);
     }
 
     public function getPlayerId(): int
     {
         return self::player()->id;
+    }
+
+    public function getCountUsers(): int
+    {
+        return self::count();
     }
 
 }

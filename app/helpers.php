@@ -115,12 +115,10 @@ if (! function_exists('userIsAdmin'))
     function userIsAdmin(int $id)
     {
         $user = User::find($id);
-        if ($user->isAdmin == true)
-        {
+        if ($user->isAdmin) {
             return true;
         }
-        else
-        {
+        else {
             return false;
         }
     }

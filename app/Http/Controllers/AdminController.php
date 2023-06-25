@@ -29,55 +29,8 @@ use App\Http\Requests\UpdatePlayerRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-/** AdminController содержит основные контроллеры работающие в админке. */
 class AdminController extends Controller
 {
-
-    public function login()
-    {
-        return view('admin.login');
-    }
-
-    /**
-     * Login для админа
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse Возвращает главную страничку админки
-     */
-    public function login_store(Request $request)
-    {
-        $validated = $request->validate([
-            'login' => 'required',
-            'password' => 'required',
-        ]);
-        if (auth()->attempt($validated)) return redirect()->route('admin');
-        else return redirect()->back()->withErrors([
-            'loginError' => 'You have some errors'
-        ]);
-    }
-
-    /**
-     * Выхдит из админки
-     *
-     * @return \Illuminate\Redirect Редирект на главную страничку
-     */
-    public function logout()
-    {
-        auth()->logout();
-        return redirect()->route('index');
-    }
-
-    /**
-     * Отображает главную страничку админки
-     *
-     * @param App\Actions\getAdminInfoAction $getAdminInfo Получает информацию для админки
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index(GetAdminInfoAction $getAdminInfo)
-    {
-        return view('admin.index', $getAdminInfo->handle());
-    }
 
     /**
      * Отображает страницу изменения данных

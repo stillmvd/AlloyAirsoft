@@ -40,12 +40,10 @@ class RegisterController extends Controller
     {
         $userDto = $this->requestTransformer->requestToSaveUser($request);
         $token = $this->saveUserWithRegistrationAction->handle($userDto);
-        return redirect()->route('personal_account')->with(
-            [
+        return redirect()->route('personal_account')->with([
             'api_token' => $token,
             'success' => 'You have been successfully registered'
-            ]
-        );
+        ]);
     }
 
 }

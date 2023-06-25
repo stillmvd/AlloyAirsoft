@@ -11,4 +11,6 @@ interface IPlayerDb
     public function createPlayer(SaveUserDto $dto): int;
 
     public function getById(int $id): array;
+
+    public function getCountPlayers(): int;
 }
