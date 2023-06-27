@@ -120,17 +120,6 @@ class AdminController extends Controller
         ]);
     }
 
-    /**
-     * Возращает страничку players
-     *
-     * @param App\Acions\GetAllInfoAction $getAllInfo Получает все данные из базы данных
-     *
-     * @return \Illuminate\View\View
-     */
-    public function players(GetAllInfoAction $getAllInfo)
-    {
-        return view('admin.players', $getAllInfo->get());
-    }
 
     /**
      * Возращает страничку users

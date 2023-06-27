@@ -7,4 +7,6 @@ interface IGamePlayersDb
     const TABLE = 'game_player';
 
     public function getCountPlayerInGameById(int $id): int;
+
+    public function getGamesByPlayerId(int $playerId): array;
 }

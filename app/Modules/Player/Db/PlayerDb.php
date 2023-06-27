@@ -37,4 +37,25 @@ class PlayerDb implements IPlayerDb
             ->count();
     }
 
+    public function getAllPlayers(): array
+    {
+        return DB::table(self::TABLE)
+            ->get()
+            ->toArray();
+    }
+
+    public function deletePlayerById(int $id): string
+    {
+        if (!$id) {
+            return '';
+        }
+        DB::table(self::TABLE)->where('id', $id)->update(['is_del' => true]);
+
+        $deleteName = DB::table(self::TABLE)
+            ->where('id', $id)
+            ->pluck('name')
+            ->first();
+
+        return $deleteName == null ? '' : $deleteName;
+    }
 }

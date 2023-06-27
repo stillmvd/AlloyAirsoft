@@ -13,4 +13,8 @@ interface IPlayerDb
     public function getById(int $id): array;
 
     public function getCountPlayers(): int;
+
+    public function getAllPlayers(): array;
+
+    public function deletePlayerById(int $id): string;
 }

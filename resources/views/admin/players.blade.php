@@ -1,5 +1,5 @@
 @extends('layouts.base')
-
+{{--Добавить переключатель is_del!!!!--}}
 @section('content')
   <main class="grow">
     <div class="w-full flex justify-center">
@@ -25,50 +25,28 @@
           </tr>
         </thead>
         <tbody>
-          <p id="getCountAchievements" class="hidden">{{ $achievements_count }}</p>
-          <p id="getCountPlayers" class="hidden">{{ $players_count }}</p>
-          @for ($i = 0; $i < $players_count; $i++)
+          @foreach($players as $player)
           <tr class="text-[#979797]">
-            <td class="font-medium">{{ $players[$i]->id }}</td>
-            <td class="font-medium">{{ $players[$i]->name }}</td>
-            <td class="font-medium">{{ $players[$i]->surname }}</td>
-            <td class="font-medium">{{ $players[$i]->callsign }}</td>
-            <td class="font-medium">{{ $players[$i]->emailPlayer }}</td>
-            <td class="font-medium">{{ $players[$i]->phone }}</td>
-            <td class="font-medium">{{ getGamesForPlayer($players[$i]->id) }}</td>
-            <td class="font-medium">{{ $teams->where('id', $players[$i]->team_id)->value('name') }}</td>
-            <td class="font-medium">
-                <div class="dropdown dropdown-hover">
-                    <label tabindex="0" class="bg-card_bg/75 px-4 py-2 rounded-xl cursor-pointer ease-out duration-100 hover:bg-card_bg border-0">{{ __('Achievements') }}</label>
-                    <ul tabindex="0" class="dropdown-content p-2 mt-1 bg-card_bg rounded-box w-full">
-                        <form action="{{ route('getAchievements', $players[$i]->id) }}" method="POST" id="{{ "getAchievements" . $players[$i]->id }}">
-                            @csrf
-                            @for ($y = 0; $y < $achievements_count; $y++)
-                                <li><a>
-                                    <div class="form-control">
-                                        <label class="cursor-pointer label">
-                                            <span class="label-text text-subwhite font-medium">{{ $achievements[$y]->nameAchievement }}</span>
-                                            <input id="{{ 'change' . $players[$i]->id . $y }}"
-                                            name={{ $achievements[$y]->nameAchievement }}
-                                            type="checkbox" class="checkbox"
-                                            @checked(hasAchievement($players[$i]->id, $achievements[$y]->nameAchievement))/>
-                                        </label>
-                                    </div>
-                                    <input type="submit" value="Submit" class="hidden"/>
-                                </a></li>
-                            @endfor
-                        </form>
-                    </ul>
-                </div>
-            </td>
-            <td class="font-medium">{{ $players[$i]->price }}</td>
+            <td class="font-medium">{{ $player->id }}</td>
+            <td class="font-medium">{{ $player->name }}</td>
+            <td class="font-medium">{{ $player->surname }}</td>
+            <td class="font-medium">{{ $player->callsign }}</td>
+            <td class="font-medium">{{ $player->email }}</td>
+            <td class="font-medium">{{ $player->phone }}</td>
+{{--            Тут будут матчи в которых игрок принимал участия--}}
+            <td class="font-medium"></td>
+            <td class="font-medium">{{ $player->team_name }}</td>
+{{--              Тут очивки --}}
+            <td class="font-medium"></td>
+            <td class="font-medium">{{ $player->price }}</td>
             <td>
-              <a href="{{ route('deletePlayer', $players[$i]->id) }}" class="hover:text-red text-subwhite font-medium tracking-wide ease-out duration-100">
+{{--                to do переписать на ajax--}}
+              <a href="{{ route('deletePlayer', $player->id) }}" class="hover:text-red text-subwhite font-medium tracking-wide ease-out duration-100">
                 {{ __('Delete') }}
               </a>
             </td>
           </tr>
-          @endfor
+          @endforeach
         </tbody>
       </table>
     </div>
@@ -86,16 +64,16 @@
           </tr>
         </thead>
         <tbody>
-          @for ($i = 0; $i < $players_count; $i++)
+        @foreach($players as $player)
             <tr class="text-[#979797]">
-                <td class="font-medium">{{ $players[$i]->id }}</td>
-                <td class="font-medium">{{ $players[$i]->name }}</td>
-                <td class="font-medium">{{ $players[$i]->surname }}</td>
-                <td class="font-medium">{{ $players[$i]->callsign }}</td>
-                <td class="font-medium">{{ $players[$i]->emailPlayer }}</td>
-                <td class="font-medium">{{ $players[$i]->phone }}</td>
+                <td class="font-medium">{{ $player->id }}</td>
+                <td class="font-medium">{{ $player->name }}</td>
+                <td class="font-medium">{{ $player->surname }}</td>
+                <td class="font-medium">{{ $player->callsign }}</td>
+                <td class="font-medium">{{ $player->email }}</td>
+                <td class="font-medium">{{ $player->phone }}</td>
             </tr>
-          @endfor
+        @endforeach
         </tbody>
       </table>
     </div>
@@ -111,14 +89,14 @@
           </tr>
         </thead>
         <tbody>
-          @for ($i = 0; $i < $players_count; $i++)
+        @foreach($players as $player)
             <tr class="text-[#979797]">
-                <td class="font-medium">{{ $players[$i]->id }}</td>
-                <td class="font-medium">{{ $players[$i]->name }}</td>
-                <td class="font-medium">{{ $players[$i]->callsign }}</td>
-                <td class="font-medium">{{ $players[$i]->emailPlayer }}</td>
+                <td class="font-medium">{{ $player->id }}</td>
+                <td class="font-medium">{{ $player->name }}</td>
+                <td class="font-medium">{{ $player->callsign }}</td>
+                <td class="font-medium">{{ $player->email }}</td>
             </tr>
-          @endfor
+        @endforeach
         </tbody>
       </table>
     </div>
@@ -132,12 +110,12 @@
           </tr>
         </thead>
         <tbody>
-          @for ($i = 0; $i < $players_count; $i++)
+        @foreach($players as $player)
             <tr class="text-[#979797]">
-                <td class="font-medium">{{ $players[$i]->name }}</td>
-                <td class="font-medium">{{ $players[$i]->callsign }}</td>
+                <td class="font-medium">{{ $player->name }}</td>
+                <td class="font-medium">{{ $player->callsign }}</td>
             </tr>
-          @endfor
+        @endforeach
         </tbody>
       </table>
     </div>
@@ -157,12 +135,12 @@
         </tr>
       </thead>
       <tbody>
-        @for ($i = 0; $i < $emails_count; $i++)
+        @foreach ($emails as $email)
         <tr class="text-[#979797]">
-            <td class="font-medium">{{ $emails[$i]->id }}</td>
-            <td class="font-medium">{{ $emails[$i]->email }}</td>
+            <td class="font-medium">{{ $email->id }}</td>
+            <td class="font-medium">{{ $email->email }}</td>
         </tr>
-        @endfor
+        @endforeach
       </tbody>
     </table>
   </main>

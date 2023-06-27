@@ -14,4 +14,11 @@ final class GamePlayersDb implements IGamePlayersDb
             ->count();
     }
 
+    public function getGamesByPlayerId(int $playerId): array
+    {
+        return DB::table(self::TABLE)
+            ->where('player_id', $playerId)
+            ->get()
+            ->toArray();
+    }
 }

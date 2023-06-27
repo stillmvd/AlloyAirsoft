@@ -3,26 +3,43 @@
 namespace App\Modules\Admin\Readers;
 
 use App\Models\User;
+use App\Modules\Achievments\Db\IAchievementsDb;
 use App\Modules\Admin\Dto\AdminStatisticsDto;
 use App\Modules\Admin\Dto\FinishedEventDto;
 use App\Modules\Admin\Dto\NearbyEventDto;
+use App\Modules\Admin\Dto\PlayerForAdminDto;
 use App\Modules\Game\Db\IGameDb;
 use App\Modules\Game\Db\IGamePlayersDb;
 use App\Modules\Player\Db\IPlayerDb;
+use App\Modules\Subscribers\Db\IEmailsDb;
+use App\Modules\Team\Db\ITeamDb;
 
 final class AdminReaders
 {
     private IGameDb $gameDb;
     private IPlayerDb $playerDb;
     private IGamePlayersDb $gamePlayersDb;
+    private ITeamDb $teamDb;
     private User $userModels;
+    private IEmailsDb $emailsDb;
+    private IAchievementsDb $achievementsDb;
 
-    public function __construct(IGameDb $gameDb, IPlayerDb $playerDb, IGamePlayersDb $gamePlayersDb, User $userModels)
-    {
+    public function __construct(
+        IGameDb $gameDb,
+        IPlayerDb $playerDb,
+        IGamePlayersDb $gamePlayersDb,
+        User $userModels,
+        ITeamDb $teamDb,
+        IEmailsDb $emailsDb,
+        IAchievementsDb $achievementsDb
+    ) {
         $this->gameDb = $gameDb;
         $this->playerDb = $playerDb;
         $this->gamePlayersDb = $gamePlayersDb;
         $this->userModels = $userModels;
+        $this->teamDb = $teamDb;
+        $this->emailsDb = $emailsDb;
+        $this->achievementsDb = $achievementsDb;
     }
 
     public function getAllInfoForMainPage(): array
@@ -60,6 +77,35 @@ final class AdminReaders
             'nearbyEventsData' => $nearbyEventsData,
             'finishedEventsData' => $finishedEventsData,
             'statistic' => $statistics,
+        ];
+    }
+
+    public function getPlayersForAdmin(): array
+    {
+        $players = $this->playerDb->getAllPlayers();
+        $emails = $this->emailsDb->getAllEmails();
+
+        $playersDto = [];
+        foreach ($players as $player) {
+            $gamesNames = $this->gamePlayersDb->getGamesByPlayerId($player->id);
+            $teamsName = 'Bandits';
+            $playersDto[] = new PlayerForAdminDto(
+                $player->id,
+                $player->name !== null ? $player->name : '',
+                $player->surname !== null ? $player->surname : '',
+                $player->callsign !== null ? $player->callsign : '',
+                $player->emailPlayer !== null ? $player->emailPlayer : '',
+                $player->phone !== null ? $player->phone : '',
+                $gamesNames,
+                $teamsName,
+                90
+            );
+        }
+
+
+        return [
+            'emails' => $emails,
+            'players' => $playersDto,
         ];
     }
 }
