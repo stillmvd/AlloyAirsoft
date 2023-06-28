@@ -108,91 +108,10 @@
             </h2>
         </div>
 
-        <form action="{{ route('create') }}" method="POST" class="flex flex-col xl:grid grid-cols-1 md:grid-cols-3 gap-6 w-full mx-auto">
+        <form action="{{ route('create') }}" method="POST" class="flex flex-col">
             @csrf
 
-{{-- card information --}}
-            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col gap-y-6 w-full md:w-2/3 xl:w-full mx-auto">
-                <h3 class="text-addictive my-6">
-                    {{ __('Card information') }}
-                </h3>
-                <x-admin.input placeholder="Game name" type="text" name="name" />
-                <x-admin.input placeholder="Game date" type="text" name="date" onblur="this.type = 'text'" onfocus="this.type = 'date'" />
-                <x-admin.input placeholder="Game time" type="text" name="time" onblur="this.type = 'text'" onfocus="this.type = 'time'" />
-                <x-admin.input placeholder="Polygon" type="text" name="polygon" />
-            </div>
-
-{{-- map links --}}
-            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col gap-y-6 w-full md:w-2/3 xl:w-full mx-auto">
-                <h3 class="text-addictive my-6">
-                    {{ __('Links') }}
-                </h3>
-                <x-admin.input placeholder="Link Map Iframe" type="text" name="linkForIframe" />
-                <x-admin.input placeholder="Link Map Google" type="text" name="linkForGoogle" />
-            </div>
-
-{{-- game information --}}
-            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col gap-y-6 w-full md:w-2/3 xl:w-full mx-auto">
-                <h3 class="text-addictive my-6">
-                    {{ __('Game information') }}
-                </h3>
-                <x-admin.input min="1" max="3" type="number" placeholder="Levels" name="levels" />
-                <x-admin.input placeholder="Title" type="text" name="title" />
-                <x-elems.textarea placeholder="Text" name="text" />
-            </div>
-
-{{-- game prices --}}
-            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col justify-between w-full md:w-2/3 xl:w-full mx-auto">
-                <div>
-                    <h3 class="text-addictive my-6">
-                        {{ __('Game prices') }}
-                    </h3>
-                    <div class="flex flex-col gap-y-6">
-                        <h3>{{ __('Prices:') }}</h3>
-                        <div class="flex flex-col gap-y-6 pricesBlock">
-                            <x-admin.input placeholder="Service name" type="text" name="pricesTitle" />
-                            <x-admin.input placeholder="Price" type="number" name="pricesText" />
-                        </div>
-                        <div id="pricesAdded" class="hidden"></div>
-                        <input id="pricesCount" type="number" class="hidden" value="1" name="pricesCount"/>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center md:flex-row md:justify-between w-full mt-6 mx-auto">
-                    <div class="md:place-self-end hover:text-green flex items-center justify-center text-subwhite text-base font-medium cursor-pointer rounded-xl hover:bg-dark/50 duration-100 ease-out bg-dark py-3 w-44 xl:w-40" onclick="addPriceColumns()">
-                        {{ 'Add' }}
-                    </div>
-                    <div class="md:place-self-start my-4 md:my-0 hover:text-red flex items-center justify-center text-subwhite text-base font-medium cursor-pointer rounded-xl hover:bg-dark/50 duration-100 ease-out bg-dark py-3 w-44 xl:w-40" onclick="removePriceColumns()">
-                        {{ 'Remove' }}
-                    </div>
-                </div>
-            </div>
-
-{{-- game rules --}}
-            <div class="bg-card_bg px-6 pb-6 rounded-xl flex flex-col justify-between gap-y-6 w-full md:w-2/3 xl:w-full mx-auto md:col-span-2">
-                <div>
-                    <h3 class="text-addictive my-6">
-                        {{ __('Game rules') }}
-                    </h3>
-                    <div class="flex flex-col gap-y-6 rulesBlock">
-                        <x-admin.input placeholder="Title" type="text" name="rulesTitle" />
-                        <x-elems.textarea placeholder="Text" name="rulesText" />
-                    </div>
-                </div>
-                <div id="rulesAdded" class="hidden"></div>
-                <input id="rulesCount" type="number" class="hidden" value="1" name="rulesCount"/>
-                <div class="flex flex-col items-center md:flex-row md:justify-between w-full mx-auto">
-                    <div class="md:place-self-end hover:text-green flex items-center justify-center text-subwhite text-base font-medium cursor-pointer rounded-xl hover:bg-dark/50 duration-100 ease-out bg-dark py-3 w-44 xl:w-40" onclick="addRulesColumns()">
-                        {{ 'Add' }}
-                    </div>
-                    <div class="md:place-self-start my-4 md:my-0 hover:text-red flex items-center justify-center text-subwhite text-base font-medium cursor-pointer rounded-xl hover:bg-dark/50 duration-100 ease-out bg-dark py-3 w-44 xl:w-40" onclick="removeRulesColumns()">
-                        {{ 'Remove' }}
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-span-3 py-4 mb-10 flex justify-center">
-                <x-elems.button class="py-3" value="Create" />
-            </div>
         </form>
     </main>
+    @vite('resources/js/Admin/CreateGame/js-react/index.jsx')
 @endsection

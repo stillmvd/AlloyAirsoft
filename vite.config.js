@@ -7,14 +7,9 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/js/auth/js/index.js'
+                'resources/js/Admin/CreateGame/js-react/index.jsx',
             ],
             refresh: true,
         }),
     ],
-    resolve: {
-        alias: {
-            '$': 'jQuery'
-        },
-    },
 });
