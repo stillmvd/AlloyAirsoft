@@ -48,7 +48,7 @@
     <script src="{{ asset('js/map.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
 @elseif (Route::is('login'))
-    <script src="{{ asset('js/labelForLogin.js') }}"></script>
+    @vite('resources/js/auth/js/index.js')
 @elseif (Route::is('registration'))
     <script src="{{ asset('js/labelForRegister.js') }}"></script>
 @elseif (Route::is('personal_account'))

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Modules\Auth\Actions\CheckLoginAction;
 use App\Modules\Auth\Request\RequestTransformer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class LoginController
+class LoginController extends Controller
 {
     private RequestTransformer $requestTransformer;
     private CheckLoginAction $checkLoginAction;
