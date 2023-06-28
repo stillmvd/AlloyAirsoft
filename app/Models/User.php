@@ -74,4 +74,18 @@ class User extends Authenticatable
         return self::count();
     }
 
+    public function getAllUsers(): array
+    {
+        return self::all()->toArray();
+    }
+
+    public function deleteUserById(int $id): string
+    {
+        $email = self::where('id', $id)->pluck('email')->first();
+        self::where('id', $id)->delete();
+
+        return $email;
+    }
+
+
 }

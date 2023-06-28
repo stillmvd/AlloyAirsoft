@@ -19,27 +19,21 @@ final class AdminReaders
     private IGameDb $gameDb;
     private IPlayerDb $playerDb;
     private IGamePlayersDb $gamePlayersDb;
-    private ITeamDb $teamDb;
     private User $userModels;
     private IEmailsDb $emailsDb;
-    private IAchievementsDb $achievementsDb;
 
     public function __construct(
         IGameDb $gameDb,
         IPlayerDb $playerDb,
         IGamePlayersDb $gamePlayersDb,
         User $userModels,
-        ITeamDb $teamDb,
         IEmailsDb $emailsDb,
-        IAchievementsDb $achievementsDb
     ) {
         $this->gameDb = $gameDb;
         $this->playerDb = $playerDb;
         $this->gamePlayersDb = $gamePlayersDb;
         $this->userModels = $userModels;
-        $this->teamDb = $teamDb;
         $this->emailsDb = $emailsDb;
-        $this->achievementsDb = $achievementsDb;
     }
 
     public function getAllInfoForMainPage(): array
@@ -108,4 +102,16 @@ final class AdminReaders
             'players' => $playersDto,
         ];
     }
+
+    public function getUsersForAdmin(): array
+    {
+        $users = $this->userModels->getAllUsers();
+        $emails = $this->emailsDb->getAllEmails();
+
+        return [
+            'users' => $users,
+            'emails' => $emails,
+        ];
+    }
+
 }

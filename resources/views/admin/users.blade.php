@@ -21,33 +21,29 @@
           </tr>
         </thead>
         <tbody>
-          @for ($i = 0; $i < $users_count; $i++)
+          @foreach($users as $user)
             <tr class="text-subwhite">
-                <td class="font-medium">{{ $users[$i]->id }}</td>
-                @if ($users[$i]->created_at !== NULL)
-                    <td class="font-medium">{{ $users[$i]->created_at->format('d.m.Y') }}</td>
-                @else
-                    <td class="font-medium"></td>
-                @endif
+                <td class="font-medium">{{ $user['id'] }}</td>
+                <td class="font-medium">{{ $user['created_at'] !== NULL ? $user['created_at'] : '' }}</td>
                 <td>
-                  @if ($users[$i]->pathToAvatar != NULL)
-                    <img src="{{ asset($users[$i]->pathToAvatar) }}" alt="avatar" class="w-14 rounded-full select-none">
+                  @if ($user['pathToAvatar'] != NULL)
+                    <img src="{{ asset($user['pathToAvatar']) }}" alt="avatar" class="w-14 rounded-full select-none">
                   @else
                     <img src="{{ asset('image/avatar_not_found.png') }}" alt="avatar" class="w-14 rounded-full select-none">
                   @endif
                 </td>
-                <td class="font-medium">{{ $users[$i]->email }}</td>
-                <td class="font-medium">{{ $users[$i]->isActive }}</td>
-                <td class="font-medium">{{ $users[$i]->isAdmin }}</td>
+                <td class="font-medium">{{ $user['email'] }}</td>
+                <td class="font-medium">{{ $user['isActive'] }}</td>
+                <td class="font-medium">{{ $user['isAdmin'] }}</td>
                 <td>
-                  @unless ($users[$i]->isAdmin == 1)
-                    <a href="{{ route('deleteUser', $users[$i]->id) }}" class="hover:text-red text-subwhite font-medium tracking-wide ease-out duration-100">
+                  @unless ($user['isAdmin'])
+                    <a href="{{ route('deleteUser', $user['id']) }}" class="hover:text-red text-subwhite font-medium tracking-wide ease-out duration-100">
                         {{ __('Delete') }}
                     </a>
                   @endunless
               </td>
             </tr>
-          @endfor
+          @endforeach
         </tbody>
       </table>
     </div>
@@ -63,14 +59,14 @@
           </tr>
         </thead>
         <tbody>
-          @for ($i = 0; $i < $users_count; $i++)
+          @foreach($users as $user)
             <tr class="text-subwhite">
-                <td class="font-medium">{{ $users[$i]->id }}</td>
-                <td class="font-medium">{{ $users[$i]->created_at }}</td>
-                <td class="font-medium">{{ $users[$i]->email }}</td>
-                <td class="font-medium">{{ $users[$i]->isAdmin }}</td>
+                <td class="font-medium">{{ $user['id'] }}</td>
+                <td class="font-medium">{{ $user['created_at'] }}</td>
+                <td class="font-medium">{{ $user['email'] }}</td>
+                <td class="font-medium">{{ $user['isAdmin'] }}</td>
             </tr>
-          @endfor
+          @endforeach
         </tbody>
       </table>
     </div>
@@ -84,12 +80,12 @@
           </tr>
         </thead>
         <tbody>
-          @for ($i = 0; $i < $users_count; $i++)
+          @foreach($users as $user)
               <tr class="text-subwhite">
-                  <td class="font-medium">{{ $users[$i]->id }}</td>
-                  <td class="font-medium">{{ $users[$i]->email }}</td>
+                  <td class="font-medium">{{ $user['id'] }}</td>
+                  <td class="font-medium">{{ $user['email'] }}</td>
               </tr>
-          @endfor
+          @endforeach
         </tbody>
       </table>
     </div>
@@ -109,12 +105,12 @@
         </tr>
       </thead>
       <tbody>
-        @for ($i = 0; $i < $emails_count; $i++)
-          <tr class="text-subwhite">
-              <td class="font-medium">{{ $emails[$i]->id }}</td>
-              <td class="font-medium">{{ $emails[$i]->email }}</td>
-          </tr>
-        @endfor
+          @foreach ($emails as $email)
+              <tr class="text-[#979797]">
+                  <td class="font-medium">{{ $email['id'] }}</td>
+                  <td class="font-medium">{{ $email['email'] }}</td>
+              </tr>
+          @endforeach
       </tbody>
     </table>
   </main>
