@@ -108,10 +108,10 @@
             </h2>
         </div>
 
-        <form action="{{ route('create') }}" method="POST" class="flex flex-col">
-            @csrf
-
-        </form>
+{{--        <form action="{{ route('create') }}" method="POST" class="flex flex-col">--}}
+{{--            @csrf--}}
+                <div id="game-card"></div>
+{{--        </form>--}}
     </main>
     @vite('resources/js/Admin/CreateGame/js-react/index.jsx')
 @endsection

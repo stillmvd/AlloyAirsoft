@@ -1,20 +1,14 @@
 import { combineReducers } from 'redux';
-import {
-    notSetGameCard,
-    setLinkMap,
-    setNameGame,
-    setTimeGame,
-    setDateGame,
-    setPolygonGame,
-} from './reducers';
+import {gameCardReducer} from "./gameCardReducers";
+import {pricesReducer} from "./pricesReducers";
+import {rulesReducer} from "./rulesReducers";
+import {infoReducer} from "./infoReducer";
 
-const todoApp = combineReducers({
-    notSetGameCard,
-    setLinkMap,
-    setNameGame,
-    setTimeGame,
-    setDateGame,
-    setPolygonGame
+const createGameReducers = combineReducers({
+    gameCard: gameCardReducer,
+    prices: pricesReducer,
+    info: infoReducer,
+    rules: rulesReducer,
 });
 
-export default todoApp;
+export default createGameReducers;
